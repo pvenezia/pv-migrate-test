@@ -1,3 +1,4 @@
+## Authentication
 The Connected Radio API is an authenticated API. This means that every call to the API must contain valid authentication credentials to retrieve or submit data. 
 
 Prior to using the API, you will be provided with two data elements:
