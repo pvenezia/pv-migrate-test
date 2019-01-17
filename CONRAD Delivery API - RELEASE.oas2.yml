@@ -734,6 +734,46 @@ paths:
             type: array
             items:
               $ref: '#/definitions/GenreListObject'
+          examples:
+            application/json:
+              - id: 1
+                name: Adult Contemporary
+              - id: 2
+                name: Classical
+              - id: 3
+                name: Country
+              - id: 4
+                name: Family
+              - id: 5
+                name: Hip Hop/Urban
+              - id: 6
+                name: Jazz/Blues
+              - id: 7
+                name: News/Talk
+              - id: 8
+                name: Oldies
+              - id: 9
+                name: R&B
+              - id: 10
+                name: Religious
+              - id: 11
+                name: Rock
+              - id: 12
+                name: Spanish
+              - id: 13
+                name: Sports
+              - id: 14
+                name: The Decades
+              - id: 15
+                name: Top 40/Pop
+              - id: 16
+                name: World/Variety
+              - id: 17
+                name: Comedy
+              - id: 18
+                name: Public Radio
+              - id: 19
+                name: Other
         '400':
           description: 'No results found, or missing parameter'
           schema:
