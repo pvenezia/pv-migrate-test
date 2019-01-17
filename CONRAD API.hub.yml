@@ -37,6 +37,11 @@ pages:
     title: Guides
     data:
       children:
+        - title: Broadcasts Request
+          route:
+            path: /broadcast-request
+          data:
+            $ref: ./Guide - Broadcast Request.md
         - title: CONRAD API Flow
           route:
             path: /conrad-api-flow
