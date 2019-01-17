@@ -18,6 +18,14 @@ pages:
         - type: text
           data:
             $ref: ./Getting%20Started.md
+        - type: text
+          data: |-
+
+
+            ## Authentication
+        - type: text
+          data:
+            $ref: ./Authentication.md
   /api-reference:
     title: CONRAD API Reference
     data:
