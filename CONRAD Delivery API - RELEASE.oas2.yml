@@ -397,6 +397,104 @@ paths:
           description: Successful response
           schema:
             $ref: '#/definitions/Broadcast'
+          examples:
+            application/json:
+              analog:
+                broadcastId: '12345'
+                ecc: E0
+                piCode: D310
+                freq: 103700
+                band: FM
+                country: US
+                broadcastData:
+                  name: 103.7FM The Rock
+                  slogan: Yesterday and Today's Rock Hits!
+                  sortKey: abc
+                  stationId: '12345'
+                  contentId: '12345'
+                  languages:
+                    - en-US
+                    - en-US
+                    - en-US
+                  callSign: WKRP
+                  translator: W212AB
+                  enableThumbs: true
+                  enableShare: true
+                  format: music
+                  description: Modern and classic rock music
+                  longDescription: >-
+                    Central Pennsylvania's rock source, with Kim and Tom in the
+                    morning!
+                  logoURL: 'https://example.cnrd.io/img/abcdefg.png'
+                  logoURLHiRes: 'https://example.cnrd.io/img/abcdefg-hires.png'
+                  sfOnIconURL: >-
+                    https://example.cnrd.io/img/2/2/2210d149ef776682bc583a919046aacb.png
+                  sfOffIconURL: >-
+                    https://example.cnrd.io/img/a/3/a30183ea6cf6e345691dda5c94a97e5e.png
+                  sfOnIconURLWide: >-
+                    https://example.cnrd.io/img/e/8/e83993f9ecde475ced101978b0e4602d.png
+                  sfOffIconURLWide: >-
+                    https://example.cnrd.io/img/9/5/950d73b2d78c51ac794c2346d816b2e3.png
+                  mqURI: 'amqp://username:password@amqp.hostname.com/vhost'
+                  mqExchange: live
+                  mqKey: '#.broadcast.12345'
+                  genreIds:
+                    - 123
+                    - 123
+                    - 123
+                  hasLiveData: true
+                  useLiveUnverified: true
+                  email:
+                    - user@example.cnrd.io
+                    - user@example.cnrd.io
+                    - user@example.cnrd.io
+                  urls:
+                    website:
+                      - 'http://www.example.cnrd.io'
+                      - 'http://www.example.cnrd.io'
+                      - 'http://www.example.cnrd.io'
+                    facebook:
+                      - 'https://www.facebook.com/wkrprock'
+                      - 'https://www.facebook.com/wkrprock'
+                      - 'https://www.facebook.com/wkrprock'
+                    twitter:
+                      - 'https://twitter.com/wkrprock'
+                      - 'https://twitter.com/wkrprock'
+                      - 'https://twitter.com/wkrprock'
+                  phone:
+                    - '12345678901'
+                    - '12345678901'
+                    - '12345678901'
+                  sms:
+                    - '123456'
+                    - '123456'
+                    - '123456'
+                  streams:
+                    - url: 'http://radiostream.url.com/stream'
+                      format: mp3
+                      sampleRate: 44100
+                      bitrate: 64000
+                      preroll: 42
+              hdradio:
+                broadcastId: '12345'
+                piCode: A123
+                stationId: foo
+                countryCode: foo
+                location: '43.094, -71.730'
+                channel: '1'
+                freq: 103700
+                band: FM
+                country: US
+                broadcastData: null
+              dab:
+                broadcastId: '12345'
+                eid: C186
+                freq: 223
+                sid: C1C2
+                scids: '0'
+                channel: 12A
+                country: US
+                broadcastData: null
         '400':
           description: 'No results found, or missing parameter'
           schema:
