@@ -20,7 +20,7 @@ pages:
             $ref: ./Getting%20Started.md
         - type: text
           data: |-
-
+            ##
 
             ## Authentication
         - type: text
