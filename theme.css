@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&subset=latin-ext');
+
+.bg-lighten-100 {
+	background-color: hsla(0, 0%, 100%, 0.06);
+	border-bottom: 6px solid #f16726;
+}
+
+.HubHeader .HubHeader-inner {
+	align-items: stretch;
+}
+
+.HubHeaderItem-image img {
+	max-height: 44px;
+}
+
+.HubHeader-inner {
+	margin: auto;
+	padding: 0;
+}
+
+.HubHeader-section {
+	align-items: stretch;
+}
+
+.HubHeaderItem {
+	text-transform: uppercase;
+	font-family: Oswald;
+	padding: 0 20px;
+	font-weight: 500;
+	font-size: 1.25em;
+	letter-spacing: 1px;
+}
+
+.HubHeaderItem .HubHeaderItem-name {
+	color: #87878a;
+}
+
+a.HubHeaderItem {
+	border-left: 1px solid #272727;
+}
+
+a.HubHeaderItem:last-of-type {
+	border-right: 1px solid #272727;
+}
+
+.HubHeaderItem.is-active > .HubHeaderItem-name {
+	color: #ffffff;
+	margin-bottom: -6px;
+}
+
+.HubHeaderItem > .HubHeaderItem-name:hover {
+	color: #ffffff;
+	-webkit-transition: color 300ms ease;
+	-moz-transition: color 300ms ease;
+	-ms-transition: color 300ms ease;
+	-o-transition: color 300ms ease;
+	transition: color 300ms ease;
+}
+
+.HubHeader-search, .HubSearch {
+	width: 160px;
+	margin: 0 30px;
+}

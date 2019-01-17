@@ -161,7 +161,7 @@ pages:
 
 
                   This makes it easy for other teams or processes (code
-                  generation, etc) to update your OpenAPI files. Whenever they
+                  generation, etc) to update your Open API files. Whenever they
                   are updated, this hub will be updated - easy as pie!
 
 

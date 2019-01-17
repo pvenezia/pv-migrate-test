@@ -1,0 +1,55 @@
+title: ''
+header:
+  nav:
+    left: []
+    center: []
+    right:
+      - title: API Reference
+        path: /api-reference
+      - title: Guides
+        path: /guides
+      - title: Changelog
+        path: /changelog
+pages:
+  /:
+    title: Home
+    data:
+      blocks:
+        - type: text
+          data:
+            $ref: ./Getting%20Started.md
+  /api-reference:
+    title: CONRAD API Reference
+    data:
+      blocks: []
+      children:
+        - title: API Reference
+          route:
+            path: /docs
+          data:
+            $ref: ./CONRAD Delivery API - RELEASE.oas2.yml
+  /guides:
+    title: Guides
+    data:
+      children:
+        - title: CONRAD API Flow
+          route:
+            path: /conrad-api-flow
+          data:
+            $ref: ./CONRAD API Flow.md
+        - title: AMQP Push Notifications Guide
+          route:
+            path: /amqp-push-notifications-guide
+          data:
+            $ref: ./Guide - AMQP Push Notifications.md
+  /changelog:
+    title: Changelog
+    data:
+      $ref: ./Changelog.md
+theme:
+  background: '#363333'
+  primary: '#f3b229'
+  secondary: '#f26a28'
+logo: 'https://s3.amazonaws.com/dts-idea-static-assets/Connected-Radio-Logo-2.png'
+meta:
+  favicon: 'https://s3.amazonaws.com/dts-idea-static-assets/favicon.ico'
