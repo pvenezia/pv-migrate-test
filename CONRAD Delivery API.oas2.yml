@@ -42,6 +42,7 @@ tags:
     description: Genre names and ids
   - name: reports
     description: Service utilization reporting
+  - name: config
 schemes:
   - https
 paths:
@@ -144,8 +145,6 @@ paths:
             $ref: '#/definitions/Error'
   /config:
     get:
-      tags:
-        - devices
       summary: Request device configuration
       produces:
         - application/json
@@ -228,6 +227,8 @@ paths:
           description: Internal error
           schema:
             $ref: '#/definitions/Error'
+      tags:
+        - config
   /broadcasts:
     get:
       tags:
