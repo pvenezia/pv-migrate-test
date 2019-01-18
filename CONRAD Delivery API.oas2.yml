@@ -577,6 +577,44 @@ paths:
           description: Successful response
           schema:
             $ref: '#/definitions/Live'
+          examples:
+            application/json:
+              id: foo
+              type: music
+              duration: 305
+              musicData:
+                title: All Blues
+                album: Kind of Blue
+                artist: Miles Davis
+                enableThumbs: true
+                enableShare: true
+                images:
+                  - type: artist
+                    default: true
+                    url: >-
+                      https://s.cnrd.io/img/c/2/c2b12ed7860b3a1a123483dec90abf1ea3.jpg
+                    urlHiRes: >-
+                      https://s.cnrd.io/img/f/2/f2b12ed1234b3a1a123483dec90abf1ea6.jpg
+                genre:
+                  - 42
+                  - 42
+                  - 42
+              nmpData:
+                title: 'Wait, Wait Don''t Tell Me'
+                program: The NPR News Quiz
+                subject: 'Today''s guest: Tom Hanks'
+                enableThumbs: true
+                enableShare: true
+                images:
+                  - null
+              adData:
+                - type: web
+                  data:
+                    - type: url
+                      target: 'http://example.url.com'
+                      content: 'YES'
+                      text:
+                        - Tap here for more information
         '202':
           description: >-
             Response accepted, but waiting on data availability. Retry in
