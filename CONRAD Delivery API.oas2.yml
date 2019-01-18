@@ -135,14 +135,26 @@ paths:
           description: 'No results found, or missing parameter'
           schema:
             $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              result: error
+              data: foo
         '401':
           description: Authorization/authentication error
           schema:
             $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              result: error
+              data: foo
         '500':
           description: Internal error
           schema:
             $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              result: error
+              data: foo
   /config:
     get:
       summary: Request device configuration
@@ -219,14 +231,26 @@ paths:
           description: 'No results found, or missing parameter'
           schema:
             $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              result: error
+              data: foo
         '401':
           description: Authorization/authentication error
           schema:
             $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              result: error
+              data: foo
         '500':
           description: Internal error
           schema:
             $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              result: error
+              data: foo
       tags:
         - config
   /broadcasts:
@@ -421,14 +445,26 @@ paths:
           description: 'No results found, or missing parameter'
           schema:
             $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              result: error
+              data: foo
         '401':
           description: Authorization/authentication error
           schema:
             $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              result: error
+              data: foo
         '500':
           description: Internal error
           schema:
             $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              result: error
+              data: foo
   '/broadcasts/{broadcastId}':
     get:
       tags:
@@ -553,14 +589,26 @@ paths:
           description: 'No results found, or missing parameter'
           schema:
             $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              result: error
+              data: foo
         '401':
           description: Authorization/authentication error
           schema:
             $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              result: error
+              data: foo
         '500':
           description: Internal error
           schema:
             $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              result: error
+              data: foo
   '/broadcasts/{broadcastId}/live':
     get:
       tags:
@@ -688,10 +736,18 @@ paths:
           description: Bad query or missing parameter
           schema:
             $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              result: error
+              data: foo
         '401':
           description: Authorization/authentication error
           schema:
             $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              result: error
+              data: foo
         '404':
           description: >-
             No results found. This is not an indicator that live data is
@@ -699,10 +755,18 @@ paths:
             currently present at the time of query.
           schema:
             $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              result: error
+              data: foo
         '500':
           description: Internal error
           schema:
             $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              result: error
+              data: foo
   /genres:
     get:
       tags:
@@ -788,14 +852,26 @@ paths:
           description: 'No results found, or missing parameter'
           schema:
             $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              result: error
+              data: foo
         '401':
           description: Authorization/authentication error
           schema:
             $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              result: error
+              data: foo
         '500':
           description: Internal error
           schema:
             $ref: '#/definitions/Error'
+          examples:
+            application/json:
+              result: error
+              data: foo
   /reports:
     post:
       tags:
@@ -833,14 +909,29 @@ paths:
           description: 'No results found, or missing parameter'
           schema:
             $ref: '#/definitions/ReportError'
+          examples:
+            application/json:
+              result: foo
+              data: foo
+              action: discard
         '401':
           description: Authorization/authentication error
           schema:
             $ref: '#/definitions/ReportError'
+          examples:
+            application/json:
+              result: foo
+              data: foo
+              action: discard
         '500':
           description: Internal error
           schema:
             $ref: '#/definitions/ReportError'
+          examples:
+            application/json:
+              result: foo
+              data: foo
+              action: discard
   /reports/actions:
     post:
       tags:
@@ -873,14 +964,29 @@ paths:
           description: 'No results found, or missing parameter'
           schema:
             $ref: '#/definitions/ReportError'
+          examples:
+            application/json:
+              result: foo
+              data: foo
+              action: discard
         '401':
           description: Authorization/authentication error
           schema:
             $ref: '#/definitions/ReportError'
+          examples:
+            application/json:
+              result: foo
+              data: foo
+              action: discard
         '500':
           description: Internal error
           schema:
             $ref: '#/definitions/ReportError'
+          examples:
+            application/json:
+              result: foo
+              data: foo
+              action: discard
   /reports/signal:
     post:
       tags:
@@ -905,14 +1011,29 @@ paths:
           description: 'No results found, or missing parameter'
           schema:
             $ref: '#/definitions/ReportError'
+          examples:
+            application/json:
+              result: foo
+              data: foo
+              action: discard
         '401':
           description: Authorization/authentication error
           schema:
             $ref: '#/definitions/ReportError'
+          examples:
+            application/json:
+              result: foo
+              data: foo
+              action: discard
         '500':
           description: Internal error
           schema:
             $ref: '#/definitions/ReportError'
+          examples:
+            application/json:
+              result: foo
+              data: foo
+              action: discard
 parameters:
   mfgId:
     name: mfgId
