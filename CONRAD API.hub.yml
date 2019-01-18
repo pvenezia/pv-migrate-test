@@ -37,6 +37,9 @@ pages:
     title: Guides
     data:
       children:
+        - title: API Client Flow
+          route:
+            path: /api-client-flow
         - title: Broadcasts Request
           route:
             path: /broadcast-request
