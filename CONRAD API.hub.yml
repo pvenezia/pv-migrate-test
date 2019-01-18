@@ -40,6 +40,8 @@ pages:
         - title: API Client Flow
           route:
             path: /api-client-flow
+          data:
+            $ref: ./Guide - API Client Flow.md
         - title: Broadcasts Request
           route:
             path: /broadcast-request
