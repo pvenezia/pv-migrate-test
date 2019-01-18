@@ -13,7 +13,7 @@ If you have any questions, please contact [connected.radio@dts.com](mailto:conne
 
 1. Take a look at our [API Guides](/guides) for API flow diagrams, authentication walkthroughs, AMQP push notification information, and other how-to guides. **The AMQP push notification guide is a must-read**, and will save time on implementation.
 2. Read the [authentication guide](#authentication) to understand how you can connect your app to our sandbox.
-3. Give the API a go with the [API Reference, including live query tools](https://conrad.docs.stoplight.io/api-reference/docs).
+3. Give the API a go with the [API Reference, including live query tools](/api-reference/docs).
 4. Roll up your sleeves and read the full API spec.
 5. If you use the [Postman API development tools](https://www.getpostman.com/), download the [Postman collection for the DTS Connected Radio API](https://s.cnrd.io/other/DTS_Connected_Radio_API.postman_collection-1.1.3.zip)
 6. **Note that in these docs the example API JSON responses can be shown or hidden by clicking the Example section**.
