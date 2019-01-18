@@ -1,4 +1,3 @@
----
 swagger: '2.0'
 info:
   version: 1.1.3
@@ -18,10 +17,8 @@ info:
     If a key specified in the API spec is missing from a response, the value
     should be assumed `null`. All booleans present in API responses will have
     explicitly specified defaults in the documentation.
-
 host: api.sandbox.cnrd.io
 basePath: /v1
-
 securityDefinitions:
   hmac:
     type: apiKey
@@ -33,12 +30,10 @@ securityDefinitions:
 
       The `hash` is hex digest, truncated to 24 characters.
 
-      Example:
-      `Authorization: asdbh23456sdf,fd9f655862c9bd4da0edb845`
-
+      Example: `Authorization: asdbh23456sdf,fd9f655862c9bd4da0edb845`
 tags:
   - name: devices
-    description: Device interaction, id assignments, configuration retrieval
+    description: 'Device interaction, id assignments, configuration retrieval'
   - name: broadcasts
     description: Static broadcast data retrieval
   - name: live
@@ -47,10 +42,8 @@ tags:
     description: Genre names and ids
   - name: reports
     description: Service utilization reporting
-
 schemes:
   - https
-
 paths:
   /devices:
     post:
@@ -70,33 +63,30 @@ paths:
 
 
         If a client does not have a valid API-assigned device ID present in
-        non-volatile storage, the first API interaction shall be to register
-        and receive this ID.
+        non-volatile storage, the first API interaction shall be to register and
+        receive this ID.
 
 
-        This request should only be made when the client is first initialized
-        or if the client is reset to factory defaults.
-
+        This request should only be made when the client is first initialized or
+        if the client is reset to factory defaults.
       parameters:
-        - $ref: "#/parameters/mfgId"
+        - $ref: '#/parameters/mfgId'
         - name: Authorization
           in: header
           description: >-
-            Authorization header. Please note that this authentication
-            signature is different from all other Authorization headers in the
-            API in that it uses `mfgId` not `deviceId` as the `deviceId`
-            has not yet been acquired.
+            Authorization header. Please note that this authentication signature
+            is different from all other Authorization headers in the API in that
+            it uses `mfgId` not `deviceId` as the `deviceId` has not yet been
+            acquired.
 
             The format is `{mfgId},{hash}`, where the `hash` is
             `HMAC_SHA256(mfgSecret, mfgId)`.
 
             The `hash` is hex digest, truncated to 24 characters.
 
-            Example:
-            `Authorization: DEV-0001,548bde0ad4db9c268556f9df`
+            Example: `Authorization: DEV-0001,548bde0ad4db9c268556f9df`
           required: true
           type: string
-
         - name: body
           in: body
           required: true
@@ -105,22 +95,21 @@ paths:
             $ref: '#/definitions/DevicesPost'
       responses:
         '200':
-          description: 'Successful response'
+          description: Successful response
           schema:
-            $ref: "#/definitions/DeviceResponse"
+            $ref: '#/definitions/DeviceResponse'
         '400':
           description: 'No results found, or missing parameter'
           schema:
             $ref: '#/definitions/Error'
         '401':
-          description: 'Authorization/authentication error'
+          description: Authorization/authentication error
           schema:
             $ref: '#/definitions/Error'
         '500':
-          description: 'Internal error'
+          description: Internal error
           schema:
             $ref: '#/definitions/Error'
-
   /config:
     get:
       tags:
@@ -137,20 +126,19 @@ paths:
 
         The parameters specified in this object will dictate client behavior
         pertaining to API interaction. The values for keys in this object may
-        change depending on the geographical location of the client, or
-        when the API needs to control certain client interactions due to
-        various internal considerations.
+        change depending on the geographical location of the client, or when the
+        API needs to control certain client interactions due to various internal
+        considerations.
 
 
         Clients should never hard-code values that are present in a `/config`
         response, they are to be updated whenever a new `/config` response is
         received, which may occur periodically during normal operation.
-
       parameters:
-        - $ref: "#/parameters/mfgId"
-        - $ref: "#/parameters/Authorization"
-        - $ref: "#/parameters/lat"
-        - $ref: "#/parameters/lng"
+        - $ref: '#/parameters/mfgId'
+        - $ref: '#/parameters/Authorization'
+        - $ref: '#/parameters/lat'
+        - $ref: '#/parameters/lng'
         - name: geoCode
           in: query
           description: >-
@@ -161,30 +149,28 @@ paths:
           maxLength: 32
       responses:
         '200':
-          description: 'Successful response'
+          description: Successful response
           schema:
-            $ref: "#/definitions/DeviceResponse"
+            $ref: '#/definitions/DeviceResponse'
         '400':
           description: 'No results found, or missing parameter'
           schema:
             $ref: '#/definitions/Error'
         '401':
-          description: 'Authorization/authentication error'
+          description: Authorization/authentication error
           schema:
             $ref: '#/definitions/Error'
         '500':
-          description: 'Internal error'
+          description: Internal error
           schema:
             $ref: '#/definitions/Error'
-
   /broadcasts:
     get:
       tags:
         - broadcasts
       summary: >-
-        Retrieve data for all local broadcast stations via standard HTTP
-        GET query.
-
+        Retrieve data for all local broadcast stations via standard HTTP GET
+        query.
       operationId: getStationsByQuery
       produces:
         - application/json
@@ -195,39 +181,38 @@ paths:
         frequencies, GCC/ensemble IDs pairs, or GCC/piCode pairs.
 
 
-        This is the general query type, designed to be used by most clients
-        with access to one or more tuners.
+        This is the general query type, designed to be used by most clients with
+        access to one or more tuners.
 
 
-        The majority of the queries to this path will be latitude and
-        longitude only, but extended query types for different broadcast
-        technologies are supported.
+        The majority of the queries to this path will be latitude and longitude
+        only, but extended query types for different broadcast technologies are
+        supported.
 
 
         This method accepts a query with required coordinates and further data
         on stations that are available based on tuner reception. This may
-        include purely analog frequencies or DAB GCC and ensemble ID pairs,
-        or GCC and PI code pairs. The API will return a list of stations based
-        on the data presented in the query. The more descriptive data the
-        client can deliver in the query, the more accurate the resulting
-        broadcast list will be.
+        include purely analog frequencies or DAB GCC and ensemble ID pairs, or
+        GCC and PI code pairs. The API will return a list of stations based on
+        the data presented in the query. The more descriptive data the client
+        can deliver in the query, the more accurate the resulting broadcast list
+        will be.
 
 
         The minimum query components are lat/lng and deviceId.
 
 
         The result is an array of objects, each with a unique identifier, and
-        broadcast details related to their broadcast technology. The list may
-        be contain broadcast definitions representing multiple different
-        broadcast technologies. All results are best-effort, and objects may
-        contain only minimal data -- not every pair in the object may be
-        populated or present for every object in a response array.
-
+        broadcast details related to their broadcast technology. The list may be
+        contain broadcast definitions representing multiple different broadcast
+        technologies. All results are best-effort, and objects may contain only
+        minimal data -- not every pair in the object may be populated or present
+        for every object in a response array.
       parameters:
-        - $ref: "#/parameters/mfgId"
-        - $ref: "#/parameters/Authorization"
-        - $ref: "#/parameters/lat"
-        - $ref: "#/parameters/lng"
+        - $ref: '#/parameters/mfgId'
+        - $ref: '#/parameters/Authorization'
+        - $ref: '#/parameters/lat'
+        - $ref: '#/parameters/lng'
         - name: deviceType
           in: query
           description: >-
@@ -235,16 +220,15 @@ paths:
 
 
             Default value is `0`, which causes results for all supported
-            receivers to be returned.  Other accepted values are `1` for
-            analog, `2` for hdradio, `4` for dab.  The values may be OR-ed
-            together (e.g., `3` for analog and hdradio).
+            receivers to be returned.  Other accepted values are `1` for analog,
+            `2` for hdradio, `4` for dab.  The values may be OR-ed together
+            (e.g., `3` for analog and hdradio).
           type: integer
           default: 0
           required: false
         - name: freq
           in: query
-          description: >-
-            Array of analog/HD frequencies in kHz (e.g. `1040,89900,101100`)
+          description: 'Array of analog/HD frequencies in kHz (e.g. `1040,89900,101100`)'
           type: array
           items:
             type: integer
@@ -252,39 +236,135 @@ paths:
         - name: rds
           in: query
           description: >-
-            Array of strings in the format `gcc.picode.frequency`
-            (e.g. `de0.de37.89900`)
+            Array of strings in the format `gcc.picode.frequency` (e.g.
+            `de0.de37.89900`)
           type: array
           items:
             type: string
           required: false
         - name: dab
           in: query
-          description: >-
-            Array of strings in the format `gcc.eid` (e.g. `de0.d285`)
+          description: Array of strings in the format `gcc.eid` (e.g. `de0.d285`)
           type: array
           items:
             type: string
           required: false
       responses:
         '200':
-          description: 'Successful response'
+          description: Successful response
           schema:
-            $ref: "#/definitions/BroadcastList"
+            $ref: '#/definitions/BroadcastList'
+          examples:
+            application/json:
+              analog:
+                - broadcastId: '12345'
+                  ecc: E0
+                  piCode: D310
+                  freq: 103700
+                  band: FM
+                  country: US
+                  broadcastData:
+                    name: 103.7FM The Rock
+                    slogan: Yesterday and Today's Rock Hits!
+                    sortKey: abc
+                    stationId: '12345'
+                    contentId: '12345'
+                    languages:
+                      - en-US
+                      - en-US
+                      - en-US
+                    callSign: WKRP
+                    translator: W212AB
+                    enableThumbs: true
+                    enableShare: true
+                    format: music
+                    description: Modern and classic rock music
+                    longDescription: >-
+                      Central Pennsylvania's rock source, with Kim and Tom in
+                      the morning!
+                    logoURL: 'https://example.cnrd.io/img/abcdefg.png'
+                    logoURLHiRes: 'https://example.cnrd.io/img/abcdefg-hires.png'
+                    sfOnIconURL: >-
+                      https://example.cnrd.io/img/2/2/2210d149ef776682bc583a919046aacb.png
+                    sfOffIconURL: >-
+                      https://example.cnrd.io/img/a/3/a30183ea6cf6e345691dda5c94a97e5e.png
+                    sfOnIconURLWide: >-
+                      https://example.cnrd.io/img/e/8/e83993f9ecde475ced101978b0e4602d.png
+                    sfOffIconURLWide: >-
+                      https://example.cnrd.io/img/9/5/950d73b2d78c51ac794c2346d816b2e3.png
+                    mqURI: 'amqp://username:password@amqp.hostname.com/vhost'
+                    mqExchange: live
+                    mqKey: '#.broadcast.12345'
+                    genreIds:
+                      - 123
+                      - 123
+                      - 123
+                    hasLiveData: true
+                    useLiveUnverified: true
+                    email:
+                      - user@example.cnrd.io
+                      - user@example.cnrd.io
+                      - user@example.cnrd.io
+                    urls:
+                      website:
+                        - 'http://www.example.cnrd.io'
+                        - 'http://www.example.cnrd.io'
+                        - 'http://www.example.cnrd.io'
+                      facebook:
+                        - 'https://www.facebook.com/wkrprock'
+                        - 'https://www.facebook.com/wkrprock'
+                        - 'https://www.facebook.com/wkrprock'
+                      twitter:
+                        - 'https://twitter.com/wkrprock'
+                        - 'https://twitter.com/wkrprock'
+                        - 'https://twitter.com/wkrprock'
+                    phone:
+                      - '12345678901'
+                      - '12345678901'
+                      - '12345678901'
+                    sms:
+                      - '123456'
+                      - '123456'
+                      - '123456'
+                    streams:
+                      - url: 'http://radiostream.url.com/stream'
+                        format: mp3
+                        sampleRate: 44100
+                        bitrate: 64000
+                        preroll: 42
+              hdradio:
+                - broadcastId: '12345'
+                  piCode: A123
+                  stationId: foo
+                  countryCode: foo
+                  location: '43.094, -71.730'
+                  channel: '1'
+                  freq: 103700
+                  band: FM
+                  country: US
+                  broadcastData: null
+              dab:
+                - broadcastId: '12345'
+                  eid: C186
+                  freq: 223
+                  sid: C1C2
+                  scids: '0'
+                  channel: 12A
+                  country: US
+                  broadcastData: null
         '400':
           description: 'No results found, or missing parameter'
           schema:
             $ref: '#/definitions/Error'
         '401':
-          description: 'Authorization/authentication error'
+          description: Authorization/authentication error
           schema:
             $ref: '#/definitions/Error'
         '500':
-          description: 'Internal error'
+          description: Internal error
           schema:
             $ref: '#/definitions/Error'
-
-  /broadcasts/{broadcastId}:
+  '/broadcasts/{broadcastId}':
     get:
       tags:
         - broadcasts
@@ -294,33 +374,31 @@ paths:
         - application/json
       security:
         - hmac: []
-      description: >-
-        Retrieves an individual `Broadcast` object given a broadcast ID.
+      description: Retrieves an individual `Broadcast` object given a broadcast ID.
       parameters:
-        - $ref: "#/parameters/mfgId"
-        - $ref: "#/parameters/Authorization"
-        - $ref: "#/parameters/broadcastId"
-        - $ref: "#/parameters/lat-nr"
-        - $ref: "#/parameters/lng-nr"
+        - $ref: '#/parameters/mfgId'
+        - $ref: '#/parameters/Authorization'
+        - $ref: '#/parameters/broadcastId'
+        - $ref: '#/parameters/lat-nr'
+        - $ref: '#/parameters/lng-nr'
       responses:
         '200':
-          description: 'Successful response'
+          description: Successful response
           schema:
-            $ref: "#/definitions/Broadcast"
+            $ref: '#/definitions/Broadcast'
         '400':
           description: 'No results found, or missing parameter'
           schema:
             $ref: '#/definitions/Error'
         '401':
-          description: 'Authorization/authentication error'
+          description: Authorization/authentication error
           schema:
             $ref: '#/definitions/Error'
         '500':
-          description: 'Internal error'
+          description: Internal error
           schema:
             $ref: '#/definitions/Error'
-
-  /broadcasts/{broadcastId}/live:
+  '/broadcasts/{broadcastId}/live':
     get:
       tags:
         - live
@@ -333,10 +411,10 @@ paths:
       description: >-
 
         ***Note: Data from the `/broadcasts/{broadcastId}/live` path is
-        currently available for thousands of North American broadcasts,
-        and selected cities in Europe and Asia, such as Berlin, Germany;
-        London, UK; Paris, France; Tokyo, Japan; and Seoul, South Korea.
-        Live data for other geographic regions is coming.***
+        currently available for thousands of North American broadcasts, and
+        selected cities in Europe and Asia, such as Berlin, Germany; London, UK;
+        Paris, France; Tokyo, Japan; and Seoul, South Korea. Live data for other
+        geographic regions is coming.***
 
 
         The `/broadcasts/{broadcastId}/live` path retrieves live/now-playing
@@ -351,29 +429,29 @@ paths:
         notifications for this broadcast. The AMQP connection URI is specified
         in `Broadcasts#broadcastData.mqURI`, along with `mqKey` and
         `mqExchange`.  The message queue push data is in the form of
-        `broadcastId,liveId`. Upon receiving the message via the AMQP queue,
-        the client should call `/broadcasts/{broadcastId}/live` to retrieve the
-        live data object.
+        `broadcastId,liveId`. Upon receiving the message via the AMQP queue, the
+        client should call `/broadcasts/{broadcastId}/live` to retrieve the live
+        data object.
 
 
         This method is not intended to be polled at timed intervals or used
         without subscription to the AMQP queue and routing key for a specific
-        broadcast. It may be used for a single snapshot of data for a station
-        or small set of stations to enhance a station guide display.
+        broadcast. It may be used for a single snapshot of data for a station or
+        small set of stations to enhance a station guide display.
 
 
-        However, a call to `/broadcasts/{broadcastId}/live` should be made
-        prior to subscribing to the message queue for a specific broadcast
-        in order to retrieve current data before subscribing to receive
-        notifications to retrieve new data.
+        However, a call to `/broadcasts/{broadcastId}/live` should be made prior
+        to subscribing to the message queue for a specific broadcast in order to
+        retrieve current data before subscribing to receive notifications to
+        retrieve new data.
 
 
-        If a client is disconnected from the AMQP service, it should attempt
-        to reconnect and subscribe to the routing key again. In addition, it
-        should request `/broadcasts/{broadcastId}/live` immediately to ensure
-        that the latest available live data is presented. If reconnection is
-        not possible for an extended length of time, then the client should
-        cease presenting live data until the connection can be resumed.
+        If a client is disconnected from the AMQP service, it should attempt to
+        reconnect and subscribe to the routing key again. In addition, it should
+        request `/broadcasts/{broadcastId}/live` immediately to ensure that the
+        latest available live data is presented. If reconnection is not possible
+        for an extended length of time, then the client should cease presenting
+        live data until the connection can be resumed.
 
 
         Not all broadcast IDs will have a live data feed. See the key
@@ -390,15 +468,15 @@ paths:
         If this path returns a `404 Not Found`, no live data is currently
         available for that `broadcastId`.
       parameters:
-        - $ref: "#/parameters/mfgId"
-        - $ref: "#/parameters/Authorization"
-        - $ref: "#/parameters/broadcastId"
-        - $ref: "#/parameters/lat"
-        - $ref: "#/parameters/lng"
-        - $ref: "#/parameters/disp"
+        - $ref: '#/parameters/mfgId'
+        - $ref: '#/parameters/Authorization'
+        - $ref: '#/parameters/broadcastId'
+        - $ref: '#/parameters/lat'
+        - $ref: '#/parameters/lng'
+        - $ref: '#/parameters/disp'
       responses:
         '200':
-          description: 'Successful response'
+          description: Successful response
           schema:
             $ref: '#/definitions/Live'
         '202':
@@ -406,11 +484,11 @@ paths:
             Response accepted, but waiting on data availability. Retry in
             `liveDataRetry` seconds.
         '400':
-          description: 'Bad query or missing parameter'
+          description: Bad query or missing parameter
           schema:
             $ref: '#/definitions/Error'
         '401':
-          description: 'Authorization/authentication error'
+          description: Authorization/authentication error
           schema:
             $ref: '#/definitions/Error'
         '404':
@@ -421,11 +499,9 @@ paths:
           schema:
             $ref: '#/definitions/Error'
         '500':
-          description: 'Internal error'
+          description: Internal error
           schema:
             $ref: '#/definitions/Error'
-
-
   /genres:
     get:
       tags:
@@ -438,49 +514,47 @@ paths:
         - hmac: []
       description: >-
         Retrieves genre data. Genres and sub-genres are specified in broadcast
-        records by ID. This path retrieves the genre name/ID pairs to be used
-        in display.
+        records by ID. This path retrieves the genre name/ID pairs to be used in
+        display.
 
 
-        We will be modifying and consolidating the genre lists over time, so
-        the entries in this list will become more concise.
+        We will be modifying and consolidating the genre lists over time, so the
+        entries in this list will become more concise.
       parameters:
-        - $ref: "#/parameters/mfgId"
-        - $ref: "#/parameters/Authorization"
+        - $ref: '#/parameters/mfgId'
+        - $ref: '#/parameters/Authorization'
         - name: lang
           in: query
           description: >-
             [RFC 5646](https://tools.ietf.org/html/rfc5646) compliant tag
-            specifying the language and region to use when returning the
-            results (default: `en-US`).
+            specifying the language and region to use when returning the results
+            (default: `en-US`).
 
 
             The results will be in `en-US` if the requested language is not
             available.
           required: false
           type: string
-          default: "en-US"
+          default: en-US
       responses:
         '200':
-          description: 'Successful response'
+          description: Successful response
           schema:
             type: array
             items:
-              $ref: "#/definitions/GenreListObject"
+              $ref: '#/definitions/GenreListObject'
         '400':
           description: 'No results found, or missing parameter'
           schema:
             $ref: '#/definitions/Error'
         '401':
-          description: 'Authorization/authentication error'
+          description: Authorization/authentication error
           schema:
             $ref: '#/definitions/Error'
         '500':
-          description: 'Internal error'
+          description: Internal error
           schema:
             $ref: '#/definitions/Error'
-
-
   /reports:
     post:
       tags:
@@ -491,10 +565,10 @@ paths:
         containing data on broadcasts and other media consumption.
 
 
-        This report is to be submitted on a scheduled basis as determined by
-        the `reportsMinInterval` and `reportsMaxInterval` values in the
-        `/config` response. Data collected by the client within those time
-        limits is then submitted to the API and a new report is begun.
+        This report is to be submitted on a scheduled basis as determined by the
+        `reportsMinInterval` and `reportsMaxInterval` values in the `/config`
+        response. Data collected by the client within those time limits is then
+        submitted to the API and a new report is begun.
 
 
         If a report has not been successfully submitted within the elapsed time
@@ -502,10 +576,9 @@ paths:
         discarded and a new report begun. If the report size exceeds
         `reportsMaxSize` before submission, then the report is discarded and a
         new report begun.
-
       parameters:
-        - $ref: "#/parameters/mfgId"
-        - $ref: "#/parameters/Authorization"
+        - $ref: '#/parameters/mfgId'
+        - $ref: '#/parameters/Authorization'
         - name: body
           in: body
           required: true
@@ -514,29 +587,28 @@ paths:
             $ref: '#/definitions/Report'
       responses:
         '200':
-          description: 'Successful response'
+          description: Successful response
         '400':
           description: 'No results found, or missing parameter'
           schema:
             $ref: '#/definitions/ReportError'
         '401':
-          description: 'Authorization/authentication error'
+          description: Authorization/authentication error
           schema:
             $ref: '#/definitions/ReportError'
         '500':
-          description: 'Internal error'
+          description: Internal error
           schema:
             $ref: '#/definitions/ReportError'
-
   /reports/actions:
     post:
       tags:
         - reports
       summary: Submit an action report
       description: >-
-        This path allows the client to submit a notification of an action to
-        the API. This is where user interactions with the services provided by
-        the API are logged, including user actions such as exiting the listening
+        This path allows the client to submit a notification of an action to the
+        API. This is where user interactions with the services provided by the
+        API are logged, including user actions such as exiting the listening
         session.
 
 
@@ -544,10 +616,9 @@ paths:
         present due to data returned by the API, such as SMS and phone numbers,
         location data for maps/navigation purposes, sharing information on
         social media and so forth.
-
       parameters:
-        - $ref: "#/parameters/mfgId"
-        - $ref: "#/parameters/Authorization"
+        - $ref: '#/parameters/mfgId'
+        - $ref: '#/parameters/Authorization'
         - name: body
           in: body
           required: true
@@ -556,20 +627,19 @@ paths:
             $ref: '#/definitions/ReportAction'
       responses:
         '200':
-          description: 'Successful response'
+          description: Successful response
         '400':
           description: 'No results found, or missing parameter'
           schema:
             $ref: '#/definitions/ReportError'
         '401':
-          description: 'Authorization/authentication error'
+          description: Authorization/authentication error
           schema:
             $ref: '#/definitions/ReportError'
         '500':
-          description: 'Internal error'
+          description: Internal error
           schema:
             $ref: '#/definitions/ReportError'
-
   /reports/signal:
     post:
       tags:
@@ -579,8 +649,8 @@ paths:
         This path allows the client to submit a signal strength report
         containing the currently tuned `broadcastId` and a signal strength value
       parameters:
-        - $ref: "#/parameters/mfgId"
-        - $ref: "#/parameters/Authorization"
+        - $ref: '#/parameters/mfgId'
+        - $ref: '#/parameters/Authorization'
         - name: body
           in: body
           required: true
@@ -589,31 +659,28 @@ paths:
             $ref: '#/definitions/SignalReport'
       responses:
         '200':
-          description: 'Successful response'
+          description: Successful response
         '400':
           description: 'No results found, or missing parameter'
           schema:
             $ref: '#/definitions/ReportError'
         '401':
-          description: 'Authorization/authentication error'
+          description: Authorization/authentication error
           schema:
             $ref: '#/definitions/ReportError'
         '500':
-          description: 'Internal error'
+          description: Internal error
           schema:
             $ref: '#/definitions/ReportError'
-
 parameters:
   mfgId:
     name: mfgId
     in: header
-    description: >-
-      Manufacturer-specific ID supplied by DTS
+    description: Manufacturer-specific ID supplied by DTS
     required: true
     type: string
     minLength: 2
     maxLength: 32
-
   Authorization:
     name: Authorization
     in: header
@@ -625,19 +692,15 @@ parameters:
 
       The `hash` is hex digest, truncated to 24 characters.
 
-      Example:
-      `Authorization: asdbh23456sdf,fd9f655862c9bd4da0edb845`
+      Example: `Authorization: asdbh23456sdf,fd9f655862c9bd4da0edb845`
     required: true
     type: string
-
   broadcastId:
     name: broadcastId
     in: path
-    description: >-
-      Requested broadcast ID
+    description: Requested broadcast ID
     type: string
     required: true
-
   lat:
     name: lat
     in: query
@@ -647,7 +710,6 @@ parameters:
       degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to three
       decimal places (e.g. 43.094)
     required: true
-
   lng:
     name: lng
     in: query
@@ -657,7 +719,6 @@ parameters:
       degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to three
       decimal places (e.g. -71.730)
     required: true
-
   lat-nr:
     name: lat
     in: query
@@ -667,7 +728,6 @@ parameters:
       degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to three
       decimal places (e.g. 43.094)
     required: false
-
   lng-nr:
     name: lng
     in: query
@@ -677,7 +737,6 @@ parameters:
       degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to three
       decimal places (e.g. -71.730)
     required: false
-
   disp:
     name: disp
     in: query
@@ -693,7 +752,6 @@ parameters:
       station guide, and `preset` for requests intended to be used for live
       presets in the display.
     required: true
-
 definitions:
   DeviceResponse:
     title: Device config Data Object
@@ -712,10 +770,10 @@ definitions:
         type: string
         example: D0K101
         description: >-
-          Manufacturer ID. This will normally be the same ID used to request
-          the configuration and authenticate to the API, but if this ID is
-          different in the `/config` response, the client should overwrite the
-          stored `mfgId` in favor of the new ID and use it with the original
+          Manufacturer ID. This will normally be the same ID used to request the
+          configuration and authenticate to the API, but if this ID is different
+          in the `/config` response, the client should overwrite the stored
+          `mfgId` in favor of the new ID and use it with the original
           `mfgSecret` for all subsequent API interaction.
       geoCode:
         type: string
@@ -725,7 +783,6 @@ definitions:
           geographical restrictions that may need to be placed on the device.
       config:
         $ref: '#/definitions/DeviceConfig'
-
   DevicesPost:
     title: Devices POST object
     x-gelato-overview: true
@@ -753,7 +810,7 @@ definitions:
           Longitude in [decimal
           degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to
           three decimal places (e.g. 43.094)
-        example: -71.730
+        example: -71.73
       mfg:
         type: string
         description: Manufacturer name
@@ -783,8 +840,7 @@ definitions:
         type: string
         description: Client version of the application
         maxLength: 32
-        example: 1.0
-
+        example: 1
   DeviceConfig:
     title: Device config Data Object
     type: object
@@ -793,14 +849,12 @@ definitions:
         type: boolean
         default: true
         example: true
-        description: >-
-          Must be true to use further CONRAD API services
+        description: Must be true to use further CONRAD API services
       enableLive:
         type: boolean
         default: true
         example: true
-        description: >-
-          Must be true to enable use of /broadcasts/{broadcastId}/live path
+        description: 'Must be true to enable use of /broadcasts/{broadcastId}/live path'
       errorRetry:
         type: integer
         default: 60
@@ -812,87 +866,74 @@ definitions:
         type: integer
         default: 3600
         example: 3600
-        description: >-
-          Time in seconds to wait before refreshing /config
+        description: Time in seconds to wait before refreshing /config
       liveDataRetry:
         type: integer
         default: 5
         example: 5
         description: >-
           Time in seconds to wait before retrying a call to
-          `/broadcasts/{broadcastId}/live` following the receipt of a
-          `202 Accepted` response. This call is only retried if a `202` is
-          received.
+          `/broadcasts/{broadcastId}/live` following the receipt of a `202
+          Accepted` response. This call is only retried if a `202` is received.
       useMinQueries:
         type: boolean
         default: false
         example: false
-        description: >-
-          Force use of minimal data queries with only lat/lng query type
+        description: Force use of minimal data queries with only lat/lng query type
       defLogoURL:
         type: string
-        example: "https://example.cnrd.io/img/abcdefg.png"
-        description: >-
-          Default Logo image URL
+        example: 'https://example.cnrd.io/img/abcdefg.png'
+        description: Default Logo image URL
       defLogoURLHiRes:
         type: string
-        example: "https://example.cnrd.io/img/abcdefg-hires.png"
-        description: >-
-          Default Logo image URL - High resolution
+        example: 'https://example.cnrd.io/img/abcdefg-hires.png'
+        description: Default Logo image URL - High resolution
       defAlbumURL:
         type: string
-        example: "https://example.cnrd.io/img/abcdefg.png"
-        description: >-
-          Default Album image URL
+        example: 'https://example.cnrd.io/img/abcdefg.png'
+        description: Default Album image URL
       defAlbumURLHiRes:
         type: string
-        example: "https://example.cnrd.io/img/abcdefg-hires.png"
-        description: >-
-          Default Album image URL - High resolution
+        example: 'https://example.cnrd.io/img/abcdefg-hires.png'
+        description: Default Album image URL - High resolution
       expireBroadcastIds:
         type: array
         x-gelato-overview: false
         items:
           type: string
-          example: "12345"
-        description: >-
-          Immediately expire cached broadcast data matching these IDs
+          example: '12345'
+        description: Immediately expire cached broadcast data matching these IDs
       genreListCacheTTL:
         type: integer
         default: 86400
         example: 86400
-        description: >-
-          Time-to-live for the genre cache in seconds
+        description: Time-to-live for the genre cache in seconds
       genreListCacheFlush:
         type: boolean
         default: false
         example: false
-        description: >-
-          Flush cache of all genre data and query for current genre data
+        description: Flush cache of all genre data and query for current genre data
       broadcastDataCacheTTL:
         type: integer
         default: 3600
         example: 3600
-        description: >-
-          Time-to-live for the broadcast data cache in seconds
+        description: Time-to-live for the broadcast data cache in seconds
       broadcastDataCacheFlush:
         type: boolean
         default: false
         example: false
-        description: >-
-          Flush cache of all broadcast data
+        description: Flush cache of all broadcast data
       broadcastQueryRefreshRate:
         type: integer
         default: 600
         example: 600
-        description: >-
-          Delay in seconds between resending broadcast queries
+        description: Delay in seconds between resending broadcast queries
       altAPIURL:
         type: string
-        example: "https://new.api.url.com"
+        example: 'https://new.api.url.com'
         description: >-
-          Alternate URL to access API. This will be a scheme and hostname,
-          e.g. `https://new.api.url.com`
+          Alternate URL to access API. This will be a scheme and hostname, e.g.
+          `https://new.api.url.com`
 
           All paths will remain the same, including the version
       altAPIURLEnabled:
@@ -906,8 +947,7 @@ definitions:
         type: boolean
         default: false
         example: false
-        description: >-
-          If true, make alternate API URL permanent
+        description: 'If true, make alternate API URL permanent'
       signalReportInterval:
         type: integer
         default: 600
@@ -919,21 +959,17 @@ definitions:
         type: integer
         default: 86400
         example: 86400
-        description: >-
-          Minimum reporting interval for `/reports` POST, in seconds
+        description: 'Minimum reporting interval for `/reports` POST, in seconds'
       reportsMaxInterval:
         type: integer
         default: 2592000
         example: 2592000
-        description: >-
-          Maximum reporting interval for `/reports` POST, in seconds
+        description: 'Maximum reporting interval for `/reports` POST, in seconds'
       reportsMaxSize:
         type: integer
         default: 1024
         example: 1024
-        description: >-
-          Maximum size of report for `/reports` POST in kilobytes
-
+        description: Maximum size of report for `/reports` POST in kilobytes
   Error:
     title: Error Data Object
     type: object
@@ -941,23 +977,20 @@ definitions:
     properties:
       result:
         type: string
-        example: "error"
+        example: error
       data:
         type: string
-        description: 'Error description'
-
+        description: Error description
   Broadcast:
     title: Broadcast Data Object
     type: object
     properties:
       analog:
-        $ref: "#/definitions/AnalogBroadcast"
+        $ref: '#/definitions/AnalogBroadcast'
       hdradio:
-        $ref: "#/definitions/HDRadioBroadcast"
+        $ref: '#/definitions/HDRadioBroadcast'
       dab:
-        $ref: "#/definitions/DABBroadcast"
-
-
+        $ref: '#/definitions/DABBroadcast'
   GenreListObject:
     title: Genre List Object
     type: object
@@ -965,24 +998,22 @@ definitions:
     properties:
       id:
         type: integer
-        description: 'Genre ID'
+        description: Genre ID
       name:
         type: string
-        description: 'Genre name'
+        description: Genre name
       subGenres:
-        description: 'Genres below major genre'
+        description: Genres below major genre
         type: array
         items:
           type: object
           properties:
             id:
               type: integer
-              description: 'Subgenre ID'
+              description: Subgenre ID
             name:
               type: string
-              description: 'Subgenre name'
-
-
+              description: Subgenre name
   Live:
     title: Live Data Object
     x-gelato-overview: false
@@ -990,11 +1021,10 @@ definitions:
     properties:
       id:
         type: string
-        description: 'ID for this live data object'
+        description: ID for this live data object
       type:
         type: string
-        description: >-
-          Type of live data: music, ad, talk, sports, live, emergency, other
+        description: 'Type of live data: music, ad, talk, sports, live, emergency, other'
         enum:
           - music
           - ad
@@ -1006,7 +1036,7 @@ definitions:
         example: music
       duration:
         type: integer
-        description: 'Duration in seconds'
+        description: Duration in seconds
         example: 305
       musicData:
         title: Music Data
@@ -1014,24 +1044,24 @@ definitions:
         properties:
           title:
             type: string
-            description: 'Title of music/song programming'
-            example: "All Blues"
+            description: Title of music/song programming
+            example: All Blues
           album:
             type: string
-            description: 'Music/song album'
-            example: "Kind of Blue"
+            description: Music/song album
+            example: Kind of Blue
           artist:
             type: string
-            description: 'Music/song artist'
-            example: "Miles Davis"
+            description: Music/song artist
+            example: Miles Davis
           enableThumbs:
             type: boolean
-            description: 'Enable display of thumbs up/down selections'
+            description: Enable display of thumbs up/down selections
             example: true
             default: true
           enableShare:
             type: boolean
-            description: 'Enable display of option to share on social media'
+            description: Enable display of option to share on social media
             example: true
             default: true
           images:
@@ -1040,34 +1070,34 @@ definitions:
               $ref: '#/definitions/ImagesObject'
           genre:
             type: array
-            description: 'Array of genres and subgenres'
+            description: Array of genres and subgenres
             items:
               type: integer
       nmpData:
         title: Non-Music Program Data
-        description: 'Non-Music Programming data'
+        description: Non-Music Programming data
         type: object
         properties:
           title:
             type: string
-            description: 'Title of non-music program'
-            example: "Wait, Wait Don't Tell Me"
+            description: Title of non-music program
+            example: 'Wait, Wait Don''t Tell Me'
           program:
             type: string
-            description: 'Description of non-music program'
-            example: "The NPR News Quiz"
+            description: Description of non-music program
+            example: The NPR News Quiz
           subject:
             type: string
-            description: 'Subject of non-music program'
-            example: "Today's guest: Tom Hanks"
+            description: Subject of non-music program
+            example: 'Today''s guest: Tom Hanks'
           enableThumbs:
             type: boolean
-            description: 'Enable display of feedback thumbs up/down'
+            description: Enable display of feedback thumbs up/down
             example: true
             default: true
           enableShare:
             type: boolean
-            description: 'Enable display of option to share on social media'
+            description: Enable display of option to share on social media
             example: true
             default: true
           images:
@@ -1079,19 +1109,18 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/AdData'
-
   AdData:
     type: object
     properties:
       type:
         type: string
         description: |
-            Type of ad/supplemental data.
-            web - Web page,
-            phone - telephone voice,
-            sms - SMS/text message,
-            email - email address,
-            locate - Location via coordinates or string
+          Type of ad/supplemental data.
+          web - Web page,
+          phone - telephone voice,
+          sms - SMS/text message,
+          email - email address,
+          locate - Location via coordinates or string
         enum:
           - web
           - phone
@@ -1107,14 +1136,14 @@ definitions:
             type:
               type: string
               description: |
-                  Ad contact type.
-                  none - display only,
-                  url - URL to link,
-                  email - email address,
-                  phonenumber - phone number to call,
-                  sms - SMS number,
-                  coords - GPS coordinates to send to nav,
-                  string - text string to send to nav for search
+                Ad contact type.
+                none - display only,
+                url - URL to link,
+                email - email address,
+                phonenumber - phone number to call,
+                sms - SMS number,
+                coords - GPS coordinates to send to nav,
+                string - text string to send to nav for search
               enum:
                 - none
                 - url
@@ -1127,8 +1156,8 @@ definitions:
             target:
               type: string
               description: >-
-                Contact value for designated type, such as URL, phone number
-                SMS shortcode, coordinates, etc
+                Contact value for designated type, such as URL, phone number SMS
+                shortcode, coordinates, etc
               example: 'http://example.url.com'
             content:
               type: string
@@ -1136,12 +1165,10 @@ definitions:
               example: 'YES'
             text:
               type: array
-              description: >-
-                Text accompaniment for button or link
+              description: Text accompaniment for button or link
               items:
                 type: string
-                example: 'Tap here for more information'
-
+                example: Tap here for more information
   BroadcastList:
     title: Broadcasts Data Array
     type: object
@@ -1149,16 +1176,15 @@ definitions:
       analog:
         type: array
         items:
-          $ref: "#/definitions/AnalogBroadcast"
+          $ref: '#/definitions/AnalogBroadcast'
       hdradio:
         type: array
         items:
-          $ref: "#/definitions/HDRadioBroadcast"
+          $ref: '#/definitions/HDRadioBroadcast'
       dab:
         type: array
         items:
-          $ref: "#/definitions/DABBroadcast"
-
+          $ref: '#/definitions/DABBroadcast'
   AnalogBroadcast:
     type: object
     x-gelato-overview: true
@@ -1166,60 +1192,59 @@ definitions:
       broadcastId:
         type: string
         example: 12345
-        description: 'CONRAD API ID for this broadcast'
+        description: CONRAD API ID for this broadcast
       ecc:
         type: string
         example: E0
-        description: 'ECC of this broadcast'
+        description: ECC of this broadcast
       piCode:
         type: string
         example: D310
-        description: 'PI code of this broadcast'
+        description: PI code of this broadcast
       freq:
         type: integer
         example: 103700
-        description: 'Frequency of this broadcast'
+        description: Frequency of this broadcast
       band:
         type: string
-        description: 'Band of this broadcast'
+        description: Band of this broadcast
         enum:
           - AM
           - FM
-        example: "FM"
+        example: FM
       country:
         type: string
-        example: "US"
+        example: US
         description: >-
-          [ISO-3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1)
-          country code for this broadcast
+          [ISO-3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1) country
+          code for this broadcast
       broadcastData:
-        $ref: "#/definitions/BaselineBroadcastData"
-
+        $ref: '#/definitions/BaselineBroadcastData'
   HDRadioBroadcast:
     type: object
     properties:
       broadcastId:
         type: string
         example: 12345
-        description: 'CONRAD API ID for this broadcast'
+        description: CONRAD API ID for this broadcast
       piCode:
         type: string
         example: A123
-        description: 'PI Code for this broadcast'
+        description: PI Code for this broadcast
       stationId:
         type: string
-        description: 'HD SIS station ID for this broadcast'
+        description: HD SIS station ID for this broadcast
       countryCode:
         type: string
-        description: 'HD SIS Country Code for this broadcast'
+        description: HD SIS Country Code for this broadcast
       location:
         type: string
         description: 'HD SIS location for this broadcast: Latitude, Longitude'
-        example: "43.094, -71.730"
+        example: '43.094, -71.730'
       channel:
         type: string
         example: 1
-        description: 'HD multicast channel'
+        description: HD multicast channel
         enum:
           - 1
           - 2
@@ -1232,102 +1257,97 @@ definitions:
       freq:
         type: integer
         example: 103700
-        description: 'Broadcast frequency'
+        description: Broadcast frequency
       band:
         type: string
         example: FM
-        description: 'Broadcast band'
+        description: Broadcast band
         enum:
           - AM
           - FM
       country:
         type: string
-        example: "US"
+        example: US
         description: >-
-          [ISO-3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1)
-          country code for this broadcast
+          [ISO-3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1) country
+          code for this broadcast
       broadcastData:
-        $ref: "#/definitions/BaselineBroadcastData"
-
+        $ref: '#/definitions/BaselineBroadcastData'
   DABBroadcast:
     type: object
     properties:
       broadcastId:
         type: string
         example: 12345
-        description: 'CONRAD API ID for this broadcast'
+        description: CONRAD API ID for this broadcast
       eid:
         type: string
         example: C186
-        description: 'DAB ensemble ID for this broadcast'
+        description: DAB ensemble ID for this broadcast
       freq:
         type: integer
         example: 223.936
-        description: 'Ensemble broadcast frequency for this broadcast'
+        description: Ensemble broadcast frequency for this broadcast
       sid:
         type: string
         example: C1C2
-        description: 'Service ID for this broadcast'
+        description: Service ID for this broadcast
       scids:
         type: string
-        description: >-
-          Service Component Identifier within Service for this broadcast
+        description: Service Component Identifier within Service for this broadcast
         example: 0
       channel:
         type: string
         example: 12A
-        description: 'Service channel for this broadcast'
+        description: Service channel for this broadcast
       country:
         type: string
-        example: "US"
+        example: US
         description: >-
-          [ISO-3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1)
-          country code for this broadcast
+          [ISO-3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1) country
+          code for this broadcast
       broadcastData:
-        $ref: "#/definitions/BaselineBroadcastData"
-
+        $ref: '#/definitions/BaselineBroadcastData'
   BaselineBroadcastData:
     type: object
     properties:
       name:
         type: string
-        example: "103.7FM The Rock"
-        description: 'Name of broadcast'
+        example: 103.7FM The Rock
+        description: Name of broadcast
       slogan:
         type: string
-        example: "Yesterday and Today's Rock Hits!"
-        description: 'Slogan of broadcast'
+        example: Yesterday and Today's Rock Hits!
+        description: Slogan of broadcast
       sortKey:
         type: string
         example: abc
         description: >-
           Alphanumeric string to use instead of `name` when sorting station
-          alphabetically. This is for special cases when alphanumeric
-          sorting isn't suitable for the broadcast `name`.
+          alphabetically. This is for special cases when alphanumeric sorting
+          isn't suitable for the broadcast `name`.
       stationId:
         type: string
         example: 12345
         description: >-
-          An ID used to link different content from the same source. This is
-          the parent of all contentIds
+          An ID used to link different content from the same source. This is the
+          parent of all contentIds
       contentId:
         type: string
         example: 12345
         description: >-
-          An ID used to link different broadcasts that contain the same
-          content, such as translator stations, regional/national broadcasters
+          An ID used to link different broadcasts that contain the same content,
+          such as translator stations, regional/national broadcasters
       languages:
         type: array
-        description: >-
-          Array of IETF language codes
+        description: Array of IETF language codes
         items:
           type: string
           example: en-US
       callSign:
         type: string
         example: WKRP
-        description: >-
-          Call sign of broadcast, if applicable
+        description: 'Call sign of broadcast, if applicable'
       translator:
         type: string
         example: W212AB
@@ -1354,78 +1374,64 @@ definitions:
       format:
         type: string
         example: music
-        description: >-
-          Format of broadcast, if applicable
+        description: 'Format of broadcast, if applicable'
       description:
         type: string
         example: Modern and classic rock music
         maxLength: 64
-        description: >-
-          Description of broadcast
+        description: Description of broadcast
       longDescription:
         type: string
         maxLength: 128
-        example: >-
-          Central Pennsylvania's rock source, with Kim and Tom in the morning!
-        description: >-
-          Long Description of broadcast
+        example: 'Central Pennsylvania''s rock source, with Kim and Tom in the morning!'
+        description: Long Description of broadcast
       logoURL:
         type: string
-        example: "https://example.cnrd.io/img/abcdefg.png"
-        description: >-
-          Logo URL
+        example: 'https://example.cnrd.io/img/abcdefg.png'
+        description: Logo URL
       logoURLHiRes:
         type: string
-        example: "https://example.cnrd.io/img/abcdefg-hires.png"
-        description: >-
-          Logo URL, high resolution
+        example: 'https://example.cnrd.io/img/abcdefg-hires.png'
+        description: 'Logo URL, high resolution'
       sfOnIconURL:
         type: string
-        example:
-          "https://example.cnrd.io/img/2/2/2210d149ef776682bc583a919046aacb.png"
+        example: 'https://example.cnrd.io/img/2/2/2210d149ef776682bc583a919046aacb.png'
         description: >-
-          URL for small service following active icon image for this
-          broadcast, 64x64
+          URL for small service following active icon image for this broadcast,
+          64x64
       sfOffIconURL:
         type: string
-        example:
-          "https://example.cnrd.io/img/a/3/a30183ea6cf6e345691dda5c94a97e5e.png"
+        example: 'https://example.cnrd.io/img/a/3/a30183ea6cf6e345691dda5c94a97e5e.png'
         description: >-
           URL for small service following inactive icon image for this
           broadcast, 64x64
       sfOnIconURLWide:
         type: string
-        example:
-          "https://example.cnrd.io/img/e/8/e83993f9ecde475ced101978b0e4602d.png"
+        example: 'https://example.cnrd.io/img/e/8/e83993f9ecde475ced101978b0e4602d.png'
         description: >-
-          URL for wide service following active icon image for this
-          broadcast, 224x64
+          URL for wide service following active icon image for this broadcast,
+          224x64
       sfOffIconURLWide:
         type: string
-        example:
-          "https://example.cnrd.io/img/9/5/950d73b2d78c51ac794c2346d816b2e3.png"
+        example: 'https://example.cnrd.io/img/9/5/950d73b2d78c51ac794c2346d816b2e3.png'
         description: >-
-          URL for wide service following inactive icon image for this
-          broadcast, 224x64
+          URL for wide service following inactive icon image for this broadcast,
+          224x64
       mqURI:
         type: string
-        description: >-
-          URI for message queue connection
+        description: URI for message queue connection
         example: 'amqp://username:password@amqp.hostname.com/vhost'
       mqExchange:
         type: string
-        description: >-
-          Exchange to use for message queue connection
-        example: 'live'
+        description: Exchange to use for message queue connection
+        example: live
       mqKey:
         type: string
-        description: >-
-          Routing key to use for message queue connection
+        description: Routing key to use for message queue connection
         example: '#.broadcast.12345'
       genreIds:
         type: array
-        description: >-
-          Array of genre IDs for this broadcast
+        description: Array of genre IDs for this broadcast
         items:
           type: integer
           example: 123
@@ -1445,58 +1451,49 @@ definitions:
           receiver station verification process fails.
       email:
         type: array
-        description: >-
-          Array of email addresses pertaining to this broadcast ID
+        description: Array of email addresses pertaining to this broadcast ID
         items:
           type: string
-          example: "user@example.cnrd.io"
+          example: user@example.cnrd.io
       urls:
         type: object
-        description: >-
-          Array of service URLs pertaining to this broadcast ID
+        description: Array of service URLs pertaining to this broadcast ID
         properties:
           website:
             type: array
-            description: >-
-              Array of Web URLs pertaining to this broadcast ID
+            description: Array of Web URLs pertaining to this broadcast ID
             items:
               type: string
-              example: "http://www.example.cnrd.io"
+              example: 'http://www.example.cnrd.io'
           facebook:
             type: array
-            description: >-
-              Array of Facebook URLs pertaining to this broadcast ID
+            description: Array of Facebook URLs pertaining to this broadcast ID
             items:
               type: string
-              example: "https://www.facebook.com/wkrprock"
+              example: 'https://www.facebook.com/wkrprock'
           twitter:
             type: array
-            description: >-
-              Array of Twitter URLs pertaining to this broadcast ID
+            description: Array of Twitter URLs pertaining to this broadcast ID
             items:
               type: string
-              example: "https://twitter.com/wkrprock"
+              example: 'https://twitter.com/wkrprock'
       phone:
         type: array
-        description: >-
-          Array of phone numbers pertaining to this broadcast ID
+        description: Array of phone numbers pertaining to this broadcast ID
         items:
           type: string
-          example: +12345678901
+          example: 12345678901
       sms:
         type: array
-        description: >-
-          Array of SMS numbers pertaining to this broadcast ID
+        description: Array of SMS numbers pertaining to this broadcast ID
         items:
           type: string
           example: 123456
       streams:
         type: array
-        description: >-
-          Array of streaming data objects pertaining to this broadcast ID
+        description: Array of streaming data objects pertaining to this broadcast ID
         items:
           $ref: '#/definitions/StreamsData'
-
   StreamsData:
     type: object
     properties:
@@ -1504,29 +1501,28 @@ definitions:
         type: string
         example: 'http://radiostream.url.com/stream'
         description: >-
-            URL of stream. Note that some SHOUTCast streams may require the
-            addition of `/;` at the end of the URL for certain client types
-            and user agents. E.g. `http://radiostream.url.com/stream/;'`
+          URL of stream. Note that some SHOUTCast streams may require the
+          addition of `/;` at the end of the URL for certain client types and
+          user agents. E.g. `http://radiostream.url.com/stream/;'`
       format:
         type: string
         example: mp3
-        description: 'Format of stream'
+        description: Format of stream
         enum:
           - mp3
           - hls
           - aac
       sampleRate:
         type: integer
-        description: 'Sample rate of stream'
+        description: Sample rate of stream
         example: 44100
       bitrate:
         type: integer
-        description: 'Stream bitrate in bits'
+        description: Stream bitrate in bits
         example: 64000
       preroll:
         type: integer
-        description: 'Seconds of preroll. 0 indicates no known preroll'
-
+        description: Seconds of preroll. 0 indicates no known preroll
   Report:
     title: Report
     x-gelato-overview: true
@@ -1559,7 +1555,6 @@ definitions:
         example: 86400
       data:
         $ref: '#/definitions/ReportData'
-
   ReportAction:
     title: ReportAction
     type: object
@@ -1579,7 +1574,7 @@ definitions:
           - nav
           - thumbs
         example: exit
-        description: "Type of action: exit, sms, phone, share, nav, thumbs"
+        description: 'Type of action: exit, sms, phone, share, nav, thumbs'
       mfgId:
         type: string
         minLength: 6
@@ -1592,7 +1587,6 @@ definitions:
         example: aBc8deFG9
       data:
         $ref: '#/definitions/ReportActionData'
-
   ReportActionData:
     title: Report actions for live data
     type: object
@@ -1613,14 +1607,14 @@ definitions:
             maxLength: 64
             format: date-time
             description: Time the action took place
-            example: "2017-01-24T13:35:57.904Z"
+            example: '2017-01-24T13:35:57.904Z'
           target:
             type: string
             description: >-
               The target value of the action, if it exists. This would be the
               SMS number contacted, phone number dialed, the social media app
               name.
-            example: "123456"
+            example: '123456'
           content:
             type: string
             description: >-
@@ -1629,8 +1623,7 @@ definitions:
               the message posted to social media. In the case of `thumbs`, the
               value is 1 for positive sentiment, -1 for negative sentiment, or 0
               to unset previously provided feedback for the same object.
-            example: "1"
-
+            example: '1'
   ReportData:
     title: Report data
     type: object
@@ -1657,7 +1650,6 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/DeviceEvent'
-
   Device:
     title: Device data
     type: object
@@ -1673,7 +1665,6 @@ definitions:
       year:
         type: integer
         example: 2017
-
   SignalReport:
     title: Signal strength data
     required:
@@ -1686,24 +1677,23 @@ definitions:
         type: string
         minLength: 6
         maxLength: 32
-        example: "DEV-0001"
+        example: DEV-0001
       deviceId:
         type: string
         minLength: 6
         maxLength: 32
-        example: "abcdef123456"
+        example: abcdef123456
       timestamp:
         type: string
         maxLength: 64
         format: date-time
-        example: "2017-01-24T13:35:57.904Z"
+        example: '2017-01-24T13:35:57.904Z'
       broadcastId:
         type: string
-        example: "12345"
-        description: "CONRAD API ID for this broadcast"
+        example: '12345'
+        description: CONRAD API ID for this broadcast
       data:
         $ref: '#/definitions/RadioBroadcastLocation'
-
   RadioBroadcast:
     allOf:
       - $ref: '#/definitions/TimedEvent'
@@ -1712,8 +1702,7 @@ definitions:
         properties:
           analogHd:
             type: object
-            description: >-
-              'Analog AM/FM, or HD Radio broadcast types'
+            description: '''Analog AM/FM, or HD Radio broadcast types'''
             properties:
               freq:
                 type: integer
@@ -1748,12 +1737,11 @@ definitions:
                   - 8
           dab:
             type: object
-            description: >-
-              'DAB broadcast type'
+            description: '''DAB broadcast type'''
             properties:
               freq:
                 type: integer
-                example: 227.360
+                example: 227.36
               ecc:
                 type: string
                 example: D0
@@ -1768,24 +1756,23 @@ definitions:
                 example: 0
           broadcastId:
             type: string
-            example: "12345"
-            description: 'CONRAD API ID for this broadcast'
+            example: '12345'
+            description: CONRAD API ID for this broadcast
           isPreset:
             type: boolean
-            description: 'True if this station exists in user presets'
+            description: True if this station exists in user presets
             example: true
           verifyFailed:
             type: boolean
             description: >-
-              True if verification of this station with over-the-air
-              broadcast data (such as RDS) failed.
+              True if verification of this station with over-the-air broadcast
+              data (such as RDS) failed.
             example: false
           volEvents:
             type: array
             description: >-
-              Array of volume change events during this listening
-              session. First object must be initial volume when
-              listening session began.
+              Array of volume change events during this listening session. First
+              object must be initial volume when listening session began.
             items:
               type: object
               required:
@@ -1796,15 +1783,15 @@ definitions:
                   type: string
                   maxLength: 64
                   format: date-time
-                  example: "2017-01-24T13:35:57.904Z"
+                  example: '2017-01-24T13:35:57.904Z'
                 level:
                   type: integer
                   example: 10
                   description: >-
                     Volume level measured in percent of total volume, 0-100.
-                    Volume level must remain stable for five seconds to apply.
-                    0 represents off or mute. Required for broadcast and
-                    satellite events.
+                    Volume level must remain stable for five seconds to apply. 0
+                    represents off or mute. Required for broadcast and satellite
+                    events.
           liveIdsDisplayed:
             type: array
             description: >-
@@ -1817,7 +1804,6 @@ definitions:
             $ref: '#/definitions/RadioBroadcastLocation'
           stopLoc:
             $ref: '#/definitions/RadioBroadcastLocation'
-
   RadioBroadcastLocation:
     type: object
     allOf:
@@ -1834,9 +1820,7 @@ definitions:
           rssi:
             type: integer
             example: -72
-            description: >-
-              For any broadcast type, provide the signal strength in dBm.
-
+            description: 'For any broadcast type, provide the signal strength in dBm.'
   InternetBroadcast:
     allOf:
       - $ref: '#/definitions/NonRadioBroadcast'
@@ -1847,7 +1831,6 @@ definitions:
             $ref: '#/definitions/HiResCoordinate'
           stopLoc:
             $ref: '#/definitions/HiResCoordinate'
-
   SatelliteBroadcast:
     allOf:
       - $ref: '#/definitions/TimedEvent'
@@ -1856,9 +1839,8 @@ definitions:
           volEvents:
             type: array
             description: >-
-              Array of volume change events during this listening
-              session. First object must be initial volume when
-              listening session began.
+              Array of volume change events during this listening session. First
+              object must be initial volume when listening session began.
             items:
               type: object
               required:
@@ -1869,87 +1851,79 @@ definitions:
                   type: string
                   maxLength: 64
                   format: date-time
-                  example: "2017-01-24T13:35:57.904Z"
+                  example: '2017-01-24T13:35:57.904Z'
                 level:
                   type: integer
                   example: 10
                   description: >-
                     Volume level measured in percent of total volume, 0-100.
-                    Volume level must remain stable for five seconds to apply.
-                    0 represents off or mute. Required for broadcast and
-                    satellite events.
+                    Volume level must remain stable for five seconds to apply. 0
+                    represents off or mute. Required for broadcast and satellite
+                    events.
           serviceName:
             type: string
             maxLength: 64
-            description: >-
-              Name of the stream or service, if applicable.
+            description: 'Name of the stream or service, if applicable.'
             example: SiriusXM
           station:
             type: string
             maxLength: 64
-            description: >-
-              Name of the station, if applicable
+            description: 'Name of the station, if applicable'
             example: Miles Davis Radio
           startLoc:
             $ref: '#/definitions/SatelliteLocation'
           stopLoc:
             $ref: '#/definitions/SatelliteLocation'
-
   SatelliteLocation:
     allOf:
       - $ref: '#/definitions/HiResCoordinate'
-
   NonRadioBroadcast:
     type: object
     properties:
       serviceName:
         type: string
         maxLength: 64
-        description: >-
-          Name of the stream or service, if applicable.
+        description: 'Name of the stream or service, if applicable.'
         example: Pandora
       station:
         type: string
         maxLength: 64
-        description: >-
-          Name of the station, if applicable
+        description: 'Name of the station, if applicable'
         example: Miles Davis Radio
       url:
         type: string
         description: >-
           If this is an independent stream or stream provided by a broadcast
           record, provide the URL accessed.
-        example: "http://streamurl.example.com"
+        example: 'http://streamurl.example.com'
       broadcastId:
         type: string
         description: >-
           If this is a stream accessed from a broadcast record, provide the
           `broadcastId` of that record.
-        example: "12345"
+        example: '12345'
       servFollow:
         type: boolean
         description: >-
-          If this content was accessed through service following, indicate
-          that here.
+          If this content was accessed through service following, indicate that
+          here.
         example: true
       errorStatusCode:
         type: string
         description: >-
           If the playback of this stream encountered HTTP errors that prevented
-          playback, that error code is captured in this string. 0 represents
-          an unreachable service. Other codes are standard HTTP status codes
-          such as 401, 403, 404, 500, 502, 503, etc
+          playback, that error code is captured in this string. 0 represents an
+          unreachable service. Other codes are standard HTTP status codes such
+          as 401, 403, 404, 500, 502, 503, etc
       format:
         type: string
         maxLength: 12
-        description: "Format of stream, such as mp3, aac, hls"
-        example: "mp3"
+        description: 'Format of stream, such as mp3, aac, hls'
+        example: mp3
       bitrate:
         type: integer
-        description: "Bitrate in bits"
+        description: Bitrate in bits
         example: 64000
-
-
   Coordinate:
     type: object
     properties:
@@ -1968,8 +1942,7 @@ definitions:
           Longitude in [decimal
           degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to
           three decimal places (e.g. -71.730)
-        example: -71.730
-
+        example: -71.73
   HiResCoordinate:
     type: object
     properties:
@@ -1978,28 +1951,27 @@ definitions:
         format: double
         description: >-
           Latitude in [decimal
-          degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to
-          six decimal places (e.g. 43.094123)
+          degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to six
+          decimal places (e.g. 43.094123)
         example: 43.094123
       lng:
         type: number
         format: double
         description: >-
           Longitude in [decimal
-          degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to
-          six decimal places (e.g. -71.730123)
+          degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to six
+          decimal places (e.g. -71.730123)
         example: -71.730123
-
   ImagesObject:
     type: object
     description: >-
       Array of image URLs with specific type definitions for enhanced display
       options. This replaces the deprecated `imageURL` and `imageURLHiRes`
-      attributes. This array can contain standard and HiRes image URLS that
-      have specific types, currently defined as `album`, `artist`, `logo`,
-      and `other`. If `default` is present and true, then that object is to
-      be displayed in the absence of other preferences, or as a default image
-      for data display.
+      attributes. This array can contain standard and HiRes image URLS that have
+      specific types, currently defined as `album`, `artist`, `logo`, and
+      `other`. If `default` is present and true, then that object is to be
+      displayed in the absence of other preferences, or as a default image for
+      data display.
     properties:
       type:
         type: string
@@ -2008,28 +1980,22 @@ definitions:
           - artist
           - logo
           - other
-        description: >-
-          Specific image type, if known.
+        description: 'Specific image type, if known.'
         example: artist
       default:
         type: boolean
         description: >-
-          If present, denotes this image is the default to be used if
-          no user preference has been made.
+          If present, denotes this image is the default to be used if no user
+          preference has been made.
         example: true
       url:
         type: string
-        description: >-
-          URL to retrieve the image
-        example: >-
-          https://s.cnrd.io/img/c/2/c2b12ed7860b3a1a123483dec90abf1ea3.jpg
+        description: URL to retrieve the image
+        example: 'https://s.cnrd.io/img/c/2/c2b12ed7860b3a1a123483dec90abf1ea3.jpg'
       urlHiRes:
         type: string
-        description: >-
-          URL to retrieve the high-resolution image, if available
-        example: >-
-          https://s.cnrd.io/img/f/2/f2b12ed1234b3a1a123483dec90abf1ea6.jpg
-
+        description: 'URL to retrieve the high-resolution image, if available'
+        example: 'https://s.cnrd.io/img/f/2/f2b12ed1234b3a1a123483dec90abf1ea6.jpg'
   LocalSource:
     allOf:
       - $ref: '#/definitions/TimedEvent'
@@ -2044,7 +2010,6 @@ definitions:
               - harddrive
               - media
               - aux
-
   TimedEvent:
     type: object
     properties:
@@ -2056,13 +2021,12 @@ definitions:
         type: string
         maxLength: 64
         format: date-time
-        example: "2017-01-24T13:35:57.904Z"
+        example: '2017-01-24T13:35:57.904Z'
       stopTime:
         type: string
         maxLength: 64
         format: date-time
-        example: "2017-01-24T13:35:57.904Z"
-
+        example: '2017-01-24T13:35:57.904Z'
   DeviceEvent:
     type: object
     properties:
@@ -2083,7 +2047,6 @@ definitions:
         maxLength: 64
       count:
         type: integer
-
   ReportError:
     title: Error
     type: object
