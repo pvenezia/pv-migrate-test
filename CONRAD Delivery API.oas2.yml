@@ -679,7 +679,8 @@ paths:
 
         Not all broadcast IDs will have a live data feed. See the key
         `hasLiveData` in each station record in a response to a `/broadcasts`
-        query.
+        query. Live data should only be requested if `hasLiveData` is `true` for
+        that `broadcastId`.
 
 
         If the response to a GET is `202 Accepted`, then the client is to wait
@@ -689,7 +690,15 @@ paths:
 
 
         If this path returns a `404 Not Found`, no live data is currently
-        available for that `broadcastId`.
+        available for that `broadcastId`. This may be a momentary lack of data
+        whilst the broadcast is in an ad break, or no song is playing, or it may
+        be a longer duration without live data depending on the broadcast
+        content. 
+
+
+        You can request data again at any time (as long as `hasLiveData` is
+        true), and should subscribe to the `broadcastId` push notifications to
+        get updates when data is again present or changes.
       parameters:
         - $ref: '#/parameters/mfgId'
         - $ref: '#/parameters/Authorization'
