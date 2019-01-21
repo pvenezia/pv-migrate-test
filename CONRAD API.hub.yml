@@ -26,13 +26,7 @@ pages:
   /api-reference:
     title: CONRAD API Reference
     data:
-      blocks: []
-      children:
-        - title: API Reference
-          route:
-            path: /docs
-          data:
-            $ref: ./CONRAD Delivery API - RELEASE.oas2.yml
+      $ref: ./CONRAD Delivery API.oas2.yml
   /guides:
     title: Guides
     data:
