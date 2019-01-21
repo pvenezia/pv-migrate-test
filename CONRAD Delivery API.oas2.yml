@@ -20,10 +20,10 @@ info:
 host: api.sandbox.cnrd.io
 basePath: /v1
 security:
-  mfgId: []
-  Authorization: []
+  - Authorization: []
+    mfgId: []
 securityDefinitions:
-  hmac:
+  Authorization:
     type: apiKey
     name: Authorization
     in: header
@@ -34,6 +34,18 @@ securityDefinitions:
       The `hash` is hex digest, truncated to 24 characters.
 
       Example: `Authorization: asdbh23456sdf,fd9f655862c9bd4da0edb845`
+
+
+      `mfgId` is also required, and is assigned by DTS during production rollout
+      planning.
+
+
+      Example: `mfgId: ABCDEF123456`
+  mfgId:
+    type: apiKey
+    name: mfgId
+    in: header
+    description: 'The format is the `mfgId` as a string. Example: `DEV-0001`'
 tags:
   - name: devices
     description: 'Device interaction, id assignments, configuration retrieval'
@@ -56,8 +68,6 @@ paths:
       summary: Request device ID
       produces:
         - application/json
-      security:
-        - hmac: []
       description: >-
         Register a device and receive a unique device ID assigned by the API.
         This ID is assigned to each device once, during the first contact with
@@ -163,8 +173,6 @@ paths:
       summary: Request device configuration
       produces:
         - application/json
-      security:
-        - hmac: []
       description: >-
         Retrieves a device configuration. This occurs at every startup and
         periodically as determined by the `configRefresh` variable.
@@ -266,8 +274,6 @@ paths:
       operationId: getStationsByQuery
       produces:
         - application/json
-      security:
-        - hmac: []
       description: >-
         Retrieves a list of `Broadcast` objects from a location query,
         frequencies, GCC/ensemble IDs pairs, or GCC/piCode pairs.
@@ -476,8 +482,6 @@ paths:
       operationId: getBroadcastByID
       produces:
         - application/json
-      security:
-        - hmac: []
       description: Retrieves an individual `Broadcast` object given a broadcast ID.
       parameters:
         - $ref: '#/parameters/mfgId'
@@ -620,8 +624,6 @@ paths:
       operationId: getLiveData
       produces:
         - application/json
-      security:
-        - hmac: []
       description: >-
 
         ***Note: Data from the `/broadcasts/{broadcastId}/live` path is
@@ -778,8 +780,6 @@ paths:
       operationId: getGenreData
       produces:
         - application/json
-      security:
-        - hmac: []
       description: >-
         Retrieves genre data. Genres and sub-genres are specified in broadcast
         records by ID. This path retrieves the genre name/ID pairs to be used in
