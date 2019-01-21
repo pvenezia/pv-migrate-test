@@ -47,11 +47,11 @@ pages:
             path: /broadcast-request
           data:
             $ref: ./Guide - Broadcast Request.md
-        - title: CONRAD API Flow
+        - title: Device Registration
           route:
-            path: /conrad-api-flow
+            path: /device-registration
           data:
-            $ref: ./CONRAD API Flow.md
+            $ref: ./Guide - Device Registration.md
         - title: AMQP Push Notifications Guide
           route:
             path: /amqp-push-notifications-guide
