@@ -11,7 +11,7 @@ If you have any questions, please contact [connected.radio@dts.com](mailto:conne
 
 ## Steps to Connected Radio API Mastery
 
-1. Take a look at our [API Guides](/guides) for API flow diagrams, authentication walkthroughs, AMQP push notification information, and other how-to guides. **The AMQP push notification guide is a must-read**, and will save time on implementation.
+1. Take a look at our [API Guides](/guides) for API flow diagrams, authentication walkthroughs, AMQP push notification information, and other how-to guides. **The AMQP push notification guide is a must-read**, and will save time on implementation. That guide can be found [here](/guides/amqp-push-notifications-guide)
 2. Read the [authentication guide](#authentication) to understand how you can connect your app to our sandbox.
 3. Give the API a go with the [API Reference, including live query tools](/api-reference/docs).
 4. Roll up your sleeves and read the full API spec.
