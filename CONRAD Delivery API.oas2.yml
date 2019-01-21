@@ -697,8 +697,8 @@ paths:
 
 
         You can request data again at any time (as long as `hasLiveData` is
-        true), and should subscribe to the `broadcastId` push notifications to
-        get updates when data is again present or changes.
+        true), and should subscribe to the `broadcastId` push notification
+        message queue to get updates when data is again present or changes.
       parameters:
         - $ref: '#/parameters/mfgId'
         - $ref: '#/parameters/Authorization'
