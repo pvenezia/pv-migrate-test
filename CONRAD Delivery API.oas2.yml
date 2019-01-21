@@ -3,8 +3,8 @@ info:
   version: 1.1.3
   title: DTS Connected Radio API
   description: >-
-    This is the DTS Connected Radio API, designed to provide static data for
-    global analog and digital radio broadcasts.
+    This is the DTS Connected Radio API, designed to provide static and dynamic
+    metadata for global analog and digital radio broadcasts.
 
 
     This API is referred to as the CONRAD API throughout the documentation.
