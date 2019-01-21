@@ -45,7 +45,10 @@ securityDefinitions:
     type: apiKey
     name: mfgId
     in: header
-    description: 'The format is the `mfgId` as a string. Example: `DEV-0001`'
+    description: >-
+      The `mfgId` is assigned by DTS. It is required to be present as a header
+      in every request made to the API. The format is the `mfgId` as a string.
+      Example: `DEV-0001`. The IDs used in sandbox will not work in production.
 tags:
   - name: devices
     description: 'Device interaction, id assignments, configuration retrieval'
