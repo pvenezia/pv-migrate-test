@@ -1,5 +1,5 @@
 ## Welcome
-Welcome to the Connected Radio API Sandbox. We're glad you're here. We can only imagine the applications you'll be able to build for Connected Radio and this API will be where you'll get detailed information on radio broadcasts all over the world.
+Welcome to the DTS Connected Radio API Documentation Portal. We're glad you're here. This API is where you'll find detailed metadata on radio broadcasts all over the world.
 
 Connected Radio is a global solution, but we do not offer data on all countries on Earth in this developer sandbox. For development and testing, it's best to work with data from the United Kingdom, United States, Germany, France, Japan, and Australia.
 
