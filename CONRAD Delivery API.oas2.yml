@@ -17,6 +17,10 @@ info:
     If a key specified in the API spec is missing from a response, the value
     should be assumed `null`. All booleans present in API responses will have
     explicitly specified defaults in the documentation.
+  contact:
+    name: DTS Connected Radio
+    url: 'https://www.connectedrad.io'
+    email: connected.radio@dts.com
 host: api.sandbox.cnrd.io
 basePath: /v1
 security:
