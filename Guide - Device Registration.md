@@ -1,3 +1,5 @@
+## Device Registration Guide 
+
 In order to fully interact with the Connected Radio API, you must register a device. In the real world, a device might be an individual radio. 
 
 The same holds true with our API Explorer. In order to do anything, you must first register a device and use the returned `deviceId` to generate your `Authorization` string.
