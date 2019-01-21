@@ -1118,7 +1118,6 @@ definitions:
   DeviceResponse:
     title: Device config Data Object
     type: object
-    x-gelato-overview: true
     properties:
       deviceId:
         type: string
@@ -1147,7 +1146,6 @@ definitions:
         $ref: '#/definitions/DeviceConfig'
   DevicesPost:
     title: Devices POST object
-    x-gelato-overview: true
     type: object
     required:
       - lat
@@ -1260,7 +1258,6 @@ definitions:
         description: Default Album image URL - High resolution
       expireBroadcastIds:
         type: array
-        x-gelato-overview: false
         items:
           type: string
           example: '12345'
@@ -1335,7 +1332,6 @@ definitions:
   Error:
     title: Error Data Object
     type: object
-    x-gelato-overview: false
     properties:
       result:
         type: string
@@ -1356,7 +1352,6 @@ definitions:
   GenreListObject:
     title: Genre List Object
     type: object
-    x-gelato-overview: true
     properties:
       id:
         type: integer
@@ -1378,7 +1373,6 @@ definitions:
               description: Subgenre name
   Live:
     title: Live Data Object
-    x-gelato-overview: false
     type: object
     properties:
       id:
@@ -1549,7 +1543,6 @@ definitions:
           $ref: '#/definitions/DABBroadcast'
   AnalogBroadcast:
     type: object
-    x-gelato-overview: true
     properties:
       broadcastId:
         type: string
@@ -1887,7 +1880,6 @@ definitions:
         description: Seconds of preroll. 0 indicates no known preroll
   Report:
     title: Report
-    x-gelato-overview: true
     type: object
     required:
       - type
