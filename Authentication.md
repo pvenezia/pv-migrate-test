@@ -40,7 +40,7 @@ curl --request POST \
     }'
 ```
 
-You'll be returned a unique `deviceId`. See the [Devices documentation](https://conrad.gelato.io/docs/versions/1.1.3/resources/devices) for specific parameters. You can view [the visual guide on device registration](https://developer.conrad.ibapis.com/guides/registering-a-new-device-through-the-api-explorer) for a walkthrough of this process.
+You'll be returned a unique `deviceId`. See the [Devices documentation](/api-reference/devices/postdevices) for specific parameters. You can view [the visual guide on device registration](/guides/device-registration) for a walkthrough of this process.
 
 For subsequent requests to the API, you'll provide `deviceId` and `Authorization` headers as follows:
 
