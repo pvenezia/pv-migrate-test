@@ -6,7 +6,7 @@ The same holds true with our API Explorer. In order to do anything, you must fir
 
 Following are the steps to register a device in the API Explorer:
 
-1. Go to the [Devices endpoint refgerence](/api-reference/devices/postdevices)
+1. Go to the [Devices endpoint reference](/api-reference/devices/postdevices)
 2. Scroll to the bottom to show the request generator
 3. Click the `Headers` tab
 4. Add a the Manufacturer ID provided to you by DTS as the value for the `mfgId` header.
