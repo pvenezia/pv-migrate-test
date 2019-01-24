@@ -27,7 +27,7 @@ Here's a an animated walkthrough of the process. This walkthrough uses [Code Bea
 You can also follow the steps outlined in the [Authentication Documentation](/#authentication) to generate a `deviceId` via the command line with `curl`.
 
 <p>
-<video width="960" height="540" controls>
+<video style="border:5px solid black" width="960" height="540" controls>
   <source src="https://s.cnrd.io/other/device_registration_guide.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>
 
 
