@@ -24,7 +24,8 @@ Following are the steps to register a device in the API Explorer:
 
 Here's a an animated walkthrough of the process. This walkthrough uses [Code Beautify's HMAC Generator](http://codebeautify.org/hmac-generator).
 
-![Device Request](https://s.cnrd.io/other/device_registration_guide.gif)
+<video width="640" height="360" controls>
+  <source src="http://trip.jpj.net/Test.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>
 
 You can also follow the steps outlined in the [Authentication Documentation](/#authentication) to generate a `deviceId` via the command line with `curl`.
 
