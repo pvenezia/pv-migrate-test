@@ -1,15 +1,15 @@
-### Changes in CONRAD API version 1.13
+### Changes in CONRAD API version 1.1.3
 
 * Fixed some cosmetic display issues with escaped quotes
 * Added revised C++ and Python AMQP code samples and guide text
 * Added `disp` parameter for `/broadcasts/{broadcastId}/live` queries
 
-### Changes in CONRAD API version 1.12
+### Changes in CONRAD API version 1.1.2
 
 * Updated URLs for new development sandbox
 * Removed long-deprecated `/feedback` endpoint
 
-### Changes in CONRAD API version 1.11
+### Changes in CONRAD API version 1.1.1
 
 * `/reports` for broadcasts and satellite listening events now contain `volEvents` arrays for volume adjustments. We have also added `errorStatusCode` to streaming report events to capture problems with stream playback.
 
