@@ -919,6 +919,350 @@ paths:
           description: Reported data
           schema:
             $ref: '#/definitions/Report'
+          x-examples:
+            application/json:
+              type: log
+              mfgId: DEV-0001
+              deviceId: aBc8deFG9
+              duration: 86400
+              data:
+                device:
+                  make: MyMake
+                  model: MyModel
+                  year: 2017
+                broadcasts:
+                  - duration: 600
+                    startTime: '2017-01-24T00:00:00.000Z'
+                    stopTime: '2017-01-24T00:00:00.000Z'
+                    analogHd:
+                      freq: 103700
+                      ecc: E0
+                      piCode: D110
+                      calls: WKRP
+                      band: FM
+                      channel: '1'
+                    dab:
+                      freq: 227
+                      ecc: D0
+                      eid: C185
+                      sid: C4B4
+                      scids: '0'
+                    broadcastId: '12345'
+                    isPreset: true
+                    verifyFailed: false
+                    volEvents:
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                    liveIdsDisplayed:
+                      - abcdef12345
+                      - abcdef12345
+                      - abcdef12345
+                      - abcdef12345
+                      - abcdef12345
+                    startLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                      cdno: 70
+                      rssi: -72
+                    stopLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                      cdno: 70
+                      rssi: -72
+                  - duration: 600
+                    startTime: '2017-01-24T00:00:00.000Z'
+                    stopTime: '2017-01-24T00:00:00.000Z'
+                    analogHd:
+                      freq: 103700
+                      ecc: E0
+                      piCode: D110
+                      calls: WKRP
+                      band: FM
+                      channel: '1'
+                    dab:
+                      freq: 227
+                      ecc: D0
+                      eid: C185
+                      sid: C4B4
+                      scids: '0'
+                    broadcastId: '12345'
+                    isPreset: true
+                    verifyFailed: false
+                    volEvents:
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                    liveIdsDisplayed:
+                      - abcdef12345
+                      - abcdef12345
+                      - abcdef12345
+                      - abcdef12345
+                      - abcdef12345
+                    startLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                      cdno: 70
+                      rssi: -72
+                    stopLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                      cdno: 70
+                      rssi: -72
+                  - duration: 600
+                    startTime: '2017-01-24T00:00:00.000Z'
+                    stopTime: '2017-01-24T00:00:00.000Z'
+                    analogHd:
+                      freq: 103700
+                      ecc: E0
+                      piCode: D110
+                      calls: WKRP
+                      band: FM
+                      channel: '1'
+                    dab:
+                      freq: 227
+                      ecc: D0
+                      eid: C185
+                      sid: C4B4
+                      scids: '0'
+                    broadcastId: '12345'
+                    isPreset: true
+                    verifyFailed: false
+                    volEvents:
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                    liveIdsDisplayed:
+                      - abcdef12345
+                      - abcdef12345
+                      - abcdef12345
+                    startLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                      cdno: 70
+                      rssi: -72
+                    stopLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                      cdno: 70
+                      rssi: -72
+                  - duration: 600
+                    startTime: '2017-01-24T00:00:00.000Z'
+                    stopTime: '2017-01-24T00:00:00.000Z'
+                    analogHd:
+                      freq: 103700
+                      ecc: E0
+                      piCode: D110
+                      calls: WKRP
+                      band: FM
+                      channel: '1'
+                    dab:
+                      freq: 227
+                      ecc: D0
+                      eid: C185
+                      sid: C4B4
+                      scids: '0'
+                    broadcastId: '12345'
+                    isPreset: true
+                    verifyFailed: false
+                    volEvents:
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                    liveIdsDisplayed:
+                      - abcdef12345
+                      - abcdef12345
+                      - abcdef12345
+                    startLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                      cdno: 70
+                      rssi: -72
+                    stopLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                      cdno: 70
+                      rssi: -72
+                  - duration: 600
+                    startTime: '2017-01-24T00:00:00.000Z'
+                    stopTime: '2017-01-24T00:00:00.000Z'
+                    analogHd:
+                      freq: 103700
+                      ecc: E0
+                      piCode: D110
+                      calls: WKRP
+                      band: FM
+                      channel: '1'
+                    dab:
+                      freq: 227
+                      ecc: D0
+                      eid: C185
+                      sid: C4B4
+                      scids: '0'
+                    broadcastId: '12345'
+                    isPreset: true
+                    verifyFailed: false
+                    volEvents:
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                    liveIdsDisplayed:
+                      - abcdef12345
+                      - abcdef12345
+                      - abcdef12345
+                    startLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                      cdno: 70
+                      rssi: -72
+                    stopLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                      cdno: 70
+                      rssi: -72
+                streams:
+                  - serviceName: Pandora
+                    station: Miles Davi
+                    url: 'http://streamurl.example.com'
+                    broadcastId: '12345'
+                    servFollow: true
+                    errorStatusCode: sunt
+                    format: mp3
+                    bitrate: 64000
+                    duration: 600
+                    startTime: '2017-01-24T00:00:00.000Z'
+                    stopTime: '2017-01-24T00:00:00.000Z'
+                    startLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                    stopLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                  - serviceName: Pandora
+                    station: Miles Davi
+                    url: 'http://streamurl.example.com'
+                    broadcastId: '12345'
+                    servFollow: true
+                    errorStatusCode: laborum
+                    format: mp3
+                    bitrate: 64000
+                    duration: 600
+                    startTime: '2017-01-24T00:00:00.000Z'
+                    stopTime: '2017-01-24T00:00:00.000Z'
+                    startLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                    stopLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                  - serviceName: Pandora
+                    station: Miles Davi
+                    url: 'http://streamurl.example.com'
+                    broadcastId: '12345'
+                    servFollow: true
+                    errorStatusCode: Duis consectetur nulla
+                    format: mp3
+                    bitrate: 64000
+                    duration: 600
+                    startTime: '2017-01-24T00:00:00.000Z'
+                    stopTime: '2017-01-24T00:00:00.000Z'
+                    startLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                    stopLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                satellite:
+                  - duration: 600
+                    startTime: '2017-01-24T00:00:00.000Z'
+                    stopTime: '2017-01-24T00:00:00.000Z'
+                    volEvents:
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                    serviceName: SiriusXM
+                    station: Miles Davi
+                    startLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                    stopLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                  - duration: 600
+                    startTime: '2017-01-24T00:00:00.000Z'
+                    stopTime: '2017-01-24T00:00:00.000Z'
+                    volEvents:
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                      - timestamp: '2017-01-24T00:00:00.000Z'
+                        level: 10
+                    serviceName: SiriusXM
+                    station: Miles Davi
+                    startLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                    stopLoc:
+                      lat: 43.094123
+                      lng: -71.730123
+                local:
+                  - duration: 600
+                    startTime: '2017-01-24T00:00:00.000Z'
+                    stopTime: '2017-01-24T00:00:00.000Z'
+                    sourceName: aux
+                devices:
+                  - event: insert
+                    type: est ei
+                    subtype: aliqua
+                    mobileId: ut dolo
+                    count: 46526806
+                  - event: insert
+                    type: volup
+                    subtype: sunt ea co
+                    mobileId: non occa
+                    count: -65742678
+                  - event: insert
+                    type: 'dolore '
+                    subtype: i
+                    mobileId: ullamc
+                    count: -27164323
+                  - event: insert
+                    type: laboris
+                    subtype: sint offi
+                    mobileId: consequ
+                    count: -7930054
+                  - event: insert
+                    type: e
+                    subtype: anim incid
+                    mobileId: consequ
+                    count: 74533339
       responses:
         '200':
           description: Successful response
@@ -974,9 +1318,25 @@ paths:
           description: Action data
           schema:
             $ref: '#/definitions/ReportAction'
+          x-examples:
+            application/json:
+              type: exit
+              mfgId: DEV-0001
+              deviceId: aBc8deFG9
+              data:
+                lat: 43.094123
+                lng: -71.730123
+                broadcastId: '12345'
+                liveId: abcdef12345
+                timestamp: '2017-01-24T00:00:00.000Z'
+                target: '123456'
+                content: '1'
       responses:
         '200':
           description: Successful response
+          examples:
+            application/json: {}
+            new: {}
         '400':
           description: 'No results found, or missing parameter'
           schema:
