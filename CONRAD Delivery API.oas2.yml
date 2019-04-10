@@ -1021,9 +1021,23 @@ paths:
           description: Signal data
           schema:
             $ref: '#/definitions/SignalReport'
+          x-examples:
+            application/json:
+              mfgId: DEV-0001
+              deviceId: abcdef1234
+              timestamp: '2017-01-24T00:00:00.000Z'
+              data:
+                lat: 43.094123
+                lng: -71.730123
+                cdno: 70
+                rssi: -72
+              broadcastId: '12345'
       responses:
         '200':
           description: Successful response
+          examples:
+            application/json: {}
+            new: {}
         '400':
           description: 'No results found, or missing parameter'
           schema:
