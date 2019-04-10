@@ -114,6 +114,16 @@ paths:
           description: Device registration data
           schema:
             $ref: '#/definitions/DevicesPost'
+          x-examples:
+            application/json:
+              lat: -43.094
+              lng: -71.73
+              mfg: Mfg Name
+              brand: Brand Name
+              device: Device Nam
+              model: Model Name
+              serial: '12345'
+              version: '1'
       responses:
         '200':
           description: Successful response
