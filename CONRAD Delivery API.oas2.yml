@@ -1825,7 +1825,7 @@ definitions:
             type: array
             items:
               $ref: '#/definitions/ImagesObject'
-          genre:
+          genreIds:
             type: array
             description: Array of genres and subgenres
             items:
