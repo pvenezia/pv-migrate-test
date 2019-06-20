@@ -367,10 +367,6 @@ definitions:
             description: Enable display of option to share on social media
             example: true
             default: true
-          conradArtistId:
-            $ref: '#/definitions/conradArtistId'
-          conradTrackId:
-            $ref: '#/definitions/conradTrackId'
           images:
             type: array
             items:
