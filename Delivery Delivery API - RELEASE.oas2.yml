@@ -1,0 +1,1017 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.1.4",
+    "title": "PRERELEASE - DTS Connected Radio API",
+    "description": "This is the DTS Connected Radio API, designed to provide static and dynamic metadata for global analog and digital radio broadcasts, in addition to enhanced services supporting an advanced radio experience.\n\nThis API is referred to as the CONRAD API throughout the documentation.\n\nAPI interaction is available via SSL/TLS encryption only, and the use of HTTP compression is highly encouraged to reduce data consumption.\n\nIf a key specified in the API spec is missing from a response, the value should be assumed `null`. All booleans will have default values specified in the documentation if they are not present in a response.",
+    "contact": {
+      "name": "DTS Connected Radio",
+      "url": "https://www.connectedrad.io",
+      "email": "connected.radio@dts.com"
+    }
+  },
+  "host": "api.sandbox.cnrd.io",
+  "basePath": "/v1",
+  "security": [
+    {
+      "Authorization": [],
+      "mfgId": []
+    }
+  ],
+  "securityDefinitions": {
+    "Authorization": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "The format is `{deviceId},{hash}`, where the `hash` is `HMAC_SHA256(mfgSecret, deviceId)`.\nThe `hash` is hex digest, truncated to 24 characters.\nExample: `Authorization: asdbh23456sdf,fd9f655862c9bd4da0edb845`\n\n`mfgId` is also required, and is assigned by DTS during production rollout planning.\n\nExample: `mfgId: ABCDEF123456`"
+    },
+    "mfgId": {
+      "type": "apiKey",
+      "name": "mfgId",
+      "in": "header",
+      "description": "The `mfgId` is assigned by DTS. It is required to be present as a header in every request made to the API. The format is the `mfgId` as a string. Example: `DEV-0001`. The IDs used in sandbox will not work in production."
+    }
+  },
+  "tags": [
+    {
+      "name": "Devices",
+      "description": "Device interaction, id assignments, configuration retrieval"
+    },
+    {
+      "name": "Genres",
+      "description": "Genre names and ids"
+    },
+    {
+      "name": "Broadcasts",
+      "description": "Static broadcast data retrieval"
+    },
+    {
+      "name": "Live",
+      "description": "Currently playing program data"
+    },
+    {
+      "name": "Reports",
+      "description": "Service utilization reporting"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/devices": {
+      "post": {
+        "summary": "Request device ID",
+        "tags": [
+          "Devices"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "description": "Register a device and receive a unique device ID assigned by the API. This ID is assigned to each device once, during the first contact with the API. This device ID is retained by the client and used in all subsequent API interactions. The device ID is also used in the authentication process.\n\nIf a client does not have a valid API-assigned device ID present in non-volatile storage, the first API interaction shall be to register and receive this ID.\n\nThis request should only be made when the client is first initialized or if the client is reset to factory defaults.",
+        "parameters": [
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization header. Please note that this authentication signature is different from all other Authorization headers in the API in that it uses `mfgId` not `deviceId` as the `deviceId` has not yet been acquired.\nThe format is `{mfgId},{hash}`, where the `hash` is `HMAC_SHA256(mfgSecret, mfgId)`.\nThe `hash` is hex digest, truncated to 24 characters.\nExample: `Authorization: DEV-0001,548bde0ad4db9c268556f9df`",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "Device registration data",
+            "schema": {
+              "$ref": "./delivery_common.oas2.yml#/definitions/DevicesPost"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "./delivery_common.oas2.yml#/definitions/DeviceResponse"
+            },
+            "examples": {
+              "application/json": {
+                "deviceId": "aBc8deFG9",
+                "mfgId": "D0K101",
+                "geoCode": "global",
+                "config": {
+                  "enableAPI": true,
+                  "enableLive": true,
+                  "errorRetry": 60,
+                  "configRefresh": 3600,
+                  "liveDataRetry": 5,
+                  "useMinQueries": false,
+                  "defLogoURL": "https://example.cnrd.io/img/abcdefg.png",
+                  "defLogoURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
+                  "defAlbumURL": "https://example.cnrd.io/img/abcdefg.png",
+                  "defAlbumURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
+                  "expireBroadcastIds": [
+                    "12345",
+                    "12345",
+                    "12345"
+                  ],
+                  "genreListCacheTTL": 86400,
+                  "genreListCacheFlush": false,
+                  "broadcastDataCacheTTL": 3600,
+                  "broadcastDataCacheFlush": false,
+                  "broadcastQueryRefreshRate": 600,
+                  "altAPIURL": "https://new.api.url.com",
+                  "altAPIURLEnabled": false,
+                  "altAPIURLPermanent": false,
+                  "signalReportInterval": 600,
+                  "reportsMinInterval": 86400,
+                  "reportsMaxInterval": 2592000,
+                  "reportsMaxSize": 1024
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "./delivery_common.oas2.yml#/responses/400"
+          },
+          "401": {
+            "$ref": "./delivery_common.oas2.yml#/responses/401"
+          },
+          "500": {
+            "$ref": "./delivery_common.oas2.yml#/responses/500"
+          }
+        },
+        "operationId": "registerDevice",
+        "security": [
+          {
+            "Authorization": []
+          },
+          {
+            "mfgId": []
+          }
+        ]
+      }
+    },
+    "/config": {
+      "get": {
+        "summary": "Request device configuration",
+        "tags": [
+          "Devices"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "description": "Retrieves a device configuration. This occurs at every startup and periodically as determined by the `configRefresh` variable.\n\nThe parameters specified in this object will dictate client behavior pertaining to API interaction. The values for keys in this object may change depending on the geographical location of the client, or when the API needs to control certain client interactions due to various internal considerations.\n\nClients should never hard-code values that are present in a `/config` response, they are to be updated whenever a new `/config` response is received, which may occur periodically during normal operation.",
+        "parameters": [
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/Authorization"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/lat"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/lng"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/geoCode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "./delivery_common.oas2.yml#/definitions/DeviceResponse"
+            },
+            "examples": {
+              "application/json": {
+                "deviceId": "aBc8deFG9",
+                "mfgId": "D0K101",
+                "geoCode": "global",
+                "config": {
+                  "enableAPI": true,
+                  "enableLive": true,
+                  "errorRetry": 60,
+                  "configRefresh": 3600,
+                  "liveDataRetry": 5,
+                  "useMinQueries": false,
+                  "defLogoURL": "https://example.cnrd.io/img/abcdefg.png",
+                  "defLogoURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
+                  "defAlbumURL": "https://example.cnrd.io/img/abcdefg.png",
+                  "defAlbumURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
+                  "expireBroadcastIds": [
+                    "12345",
+                    "12345",
+                    "12345"
+                  ],
+                  "genreListCacheTTL": 86400,
+                  "genreListCacheFlush": false,
+                  "broadcastDataCacheTTL": 3600,
+                  "broadcastDataCacheFlush": false,
+                  "broadcastQueryRefreshRate": 600,
+                  "altAPIURL": "https://new.api.url.com",
+                  "altAPIURLEnabled": false,
+                  "altAPIURLPermanent": false,
+                  "signalReportInterval": 600,
+                  "reportsMinInterval": 86400,
+                  "reportsMaxInterval": 2592000,
+                  "reportsMaxSize": 1024
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "./delivery_common.oas2.yml#/responses/400"
+          },
+          "401": {
+            "$ref": "./delivery_common.oas2.yml#/responses/401"
+          },
+          "500": {
+            "$ref": "./delivery_common.oas2.yml#/responses/500"
+          }
+        },
+        "operationId": "getDeviceConfig",
+        "security": [
+          {
+            "Authorization": []
+          },
+          {
+            "mfgId": []
+          }
+        ]
+      }
+    },
+    "/broadcasts": {
+      "get": {
+        "summary": "Retrieve data for all local broadcast stations via standard HTTP GET query.",
+        "tags": [
+          "Broadcasts"
+        ],
+        "operationId": "getStationsByQuery",
+        "produces": [
+          "application/json"
+        ],
+        "description": "Retrieves a list of `Broadcast` objects from a location query, frequencies, GCC/ensemble IDs pairs, or GCC/piCode pairs.\n\nThis is the general query type, designed to be used by most clients with access to one or more tuners.\n\nThe majority of the queries to this path will be latitude and longitude only, but extended query types for different broadcast technologies are supported.\n\nThis method accepts a query with required coordinates and further data on stations that are available based on tuner reception. This may include purely analog frequencies or DAB GCC and ensemble ID pairs, or GCC and PI code pairs. The API will return a list of stations based on the data presented in the query. The more descriptive data the client can deliver in the query, the more accurate the resulting broadcast list will be.\n\nThe minimum query components are lat/lng and deviceId.\n\nThe result is an array of objects, each with a unique identifier, and broadcast details related to their broadcast technology. The list may be contain broadcast definitions representing multiple different broadcast technologies. All results are best-effort, and objects may contain only minimal data -- not every pair in the object may be populated or present for every object in a response array.",
+        "parameters": [
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/Authorization"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/lat"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/lng"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/deviceType"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/freq"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/rds"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/dab"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "./delivery_common.oas2.yml#/definitions/BroadcastList"
+            },
+            "examples": {
+              "application/json": {
+                "analog": [
+                  {
+                    "broadcastId": "12345",
+                    "ecc": "E0",
+                    "piCode": "D310",
+                    "freq": 103700,
+                    "band": "FM",
+                    "country": "US",
+                    "broadcastData": {
+                      "name": "103.7FM The Rock",
+                      "slogan": "Yesterday and Today's Rock Hits!",
+                      "sortKey": "abc",
+                      "stationId": "12345",
+                      "contentId": "12345",
+                      "languages": [
+                        "en-US",
+                        "en-US",
+                        "en-US"
+                      ],
+                      "callSign": "WKRP",
+                      "translator": "W212AB",
+                      "enableThumbs": true,
+                      "enableShare": true,
+                      "format": "music",
+                      "description": "Modern and classic rock music",
+                      "longDescription": "Central Pennsylvania's rock source, with Kim and Tom in the morning!",
+                      "logoURL": "https://example.cnrd.io/img/abcdefg.png",
+                      "logoURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
+                      "sfOnIconURL": "https://example.cnrd.io/img/2/2/2210d149ef776682bc583a919046aacb.png",
+                      "sfOffIconURL": "https://example.cnrd.io/img/a/3/a30183ea6cf6e345691dda5c94a97e5e.png",
+                      "sfOnIconURLWide": "https://example.cnrd.io/img/e/8/e83993f9ecde475ced101978b0e4602d.png",
+                      "sfOffIconURLWide": "https://example.cnrd.io/img/9/5/950d73b2d78c51ac794c2346d816b2e3.png",
+                      "mqURI": "amqp://username:password@amqp.hostname.com/vhost",
+                      "mqExchange": "live",
+                      "mqKey": "#.broadcast.12345",
+                      "genreIds": [
+                        123,
+                        123,
+                        123
+                      ],
+                      "hasLiveData": true,
+                      "useLiveUnverified": true,
+                      "email": [
+                        "user@example.cnrd.io",
+                        "user@example.cnrd.io",
+                        "user@example.cnrd.io"
+                      ],
+                      "urls": {
+                        "website": [
+                          "http://www.example.cnrd.io",
+                          "http://www.example.cnrd.io",
+                          "http://www.example.cnrd.io"
+                        ],
+                        "facebook": [
+                          "https://www.facebook.com/wkrprock",
+                          "https://www.facebook.com/wkrprock",
+                          "https://www.facebook.com/wkrprock"
+                        ],
+                        "twitter": [
+                          "https://twitter.com/wkrprock",
+                          "https://twitter.com/wkrprock",
+                          "https://twitter.com/wkrprock"
+                        ]
+                      },
+                      "phone": [
+                        "12345678901",
+                        "12345678901",
+                        "12345678901"
+                      ],
+                      "sms": [
+                        "123456",
+                        "123456",
+                        "123456"
+                      ],
+                      "streams": [
+                        {
+                          "url": "http://radiostream.url.com/stream",
+                          "format": "mp3",
+                          "sampleRate": 44100,
+                          "bitrate": 64000,
+                          "preroll": 42
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "hdradio": [
+                  {
+                    "broadcastId": "12345",
+                    "piCode": "A123",
+                    "stationId": "foo",
+                    "countryCode": "foo",
+                    "location": "43.094, -71.730",
+                    "channel": "1",
+                    "freq": 103700,
+                    "band": "FM",
+                    "country": "US",
+                    "broadcastData": null
+                  }
+                ],
+                "dab": [
+                  {
+                    "broadcastId": "12345",
+                    "eid": "C186",
+                    "freq": 223,
+                    "sid": "C1C2",
+                    "scids": "0",
+                    "channel": "12A",
+                    "country": "US",
+                    "broadcastData": null
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "$ref": "./delivery_common.oas2.yml#/responses/400"
+          },
+          "401": {
+            "$ref": "./delivery_common.oas2.yml#/responses/401"
+          },
+          "500": {
+            "$ref": "./delivery_common.oas2.yml#/responses/500"
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          },
+          {
+            "mfgId": []
+          }
+        ]
+      }
+    },
+    "/broadcasts/{broadcastId}": {
+      "get": {
+        "summary": "Retrieve data pertaining to a single broadcast by ID.",
+        "tags": [
+          "Broadcasts"
+        ],
+        "operationId": "getBroadcastByID",
+        "produces": [
+          "application/json"
+        ],
+        "description": "Retrieves an individual `Broadcast` object given a broadcast ID.",
+        "parameters": [
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/Authorization"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/broadcastId"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/lat-nr"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/lng-nr"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "./delivery_common.oas2.yml#/definitions/Broadcast"
+            },
+            "examples": {
+              "application/json": {
+                "analog": {
+                  "broadcastId": "12345",
+                  "ecc": "E0",
+                  "piCode": "D310",
+                  "freq": 103700,
+                  "band": "FM",
+                  "country": "US",
+                  "broadcastData": {
+                    "name": "103.7FM The Rock",
+                    "slogan": "Yesterday and Today's Rock Hits!",
+                    "sortKey": "abc",
+                    "stationId": "12345",
+                    "contentId": "12345",
+                    "languages": [
+                      "en-US",
+                      "en-US",
+                      "en-US"
+                    ],
+                    "callSign": "WKRP",
+                    "translator": "W212AB",
+                    "enableThumbs": true,
+                    "enableShare": true,
+                    "format": "music",
+                    "description": "Modern and classic rock music",
+                    "longDescription": "Central Pennsylvania's rock source, with Kim and Tom in the morning!",
+                    "logoURL": "https://example.cnrd.io/img/abcdefg.png",
+                    "logoURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
+                    "sfOnIconURL": "https://example.cnrd.io/img/2/2/2210d149ef776682bc583a919046aacb.png",
+                    "sfOffIconURL": "https://example.cnrd.io/img/a/3/a30183ea6cf6e345691dda5c94a97e5e.png",
+                    "sfOnIconURLWide": "https://example.cnrd.io/img/e/8/e83993f9ecde475ced101978b0e4602d.png",
+                    "sfOffIconURLWide": "https://example.cnrd.io/img/9/5/950d73b2d78c51ac794c2346d816b2e3.png",
+                    "mqURI": "amqp://username:password@amqp.hostname.com/vhost",
+                    "mqExchange": "live",
+                    "mqKey": "#.broadcast.12345",
+                    "genreIds": [
+                      123,
+                      123,
+                      123
+                    ],
+                    "hasLiveData": true,
+                    "useLiveUnverified": true,
+                    "email": [
+                      "user@example.cnrd.io",
+                      "user@example.cnrd.io",
+                      "user@example.cnrd.io"
+                    ],
+                    "urls": {
+                      "website": [
+                        "http://www.example.cnrd.io",
+                        "http://www.example.cnrd.io",
+                        "http://www.example.cnrd.io"
+                      ],
+                      "facebook": [
+                        "https://www.facebook.com/wkrprock",
+                        "https://www.facebook.com/wkrprock",
+                        "https://www.facebook.com/wkrprock"
+                      ],
+                      "twitter": [
+                        "https://twitter.com/wkrprock",
+                        "https://twitter.com/wkrprock",
+                        "https://twitter.com/wkrprock"
+                      ]
+                    },
+                    "phone": [
+                      "12345678901",
+                      "12345678901",
+                      "12345678901"
+                    ],
+                    "sms": [
+                      "123456",
+                      "123456",
+                      "123456"
+                    ],
+                    "streams": [
+                      {
+                        "url": "http://radiostream.url.com/stream",
+                        "format": "mp3",
+                        "sampleRate": 44100,
+                        "bitrate": 64000,
+                        "preroll": 42
+                      }
+                    ]
+                  }
+                },
+                "hdradio": {
+                  "broadcastId": "12345",
+                  "piCode": "A123",
+                  "stationId": "foo",
+                  "countryCode": "foo",
+                  "location": "43.094, -71.730",
+                  "channel": "1",
+                  "freq": 103700,
+                  "band": "FM",
+                  "country": "US",
+                  "broadcastData": null
+                },
+                "dab": {
+                  "broadcastId": "12345",
+                  "eid": "C186",
+                  "freq": 223,
+                  "sid": "C1C2",
+                  "scids": "0",
+                  "channel": "12A",
+                  "country": "US",
+                  "broadcastData": null
+                }
+              }
+            }
+          },
+          "301": {
+            "$ref": "./delivery_common.oas2.yml#/responses/Broadcasts-301"
+          },
+          "400": {
+            "$ref": "./delivery_common.oas2.yml#/responses/400"
+          },
+          "401": {
+            "$ref": "./delivery_common.oas2.yml#/responses/401"
+          },
+          "410": {
+            "$ref": "./delivery_common.oas2.yml#/responses/Broadcasts-410"
+          },
+          "500": {
+            "$ref": "./delivery_common.oas2.yml#/responses/500"
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          },
+          {
+            "mfgId": []
+          }
+        ]
+      }
+    },
+    "/broadcasts/{broadcastId}/live": {
+      "get": {
+        "summary": "Retrieve live/now playing data for a specific broadcast",
+        "tags": [
+          "Live"
+        ],
+        "operationId": "getLiveData",
+        "produces": [
+          "application/json"
+        ],
+        "description": "\n***Note: Data from the `/broadcasts/{broadcastId}/live` path is currently available for thousands of North American broadcasts, and selected cities in Europe and Asia, such as Berlin, Germany; London, UK; Paris, France; Tokyo, Japan; and Seoul, South Korea. Live data for other geographic regions is coming.***\n\nThe `/broadcasts/{broadcastId}/live` path retrieves live/now-playing data objects for a specific broadcast ID. This is the path that is called when a client needs data on what content is currently playing on a specfic broadcast for purposes of displaying song or program information, album art, and other data if that data exists for that broadcast.\n\nThis path is to be used when triggered by the message queue notifications for this broadcast. The AMQP connection URI is specified in `Broadcasts#broadcastData.mqURI`, along with `mqKey` and `mqExchange`.  The message queue push data is in the form of `broadcastId,liveId`. Upon receiving the message via the AMQP queue, the client should call `/broadcasts/{broadcastId}/live` to retrieve the live data object.\n\nThis method is not intended to be polled at timed intervals or used without subscription to the AMQP queue and routing key for a specific broadcast. It may be used for a single snapshot of data for a station or small set of stations to enhance a station guide display.\n\nHowever, a call to `/broadcasts/{broadcastId}/live` should be made prior to subscribing to the message queue for a specific broadcast in order to retrieve current data before subscribing to receive notifications to retrieve new data.\n\nIf a client is disconnected from the AMQP service, it should attempt to reconnect and subscribe to the routing key again. In addition, it should request `/broadcasts/{broadcastId}/live` immediately to ensure that the latest available live data is presented. If reconnection is not possible for an extended length of time, then the client should cease presenting live data until the connection can be resumed.\n\nNot all broadcast IDs will have a live data feed. See the key `hasLiveData` in each station record in a response to a `/broadcasts` query.\n\nIf the response to a GET is `202 Accepted`, then the client is to wait for config parameter `liveDataRetry` seconds before retrying the GET. This is because we may need to gather the requested data from other sources and techniques that require several seconds to complete.\n\nIf this path returns a `404 Not Found`, no live data is currently available for that `broadcastId`.",
+        "parameters": [
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/Authorization"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/broadcastId"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/lat"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/lng"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/disp"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "./delivery_common.oas2.yml#/definitions/Live"
+            },
+            "examples": {
+              "application/json": {
+                "id": "foo",
+                "type": "music",
+                "duration": 305,
+                "musicData": {
+                  "title": "All Blues",
+                  "album": "Kind of Blue",
+                  "artist": "Miles Davis",
+                  "enableThumbs": true,
+                  "enableShare": true,
+                  "images": [
+                    {
+                      "type": "artist",
+                      "default": true,
+                      "url": "https://s.cnrd.io/img/c/2/c2b12ed7860b3a1a123483dec90abf1ea3.jpg",
+                      "urlHiRes": "https://s.cnrd.io/img/f/2/f2b12ed1234b3a1a123483dec90abf1ea6.jpg"
+                    }
+                  ],
+                  "genreIds": [
+                    4,
+                    23
+                  ]
+                },
+                "nmpData": {
+                  "title": "Wait, Wait Don't Tell Me",
+                  "program": "The NPR News Quiz",
+                  "subject": "Today's guest: Tom Hanks",
+                  "enableThumbs": true,
+                  "enableShare": true,
+                  "images": [
+                    null
+                  ]
+                },
+                "adData": [
+                  {
+                    "type": "web",
+                    "data": [
+                      {
+                        "type": "url",
+                        "target": "http://example.url.com",
+                        "content": "YES",
+                        "text": [
+                          "Tap here for more information"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "202": {
+            "description": "Response accepted, but waiting on data availability. Retry in `liveDataRetry` seconds."
+          },
+          "301": {
+            "$ref": "./delivery_common.oas2.yml#/responses/Broadcasts-301"
+          },
+          "400": {
+            "$ref": "./delivery_common.oas2.yml#/responses/400"
+          },
+          "401": {
+            "$ref": "./delivery_common.oas2.yml#/responses/401"
+          },
+          "404": {
+            "description": "No results found. This is not an indicator that live data is permanently unavailable for the `broadcastId`, just that it is not currently present at the time of query.",
+            "schema": {
+              "$ref": "./delivery_common.oas2.yml#/definitions/Error"
+            },
+            "examples": {
+              "application/json": {
+                "result": "error",
+                "data": "foo"
+              }
+            }
+          },
+          "410": {
+            "$ref": "./delivery_common.oas2.yml#/responses/Broadcasts-410"
+          },
+          "500": {
+            "$ref": "./delivery_common.oas2.yml#/responses/500"
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          },
+          {
+            "mfgId": []
+          }
+        ]
+      }
+    },
+    "/genres": {
+      "get": {
+        "summary": "Retrieve list of genres and IDs",
+        "tags": [
+          "Genres"
+        ],
+        "operationId": "getGenreData",
+        "produces": [
+          "application/json"
+        ],
+        "description": "Retrieves genre data. Genres and sub-genres are specified in broadcast records by ID. This path retrieves the genre name/ID pairs to be used in display.\n\nWe will be modifying and consolidating the genre lists over time, so the entries in this list will become more concise.",
+        "parameters": [
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/Authorization"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/lang"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "./delivery_common.oas2.yml#/definitions/GenreListObject"
+              }
+            },
+            "examples": {
+              "application/json": [
+                {
+                  "id": 1,
+                  "name": "Adult Contemporary"
+                },
+                {
+                  "id": 2,
+                  "name": "Classical"
+                },
+                {
+                  "id": 3,
+                  "name": "Country"
+                },
+                {
+                  "id": 4,
+                  "name": "Family"
+                },
+                {
+                  "id": 5,
+                  "name": "Hip Hop/Urban"
+                },
+                {
+                  "id": 6,
+                  "name": "Jazz/Blues"
+                },
+                {
+                  "id": 7,
+                  "name": "News/Talk"
+                },
+                {
+                  "id": 8,
+                  "name": "Oldies"
+                },
+                {
+                  "id": 9,
+                  "name": "R&B"
+                },
+                {
+                  "id": 10,
+                  "name": "Religious"
+                },
+                {
+                  "id": 11,
+                  "name": "Rock"
+                },
+                {
+                  "id": 12,
+                  "name": "Spanish"
+                },
+                {
+                  "id": 13,
+                  "name": "Sports"
+                },
+                {
+                  "id": 14,
+                  "name": "The Decades"
+                },
+                {
+                  "id": 15,
+                  "name": "Top 40/Pop"
+                },
+                {
+                  "id": 16,
+                  "name": "World/Variety"
+                },
+                {
+                  "id": 17,
+                  "name": "Comedy"
+                },
+                {
+                  "id": 18,
+                  "name": "Public Radio"
+                },
+                {
+                  "id": 19,
+                  "name": "Other"
+                }
+              ]
+            }
+          },
+          "400": {
+            "$ref": "./delivery_common.oas2.yml#/responses/400"
+          },
+          "401": {
+            "$ref": "./delivery_common.oas2.yml#/responses/401"
+          },
+          "500": {
+            "$ref": "./delivery_common.oas2.yml#/responses/500"
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          },
+          {
+            "mfgId": []
+          }
+        ]
+      }
+    },
+    "/reports": {
+      "post": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Submit service usage reports",
+        "description": "This path allows the client to submit service usage reports to the API containing data on broadcasts and other media consumption.\n\nThis report is to be submitted on a scheduled basis as determined by the `reportsMinInterval` and `reportsMaxInterval` values in the `/config` response. Data collected by the client within those time limits is then submitted to the API and a new report is begun.\n\nIf a report has not been successfully submitted within the elapsed time specified in the `reportsMaxInterval` value, then the report is discarded and a new report begun. If the report size exceeds `reportsMaxSize` before submission, then the report is discarded and a new report begun.",
+        "parameters": [
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/Authorization"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "Reported data",
+            "schema": {
+              "$ref": "./delivery_common.oas2.yml#/definitions/Report"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "./delivery_common.oas2.yml#/responses/200"
+          },
+          "400": {
+            "$ref": "./delivery_common.oas2.yml#/responses/Reports-400"
+          },
+          "401": {
+            "$ref": "./delivery_common.oas2.yml#/responses/Reports-401"
+          },
+          "500": {
+            "$ref": "./delivery_common.oas2.yml#/responses/Reports-500"
+          }
+        },
+        "operationId": "submitReport",
+        "security": [
+          {
+            "Authorization": []
+          },
+          {
+            "mfgId": []
+          }
+        ]
+      }
+    },
+    "/reports/actions": {
+      "post": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Submit an action report",
+        "description": "This path allows the client to submit a notification of an action to the API. This is where user interactions with the services provided by the API are logged, including user actions such as exiting the listening session.\n\nThese actions include the user clicking on buttons in the UI that are present due to data returned by the API, such as SMS and phone numbers, location data for maps/navigation purposes, sharing information on social media and so forth.",
+        "parameters": [
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/Authorization"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "Action data",
+            "schema": {
+              "$ref": "./delivery_common.oas2.yml#/definitions/ReportAction"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "./delivery_common.oas2.yml#/responses/200"
+          },
+          "400": {
+            "$ref": "./delivery_common.oas2.yml#/responses/Reports-400"
+          },
+          "401": {
+            "$ref": "./delivery_common.oas2.yml#/responses/Reports-401"
+          },
+          "500": {
+            "$ref": "./delivery_common.oas2.yml#/responses/Reports-500"
+          }
+        },
+        "operationId": "submitActionReport",
+        "security": [
+          {
+            "Authorization": []
+          },
+          {
+            "mfgId": []
+          }
+        ]
+      }
+    },
+    "/reports/signal": {
+      "post": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Submit a signal strength report",
+        "description": "This path allows the client to submit a signal strength report containing the currently tuned `broadcastId` and a signal strength value",
+        "parameters": [
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/Authorization"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "Signal data",
+            "schema": {
+              "$ref": "./delivery_common.oas2.yml#/definitions/SignalReport"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "./delivery_common.oas2.yml#/responses/200"
+          },
+          "400": {
+            "$ref": "./delivery_common.oas2.yml#/responses/Reports-400"
+          },
+          "401": {
+            "$ref": "./delivery_common.oas2.yml#/responses/Reports-401"
+          },
+          "500": {
+            "$ref": "./delivery_common.oas2.yml#/responses/Reports-500"
+          }
+        },
+        "operationId": "submitSignalReport",
+        "security": [
+          {
+            "Authorization": []
+          },
+          {
+            "mfgId": []
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {},
+  "definitions": {},
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "responses": {}
+}
