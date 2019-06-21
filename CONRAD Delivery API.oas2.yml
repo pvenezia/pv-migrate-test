@@ -1496,13 +1496,13 @@
         "summary": "Submit an action report",
         "description": "This path allows the client to submit a notification of an action to the API. This is where user interactions with the services provided by the API are logged, including user actions such as exiting the listening session.\n\nThese actions include the user clicking on buttons in the UI that are present due to data returned by the API, such as SMS and phone numbers, location data for maps/navigation purposes, sharing information on social media and so forth.",
         "parameters": [
-           {
-             "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
-           },
-           {
-             "$ref": "./delivery_common.oas2.yml#/parameters/Authorization"
-           },
-           {
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/Authorization"
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
@@ -1529,51 +1529,17 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful response",
-            "examples": {
-              "application/json": {},
-              "new": {}
-            }
+					"200": {
+            "$ref": "./delivery_common.oas2.yml#/responses/200"
           },
           "400": {
-            "description": "No results found, or missing parameter",
-            "schema": {
-              "$ref": "#/definitions/ReportError"
-            },
-            "examples": {
-              "application/json": {
-                "result": "foo",
-                "data": "foo",
-                "action": "discard"
-              }
-            }
+            "$ref": "./delivery_common.oas2.yml#/responses/Reports-400"
           },
           "401": {
-            "description": "Authorization/authentication error",
-            "schema": {
-              "$ref": "#/definitions/ReportError"
-            },
-            "examples": {
-              "application/json": {
-                "result": "foo",
-                "data": "foo",
-                "action": "discard"
-              }
-            }
+            "$ref": "./delivery_common.oas2.yml#/responses/Reports-401"
           },
           "500": {
-            "description": "Internal error",
-            "schema": {
-              "$ref": "#/definitions/ReportError"
-            },
-            "examples": {
-              "application/json": {
-                "result": "foo",
-                "data": "foo",
-                "action": "discard"
-              }
-            }
+            "$ref": "./delivery_common.oas2.yml#/responses/Reports-500"
           }
         }
       }
