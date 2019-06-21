@@ -1483,16 +1483,7 @@
             "$ref": "./delivery_common.oas2.yml#/responses/Reports-401"
           },
           "500": {
-            "description": "Internal error",
-            "schema": {
-              "$ref": "#/definitions/ReportError"
-            },
-            "examples": {
-              "application/json": {
-                "result": "foo",
-                "data": "foo",
-                "action": "discard"
-              }
+            "$ref": "./delivery_common.oas2.yml#/responses/Reports-500"
             }
           }
         }
