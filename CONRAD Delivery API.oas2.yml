@@ -1552,11 +1552,11 @@
         "summary": "Submit a signal strength report",
         "description": "This path allows the client to submit a signal strength report containing the currently tuned `broadcastId` and a signal strength value",
         "parameters": [
-          {
-            "$ref": "#/parameters/mfgId"
+					{
+            "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
           },
           {
-            "$ref": "#/parameters/Authorization"
+            "$ref": "./delivery_common.oas2.yml#/parameters/Authorization"
           },
           {
             "name": "body",
@@ -1564,7 +1564,7 @@
             "required": true,
             "description": "Signal data",
             "schema": {
-              "$ref": "#/definitions/SignalReport"
+              "$ref": "./delivery_common.oas2.yml#/definitions/SignalReport"
             },
             "x-examples": {
               "application/json": {
@@ -1584,50 +1584,16 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
-            "examples": {
-              "application/json": {},
-              "new": {}
-            }
+            "$ref": "./delivery_common.oas2.yml#/responses/200"
           },
           "400": {
-            "description": "No results found, or missing parameter",
-            "schema": {
-              "$ref": "#/definitions/ReportError"
-            },
-            "examples": {
-              "application/json": {
-                "result": "foo",
-                "data": "foo",
-                "action": "discard"
-              }
-            }
+            "$ref": "./delivery_common.oas2.yml#/responses/Reports-400"
           },
           "401": {
-            "description": "Authorization/authentication error",
-            "schema": {
-              "$ref": "#/definitions/ReportError"
-            },
-            "examples": {
-              "application/json": {
-                "result": "foo",
-                "data": "foo",
-                "action": "discard"
-              }
-            }
+            "$ref": "./delivery_common.oas2.yml#/responses/Reports-401"
           },
           "500": {
-            "description": "Internal error",
-            "schema": {
-              "$ref": "#/definitions/ReportError"
-            },
-            "examples": {
-              "application/json": {
-                "result": "foo",
-                "data": "foo",
-                "action": "discard"
-              }
-            }
+            "$ref": "./delivery_common.oas2.yml#/responses/Reports-500"
           }
         }
       }
