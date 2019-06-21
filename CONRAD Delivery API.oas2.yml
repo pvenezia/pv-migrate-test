@@ -108,7 +108,7 @@
           "200": {
             "description": "Successful response",
             "schema": {
-              "$ref": "#/definitions/DeviceResponse"
+              "$ref": "./delivery_common.oas2.yml#/definitions/DeviceResponse"
             },
             "examples": {
               "application/json": {
