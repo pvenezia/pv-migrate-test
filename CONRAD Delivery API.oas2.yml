@@ -1529,7 +1529,7 @@
           }
         ],
         "responses": {
-					"200": {
+          "200": {
             "$ref": "./delivery_common.oas2.yml#/responses/200"
           },
           "400": {
@@ -1552,7 +1552,7 @@
         "summary": "Submit a signal strength report",
         "description": "This path allows the client to submit a signal strength report containing the currently tuned `broadcastId` and a signal strength value",
         "parameters": [
-					{
+          {
             "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
           },
           {
@@ -1598,5 +1598,8 @@
         }
       }
     }
-  }
+  },
+  "parameters": {},
+  "definitions": {},
+  "responses": {}
 }
