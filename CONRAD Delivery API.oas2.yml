@@ -306,56 +306,30 @@
           "application/json"
         ],
         "description": "Retrieves a list of `Broadcast` objects from a location query, frequencies, GCC/ensemble IDs pairs, or GCC/piCode pairs.\n\nThis is the general query type, designed to be used by most clients with access to one or more tuners.\n\nThe majority of the queries to this path will be latitude and longitude only, but extended query types for different broadcast technologies are supported.\n\nThis method accepts a query with required coordinates and further data on stations that are available based on tuner reception. This may include purely analog frequencies or DAB GCC and ensemble ID pairs, or GCC and PI code pairs. The API will return a list of stations based on the data presented in the query. The more descriptive data the client can deliver in the query, the more accurate the resulting broadcast list will be.\n\nThe minimum query components are lat/lng and deviceId.\n\nThe result is an array of objects, each with a unique identifier, and broadcast details related to their broadcast technology. The list may be contain broadcast definitions representing multiple different broadcast technologies. All results are best-effort, and objects may contain only minimal data -- not every pair in the object may be populated or present for every object in a response array.",
-        "parameters": [
+  "parameters": [
           {
-            "$ref": "#/parameters/mfgId"
+            "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
           },
           {
-            "$ref": "#/parameters/Authorization"
+            "$ref": "./delivery_common.oas2.yml#/parameters/Authorization"
           },
           {
-            "$ref": "#/parameters/lat"
+            "$ref": "./delivery_common.oas2.yml#/parameters/lat"
           },
           {
-            "$ref": "#/parameters/lng"
+            "$ref": "./delivery_common.oas2.yml#/parameters/lng"
           },
           {
-            "name": "deviceType",
-            "in": "query",
-            "description": "Supported receiver technologies bitmask.\n\nDefault value is `0`, which causes results for all supported receivers to be returned.  Other accepted values are `1` for analog, `2` for hdradio, `4` for dab.  The values may be OR-ed together (e.g., `3` for analog and hdradio).",
-            "type": "integer",
-            "default": 0,
-            "required": false
+            "$ref": "./delivery_common.oas2.yml#/parameters/deviceType"
           },
           {
-            "name": "freq",
-            "in": "query",
-            "description": "Array of analog/HD frequencies in kHz (e.g. `1040,89900,101100`)",
-            "type": "array",
-            "items": {
-              "type": "integer"
-            },
-            "required": false
+            "$ref": "./delivery_common.oas2.yml#/parameters/freq"
           },
           {
-            "name": "rds",
-            "in": "query",
-            "description": "Array of strings in the format `gcc.picode.frequency` (e.g. `de0.de37.89900`)",
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "required": false
+            "$ref": "./delivery_common.oas2.yml#/parameters/rds"
           },
           {
-            "name": "dab",
-            "in": "query",
-            "description": "Array of strings in the format `gcc.eid` (e.g. `de0.d285`)",
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "required": false
+            "$ref": "./delivery_common.oas2.yml#/parameters/dab"
           }
         ],
         "responses": {
