@@ -505,28 +505,28 @@
           "application/json"
         ],
         "description": "Retrieves an individual `Broadcast` object given a broadcast ID.",
-        "parameters": [
+       "parameters": [
           {
-            "$ref": "#/parameters/mfgId"
+            "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
           },
           {
-            "$ref": "#/parameters/Authorization"
+            "$ref": "./delivery_common.oas2.yml#/parameters/Authorization"
           },
           {
-            "$ref": "#/parameters/broadcastId"
+            "$ref": "./delivery_common.oas2.yml#/parameters/broadcastId"
           },
           {
-            "$ref": "#/parameters/lat-nr"
+            "$ref": "./delivery_common.oas2.yml#/parameters/lat-nr"
           },
           {
-            "$ref": "#/parameters/lng-nr"
+            "$ref": "./delivery_common.oas2.yml#/parameters/lng-nr"
           }
         ],
-        "responses": {
+         "responses": {
           "200": {
             "description": "Successful response",
             "schema": {
-              "$ref": "#/definitions/Broadcast"
+              "$ref": "./delivery_common.oas2.yml#/definitions/Broadcast"
             },
             "examples": {
               "application/json": {
@@ -642,7 +642,7 @@
           "400": {
             "description": "No results found, or missing parameter",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "./delivery_common.oas2.yml#/definitions/Error"
             },
             "examples": {
               "application/json": {
@@ -654,7 +654,7 @@
           "401": {
             "description": "Authorization/authentication error",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "./delivery_common.oas2.yml#/definitions/Error"
             },
             "examples": {
               "application/json": {
@@ -666,7 +666,7 @@
           "500": {
             "description": "Internal error",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "./delivery_common.oas2.yml#/definitions/Error"
             },
             "examples": {
               "application/json": {
