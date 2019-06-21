@@ -1477,16 +1477,7 @@
             "description": "Successful response"
           },
           "400": {
-            "description": "No results found, or missing parameter",
-            "schema": {
-              "$ref": "#/definitions/ReportError"
-            },
-            "examples": {
-              "application/json": {
-                "result": "foo",
-                "data": "foo",
-                "action": "discard"
-              }
+            "$ref": "./delivery_common.oas2.yml#/responses/Reports-400"
             }
           },
           "401": {
