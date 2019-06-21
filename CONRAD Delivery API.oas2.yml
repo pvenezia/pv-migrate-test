@@ -713,7 +713,7 @@
           "200": {
             "description": "Successful response",
             "schema": {
-              "$ref": "#/definitions/Live"
+              "$ref": "./delivery_common.oas2.yml#/definitions/Live"
             },
             "examples": {
               "application/json": {
@@ -772,7 +772,7 @@
           "400": {
             "description": "Bad query or missing parameter",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "./delivery_common.oas2.yml#/definitions/Error"
             },
             "examples": {
               "application/json": {
@@ -784,7 +784,7 @@
           "401": {
             "description": "Authorization/authentication error",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "./delivery_common.oas2.yml#/definitions/Error"
             },
             "examples": {
               "application/json": {
@@ -796,7 +796,7 @@
           "404": {
             "description": "No results found. This is not an indicator that live data is permanently unavailable for the `broadcastId`, just that it is not currently present at the time of query.",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "./delivery_common.oas2.yml#/definitions/Error"
             },
             "examples": {
               "application/json": {
