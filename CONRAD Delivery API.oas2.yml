@@ -979,11 +979,11 @@
         "summary": "Submit service usage reports",
         "description": "This path allows the client to submit service usage reports to the API containing data on broadcasts and other media consumption.\n\nThis report is to be submitted on a scheduled basis as determined by the `reportsMinInterval` and `reportsMaxInterval` values in the `/config` response. Data collected by the client within those time limits is then submitted to the API and a new report is begun.\n\nIf a report has not been successfully submitted within the elapsed time specified in the `reportsMaxInterval` value, then the report is discarded and a new report begun. If the report size exceeds `reportsMaxSize` before submission, then the report is discarded and a new report begun.",
         "parameters": [
-          {
-            "$ref": "#/parameters/mfgId"
+ {
+            "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
           },
           {
-            "$ref": "#/parameters/Authorization"
+            "$ref": "./delivery_common.oas2.yml#/parameters/Authorization"
           },
           {
             "name": "body",
