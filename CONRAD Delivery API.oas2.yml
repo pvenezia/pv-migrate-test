@@ -691,22 +691,22 @@
         "description": "\n***Note: Data from the `/broadcasts/{broadcastId}/live` path is currently available for thousands of North American broadcasts, and selected cities in Europe and Asia, such as Berlin, Germany; London, UK; Paris, France; Tokyo, Japan; and Seoul, South Korea. Live data for other geographic regions is coming.***\n\nThe `/broadcasts/{broadcastId}/live` path retrieves live/now-playing data objects for a specific broadcast ID. This is the path that is called when a client needs data on what content is currently playing on a specfic broadcast for purposes of displaying song or program information, album art, and other data if that data exists for that broadcast.\n\nThis path is to be used when triggered by the message queue notifications for this broadcast. The AMQP connection URI is specified in `Broadcasts#broadcastData.mqURI`, along with `mqKey` and `mqExchange`.  The message queue push data is in the form of `broadcastId,liveId`. Upon receiving the message via the AMQP queue, the client should call `/broadcasts/{broadcastId}/live` to retrieve the live data object.\n\nThis method is not intended to be polled at timed intervals or used without subscription to the AMQP queue and routing key for a specific broadcast. It may be used for a single snapshot of data for a station or small set of stations to enhance a station guide display.\n\nHowever, a call to `/broadcasts/{broadcastId}/live` should be made prior to subscribing to the message queue for a specific broadcast in order to retrieve current data before subscribing to receive notifications to retrieve new data.\n\nIf a client is disconnected from the AMQP service, it should attempt to reconnect and subscribe to the routing key again. In addition, it should request `/broadcasts/{broadcastId}/live` immediately to ensure that the latest available live data is presented. If reconnection is not possible for an extended length of time, then the client should cease presenting live data until the connection can be resumed.\n\nNot all broadcast IDs will have a live data feed. See the key `hasLiveData` in each station record in a response to a `/broadcasts` query. Live data should only be requested if `hasLiveData` is `true` for that `broadcastId`.\n\nIf the response to a GET is `202 Accepted`, then the client is to wait for config parameter `liveDataRetry` seconds before retrying the GET. This is because we may need to gather the requested data from other sources and techniques that require several seconds to complete.\n\nIf this path returns a `404 Not Found`, no live data is currently available for that `broadcastId`. This may be a momentary lack of data whilst the broadcast is in an ad break, or no song is playing, or it may be a longer duration without live data depending on the broadcast content. \n\nYou can request data again at any time (as long as `hasLiveData` is true), and should subscribe to the `broadcastId` push notification message queue to get updates when data is again present or changes.",
         "parameters": [
           {
-            "$ref": "#/parameters/mfgId"
+            "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
           },
           {
-            "$ref": "#/parameters/Authorization"
+            "$ref": "./delivery_common.oas2.yml#/parameters/Authorization"
           },
           {
-            "$ref": "#/parameters/broadcastId"
+            "$ref": "./delivery_common.oas2.yml#/parameters/broadcastId"
           },
           {
-            "$ref": "#/parameters/lat"
+            "$ref": "./delivery_common.oas2.yml#/parameters/lat"
           },
           {
-            "$ref": "#/parameters/lng"
+            "$ref": "./delivery_common.oas2.yml#/parameters/lng"
           },
           {
-            "$ref": "#/parameters/disp"
+            "$ref": "./delivery_common.oas2.yml#/parameters/disp"
           }
         ],
         "responses": {
