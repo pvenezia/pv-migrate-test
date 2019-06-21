@@ -831,20 +831,15 @@
           "application/json"
         ],
         "description": "Retrieves genre data. Genres and sub-genres are specified in broadcast records by ID. This path retrieves the genre name/ID pairs to be used in display.\n\nWe will be modifying and consolidating the genre lists over time, so the entries in this list will become more concise.",
-        "parameters": [
+"parameters": [
           {
-            "$ref": "#/parameters/mfgId"
+            "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
           },
           {
-            "$ref": "#/parameters/Authorization"
+            "$ref": "./delivery_common.oas2.yml#/parameters/Authorization"
           },
           {
-            "name": "lang",
-            "in": "query",
-            "description": "[RFC 5646](https://tools.ietf.org/html/rfc5646) compliant tag specifying the language and region to use when returning the results (default: `en-US`).\n\nThe results will be in `en-US` if the requested language is not available.",
-            "required": false,
-            "type": "string",
-            "default": "en-US"
+            "$ref": "./delivery_common.oas2.yml#/parameters/lang"
           }
         ],
         "responses": {
