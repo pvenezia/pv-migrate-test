@@ -848,7 +848,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/GenreListObject"
+                "$ref": "./delivery_common.oas2.yml#/definitions/GenreListObject"
               }
             },
             "examples": {
@@ -935,7 +935,7 @@
           "400": {
             "description": "No results found, or missing parameter",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "./delivery_common.oas2.yml#/definitions/Error"
             },
             "examples": {
               "application/json": {
@@ -947,7 +947,7 @@
           "401": {
             "description": "Authorization/authentication error",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "./delivery_common.oas2.yml#/definitions/Error"
             },
             "examples": {
               "application/json": {
@@ -959,7 +959,7 @@
           "500": {
             "description": "Internal error",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "./delivery_common.oas2.yml#/definitions/Error"
             },
             "examples": {
               "application/json": {
