@@ -1005,8 +1005,6 @@
       }
     }
   },
-  "parameters": {},
-  "definitions": {},
   "consumes": [
     "application/json"
   ],
