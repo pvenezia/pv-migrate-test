@@ -193,7 +193,7 @@
           "application/json"
         ],
         "description": "Retrieves a device configuration. This occurs at every startup and periodically as determined by the `configRefresh` variable.\n\nThe parameters specified in this object will dictate client behavior pertaining to API interaction. The values for keys in this object may change depending on the geographical location of the client, or when the API needs to control certain client interactions due to various internal considerations.\n\nClients should never hard-code values that are present in a `/config` response, they are to be updated whenever a new `/config` response is received, which may occur periodically during normal operation.",
-  "parameters": [
+        "parameters": [
           {
             "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
           },
@@ -306,7 +306,7 @@
           "application/json"
         ],
         "description": "Retrieves a list of `Broadcast` objects from a location query, frequencies, GCC/ensemble IDs pairs, or GCC/piCode pairs.\n\nThis is the general query type, designed to be used by most clients with access to one or more tuners.\n\nThe majority of the queries to this path will be latitude and longitude only, but extended query types for different broadcast technologies are supported.\n\nThis method accepts a query with required coordinates and further data on stations that are available based on tuner reception. This may include purely analog frequencies or DAB GCC and ensemble ID pairs, or GCC and PI code pairs. The API will return a list of stations based on the data presented in the query. The more descriptive data the client can deliver in the query, the more accurate the resulting broadcast list will be.\n\nThe minimum query components are lat/lng and deviceId.\n\nThe result is an array of objects, each with a unique identifier, and broadcast details related to their broadcast technology. The list may be contain broadcast definitions representing multiple different broadcast technologies. All results are best-effort, and objects may contain only minimal data -- not every pair in the object may be populated or present for every object in a response array.",
-  "parameters": [
+        "parameters": [
           {
             "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
           },
@@ -505,7 +505,7 @@
           "application/json"
         ],
         "description": "Retrieves an individual `Broadcast` object given a broadcast ID.",
-       "parameters": [
+        "parameters": [
           {
             "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
           },
@@ -522,7 +522,7 @@
             "$ref": "./delivery_common.oas2.yml#/parameters/lng-nr"
           }
         ],
-         "responses": {
+        "responses": {
           "200": {
             "description": "Successful response",
             "schema": {
@@ -831,7 +831,7 @@
           "application/json"
         ],
         "description": "Retrieves genre data. Genres and sub-genres are specified in broadcast records by ID. This path retrieves the genre name/ID pairs to be used in display.\n\nWe will be modifying and consolidating the genre lists over time, so the entries in this list will become more concise.",
-"parameters": [
+        "parameters": [
           {
             "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
           },
@@ -979,7 +979,7 @@
         "summary": "Submit service usage reports",
         "description": "This path allows the client to submit service usage reports to the API containing data on broadcasts and other media consumption.\n\nThis report is to be submitted on a scheduled basis as determined by the `reportsMinInterval` and `reportsMaxInterval` values in the `/config` response. Data collected by the client within those time limits is then submitted to the API and a new report is begun.\n\nIf a report has not been successfully submitted within the elapsed time specified in the `reportsMaxInterval` value, then the report is discarded and a new report begun. If the report size exceeds `reportsMaxSize` before submission, then the report is discarded and a new report begun.",
         "parameters": [
- 					{
+          {
             "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
           },
           {
@@ -1496,19 +1496,19 @@
         "summary": "Submit an action report",
         "description": "This path allows the client to submit a notification of an action to the API. This is where user interactions with the services provided by the API are logged, including user actions such as exiting the listening session.\n\nThese actions include the user clicking on buttons in the UI that are present due to data returned by the API, such as SMS and phone numbers, location data for maps/navigation purposes, sharing information on social media and so forth.",
         "parameters": [
-          {
-            "$ref": "#/parameters/mfgId"
-          },
-          {
-            "$ref": "#/parameters/Authorization"
-          },
-          {
+           {
+             "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
+           },
+           {
+             "$ref": "./delivery_common.oas2.yml#/parameters/Authorization"
+           },
+           {
             "name": "body",
             "in": "body",
             "required": true,
             "description": "Action data",
             "schema": {
-              "$ref": "#/definitions/ReportAction"
+              "$ref": "./delivery_common.oas2.yml#/definitions/ReportAction"
             },
             "x-examples": {
               "application/json": {
