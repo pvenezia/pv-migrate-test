@@ -150,7 +150,7 @@
           "400": {
             "description": "No results found, or missing parameter",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "./delivery_common.oas2.yml#/definitions/Error"
             },
             "examples": {
               "application/json": {
@@ -162,7 +162,7 @@
           "401": {
             "description": "Authorization/authentication error",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "./delivery_common.oas2.yml#/definitions/Error"
             },
             "examples": {
               "application/json": {
@@ -174,7 +174,7 @@
           "500": {
             "description": "Internal error",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "./delivery_common.oas2.yml#/definitions/Error"
             },
             "examples": {
               "application/json": {
@@ -193,26 +193,21 @@
           "application/json"
         ],
         "description": "Retrieves a device configuration. This occurs at every startup and periodically as determined by the `configRefresh` variable.\n\nThe parameters specified in this object will dictate client behavior pertaining to API interaction. The values for keys in this object may change depending on the geographical location of the client, or when the API needs to control certain client interactions due to various internal considerations.\n\nClients should never hard-code values that are present in a `/config` response, they are to be updated whenever a new `/config` response is received, which may occur periodically during normal operation.",
-        "parameters": [
+  "parameters": [
           {
-            "$ref": "#/parameters/mfgId"
+            "$ref": "./delivery_common.oas2.yml#/parameters/mfgId"
           },
           {
-            "$ref": "#/parameters/Authorization"
+            "$ref": "./delivery_common.oas2.yml#/parameters/Authorization"
           },
           {
-            "$ref": "#/parameters/lat"
+            "$ref": "./delivery_common.oas2.yml#/parameters/lat"
           },
           {
-            "$ref": "#/parameters/lng"
+            "$ref": "./delivery_common.oas2.yml#/parameters/lng"
           },
           {
-            "name": "geoCode",
-            "in": "query",
-            "description": "Geocode ID delivered initially by `/devices` and subsequently by `/config`",
-            "type": "string",
-            "required": true,
-            "maxLength": 32
+            "$ref": "./delivery_common.oas2.yml#/parameters/geoCode"
           }
         ],
         "responses": {
