@@ -991,7 +991,7 @@
             "required": true,
             "description": "Reported data",
             "schema": {
-              "$ref": "#/definitions/Report"
+              "$ref": "./delivery_common.oas2.yml#/definitions/Report"
             },
             "x-examples": {
               "application/json": {
