@@ -808,7 +808,7 @@
           "500": {
             "description": "Internal error",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "./delivery_common.oas2.yml#/definitions/Error"
             },
             "examples": {
               "application/json": {
