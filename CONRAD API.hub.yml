@@ -26,7 +26,7 @@ pages:
   /api-reference:
     title: CONRAD API Reference
     data:
-      $ref: ./Delivery Delivery API - RELEASE.oas2.yml
+      $ref: ./CONRAD Delivery API - RELEASE.oas2.yml
   /guides:
     title: Guides
     data:
