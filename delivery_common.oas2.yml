@@ -760,12 +760,6 @@ definitions:
         description: Array of streaming data objects pertaining to this broadcast ID
         items:
           $ref: '#/definitions/StreamsData'
-      ipcPublisherId:
-        type: string
-        description: >-
-          Publisher ID for IPC (IP Content) queries. Used to link broadcasts
-          with IP content produced by the same station or entity. May not exist
-          in the result.
   StreamsData:
     type: object
     properties:
