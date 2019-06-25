@@ -1,3 +1,7 @@
+### Changes in CONRAD API version 1.1.4
+
+* Documentation consolidation and cleanup 
+
 ### Changes in CONRAD API version 1.1.3
 
 * Fixed some cosmetic display issues with escaped quotes
