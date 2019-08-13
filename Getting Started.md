@@ -10,7 +10,7 @@ Each endpoint described in the [API Reference](/api-reference) has a built-in qu
 Note that the keys you use to access the API through the sandbox will not work in production.
 
 ```
-Note: We have recently released v1.2 of the CONRAD API, including two new endpoints, /ipc` for IP-based content such as podcasts and Internet streams, and `/localevents` for information on concerts, shows, and general events local to a given area.
+Note: We have recently released v1.2 of the CONRAD API, including two new endpoints, /ipc` for IP-based content such as podcasts and Internet streams, and `/localevents` for information on live concerts, shows, and general events local to a given area.
 ```
 
 See the [API Guides](/guides) and [API Reference](/api-reference) for more information on these new endpoints.
