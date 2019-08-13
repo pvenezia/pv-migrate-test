@@ -1,3 +1,7 @@
+### Changes in CONRAD API version 1.2.0
+
+* Introduction of `/ipc` and `/localevents` endpoints, providing IP Content and local event information, respectively
+
 ### Changes in CONRAD API version 1.1.4
 
 * Documentation consolidation and cleanup 
