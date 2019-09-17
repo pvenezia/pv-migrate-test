@@ -6931,6 +6931,7 @@ paths:
                     description: Next cursor position
               result:
                 type: object
+                title: Local Events Event
                 properties:
                   events:
                     type: object
@@ -6942,7 +6943,7 @@ paths:
                         items:
                           type: object
                           properties:
-                            id:
+                            leEventId:
                               type: string
                             distance:
                               type: string
@@ -7059,7 +7060,6 @@ paths:
                               type: string
                             imageURL:
                               type: string
-                title: Local Events Event
           examples:
             application/json:
               cursor:
