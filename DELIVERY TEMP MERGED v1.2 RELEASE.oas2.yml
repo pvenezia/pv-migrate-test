@@ -7000,6 +7000,9 @@ paths:
                                                 type: string
                                               currency:
                                                 type: string
+                            desc:
+                              type: string
+                              description: Texxt description of the event
                   venues:
                     type: object
                     properties:
@@ -7068,7 +7071,7 @@ paths:
                 next: defg123455
               result:
                 events:
-                  - id: '330938942'
+                  - ileEventiD: '330938942'
                     distance: '39.1'
                     name: A Night of Brass!
                     desc: >-
