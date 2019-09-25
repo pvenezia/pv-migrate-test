@@ -7071,80 +7071,84 @@ paths:
                 next: defg123455
               result:
                 events:
-                  - leEventiD: '330938942'
-                    distance: '39.1'
-                    name: A Night of Brass!
-                    desc: >-
-                      Wormtown Ska presents: A Night of Brass! This will be the
-                      first jazz, funk, reggae and ska mashup! And there will be
-                      a lot of horns to get your brass fix!<br /><br
-                      />Featuring:The Dapper Brass - Funk/Jazz Brass band from
-                      Boston!<br /><br />Revolutionary Snake Ensemble - NOLA
-                      style Jazz, Funk, Street Beat from Boston!<br /><br
-                      />Ghost Town Steppas - Originally from New Orleans LA and
-                      on tour from Malibu CA, this super group brings their
-                      sweet blends of two-tone and reggae!<br /><br />So Long
-                      Liberty - Ska / Punk / Rock / Reggae from CT!<br /><br
-                      />At The Raven Music Hall in Worcester!<br />258 Pleasant
-                      St, 01609<br />10.00 (21+) and 12.00 (18+)
-                    genreIds:
-                      - 23
-                    types:
-                      - Concerts - Jazz
-                    schedule:
-                      venue_id: '333902'
-                      eventTime: '20:00:00'
-                      dates:
-                        start: '2018-07-27'
-                        end: '2018-07-27'
+                  copyright: Copyright 2019
+                  event:
+                    - leEventiD: '330938942'
+                      distance: '39.1'
+                      name: A Night of Brass!
+                      desc: >-
+                        Wormtown Ska presents: A Night of Brass! This will be
+                        the first jazz, funk, reggae and ska mashup! And there
+                        will be a lot of horns to get your brass fix!<br /><br
+                        />Featuring:The Dapper Brass - Funk/Jazz Brass band from
+                        Boston!<br /><br />Revolutionary Snake Ensemble - NOLA
+                        style Jazz, Funk, Street Beat from Boston!<br /><br
+                        />Ghost Town Steppas - Originally from New Orleans LA
+                        and on tour from Malibu CA, this super group brings
+                        their sweet blends of two-tone and reggae!<br /><br />So
+                        Long Liberty - Ska / Punk / Rock / Reggae from CT!<br
+                        /><br />At The Raven Music Hall in Worcester!<br />258
+                        Pleasant St, 01609<br />10.00 (21+) and 12.00 (18+)
+                      genreIds:
+                        - 23
+                      types:
+                        - Concerts - Jazz
+                      schedule:
+                        venue_id: '333902'
+                        eventTime: '20:00:00'
+                        dates:
+                          start: '2018-07-27'
+                          end: '2018-07-27'
                 venues:
-                  - id: '582887'
-                    name: Casino Ballroom Hampton Beach
-                    shortDesc: Rocking Relic
-                    longDesc: >-
-                      The classic Casino Ballroom at Hampton Beach has come a
-                      long way from the swinging big-band times in the 1930's to
-                      the popular concert venue that it is today. Come catch a
-                      performance at the century-old Ballroom during its season
-                      from April to November. Famous performers and entertainers
-                      like Black Sabbath, Tracy Chapman, The Crosby's, U2, Jerry
-                      Seinfeld and Jay Leno have been some of the many who have
-                      entertained their fans here. Stay energized and pumped
-                      with the range of snacks like pizzas, nachos, sandwiches
-                      and various drinks available.
-                    types:
-                      - Concert Hall
-                    address:
-                      address1: 169 Ocean Boulevard
-                      city: Hampton Beach
-                      state: NH
-                      country:
-                        name: United States
-                      zip: 03842
-                      latitude: '42.90972090'
-                      longitude: '-70.81094390'
-                    neighborhood: Outside the City
-                    phone:
-                      - +1 603 929 4100
-                      - +1 603 929 4201
-                    fax: +1 603 926 9505
-                    email: info@Casinoballroom.com
-                    url: 'http://www.casinoballroom.com/'
-                    imageURL: 'https://s.cnrd.io/e/1/2/12333902abcdefg.jpg'
-                  - id: '582887'
-                    name: Raven Music Hall
-                    types:
-                      - Major Events
-                      - Concert Hall
-                    address:
-                      address1: 258 Pleasant Street
-                      city: Worcester
-                      state: MA
-                      country:
-                        name: United States
-                      zip: 01609
-                      latitude: '42.26384000'
-                      longitude: '-71.81089000'
+                  copyright: Copyright 2019
+                  venue:
+                    - id: '582887'
+                      name: Casino Ballroom Hampton Beach
+                      shortDesc: Rocking Relic
+                      longDesc: >-
+                        The classic Casino Ballroom at Hampton Beach has come a
+                        long way from the swinging big-band times in the 1930's
+                        to the popular concert venue that it is today. Come
+                        catch a performance at the century-old Ballroom during
+                        its season from April to November. Famous performers and
+                        entertainers like Black Sabbath, Tracy Chapman, The
+                        Crosby's, U2, Jerry Seinfeld and Jay Leno have been some
+                        of the many who have entertained their fans here. Stay
+                        energized and pumped with the range of snacks like
+                        pizzas, nachos, sandwiches and various drinks available.
+                      types:
+                        - Concert Hall
+                      address:
+                        address1: 169 Ocean Boulevard
+                        city: Hampton Beach
+                        state: NH
+                        country:
+                          name: United States
+                        zip: 03842
+                        latitude: '42.90972090'
+                        longitude: '-70.81094390'
+                      neighborhood: Outside the City
+                      phone:
+                        - +1 603 929 4100
+                        - +1 603 929 4201
+                      fax: +1 603 926 9505
+                      email: info@Casinoballroom.com
+                      url: 'http://www.casinoballroom.com/'
+                      imageURL: 'https://s.cnrd.io/e/1/2/12333902abcdefg.jpg'
+                    - id: '582887'
+                      name: Raven Music Hall
+                      types:
+                        - Major Events
+                        - Concert Hall
+                      address:
+                        address1: 258 Pleasant Street
+                        city: Worcester
+                        state: MA
+                        country:
+                          name: United States
+                        zip: 01609
+                        latitude: '42.26384000'
+                        longitude: '-71.81089000'
         '400':
           description: 'No results found, or missing parameter'
           schema:
