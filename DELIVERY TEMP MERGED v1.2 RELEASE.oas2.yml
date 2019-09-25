@@ -7102,7 +7102,7 @@ paths:
                 venues:
                   copyright: Copyright 2019
                   venue:
-                    - id: '582887'
+                    - id: '333902'
                       name: Casino Ballroom Hampton Beach
                       shortDesc: Rocking Relic
                       longDesc: >-
@@ -7135,20 +7135,6 @@ paths:
                       email: info@Casinoballroom.com
                       url: 'http://www.casinoballroom.com/'
                       imageURL: 'https://s.cnrd.io/e/1/2/12333902abcdefg.jpg'
-                    - id: '582887'
-                      name: Raven Music Hall
-                      types:
-                        - Major Events
-                        - Concert Hall
-                      address:
-                        address1: 258 Pleasant Street
-                        city: Worcester
-                        state: MA
-                        country:
-                          name: United States
-                        zip: 01609
-                        latitude: '42.26384000'
-                        longitude: '-71.81089000'
         '400':
           description: 'No results found, or missing parameter'
           schema:
