@@ -7002,7 +7002,7 @@ paths:
                                                 type: string
                             desc:
                               type: string
-                              description: Texxt description of the event
+                              description: Text description of the event
                   venues:
                     type: object
                     properties:
