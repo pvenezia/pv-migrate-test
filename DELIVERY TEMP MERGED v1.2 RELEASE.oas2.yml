@@ -7094,7 +7094,7 @@ paths:
                       types:
                         - Concerts - Jazz
                       schedule:
-                        venue_id: '333902'
+                        leVenueId: '333902'
                         eventTime: '20:00:00'
                         dates:
                           start: '2018-07-27'
