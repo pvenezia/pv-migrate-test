@@ -7069,11 +7069,11 @@ paths:
                 start: abcdef12345
                 current: 12345abcdefg
                 next: defg123455
-              result:
+              results:
                 events:
                   copyright: Copyright 2019
                   event:
-                    - leEventiD: '330938942'
+                    - leEventId: '330938942'
                       distance: '39.1'
                       name: A Night of Brass!
                       desc: >-
@@ -7102,7 +7102,7 @@ paths:
                 venues:
                   copyright: Copyright 2019
                   venue:
-                    - id: '333902'
+                    - leVenueId: '333902'
                       name: Casino Ballroom Hampton Beach
                       shortDesc: Rocking Relic
                       longDesc: >-
