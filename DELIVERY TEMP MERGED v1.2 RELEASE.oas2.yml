@@ -6066,6 +6066,7 @@ paths:
                 items:
                   type: object
                   description: 'Describes a unique, individual podcast episode'
+                  title: IPC Podcast Episode Object
                   properties:
                     published:
                       type: string
@@ -6100,11 +6101,10 @@ paths:
                           items:
                             type: string
                             example: 'http://www.example.cnrd.io'
-                    genres:
+                    genreIds:
                       type: array
                       items:
-                        type: number
-                  title: IPC Podcast Episode Object
+                        type: integer
           examples:
             application/json:
               cursor:
@@ -6263,6 +6263,7 @@ paths:
           schema:
             type: object
             description: 'Describes a unique, individual podcast episode'
+            title: IPC Podcast Episode Object
             properties:
               published:
                 type: string
@@ -6297,11 +6298,10 @@ paths:
                     items:
                       type: string
                       example: 'http://www.example.cnrd.io'
-              genres:
+              genreIds:
                 type: array
                 items:
-                  type: number
-            title: IPC Podcast Episode Object
+                  type: integer
           examples:
             application/json:
               published: '2018-01-10T05:41:18.763Z'
