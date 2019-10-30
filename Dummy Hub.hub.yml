@@ -1,31 +1,72 @@
-title: Dummy Hub Hub
+title: Dummy Hub
 header:
   nav:
     left: []
     center: []
     right:
-      - title: Help
-        path: 'https://docs.stoplight.io'
+      - title: API Reference
+        path: /api-reference
+      - title: Guides
+        path: /guides
+      - title: Changelog
+        path: /changelog
 pages:
   /:
     title: Home
     data:
       blocks:
         - type: text
-          data: >-
-            # Welcome to your new hub. 
-
-
-            Its kind of empty in here - click the **"Design"** button at the top
-            of the editor to switch to edit mode to add new pages, content, and
-            subpages!
-
-
-            Use references to power parts of your Hub with other files in this
-            project (like Modeling/OAS/Swagger files).
+          data:
+            $ref: ./Getting%20Started.md
+        - type: html
+          data: <p>
+        - type: text
+          data:
+            $ref: ./Authentication.md
   /api-reference:
-    title: API Reference
+    title: CONRAD API Reference
     data:
       $ref: ./DELIVERY TEMP MERGED v1.2 RELEASE.oas2.yml
     config:
       includeDownloadLink: true
+  /guides:
+    title: Guides
+    data:
+      children:
+        - title: API Client Flow
+          route:
+            path: /api-client-flow
+          data:
+            $ref: ./Guide - API Client Flow.md
+        - title: Broadcasts Request
+          route:
+            path: /broadcast-request
+          data:
+            $ref: ./Guide - Broadcast Request.md
+        - title: Device Registration
+          route:
+            path: /device-registration
+          data:
+            $ref: ./Guide - Device Registration.md
+        - title: AMQP Push Notifications Guide
+          route:
+            path: /amqp-push-notifications-guide
+          data:
+            $ref: ./Guide - AMQP Push Notifications.md
+        - title: IP Content Client Flow
+          route:
+            path: /ip-content-client-flow
+          data:
+            $ref: ./Guide - IP Content.md
+  /changelog:
+    title: Changelog
+    data:
+      $ref: ./Changelog.md
+theme:
+  background: '#363333'
+  primary: '#f3b229'
+  secondary: '#f26a28'
+  texture: ''
+logo: 'https://s3.amazonaws.com/dts-idea-static-assets/Connected-Radio-Logo-2.png'
+meta:
+  favicon: 'https://s3.amazonaws.com/dts-idea-static-assets/favicon.ico'
