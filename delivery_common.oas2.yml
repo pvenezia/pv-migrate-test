@@ -1,1673 +1,2598 @@
-swagger: '2.0'
+definitions:
+  ACRDataObject:
+    properties:
+      duration:
+        description: Duration in seconds
+        example: 305
+        type: number
+      id:
+        description: ID for this ACR response object
+        example: ad87e406-78a6-11e9-a5e7-0a580a200145
+        type: string
+      musicData:
+        properties:
+          album:
+            description: Primary or matching music/song album
+            example: Shake Your Moneymaker
+            type: string
+          artist:
+            description: Primary and/or printable artist name
+            example: The Black Crowes
+            type: string
+          conradAlbumId:
+            $ref: '#/definitions/conradAlbumId'
+          conradArtistId:
+            $ref: '#/definitions/conradArtistId'
+          conradTrackId:
+            $ref: '#/definitions/conradTrackId'
+          genreIds:
+            description: Array of genres and subgenres
+            example:
+            - 2
+            - 9
+            items:
+              type: integer
+            type: array
+          images:
+            items:
+              $ref: '#/definitions/ImagesObject'
+            type: array
+          title:
+            description: Title of music/song programming
+            example: Hard to Handle
+            type: string
+        title: Music Data
+        type: object
+      playOffsetMs:
+        description: Time in the song the sample began. In milliseconds.
+        example: 3243
+        type: number
+      score:
+        description: Confidence score of the identification from 0-100. Will be 0
+          if no match is found.
+        maximum: 100
+        minimum: 0
+        type: integer
+      startTime:
+        format: date-time
+        type: string
+    title: ACR Data Object
+    type: object
+  AdData:
+    properties:
+      data:
+        items:
+          properties:
+            content:
+              description: Content for SMS message or email, if any
+              example: 'YES'
+              type: string
+            target:
+              description: Contact value for designated type, such as URL, phone number
+                SMS shortcode, coordinates, etc
+              example: http://example.url.com
+              type: string
+            text:
+              description: Text accompaniment for button or link
+              items:
+                example: Tap here for more information
+                type: string
+              type: array
+            type:
+              description: 'Ad contact type.
+
+                none - display only,
+
+                url - URL to link,
+
+                email - email address,
+
+                phonenumber - phone number to call,
+
+                sms - SMS number,
+
+                coords - GPS coordinates to send to nav,
+
+                string - text string to send to nav for search
+
+                '
+              enum:
+              - none
+              - url
+              - email
+              - phonenumber
+              - sms
+              - coords
+              - string
+              example: url
+              type: string
+          type: object
+        type: array
+      type:
+        description: 'Type of ad/supplemental data.
+
+          web - Web page,
+
+          phone - telephone voice,
+
+          sms - SMS/text message,
+
+          email - email address,
+
+          locate - Location via coordinates or string
+
+          '
+        enum:
+        - web
+        - phone
+        - sms
+        - email
+        - locate
+        example: web
+        type: string
+    type: object
+  AnalogBroadcast:
+    properties:
+      band:
+        description: Band of this broadcast
+        enum:
+        - AM
+        - FM
+        example: FM
+        type: string
+      broadcastData:
+        $ref: '#/definitions/BaselineBroadcastData'
+      broadcastId:
+        description: CONRAD API ID for this broadcast
+        example: '12345'
+        type: string
+      country:
+        description: '[ISO-3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1)
+          country code for this broadcast'
+        example: US
+        type: string
+      ecc:
+        description: ECC of this broadcast
+        example: E0
+        type: string
+      freq:
+        description: Frequency of this broadcast
+        example: 103700
+        type: integer
+      piCode:
+        description: PI code of this broadcast
+        example: D310
+        type: string
+    type: object
+  BaselineBroadcastData:
+    properties:
+      callSign:
+        description: Call sign of broadcast, if applicable
+        example: WKRP
+        type: string
+      contentId:
+        description: An ID used to link different broadcasts that contain the same
+          content, such as translator stations, regional/national broadcasters
+        example: '12345'
+        type: string
+      description:
+        description: Description of broadcast
+        example: Modern and classic rock music
+        maxLength: 64
+        type: string
+      email:
+        description: Array of email addresses pertaining to this broadcast ID
+        items:
+          example: user@example.cnrd.io
+          type: string
+        type: array
+      enableShare:
+        default: true
+        description: Default value of `enableShare` in a `/broadcasts/{broadcastId}/live`
+          response for this broadcast if not explicitly specified in that response.
+          The default is true.
+        example: true
+        type: boolean
+      enableThumbs:
+        default: true
+        description: Default value of `enableThumbs` in a `/broadcasts/{broadcastId}/live`
+          response for this broadcast if not explicitly specified in that response.
+          The default is true.
+        example: true
+        type: boolean
+      format:
+        description: Format of broadcast, if applicable
+        example: music
+        type: string
+      genreIds:
+        description: Array of genre IDs for this broadcast
+        items:
+          example: 123
+          type: integer
+        type: array
+      hasLiveData:
+        default: true
+        description: This broadcast ID has live broadcast data obtainable via the
+          `/broadcasts/{broadcastId}/live` call
+        example: true
+        type: boolean
+      ipcPublisherId:
+        description: Publisher ID for IPC (IP Content) queries. Used to link broadcasts
+          with IP content produced by the same station or entity. May not exist in
+          the result.
+        type: string
+      languages:
+        description: Array of IETF language codes
+        items:
+          example: en-US
+          type: string
+        type: array
+      logoURL:
+        description: Logo URL
+        example: https://example.cnrd.io/img/abcdefg.png
+        type: string
+      logoURLHiRes:
+        description: Logo URL, high resolution
+        example: https://example.cnrd.io/img/abcdefg-hires.png
+        type: string
+      longDescription:
+        description: Long Description of broadcast
+        example: Central Pennsylvania's rock source, with Kim and Tom in the morning!
+        maxLength: 128
+        type: string
+      mqExchange:
+        description: Exchange to use for message queue connection
+        example: live
+        type: string
+      mqKey:
+        description: Routing key to use for message queue connection
+        example: '#.broadcast.12345'
+        type: string
+      mqURI:
+        description: URI for message queue connection
+        example: amqp://username:password@amqp.hostname.com/vhost
+        type: string
+      name:
+        description: Name of broadcast
+        example: 103.7FM The Rock
+        type: string
+      phone:
+        description: Array of phone numbers pertaining to this broadcast ID
+        items:
+          example: '12345678901'
+          type: string
+        type: array
+      sfOffIconURL:
+        description: URL for small service following inactive icon image for this
+          broadcast, 64x64
+        example: https://example.cnrd.io/img/a/3/a30183ea6cf6e345691dda5c94a97e5e.png
+        type: string
+      sfOffIconURLWide:
+        description: URL for wide service following inactive icon image for this broadcast,
+          224x64
+        example: https://example.cnrd.io/img/9/5/950d73b2d78c51ac794c2346d816b2e3.png
+        type: string
+      sfOnIconURL:
+        description: URL for small service following active icon image for this broadcast,
+          64x64
+        example: https://example.cnrd.io/img/2/2/2210d149ef776682bc583a919046aacb.png
+        type: string
+      sfOnIconURLWide:
+        description: URL for wide service following active icon image for this broadcast,
+          224x64
+        example: https://example.cnrd.io/img/e/8/e83993f9ecde475ced101978b0e4602d.png
+        type: string
+      slogan:
+        description: Slogan of broadcast
+        example: Yesterday and Today's Rock Hits!
+        type: string
+      sms:
+        description: Array of SMS numbers pertaining to this broadcast ID
+        items:
+          example: '123456'
+          type: string
+        type: array
+      sortKey:
+        description: Alphanumeric string to use instead of `name` when sorting station
+          alphabetically. This is for special cases when alphanumeric sorting isn't
+          suitable for the broadcast `name`.
+        example: abc
+        type: string
+      stationId:
+        description: An ID used to link different content from the same source. This
+          is the parent of all contentIds
+        example: '12345'
+        type: string
+      streams:
+        description: Array of streaming data objects pertaining to this broadcast
+          ID
+        items:
+          $ref: '#/definitions/StreamsData'
+        type: array
+      translator:
+        description: If present, this broadcast is a translator, and this string is
+          the callsign of the translator itself, while `callSign` will contain the
+          callsign of the source broadcast.
+        example: W212AB
+        type: string
+      urls:
+        description: Array of service URLs pertaining to this broadcast ID
+        properties:
+          facebook:
+            description: Array of Facebook URLs pertaining to this broadcast ID
+            items:
+              example: https://www.facebook.com/wkrprock
+              type: string
+            type: array
+          twitter:
+            description: Array of Twitter URLs pertaining to this broadcast ID
+            items:
+              example: https://twitter.com/wkrprock
+              type: string
+            type: array
+          website:
+            description: Array of Web URLs pertaining to this broadcast ID
+            items:
+              example: http://www.example.cnrd.io
+              type: string
+            type: array
+        type: object
+      useLiveUnverified:
+        default: true
+        description: Use `/broadcasts/{broadcastId}/live` data if available even if
+          the receiver station verification process fails.
+        example: true
+        type: boolean
+    type: object
+  Broadcast:
+    properties:
+      analog:
+        $ref: '#/definitions/AnalogBroadcast'
+      dab:
+        $ref: '#/definitions/DABBroadcast'
+      hdradio:
+        $ref: '#/definitions/HDRadioBroadcast'
+    title: Broadcast Data Object
+    type: object
+  BroadcastList:
+    properties:
+      analog:
+        items:
+          $ref: '#/definitions/AnalogBroadcast'
+        type: array
+      dab:
+        items:
+          $ref: '#/definitions/DABBroadcast'
+        type: array
+      hdradio:
+        items:
+          $ref: '#/definitions/HDRadioBroadcast'
+        type: array
+    title: Broadcasts Data Array
+    type: object
+  Coordinate:
+    properties:
+      lat:
+        description: Latitude in [decimal degrees](https://en.wikipedia.org/wiki/Decimal_degrees)
+          rounded to three decimal places (e.g. 43.094)
+        example: 43.094
+        format: double
+        type: number
+      lng:
+        description: Longitude in [decimal degrees](https://en.wikipedia.org/wiki/Decimal_degrees)
+          rounded to three decimal places (e.g. -71.730)
+        example: -71.73
+        format: double
+        type: number
+    type: object
+  Cursor:
+    properties:
+      current:
+        description: Current cursor position
+        example: defg123456abc
+        type: string
+      next:
+        description: Next cursor position
+        example: 12345abcdef
+        type: string
+      start:
+        description: Starting cursor
+        example: abcdefg123456
+        type: string
+    type: object
+  DABBroadcast:
+    properties:
+      broadcastData:
+        $ref: '#/definitions/BaselineBroadcastData'
+      broadcastId:
+        description: CONRAD API ID for this broadcast
+        example: '12345'
+        type: string
+      channel:
+        description: Service channel for this broadcast
+        example: 12A
+        type: string
+      country:
+        description: '[ISO-3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1)
+          country code for this broadcast'
+        example: US
+        type: string
+      eid:
+        description: DAB ensemble ID for this broadcast
+        example: C186
+        type: string
+      freq:
+        description: Ensemble broadcast frequency for this broadcast
+        example: 223936
+        type: integer
+      scids:
+        description: Service Component Identifier within Service for this broadcast
+        example: '0'
+        type: string
+      sid:
+        description: Service ID for this broadcast
+        example: C1C2
+        type: string
+    type: object
+  Device:
+    properties:
+      make:
+        example: MyMake
+        maxLength: 64
+        type: string
+      model:
+        example: MyModel
+        maxLength: 64
+        type: string
+      year:
+        example: 2017
+        type: integer
+    title: Device data
+    type: object
+  DeviceConfig:
+    properties:
+      altAPIURL:
+        description: 'Alternate URL to access API. This will be a scheme and hostname,
+          e.g. `https://new.api.url.com`
+
+          All paths will remain the same, including the version'
+        example: https://new.api.url.com
+        type: string
+      altAPIURLEnabled:
+        default: false
+        description: If true, use alternate URL to access API for the duration of
+          this operating session
+        example: false
+        type: boolean
+      altAPIURLPermanent:
+        default: false
+        description: If true, make alternate API URL permanent
+        example: false
+        type: boolean
+      broadcastDataCacheFlush:
+        default: false
+        description: Flush cache of all broadcast data
+        example: false
+        type: boolean
+      broadcastDataCacheTTL:
+        default: 3600
+        description: Time-to-live for the broadcast data cache in seconds
+        example: 3600
+        type: integer
+      broadcastQueryRefreshRate:
+        default: 600
+        description: Delay in seconds between resending broadcast queries
+        example: 600
+        type: integer
+      configRefresh:
+        default: 3600
+        description: Time in seconds to wait before refreshing /config
+        example: 3600
+        type: integer
+      defAlbumURL:
+        description: Default Album image URL
+        example: https://example.cnrd.io/img/abcdefg.png
+        type: string
+      defAlbumURLHiRes:
+        description: Default Album image URL - High resolution
+        example: https://example.cnrd.io/img/abcdefg-hires.png
+        type: string
+      defLogoURL:
+        description: Default Logo image URL
+        example: https://example.cnrd.io/img/abcdefg.png
+        type: string
+      defLogoURLHiRes:
+        description: Default Logo image URL - High resolution
+        example: https://example.cnrd.io/img/abcdefg-hires.png
+        type: string
+      enableAPI:
+        default: true
+        description: Must be true to use further CONRAD API services
+        example: true
+        type: boolean
+      enableLive:
+        default: true
+        description: Must be true to enable use of /broadcasts/{broadcastId}/live
+          path
+        example: true
+        type: boolean
+      errorRetry:
+        default: 60
+        description: Time in seconds to wait before a retry API call if 5xx error
+          encountered
+        example: 60
+        type: integer
+      expireBroadcastIds:
+        description: Immediately expire cached broadcast data matching these IDs
+        items:
+          example: '12345'
+          type: string
+        type: array
+      genreListCacheFlush:
+        default: false
+        description: Flush cache of all genre data and query for current genre data
+        example: false
+        type: boolean
+      genreListCacheTTL:
+        default: 86400
+        description: Time-to-live for the genre cache in seconds
+        example: 86400
+        type: integer
+      liveDataRetry:
+        default: 5
+        description: Time in seconds to wait before retrying a call to `/broadcasts/{broadcastId}/live`
+          following the receipt of a `202 Accepted` response. This call is only retried
+          if a `202` is received.
+        example: 5
+        type: integer
+      reportsMaxInterval:
+        default: 2592000
+        description: Maximum reporting interval for `/reports` POST, in seconds
+        example: 2592000
+        type: integer
+      reportsMaxSize:
+        default: 1024
+        description: Maximum size of report for `/reports` POST in kilobytes
+        example: 1024
+        type: integer
+      reportsMinInterval:
+        default: 86400
+        description: Minimum reporting interval for `/reports` POST, in seconds
+        example: 86400
+        type: integer
+      signalReportInterval:
+        default: 600
+        description: Reporting interval for `/reports/signal` signal strength POST,
+          in seconds
+        example: 600
+        type: integer
+      useMinQueries:
+        default: false
+        description: Force use of minimal data queries with only lat/lng query type
+        example: false
+        type: boolean
+    title: Device config Data Object
+    type: object
+  DeviceEvent:
+    properties:
+      count:
+        type: integer
+      event:
+        enum:
+        - insert
+        - remove
+        example: insert
+        type: string
+      mobileId:
+        maxLength: 64
+        type: string
+      subtype:
+        maxLength: 64
+        type: string
+      type:
+        maxLength: 64
+        type: string
+    type: object
+  DeviceResponse:
+    properties:
+      config:
+        $ref: '#/definitions/DeviceConfig'
+      deviceId:
+        description: This is the `deviceId` assigned to the device by the API. This
+          ID is between 6 and 32 characters in length, and must be stored in non-volatile
+          memory. It is used for authentication and identification for every subsequent
+          API interaction after registration is requested.
+        example: aBc8deFG9
+        type: string
+      geoCode:
+        description: Geocode for this device. This is used to inform the API about
+          any geographical restrictions that may need to be placed on the device.
+        example: global
+        type: string
+      mfgId:
+        description: Manufacturer ID. This will normally be the same ID used to request
+          the configuration and authenticate to the API, but if this ID is different
+          in the `/config` response, the client should overwrite the stored `mfgId`
+          in favor of the new ID and use it with the original `mfgSecret` for all
+          subsequent API interaction.
+        example: D0K101
+        type: string
+    title: Device GET Object
+    type: object
+  DevicesPost:
+    properties:
+      brand:
+        description: Brand name of the device
+        example: Brand Name
+        maxLength: 32
+        type: string
+      device:
+        description: Name of device or application
+        example: Device Name
+        maxLength: 32
+        type: string
+      lat:
+        description: Latitude in [decimal degrees](https://en.wikipedia.org/wiki/Decimal_degrees)
+          rounded to three decimal places (e.g. 43.094)
+        example: -43.094
+        type: number
+      lng:
+        description: Longitude in [decimal degrees](https://en.wikipedia.org/wiki/Decimal_degrees)
+          rounded to three decimal places (e.g. 43.094)
+        example: -71.73
+        type: number
+      mfg:
+        description: Manufacturer name
+        example: Mfg Name
+        maxLength: 32
+        type: string
+      model:
+        description: Model name of the device
+        example: Model Name
+        maxLength: 32
+        type: string
+      serial:
+        description: Unique serial number for the device
+        example: '12345'
+        maxLength: 32
+        type: string
+      version:
+        description: Client version of the application
+        example: '1'
+        maxLength: 32
+        type: string
+    required:
+    - lat
+    - lng
+    - mfg
+    - brand
+    - device
+    - model
+    - serial
+    - version
+    title: Devices POST Object
+    type: object
+  Error:
+    properties:
+      data:
+        description: Error description
+        type: string
+      result:
+        example: error
+        type: string
+    title: Error Data Object
+    type: object
+  GenreListObject:
+    properties:
+      id:
+        description: Genre ID
+        type: integer
+      name:
+        description: Genre name
+        type: string
+      subGenres:
+        description: Genres below major genre
+        items:
+          properties:
+            id:
+              description: Subgenre ID
+              type: integer
+            name:
+              description: Subgenre name
+              type: string
+          type: object
+        type: array
+    title: Genre List Object
+    type: object
+  HDRadioBroadcast:
+    properties:
+      band:
+        description: Broadcast band
+        enum:
+        - AM
+        - FM
+        example: FM
+        type: string
+      broadcastData:
+        $ref: '#/definitions/BaselineBroadcastData'
+      broadcastId:
+        description: CONRAD API ID for this broadcast
+        example: '12345'
+        type: string
+      channel:
+        description: HD multicast channel
+        enum:
+        - '1'
+        - '2'
+        - '3'
+        - '4'
+        - '5'
+        - '6'
+        - '7'
+        - '8'
+        example: '1'
+        type: string
+      country:
+        description: '[ISO-3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1)
+          country code for this broadcast'
+        example: US
+        type: string
+      countryCode:
+        description: HD SIS Country Code for this broadcast
+        type: string
+      freq:
+        description: Broadcast frequency
+        example: 103700
+        type: integer
+      location:
+        description: 'HD SIS location for this broadcast: Latitude, Longitude'
+        example: 43.094, -71.730
+        type: string
+      piCode:
+        description: PI Code for this broadcast
+        example: A123
+        type: string
+      stationId:
+        description: HD SIS station ID for this broadcast
+        type: string
+    type: object
+  HiResCoordinate:
+    properties:
+      lat:
+        description: Latitude in [decimal degrees](https://en.wikipedia.org/wiki/Decimal_degrees)
+          rounded to six decimal places (e.g. 43.094123)
+        example: 43.094123
+        format: double
+        type: number
+      lng:
+        description: Longitude in [decimal degrees](https://en.wikipedia.org/wiki/Decimal_degrees)
+          rounded to six decimal places (e.g. -71.730123)
+        example: -71.730123
+        format: double
+        type: number
+    type: object
+  IPCCategory:
+    description: IP Content Category
+    properties:
+      childCount:
+        description: Number of children
+        type: number
+      ipcCatPath:
+        example: /geographic/north_america/us
+        type: string
+      logoURL:
+        type: string
+      name:
+        example: United States
+        type: string
+      type:
+        enum:
+        - category
+        type: string
+    title: IPC Category
+    type: object
+  IPCObject:
+    description: This describes an IP Content stream or podcast
+    properties:
+      country:
+        type: string
+      description:
+        type: string
+      genreIds:
+        items:
+          type: integer
+        type: array
+      ipcContentId:
+        description: This unique ID is used to indicate this is playable content,
+          and can be used to retrieve the attributes necessary for playback/streaming.
+        example: 1-abcdef1234567890-s
+        type: string
+      ipcPlaybackId:
+        description: Only present if this object type is `stream`, and references
+          playable content.
+        type: string
+      language:
+        type: string
+      logoURL:
+        type: string
+      logoURLHiRes:
+        type: string
+      name:
+        type: string
+      slogan:
+        type: string
+      timezone:
+        type: string
+      type:
+        description: Type of IP content, `stream` or `podcast`
+        enum:
+        - stream
+        - podcast
+        example: stream
+        type: string
+      urls:
+        description: Array of service URLs pertaining to this IPC ID
+        properties:
+          facebook:
+            description: Array of Facebook URLs pertaining to this IPC ID
+            items:
+              example: https://www.facebook.com/wkrprock
+              type: string
+            type: array
+          twitter:
+            description: Array of Twitter URLs pertaining to this IPC ID
+            items:
+              example: https://twitter.com/wkrprock
+              type: string
+            type: array
+          website:
+            description: Array of Web URLs pertaining to this IPC ID
+            items:
+              example: http://www.example.cnrd.io
+              type: string
+            type: array
+        type: object
+    title: IPC Object
+    type: object
+  IPCPodcastEpisodeObject:
+    description: Describes a unique, individual podcast episode
+    properties:
+      description:
+        type: string
+      duration:
+        description: Length of podcast in seconds
+        example: 3600
+        type: integer
+      genreIds:
+        items:
+          type: number
+        type: array
+      headline:
+        type: string
+      ipcContentId:
+        type: string
+      ipcPlaybackId:
+        type: string
+      logoURL:
+        type: string
+      logoURLHiRes:
+        type: string
+      published:
+        format: date-time
+        type: string
+      type:
+        enum:
+        - episode
+        type: string
+      urls:
+        description: Array of service URLs pertaining to this IPC ID
+        properties:
+          website:
+            description: Array of Web URLs pertaining to this IPC ID
+            items:
+              example: http://www.example.cnrd.io
+              type: string
+            type: array
+        type: object
+    title: IPC Podcast Episode Object
+    type: object
+  IPContentPlayback:
+    description: This describes playable content available via IP, such as streaming
+      audio and podcast episodes. Not all attributes may be available for every object.
+    properties:
+      bitrate:
+        description: Bitrate in bps
+        example: 128000
+        type: integer
+      codec:
+        type: string
+      format:
+        enum:
+        - mp3
+        - aac
+        - hls
+        - ogg
+        type: string
+      mode:
+        default: stereo
+        description: Stereo or mono
+        enum:
+        - stereo
+        - mono
+        type: string
+      type:
+        enum:
+        - stream
+        - podcast
+        type: string
+      url:
+        type: string
+    title: IP Content Playback
+    type: object
+  ImagesObject:
+    description: Array of image URLs with specific type definitions for enhanced display
+      options. This replaces the deprecated `imageURL` and `imageURLHiRes` attributes.
+      This array can contain standard and HiRes image URLS that have specific types,
+      currently defined as `album`, `artist`, `logo`, and `other`. If `default` is
+      present and true, then that object is to be displayed in the absence of other
+      preferences, or as a default image for data display.
+    properties:
+      default:
+        description: If present, denotes this image is the default to be used if no
+          user preference has been made.
+        example: true
+        type: boolean
+      type:
+        description: Specific image type, if known.
+        enum:
+        - album
+        - artist
+        - logo
+        - other
+        example: artist
+        type: string
+      url:
+        description: URL to retrieve the image
+        example: https://s.cnrd.io/img/c/2/c2b12ed7860b3a1a123483dec90abf1ea3.jpg
+        type: string
+      urlHiRes:
+        description: URL to retrieve the high-resolution image, if available
+        example: https://s.cnrd.io/img/f/2/f2b12ed1234b3a1a123483dec90abf1ea6.jpg
+        type: string
+    type: object
+  InfoLyricsObject:
+    description: The response object to an `/info/lyrics` query
+    properties:
+      LrcLyrics:
+        example:
+        - duration: 2560
+          line: Baby here I am
+          lrcTimestamp: '[00:11.18]'
+          ms: 11180
+        - duration: 1890
+          line: I'm the man on the scene
+          lrcTimestamp: '[00:13.74]'
+          ms: 13740
+        - duration: 2580
+          line: I can give you what you want
+          lrcTimestamp: '[00:15.63]'
+          ms: 15630
+        - duration: 2090
+          line: But you gotta' come home with me
+          lrcTimestamp: '[00:18.21]'
+          ms: 18210
+        - line: ''
+        - duration: 2740
+          line: I have got some good old lovin'
+          lrcTimestamp: '[00:20.30]'
+          ms: 20300
+        - duration: 2020
+          line: And I got some more in store
+          lrcTimestamp: '[00:23.04]'
+          ms: 23040
+        - duration: 2170
+          line: When I get through throwin' it on
+          lrcTimestamp: '[00:25.06]'
+          ms: 25060
+        - duration: 2250
+          line: You gotta' come back for more
+          lrcTimestamp: '[00:27.23]'
+          ms: 27230
+        - line: ''
+        - duration: 2640
+          line: Boys will come along a dime by the dozen
+          lrcTimestamp: '[00:29.48]'
+          ms: 29480
+        - duration: 2480
+          line: That ain't nothing but ten cent lovin'
+          lrcTimestamp: '[00:32.12]'
+          ms: 32120
+        - duration: 1980
+          line: Pretty little thing, let me light your candle
+          lrcTimestamp: '[00:34.60]'
+          ms: 34600
+        - duration: 6640
+          line: '''Cause mama I''m sure hard to handle now, yessir''am'
+          lrcTimestamp: '[00:36.58]'
+          ms: 36580
+        - line: ''
+        - duration: 2700
+          line: Action speaks louder than words
+          lrcTimestamp: '[00:43.22]'
+          ms: 43220
+        - duration: 2130
+          line: And I'm a man of great experience
+          lrcTimestamp: '[00:45.92]'
+          ms: 45920
+        - duration: 2200
+          line: I know you've got another man
+          lrcTimestamp: '[00:48.05]'
+          ms: 48050
+        - duration: 2470
+          line: But I can love you better than him
+          lrcTimestamp: '[00:50.25]'
+          ms: 50250
+        - line: ''
+        - duration: 2140
+          line: Take my hand don't be afraid
+          lrcTimestamp: '[00:52.72]'
+          ms: 52720
+        - duration: 2310
+          line: I'm gonna prove every word I say
+          lrcTimestamp: '[00:54.86]'
+          ms: 54860
+        - duration: 2280
+          line: I'm advertising love for free
+          lrcTimestamp: '[00:57.17]'
+          ms: 57170
+        - duration: 2650
+          line: So you can place your ad with me
+          lrcTimestamp: '[00:59.45]'
+          ms: 59450
+        - line: ''
+        - duration: 2160
+          line: Boys will come along a dime by the dozen
+          lrcTimestamp: '[01:02.10]'
+          ms: 62100
+        - duration: 2560
+          line: That ain't nothing but ten cent lovin'
+          lrcTimestamp: '[01:04.26]'
+          ms: 64260
+        - duration: 2020
+          line: Pretty little thing, let me light your candle
+          lrcTimestamp: '[01:06.82]'
+          ms: 66820
+        - duration: 4180
+          line: '''Cause mama I''m sure hard to handle now, yessir''am'
+          lrcTimestamp: '[01:08.84]'
+          ms: 68840
+        - line: ''
+        - duration: 1990
+          line: Yeah
+          lrcTimestamp: '[01:13.02]'
+          ms: 73020
+        - duration: 2220
+          line: Hard to handle now
+          lrcTimestamp: '[01:15.01]'
+          ms: 75010
+        - duration: 3610
+          line: Oh baby
+          lrcTimestamp: '[01:17.23]'
+          ms: 77230
+        - line: ''
+        - duration: 1810
+          line: Baby here I am
+          lrcTimestamp: '[01:20.84]'
+          ms: 80840
+        - duration: 2610
+          line: I'm the man on the scene
+          lrcTimestamp: '[01:22.65]'
+          ms: 82650
+        - duration: 2170
+          line: I can give you what you want
+          lrcTimestamp: '[01:25.26]'
+          ms: 85260
+        - duration: 2630
+          line: But you gotta' come home with me
+          lrcTimestamp: '[01:27.43]'
+          ms: 87430
+        - line: ''
+        - duration: 1760
+          line: I've got some good old lovin'
+          lrcTimestamp: '[01:30.06]'
+          ms: 90060
+        - duration: 2170
+          line: And I got some more in store
+          lrcTimestamp: '[01:31.82]'
+          ms: 91820
+        - duration: 2530
+          line: When I get through throwin' it on you
+          lrcTimestamp: '[01:33.99]'
+          ms: 93990
+        - duration: 2410
+          line: You got to come a-runnin' back for more
+          lrcTimestamp: '[01:36.52]'
+          ms: 96520
+        - line: ''
+        - duration: 2270
+          line: Boys will come along a dime by the dozen
+          lrcTimestamp: '[01:38.93]'
+          ms: 98930
+        - duration: 2260
+          line: That ain't nothing but ten cent lovin'
+          lrcTimestamp: '[01:41.20]'
+          ms: 101200
+        - duration: 2220
+          line: Pretty little thing, let me light your candle
+          lrcTimestamp: '[01:43.46]'
+          ms: 103460
+        - duration: 4440
+          line: '''Cause mama I''m sure hard to handle now, yessir''am'
+          lrcTimestamp: '[01:45.68]'
+          ms: 105680
+        - line: ''
+        - duration: 1750
+          line: Hard
+          lrcTimestamp: '[01:50.12]'
+          ms: 110120
+        - duration: 1860
+          line: Hard to handle now
+          lrcTimestamp: '[01:51.87]'
+          ms: 111870
+        - duration: 4100
+          line: Oh yeah, yeah yeah yeah
+          lrcTimestamp: '[01:53.73]'
+          ms: 113730
+        - line: ''
+        - duration: 1960
+          line: Boys will come along a dime by the dozen
+          lrcTimestamp: '[02:15.45]'
+          ms: 135450
+        - duration: 2060
+          line: That ain't nothing but ten cent lovin'
+          lrcTimestamp: '[02:17.41]'
+          ms: 137410
+        - duration: 2540
+          line: Pretty little thing, let me light your candle
+          lrcTimestamp: '[02:19.47]'
+          ms: 139470
+        - duration: 4300
+          line: '''Cause mama I''m sure hard to handle now, yessir''am'
+          lrcTimestamp: '[02:22.01]'
+          ms: 142010
+        - line: ''
+        - duration: 1700
+          line: Yeah
+          lrcTimestamp: '[02:26.31]'
+          ms: 146310
+        - duration: 2480
+          line: So hard to handle now
+          lrcTimestamp: '[02:28.01]'
+          ms: 148010
+        - duration: 2700
+          line: Oh yeah
+          lrcTimestamp: '[02:30.49]'
+          ms: 150490
+        - line: ''
+        - duration: 2360
+          line: Baby
+          lrcTimestamp: '[02:33.19]'
+          ms: 153190
+        - duration: 2410
+          line: Good lovin'
+          lrcTimestamp: '[02:35.55]'
+          ms: 155550
+        - duration: 4150
+          line: Baby, baby
+          lrcTimestamp: '[02:37.96]'
+          ms: 157960
+        - duration: 2710
+          line: Ohh, good lovin'
+          lrcTimestamp: '[02:42.11]'
+          ms: 162110
+        - duration: 4430
+          line: I need good lovin'
+          lrcTimestamp: '[02:44.82]'
+          ms: 164820
+        - duration: 4440
+          line: I got to have it, oh yeah
+          lrcTimestamp: '[02:49.25]'
+          ms: 169250
+        - duration: 2390
+          line: Yeah
+          lrcTimestamp: '[02:53.69]'
+          ms: 173690
+        - duration: 4410
+          line: So hard to handle, now, yeah
+          lrcTimestamp: '[02:56.08]'
+          ms: 176080
+        items:
+          properties:
+            durationMs:
+              description: Duration of this line of lyrics from the last line, in
+                milliseconds.
+              type: number
+            line:
+              description: The lyric line itself
+              type: string
+            lrcTimestamp:
+              type: string
+            playOffsetMs:
+              description: Offset of this line of lyrics from the start of the song,
+                in milliseconds.
+              type: number
+          type: object
+        type: array
+      album:
+        description: Printable name of album
+        example: Shake Your Moneymaker
+        type: string
+      artist:
+        description: Printable artist name as a string
+        example: The Black Crowes
+        type: string
+      authors:
+        description: Authors of the track
+        example: Otis Redding, Alvertis Isbell, Allen Alvoid Jr. Jones
+        type: string
+      conradTrackId:
+        $ref: '#/definitions/conradTrackId'
+      copyright:
+        description: Copyright information
+        example: "Lyrics \xA9 Universal Music Publishing Group"
+        type: string
+      lrcVersion:
+        description: Version of LRC format
+        example: '1.1'
+        type: string
+      staticLyrics:
+        description: Static, printable lyrics
+        example: Baby here I am\r\nI'm the man on the scene\r\nI can give you what
+          you want\r\nBut you gotta' come home with me\r\n\r\nI have got some good
+          old lovin'\r\nAnd I got some more in store\r\nWhen I get through throwin'
+          it on\r\nYou gotta' come back for more\r\n\r\nBoys will come along a dime
+          by the dozen\r\nThat ain't nothing but ten cent lovin'\r\nPretty little
+          thing, let me light your candle\r\n'Cause mama I'm sure hard to handle now,
+          yessir'am\r\n\r\nAction speaks louder than words\r\nAnd I'm a man of great
+          experience\r\nI know you've got another man\r\nBut I can love you better
+          than him\r\n\r\nTake my hand don't be afraid\r\nI'm gonna prove every word
+          I say\r\nI'm advertising love for free\r\nSo you can place your ad with
+          me\r\n\r\nBoys will come along a dime by the dozen\r\nThat ain't nothing
+          but ten cent lovin'\r\nPretty little thing, let me light your candle\r\n'Cause
+          mama I'm sure hard to handle now, yessir'am\r\n\r\nYeah\r\nHard to handle
+          now\r\nOh baby\r\n\r\nBaby here I am\r\nI'm the man on the scene\r\nI can
+          give you what you want\r\nBut you gotta' come home with me\r\n\r\nI've got
+          some good old lovin' \r\nAnd I got some more in store\r\nWhen I get through
+          throwin' it on you\r\nYou got to come a-runnin' back for more\r\n\r\nBoys
+          will come along a dime by the dozen\r\nThat ain't nothing but ten cent lovin'\r\nPretty
+          little thing, let me light your candle\r\n'Cause mama I'm sure hard to handle
+          now, yessir'am\r\n\r\nHard\r\nHard to handle now\r\nOh yeah, yeah yeah yeah\r\n\r\nBoys
+          will come along a dime by the dozen\r\nThat ain't nothing but ten cent lovin'\r\nPretty
+          little thing, let me light your candle\r\n'Cause mama I'm sure hard to handle
+          now, yessir'am\r\n\r\nYeah\r\nSo hard to handle now\r\nOh yeah\r\n\r\nBaby\r\nGood
+          lovin'\r\nBaby, baby\r\nOhh, good lovin'\r\nI need good lovin'\r\nI got
+          to have it, oh yeah\r\nYeah\r\nSo hard to handle, now, yeah"
+        type: string
+      title:
+        description: Title of the track
+        example: Hard to Handle
+        type: string
+    title: Info Lyrics Object
+    type: object
+  InfoSearchObject:
+    description: The response object to an `/info/search` query
+    properties:
+      album:
+        description: Album name, if applicable
+        example: Shake Your Moneymaker
+        type: string
+      artist:
+        description: Printable artist name as a string
+        example: The Black Crowes
+        type: string
+      conradAlbumId:
+        $ref: '#/definitions/conradAlbumId'
+      conradArtistId:
+        $ref: '#/definitions/conradArtistId'
+      conradTrackId:
+        $ref: '#/definitions/conradTrackId'
+      images:
+        items:
+          $ref: '#/definitions/ImagesObject'
+        type: array
+      score:
+        description: Search match confidence score, higher is better
+        maximum: 100
+        minimum: 0
+        type: integer
+      title:
+        description: Title of the track, if applicable
+        example: Hard to Handle
+        type: string
+    title: Info Search Object
+    type: object
+  InternetBroadcast:
+    allOf:
+    - $ref: '#/definitions/NonRadioBroadcast'
+    - $ref: '#/definitions/TimedEvent'
+    - properties:
+        startLoc:
+          $ref: '#/definitions/HiResCoordinate'
+        stopLoc:
+          $ref: '#/definitions/HiResCoordinate'
+      type: object
+  Live:
+    properties:
+      adData:
+        items:
+          $ref: '#/definitions/AdData'
+        title: Ad Data
+        type: array
+      duration:
+        description: Duration in seconds
+        example: 305
+        type: integer
+      id:
+        description: ID for this live data object
+        example: abcde12345
+        type: string
+      musicData:
+        properties:
+          album:
+            description: Music/song album
+            example: Kind of Blue
+            type: string
+          artist:
+            description: Music/song artist
+            example: Miles Davis
+            type: string
+          conradAlbumId:
+            $ref: '#/definitions/conradAlbumId'
+          conradArtistId:
+            $ref: '#/definitions/conradArtistId'
+          conradTrackId:
+            $ref: '#/definitions/conradTrackId'
+          enableShare:
+            default: true
+            description: Enable display of option to share on social media
+            example: true
+            type: boolean
+          enableThumbs:
+            default: true
+            description: Enable display of thumbs up/down selections
+            example: true
+            type: boolean
+          genreIds:
+            description: Array of genres and subgenres
+            items:
+              type: integer
+            type: array
+          images:
+            items:
+              $ref: '#/definitions/ImagesObject'
+            type: array
+          title:
+            description: Title of music/song programming
+            example: All Blues
+            type: string
+        title: Music Data
+        type: object
+      nmpData:
+        description: Non-Music Programming data
+        properties:
+          conradArtistId:
+            $ref: '#/definitions/conradArtistId'
+          conradTrackId:
+            $ref: '#/definitions/conradTrackId'
+          enableShare:
+            default: true
+            description: Enable display of option to share on social media
+            example: true
+            type: boolean
+          enableThumbs:
+            default: true
+            description: Enable display of feedback thumbs up/down
+            example: true
+            type: boolean
+          images:
+            items:
+              $ref: '#/definitions/ImagesObject'
+            type: array
+          program:
+            description: Description of non-music program
+            example: The NPR News Quiz
+            type: string
+          subject:
+            description: Subject of non-music program
+            example: 'Today''s guest: Tom Hanks'
+            type: string
+          title:
+            description: Title of non-music program
+            example: Wait, Wait Don't Tell Me
+            type: string
+        title: Non-Music Program Data
+        type: object
+      type:
+        description: 'Type of live data: music, ad, talk, sports, live, emergency,
+          other'
+        enum:
+        - music
+        - ad
+        - talk
+        - sports
+        - live
+        - emergency
+        - other
+        example: music
+        type: string
+    title: Live Data Object
+    type: object
+  Local Events Artist:
+    properties:
+      categories:
+        description: Printable strings describing the categories this artist falls
+          under
+        example:
+        - Fusion Jazz
+        - Jazz
+        items:
+          type: string
+        type: array
+      description:
+        type: string
+      id:
+        type: string
+      imageURL:
+        type: string
+      name:
+        type: string
+      onTour:
+        type: boolean
+      urls:
+        properties:
+          facebook:
+            type: string
+          itunes:
+            type: string
+          twitter:
+            type: string
+          website:
+            items:
+              type: string
+            type: array
+          wikipedia:
+            type: string
+        type: object
+    title: Local Events Artist Object
+    type: object
+  LocalEventsEvent:
+    properties:
+      events:
+        properties:
+          copyright:
+            type: string
+          event:
+            items:
+              properties:
+                desc:
+                  description: Text description of the event
+                  type: string
+                distance:
+                  type: string
+                genreIds:
+                  description: GenreIds of the genres matched for this event.
+                  example:
+                  - 1
+                  - 2
+                  items:
+                    type: number
+                  type: array
+                leEventId:
+                  type: string
+                name:
+                  type: string
+                schedule:
+                  properties:
+                    bookingInfo:
+                      properties:
+                        bookingLink:
+                          items:
+                            properties:
+                              bookingURL:
+                                type: string
+                              price:
+                                properties:
+                                  currency:
+                                    type: string
+                                  value:
+                                    type: string
+                                type: object
+                              provider:
+                                type: string
+                            type: object
+                          type: array
+                      type: object
+                    dates:
+                      properties:
+                        end:
+                          type: string
+                        start:
+                          type: string
+                      type: object
+                    eventTime:
+                      type: string
+                    leVenueId:
+                      type: string
+                  type: object
+                types:
+                  description: Printable list of event types this event falls under.
+                  example:
+                  - Concert
+                  - Outdoor Concert
+                  items:
+                    type: string
+                  type: array
+              type: object
+            type: array
+        type: object
+      venues:
+        properties:
+          copyright:
+            type: string
+          venue:
+            items:
+              properties:
+                address:
+                  properties:
+                    address1:
+                      type: string
+                    city:
+                      type: string
+                    country:
+                      properties:
+                        name:
+                          type: string
+                      type: object
+                    latitude:
+                      type: string
+                    longitude:
+                      type: string
+                    state:
+                      type: string
+                    zip:
+                      type: string
+                  type: object
+                email:
+                  type: string
+                fax:
+                  type: string
+                imageURL:
+                  type: string
+                leVenueId:
+                  type: string
+                longDesc:
+                  type: string
+                name:
+                  type: string
+                neighborhood:
+                  type: string
+                phone:
+                  type: string
+                shortDesc:
+                  type: string
+                types:
+                  description: Printable names of the types of venue this venue falls
+                    under.
+                  example:
+                  - Concert Hall
+                  - Dance Hall
+                  items:
+                    type: string
+                  type: array
+                url:
+                  type: string
+              type: object
+            type: array
+        type: object
+    title: Local Events Event
+    type: object
+  LocalSource:
+    allOf:
+    - $ref: '#/definitions/TimedEvent'
+    - properties:
+        sourceName:
+          enum:
+          - cd
+          - bt audio
+          - harddrive
+          - media
+          - aux
+          example: aux
+          type: string
+      type: object
+  NonRadioBroadcast:
+    properties:
+      bitrate:
+        description: Bitrate in bits
+        example: 64000
+        type: integer
+      broadcastId:
+        description: If this is a stream accessed from a broadcast record, provide
+          the `broadcastId` of that record.
+        example: '12345'
+        type: string
+      errorStatusCode:
+        description: If the playback of this stream encountered HTTP errors that prevented
+          playback, that error code is captured in this string. 0 represents an unreachable
+          service. Other codes are standard HTTP status codes such as 401, 403, 404,
+          500, 502, 503, etc
+        type: string
+      format:
+        description: Format of stream, such as mp3, aac, hls
+        example: mp3
+        maxLength: 12
+        type: string
+      servFollow:
+        description: If this content was accessed through service following, indicate
+          that here.
+        example: true
+        type: boolean
+      serviceName:
+        description: Name of the stream or service, if applicable.
+        example: Pandora
+        maxLength: 64
+        type: string
+      station:
+        description: Name of the station, if applicable
+        example: Miles Davis Radio
+        maxLength: 64
+        type: string
+      url:
+        description: If this is an independent stream or stream provided by a broadcast
+          record, provide the URL accessed.
+        example: http://streamurl.example.com
+        type: string
+    type: object
+  RadioBroadcast:
+    allOf:
+    - $ref: '#/definitions/TimedEvent'
+    - properties:
+        analogHd:
+          description: '''Analog AM/FM, or HD Radio broadcast types'''
+          properties:
+            band:
+              enum:
+              - AM
+              - FM
+              example: FM
+              type: string
+            calls:
+              example: WKRP
+              maxLength: 24
+              type: string
+            channel:
+              enum:
+              - '1'
+              - '2'
+              - '3'
+              - '4'
+              - '5'
+              - '6'
+              - '7'
+              - '8'
+              example: '1'
+              type: string
+            ecc:
+              example: E0
+              type: string
+            freq:
+              example: 103700
+              type: integer
+            piCode:
+              example: D110
+              type: string
+          type: object
+        broadcastId:
+          description: CONRAD API ID for this broadcast
+          example: '12345'
+          type: string
+        dab:
+          description: '''DAB broadcast type'''
+          properties:
+            ecc:
+              example: D0
+              type: string
+            eid:
+              example: C185
+              type: string
+            freq:
+              example: 227360
+              type: integer
+            scids:
+              example: 0
+              type: string
+            sid:
+              example: C4B4
+              type: string
+          type: object
+        isPreset:
+          description: True if this station exists in user presets
+          example: true
+          type: boolean
+        liveIdsDisplayed:
+          description: Array of `liveIds` that were retrieved and displayed during
+            this listening session.
+          items:
+            example: abcdef12345
+            type: string
+          type: array
+        startLoc:
+          $ref: '#/definitions/RadioBroadcastLocation'
+        stopLoc:
+          $ref: '#/definitions/RadioBroadcastLocation'
+        verifyFailed:
+          description: True if verification of this station with over-the-air broadcast
+            data (such as RDS) failed.
+          example: false
+          type: boolean
+        volEvents:
+          description: Array of volume change events during this listening session.
+            First object must be initial volume when listening session began.
+          items:
+            properties:
+              level:
+                description: Volume level measured in percent of total volume, 0-100.
+                  Volume level must remain stable for five seconds to apply. 0 represents
+                  off or mute. Required for broadcast and satellite events.
+                example: 10
+                type: integer
+              timestamp:
+                example: '2017-01-24T13:35:57.904Z'
+                format: date-time
+                maxLength: 64
+                type: string
+            required:
+            - timestamp
+            - level
+            type: object
+          type: array
+      title: Broadcast station data
+      type: object
+  RadioBroadcastLocation:
+    allOf:
+    - $ref: '#/definitions/HiResCoordinate'
+    - properties:
+        cdno:
+          description: If this is an HD Radio broadcast, provide the digital signal
+            strength value.
+          example: 70
+          type: integer
+        rssi:
+          description: For any broadcast type, provide the signal strength in dBm.
+          example: -72
+          type: integer
+      title: Location
+      type: object
+    type: object
+  Report:
+    properties:
+      data:
+        $ref: '#/definitions/ReportData'
+      deviceId:
+        example: aBc8deFG9
+        maxLength: 32
+        minLength: 6
+        type: string
+      duration:
+        example: 86400
+        minimum: 86400
+        type: integer
+      mfgId:
+        example: DEV-0001
+        maxLength: 32
+        minLength: 6
+        type: string
+      type:
+        enum:
+        - log
+        example: log
+        type: string
+    required:
+    - type
+    - mfgId
+    - deviceId
+    - duration
+    - data
+    title: Report
+    type: object
+  ReportAction:
+    properties:
+      data:
+        $ref: '#/definitions/ReportActionData'
+      deviceId:
+        example: aBc8deFG9
+        maxLength: 32
+        minLength: 6
+        type: string
+      mfgId:
+        example: DEV-0001
+        maxLength: 32
+        minLength: 6
+        type: string
+      type:
+        description: 'Type of action: exit, sms, phone, share, nav, thumbs'
+        enum:
+        - exit
+        - sms
+        - phone
+        - share
+        - nav
+        - thumbs
+        example: exit
+        type: string
+    required:
+    - type
+    - mfgId
+    - deviceId
+    - data
+    title: ReportAction
+    type: object
+  ReportActionData:
+    allOf:
+    - $ref: '#/definitions/HiResCoordinate'
+    - properties:
+        broadcastId:
+          description: CONRAD API ID for this broadcast
+          example: '12345'
+          type: string
+        content:
+          description: The content of the selection the user made, such as the SMS
+            message sent, the nav string searched, nav coordinates selected, the message
+            posted to social media. In the case of `thumbs`, the value is 1 for positive
+            sentiment, -1 for negative sentiment, or 0 to unset previously provided
+            feedback for the same object.
+          example: '1'
+          type: string
+        liveId:
+          description: The `liveId` of the object displayed during user action
+          example: abcdef12345
+          type: string
+        target:
+          description: The target value of the action, if it exists. This would be
+            the SMS number contacted, phone number dialed, the social media app name.
+          example: '123456'
+          type: string
+        timestamp:
+          description: Time the action took place
+          example: '2017-01-24T13:35:57.904Z'
+          format: date-time
+          maxLength: 64
+          type: string
+      type: object
+    title: Report actions for live data
+    type: object
+  ReportData:
+    properties:
+      broadcasts:
+        items:
+          $ref: '#/definitions/RadioBroadcast'
+        type: array
+      device:
+        $ref: '#/definitions/Device'
+      devices:
+        items:
+          $ref: '#/definitions/DeviceEvent'
+        type: array
+      local:
+        items:
+          $ref: '#/definitions/LocalSource'
+        type: array
+      satellite:
+        items:
+          $ref: '#/definitions/SatelliteBroadcast'
+        type: array
+      streams:
+        items:
+          $ref: '#/definitions/InternetBroadcast'
+        type: array
+    title: Report data
+    type: object
+  ReportError:
+    properties:
+      action:
+        enum:
+        - discard
+        example: discard
+        type: string
+      data:
+        type: string
+      result:
+        enum:
+        - error
+        type: string
+    title: Error
+    type: object
+  SatelliteBroadcast:
+    allOf:
+    - $ref: '#/definitions/TimedEvent'
+    - properties:
+        serviceName:
+          description: Name of the stream or service, if applicable.
+          example: SiriusXM
+          maxLength: 64
+          type: string
+        startLoc:
+          $ref: '#/definitions/SatelliteLocation'
+        station:
+          description: Name of the station, if applicable
+          example: Miles Davis Radio
+          maxLength: 64
+          type: string
+        stopLoc:
+          $ref: '#/definitions/SatelliteLocation'
+        volEvents:
+          description: Array of volume change events during this listening session.
+            First object must be initial volume when listening session began.
+          items:
+            properties:
+              level:
+                description: Volume level measured in percent of total volume, 0-100.
+                  Volume level must remain stable for five seconds to apply. 0 represents
+                  off or mute. Required for broadcast and satellite events.
+                example: 10
+                type: integer
+              timestamp:
+                example: '2017-01-24T13:35:57.904Z'
+                format: date-time
+                maxLength: 64
+                type: string
+            required:
+            - timestamp
+            - level
+            type: object
+          type: array
+      type: object
+  SatelliteLocation:
+    allOf:
+    - $ref: '#/definitions/HiResCoordinate'
+  SignalReport:
+    properties:
+      broadcastId:
+        description: CONRAD API ID for this broadcast
+        example: '12345'
+        type: string
+      data:
+        $ref: '#/definitions/RadioBroadcastLocation'
+      deviceId:
+        example: abcdef123456
+        maxLength: 32
+        minLength: 6
+        type: string
+      mfgId:
+        example: DEV-0001
+        maxLength: 32
+        minLength: 6
+        type: string
+      timestamp:
+        example: '2017-01-24T13:35:57.904Z'
+        format: date-time
+        maxLength: 64
+        type: string
+    required:
+    - mfgId
+    - deviceId
+    - timestamp
+    - data
+    title: Signal strength data
+  StreamsData:
+    properties:
+      bitrate:
+        description: Stream bitrate in bits
+        example: 64000
+        type: integer
+      format:
+        description: Format of stream
+        enum:
+        - mp3
+        - hls
+        - aac
+        - ogg
+        example: mp3
+        type: string
+      preroll:
+        description: Seconds of preroll. 0 indicates no known preroll
+        type: integer
+      sampleRate:
+        description: Sample rate of stream
+        example: 44100
+        type: integer
+      url:
+        description: URL of stream. Note that some SHOUTCast streams may require the
+          addition of `/;` at the end of the URL for certain client types and user
+          agents. E.g. `http://radiostream.url.com/stream/;'`
+        example: http://radiostream.url.com/stream
+        type: string
+    type: object
+  TimedEvent:
+    properties:
+      duration:
+        description: Duration of event in seconds
+        example: 600
+        type: integer
+      startTime:
+        example: '2017-01-24T13:35:57.904Z'
+        format: date-time
+        maxLength: 64
+        type: string
+      stopTime:
+        example: '2017-01-24T13:35:57.904Z'
+        format: date-time
+        maxLength: 64
+        type: string
+    type: object
+  conradAlbumId:
+    description: CONRAD Album ID, A unique ID that refers to a specfic album. May
+      not be present in all live data or ACR responses, for example if the track is
+      on multiple albums, or was not released on an album. Album lookups for that
+      track would then be handled by a `/info/tracks/{conradTrackId}` lookup which
+      will supply a list of album and `conradAlbumIds`.
+    example: CAL12345
+    title: conradAlbumId
+    type: string
+  conradArtistId:
+    description: CONRAD Artist ID, A unique ID that refers to a specfic artist. May
+      not be present in all live data or ACR responses, for example if multiple artists
+      are on the track. Artist lookups for that track would then be handled by a `/info/tracks/{conradTrackId}`
+      lookup which will supply a full list of artists and `conradArtistIds`.
+    example: CAR23456
+    title: conradArtistId
+    type: string
+  conradTrackId:
+    description: CONRAD Track ID, A unique ID that refers to a specfic audio track
+      or recording. Can be used to reference related data in other endpoints.  May
+      not be present in all live data or ACR responses.
+    example: CTR34566
+    title: conradTrackId
+    type: string
+  infoArtistObject:
+    properties:
+      aliases:
+        items:
+          type: string
+        type: array
+      conradArtistId:
+        $ref: '#/definitions/conradArtistId'
+      name:
+        type: string
+    title: Info Artist Object
+    type: object
+  infoTrackObject:
+    properties:
+      album:
+        description: Printable album name as a string
+        example: Shake Your Moneymaker
+        type: string
+      albums:
+        description: Array of other albums the track may appear on, not exhaustive
+        items:
+          properties:
+            conradAlbumId:
+              $ref: '#/definitions/conradAlbumId'
+            name:
+              description: Albums track can be found on. Not exhaustive
+              example: Shake Your Moneymaker
+              type: string
+          type: object
+        type: array
+      artist:
+        description: Printable artist name as a string
+        example: The Black Crowes
+        type: string
+      artists:
+        description: Array of artists and IDs for additional data retrieval and for
+          tracks with multiple artists
+        items:
+          properties:
+            conradArtistId:
+              $ref: '#/definitions/conradArtistId'
+            name:
+              description: Artist name
+              example: The Black Crowes
+              type: string
+          type: object
+        type: array
+      authors:
+        description: Authors of the track
+        example: Otis Redding, Alvertis Isbell, Allen Alvoid Jr. Jones
+        type: string
+      conradTrackId:
+        $ref: '#/definitions/conradTrackId'
+      copyright:
+        description: Copyright of the track
+        example: Universal Music Publishing Group
+        type: string
+      description:
+        description: Short description of the song, if available
+        example: Hit single from the Black Crowes 1990 album Shake Your Moneymaker
+        type: string
+      longDescription:
+        description: Long description of the track, if available
+        example: '"Hard to Handle" is a 1968 song written by American soul star Otis
+          Redding along with Al Bell and Allen Jones. Originally recorded by Redding,
+          it was released in 1968 as the B-side to "Amen" (shortly after the singer''s
+          sudden death in 1967). The song also appears on the 1968 album The Immortal
+          Otis Redding. Redding''s version reached #38 on the Billboard R&B charts
+          and #51 on the pop charts.  Numerous covers of the song exist, notably a
+          1990 blues rock take on the track by band The Black Crowes.'
+        type: string
+      title:
+        description: The title of the track
+        example: Hard to Handle
+        type: string
+    title: Info Track Object
+    type: object
+host: api.sandbox.cnrd.io
 info:
-  version: '1.0'
-  title: PRERELEASE - DTS Connected Radio API
-  description: >-
-    This is the DTS Connected Radio API, designed to provide static and dynamic
-    metadata for global analog and digital radio broadcasts, in addition to
+  contact:
+    name: DTS Connected Radio
+    url: https://www.connectedrad.io
+  description: 'This is the DTS Connected Radio API, designed to provide static and
+    dynamic metadata for global analog and digital radio broadcasts, in addition to
     enhanced services supporting an advanced radio experience.
 
     This API is referred to as the CONRAD API throughout the documentation.
 
-    API interaction is available via SSL/TLS encryption only, and the use of
-    HTTP compression is highly encouraged to reduce data consumption.
+    API interaction is available via SSL/TLS encryption only, and the use of HTTP
+    compression is highly encouraged to reduce data consumption.
 
-    If a key specified in the API spec is missing from a response, the value
-    should be assumed `null`. All booleans will have default values specified in
-    the documentation if they are not present in a response.
-  contact:
-    name: DTS Connected Radio
-    url: 'https://www.connectedrad.io'
+    If a key specified in the API spec is missing from a response, the value should
+    be assumed `null`. All booleans will have default values specified in the documentation
+    if they are not present in a response.'
   license:
     name: ''
-host: api.sandbox.cnrd.io
-securityDefinitions: {}
-schemes:
-  - https
-paths: {}
-definitions:
-  DeviceResponse:
-    title: Device GET Object
-    type: object
-    properties:
-      deviceId:
-        type: string
-        example: aBc8deFG9
-        description: >-
-          This is the `deviceId` assigned to the device by the API. This ID is
-          between 6 and 32 characters in length, and must be stored in
-          non-volatile memory. It is used for authentication and identification
-          for every subsequent API interaction after registration is requested.
-      mfgId:
-        type: string
-        example: D0K101
-        description: >-
-          Manufacturer ID. This will normally be the same ID used to request the
-          configuration and authenticate to the API, but if this ID is different
-          in the `/config` response, the client should overwrite the stored
-          `mfgId` in favor of the new ID and use it with the original
-          `mfgSecret` for all subsequent API interaction.
-      geoCode:
-        type: string
-        example: global
-        description: >-
-          Geocode for this device. This is used to inform the API about any
-          geographical restrictions that may need to be placed on the device.
-      config:
-        $ref: '#/definitions/DeviceConfig'
-  DevicesPost:
-    title: Devices POST Object
-    type: object
-    required:
-      - lat
-      - lng
-      - mfg
-      - brand
-      - device
-      - model
-      - serial
-      - version
-    properties:
-      lat:
-        type: number
-        description: >-
-          Latitude in [decimal
-          degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to
-          three decimal places (e.g. 43.094)
-        example: -43.094
-      lng:
-        type: number
-        description: >-
-          Longitude in [decimal
-          degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to
-          three decimal places (e.g. 43.094)
-        example: -71.73
-      mfg:
-        type: string
-        description: Manufacturer name
-        maxLength: 32
-        example: Mfg Name
-      brand:
-        type: string
-        description: Brand name of the device
-        maxLength: 32
-        example: Brand Name
-      device:
-        type: string
-        description: Name of device or application
-        maxLength: 32
-        example: Device Name
-      model:
-        type: string
-        description: Model name of the device
-        maxLength: 32
-        example: Model Name
-      serial:
-        type: string
-        description: Unique serial number for the device
-        maxLength: 32
-        example: '12345'
-      version:
-        type: string
-        description: Client version of the application
-        maxLength: 32
-        example: '1'
-  DeviceConfig:
-    title: Device config Data Object
-    type: object
-    properties:
-      enableAPI:
-        type: boolean
-        default: true
-        example: true
-        description: Must be true to use further CONRAD API services
-      enableLive:
-        type: boolean
-        default: true
-        example: true
-        description: 'Must be true to enable use of /broadcasts/{broadcastId}/live path'
-      errorRetry:
-        type: integer
-        default: 60
-        example: 60
-        description: >-
-          Time in seconds to wait before a retry API call if 5xx error
-          encountered
-      configRefresh:
-        type: integer
-        default: 3600
-        example: 3600
-        description: Time in seconds to wait before refreshing /config
-      liveDataRetry:
-        type: integer
-        default: 5
-        example: 5
-        description: >-
-          Time in seconds to wait before retrying a call to
-          `/broadcasts/{broadcastId}/live` following the receipt of a `202
-          Accepted` response. This call is only retried if a `202` is received.
-      useMinQueries:
-        type: boolean
-        default: false
-        example: false
-        description: Force use of minimal data queries with only lat/lng query type
-      defLogoURL:
-        type: string
-        example: 'https://example.cnrd.io/img/abcdefg.png'
-        description: Default Logo image URL
-      defLogoURLHiRes:
-        type: string
-        example: 'https://example.cnrd.io/img/abcdefg-hires.png'
-        description: Default Logo image URL - High resolution
-      defAlbumURL:
-        type: string
-        example: 'https://example.cnrd.io/img/abcdefg.png'
-        description: Default Album image URL
-      defAlbumURLHiRes:
-        type: string
-        example: 'https://example.cnrd.io/img/abcdefg-hires.png'
-        description: Default Album image URL - High resolution
-      expireBroadcastIds:
-        type: array
-        items:
-          type: string
-          example: '12345'
-        description: Immediately expire cached broadcast data matching these IDs
-      genreListCacheTTL:
-        type: integer
-        default: 86400
-        example: 86400
-        description: Time-to-live for the genre cache in seconds
-      genreListCacheFlush:
-        type: boolean
-        default: false
-        example: false
-        description: Flush cache of all genre data and query for current genre data
-      broadcastDataCacheTTL:
-        type: integer
-        default: 3600
-        example: 3600
-        description: Time-to-live for the broadcast data cache in seconds
-      broadcastDataCacheFlush:
-        type: boolean
-        default: false
-        example: false
-        description: Flush cache of all broadcast data
-      broadcastQueryRefreshRate:
-        type: integer
-        default: 600
-        example: 600
-        description: Delay in seconds between resending broadcast queries
-      altAPIURL:
-        type: string
-        example: 'https://new.api.url.com'
-        description: >-
-          Alternate URL to access API. This will be a scheme and hostname, e.g.
-          `https://new.api.url.com`
-
-          All paths will remain the same, including the version
-      altAPIURLEnabled:
-        type: boolean
-        default: false
-        example: false
-        description: >-
-          If true, use alternate URL to access API for the duration of this
-          operating session
-      altAPIURLPermanent:
-        type: boolean
-        default: false
-        example: false
-        description: 'If true, make alternate API URL permanent'
-      signalReportInterval:
-        type: integer
-        default: 600
-        example: 600
-        description: >-
-          Reporting interval for `/reports/signal` signal strength POST, in
-          seconds
-      reportsMinInterval:
-        type: integer
-        default: 86400
-        example: 86400
-        description: 'Minimum reporting interval for `/reports` POST, in seconds'
-      reportsMaxInterval:
-        type: integer
-        default: 2592000
-        example: 2592000
-        description: 'Maximum reporting interval for `/reports` POST, in seconds'
-      reportsMaxSize:
-        type: integer
-        default: 1024
-        example: 1024
-        description: Maximum size of report for `/reports` POST in kilobytes
-  Error:
-    title: Error Data Object
-    type: object
-    properties:
-      result:
-        type: string
-        example: error
-      data:
-        type: string
-        description: Error description
-  Broadcast:
-    title: Broadcast Data Object
-    type: object
-    properties:
-      analog:
-        $ref: '#/definitions/AnalogBroadcast'
-      hdradio:
-        $ref: '#/definitions/HDRadioBroadcast'
-      dab:
-        $ref: '#/definitions/DABBroadcast'
-  GenreListObject:
-    title: Genre List Object
-    type: object
-    properties:
-      id:
-        type: integer
-        description: Genre ID
-      name:
-        type: string
-        description: Genre name
-      subGenres:
-        description: Genres below major genre
-        type: array
-        items:
-          type: object
-          properties:
-            id:
-              type: integer
-              description: Subgenre ID
-            name:
-              type: string
-              description: Subgenre name
-  Live:
-    title: Live Data Object
-    type: object
-    properties:
-      id:
-        type: string
-        description: ID for this live data object
-      type:
-        type: string
-        description: 'Type of live data: music, ad, talk, sports, live, emergency, other'
-        enum:
-          - music
-          - ad
-          - talk
-          - sports
-          - live
-          - emergency
-          - other
-        example: music
-      duration:
-        type: integer
-        description: Duration in seconds
-        example: 305
-      musicData:
-        title: Music Data
-        type: object
-        properties:
-          title:
-            type: string
-            description: Title of music/song programming
-            example: All Blues
-          album:
-            type: string
-            description: Music/song album
-            example: Kind of Blue
-          artist:
-            type: string
-            description: Music/song artist
-            example: Miles Davis
-          enableThumbs:
-            type: boolean
-            description: Enable display of thumbs up/down selections
-            example: true
-            default: true
-          enableShare:
-            type: boolean
-            description: Enable display of option to share on social media
-            example: true
-            default: true
-          images:
-            type: array
-            items:
-              $ref: '#/definitions/ImagesObject'
-          genreIds:
-            type: array
-            description: Array of genres and subgenres
-            items:
-              type: integer
-      nmpData:
-        title: Non-Music Program Data
-        description: Non-Music Programming data
-        type: object
-        properties:
-          title:
-            type: string
-            description: Title of non-music program
-            example: 'Wait, Wait Don''t Tell Me'
-          program:
-            type: string
-            description: Description of non-music program
-            example: The NPR News Quiz
-          subject:
-            type: string
-            description: Subject of non-music program
-            example: 'Today''s guest: Tom Hanks'
-          enableThumbs:
-            type: boolean
-            description: Enable display of feedback thumbs up/down
-            example: true
-            default: true
-          enableShare:
-            type: boolean
-            description: Enable display of option to share on social media
-            example: true
-            default: true
-          images:
-            type: array
-            items:
-              $ref: '#/definitions/ImagesObject'
-      adData:
-        title: Ad Data
-        type: array
-        items:
-          $ref: '#/definitions/AdData'
-  AdData:
-    type: object
-    properties:
-      type:
-        type: string
-        description: |
-          Type of ad/supplemental data.
-          web - Web page,
-          phone - telephone voice,
-          sms - SMS/text message,
-          email - email address,
-          locate - Location via coordinates or string
-        enum:
-          - web
-          - phone
-          - sms
-          - email
-          - locate
-        example: web
-      data:
-        type: array
-        items:
-          type: object
-          properties:
-            type:
-              type: string
-              description: |
-                Ad contact type.
-                none - display only,
-                url - URL to link,
-                email - email address,
-                phonenumber - phone number to call,
-                sms - SMS number,
-                coords - GPS coordinates to send to nav,
-                string - text string to send to nav for search
-              enum:
-                - none
-                - url
-                - email
-                - phonenumber
-                - sms
-                - coords
-                - string
-              example: url
-            target:
-              type: string
-              description: >-
-                Contact value for designated type, such as URL, phone number SMS
-                shortcode, coordinates, etc
-              example: 'http://example.url.com'
-            content:
-              type: string
-              description: 'Content for SMS message or email, if any'
-              example: 'YES'
-            text:
-              type: array
-              description: Text accompaniment for button or link
-              items:
-                type: string
-                example: Tap here for more information
-  BroadcastList:
-    title: Broadcasts Data Array
-    type: object
-    properties:
-      analog:
-        type: array
-        items:
-          $ref: '#/definitions/AnalogBroadcast'
-      hdradio:
-        type: array
-        items:
-          $ref: '#/definitions/HDRadioBroadcast'
-      dab:
-        type: array
-        items:
-          $ref: '#/definitions/DABBroadcast'
-  AnalogBroadcast:
-    type: object
-    properties:
-      broadcastId:
-        type: string
-        example: '12345'
-        description: CONRAD API ID for this broadcast
-      ecc:
-        type: string
-        example: E0
-        description: ECC of this broadcast
-      piCode:
-        type: string
-        example: D310
-        description: PI code of this broadcast
-      freq:
-        type: integer
-        example: 103700
-        description: Frequency of this broadcast
-      band:
-        type: string
-        description: Band of this broadcast
-        enum:
-          - AM
-          - FM
-        example: FM
-      country:
-        type: string
-        example: US
-        description: >-
-          [ISO-3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1) country
-          code for this broadcast
-      broadcastData:
-        $ref: '#/definitions/BaselineBroadcastData'
-  HDRadioBroadcast:
-    type: object
-    properties:
-      broadcastId:
-        type: string
-        example: '12345'
-        description: CONRAD API ID for this broadcast
-      piCode:
-        type: string
-        example: A123
-        description: PI Code for this broadcast
-      stationId:
-        type: string
-        description: HD SIS station ID for this broadcast
-      countryCode:
-        type: string
-        description: HD SIS Country Code for this broadcast
-      location:
-        type: string
-        description: 'HD SIS location for this broadcast: Latitude, Longitude'
-        example: '43.094, -71.730'
-      channel:
-        type: string
-        example: '1'
-        description: HD multicast channel
-        enum:
-          - '1'
-          - '2'
-          - '3'
-          - '4'
-          - '5'
-          - '6'
-          - '7'
-          - '8'
-      freq:
-        type: integer
-        example: 103700
-        description: Broadcast frequency
-      band:
-        type: string
-        example: FM
-        description: Broadcast band
-        enum:
-          - AM
-          - FM
-      country:
-        type: string
-        example: US
-        description: >-
-          [ISO-3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1) country
-          code for this broadcast
-      broadcastData:
-        $ref: '#/definitions/BaselineBroadcastData'
-  DABBroadcast:
-    type: object
-    properties:
-      broadcastId:
-        type: string
-        example: '12345'
-        description: CONRAD API ID for this broadcast
-      eid:
-        type: string
-        example: C186
-        description: DAB ensemble ID for this broadcast
-      freq:
-        type: integer
-        example: 223936
-        description: Ensemble broadcast frequency for this broadcast
-      sid:
-        type: string
-        example: C1C2
-        description: Service ID for this broadcast
-      scids:
-        type: string
-        description: Service Component Identifier within Service for this broadcast
-        example: '0'
-      channel:
-        type: string
-        example: 12A
-        description: Service channel for this broadcast
-      country:
-        type: string
-        example: US
-        description: >-
-          [ISO-3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1) country
-          code for this broadcast
-      broadcastData:
-        $ref: '#/definitions/BaselineBroadcastData'
-  BaselineBroadcastData:
-    type: object
-    properties:
-      name:
-        type: string
-        example: 103.7FM The Rock
-        description: Name of broadcast
-      slogan:
-        type: string
-        example: Yesterday and Today's Rock Hits!
-        description: Slogan of broadcast
-      sortKey:
-        type: string
-        example: abc
-        description: >-
-          Alphanumeric string to use instead of `name` when sorting station
-          alphabetically. This is for special cases when alphanumeric sorting
-          isn't suitable for the broadcast `name`.
-      stationId:
-        type: string
-        example: '12345'
-        description: >-
-          An ID used to link different content from the same source. This is the
-          parent of all contentIds
-      contentId:
-        type: string
-        example: '12345'
-        description: >-
-          An ID used to link different broadcasts that contain the same content,
-          such as translator stations, regional/national broadcasters
-      languages:
-        type: array
-        description: Array of IETF language codes
-        items:
-          type: string
-          example: en-US
-      callSign:
-        type: string
-        example: WKRP
-        description: 'Call sign of broadcast, if applicable'
-      translator:
-        type: string
-        example: W212AB
-        description: >-
-          If present, this broadcast is a translator, and this string is the
-          callsign of the translator itself, while `callSign` will contain the
-          callsign of the source broadcast.
-      enableThumbs:
-        type: boolean
-        example: true
-        default: true
-        description: >-
-          Default value of `enableThumbs` in a `/broadcasts/{broadcastId}/live`
-          response for this broadcast if not explicitly specified in that
-          response. The default is true.
-      enableShare:
-        type: boolean
-        example: true
-        default: true
-        description: >-
-          Default value of `enableShare` in a `/broadcasts/{broadcastId}/live`
-          response for this broadcast if not explicitly specified in that
-          response. The default is true.
-      format:
-        type: string
-        example: music
-        description: 'Format of broadcast, if applicable'
-      description:
-        type: string
-        example: Modern and classic rock music
-        maxLength: 64
-        description: Description of broadcast
-      longDescription:
-        type: string
-        maxLength: 128
-        example: 'Central Pennsylvania''s rock source, with Kim and Tom in the morning!'
-        description: Long Description of broadcast
-      logoURL:
-        type: string
-        example: 'https://example.cnrd.io/img/abcdefg.png'
-        description: Logo URL
-      logoURLHiRes:
-        type: string
-        example: 'https://example.cnrd.io/img/abcdefg-hires.png'
-        description: 'Logo URL, high resolution'
-      sfOnIconURL:
-        type: string
-        example: 'https://example.cnrd.io/img/2/2/2210d149ef776682bc583a919046aacb.png'
-        description: >-
-          URL for small service following active icon image for this broadcast,
-          64x64
-      sfOffIconURL:
-        type: string
-        example: 'https://example.cnrd.io/img/a/3/a30183ea6cf6e345691dda5c94a97e5e.png'
-        description: >-
-          URL for small service following inactive icon image for this
-          broadcast, 64x64
-      sfOnIconURLWide:
-        type: string
-        example: 'https://example.cnrd.io/img/e/8/e83993f9ecde475ced101978b0e4602d.png'
-        description: >-
-          URL for wide service following active icon image for this broadcast,
-          224x64
-      sfOffIconURLWide:
-        type: string
-        example: 'https://example.cnrd.io/img/9/5/950d73b2d78c51ac794c2346d816b2e3.png'
-        description: >-
-          URL for wide service following inactive icon image for this broadcast,
-          224x64
-      mqURI:
-        type: string
-        description: URI for message queue connection
-        example: 'amqp://username:password@amqp.hostname.com/vhost'
-      mqExchange:
-        type: string
-        description: Exchange to use for message queue connection
-        example: live
-      mqKey:
-        type: string
-        description: Routing key to use for message queue connection
-        example: '#.broadcast.12345'
-      genreIds:
-        type: array
-        description: Array of genre IDs for this broadcast
-        items:
-          type: integer
-          example: 123
-      hasLiveData:
-        type: boolean
-        default: true
-        example: true
-        description: >-
-          This broadcast ID has live broadcast data obtainable via the
-          `/broadcasts/{broadcastId}/live` call
-      useLiveUnverified:
-        type: boolean
-        example: true
-        default: true
-        description: >-
-          Use `/broadcasts/{broadcastId}/live` data if available even if the
-          receiver station verification process fails.
-      email:
-        type: array
-        description: Array of email addresses pertaining to this broadcast ID
-        items:
-          type: string
-          example: user@example.cnrd.io
-      urls:
-        type: object
-        description: Array of service URLs pertaining to this broadcast ID
-        properties:
-          website:
-            type: array
-            description: Array of Web URLs pertaining to this broadcast ID
-            items:
-              type: string
-              example: 'http://www.example.cnrd.io'
-          facebook:
-            type: array
-            description: Array of Facebook URLs pertaining to this broadcast ID
-            items:
-              type: string
-              example: 'https://www.facebook.com/wkrprock'
-          twitter:
-            type: array
-            description: Array of Twitter URLs pertaining to this broadcast ID
-            items:
-              type: string
-              example: 'https://twitter.com/wkrprock'
-      phone:
-        type: array
-        description: Array of phone numbers pertaining to this broadcast ID
-        items:
-          type: string
-          example: '12345678901'
-      sms:
-        type: array
-        description: Array of SMS numbers pertaining to this broadcast ID
-        items:
-          type: string
-          example: '123456'
-      streams:
-        type: array
-        description: Array of streaming data objects pertaining to this broadcast ID
-        items:
-          $ref: '#/definitions/StreamsData'
-  StreamsData:
-    type: object
-    properties:
-      url:
-        type: string
-        example: 'http://radiostream.url.com/stream'
-        description: >-
-          URL of stream. Note that some SHOUTCast streams may require the
-          addition of `/;` at the end of the URL for certain client types and
-          user agents. E.g. `http://radiostream.url.com/stream/;'`
-      format:
-        type: string
-        example: mp3
-        description: Format of stream
-        enum:
-          - mp3
-          - hls
-          - aac
-      sampleRate:
-        type: integer
-        description: Sample rate of stream
-        example: 44100
-      bitrate:
-        type: integer
-        description: Stream bitrate in bits
-        example: 64000
-      preroll:
-        type: integer
-        description: Seconds of preroll. 0 indicates no known preroll
-  Report:
-    title: Report
-    type: object
-    required:
-      - type
-      - mfgId
-      - deviceId
-      - duration
-      - data
-    properties:
-      type:
-        type: string
-        enum:
-          - log
-        example: log
-      mfgId:
-        type: string
-        minLength: 6
-        maxLength: 32
-        example: DEV-0001
-      deviceId:
-        type: string
-        minLength: 6
-        maxLength: 32
-        example: aBc8deFG9
-      duration:
-        type: integer
-        minimum: 86400
-        example: 86400
-      data:
-        $ref: '#/definitions/ReportData'
-  ReportAction:
-    title: ReportAction
-    type: object
-    required:
-      - type
-      - mfgId
-      - deviceId
-      - data
-    properties:
-      type:
-        type: string
-        enum:
-          - exit
-          - sms
-          - phone
-          - share
-          - nav
-          - thumbs
-        example: exit
-        description: 'Type of action: exit, sms, phone, share, nav, thumbs'
-      mfgId:
-        type: string
-        minLength: 6
-        maxLength: 32
-        example: DEV-0001
-      deviceId:
-        type: string
-        minLength: 6
-        maxLength: 32
-        example: aBc8deFG9
-      data:
-        $ref: '#/definitions/ReportActionData'
-  ReportActionData:
-    title: Report actions for live data
-    type: object
-    allOf:
-      - $ref: '#/definitions/HiResCoordinate'
-      - type: object
-        properties:
-          broadcastId:
-            type: string
-            example: '12345'
-            description: CONRAD API ID for this broadcast
-          liveId:
-            type: string
-            description: The `liveId` of the object displayed during user action
-            example: abcdef12345
-          timestamp:
-            type: string
-            maxLength: 64
-            format: date-time
-            description: Time the action took place
-            example: '2017-01-24T13:35:57.904Z'
-          target:
-            type: string
-            description: >-
-              The target value of the action, if it exists. This would be the
-              SMS number contacted, phone number dialed, the social media app
-              name.
-            example: '123456'
-          content:
-            type: string
-            description: >-
-              The content of the selection the user made, such as the SMS
-              message sent, the nav string searched, nav coordinates selected,
-              the message posted to social media. In the case of `thumbs`, the
-              value is 1 for positive sentiment, -1 for negative sentiment, or 0
-              to unset previously provided feedback for the same object.
-            example: '1'
-  ReportData:
-    title: Report data
-    type: object
-    properties:
-      device:
-        $ref: '#/definitions/Device'
-      broadcasts:
-        type: array
-        items:
-          $ref: '#/definitions/RadioBroadcast'
-      streams:
-        type: array
-        items:
-          $ref: '#/definitions/InternetBroadcast'
-      satellite:
-        type: array
-        items:
-          $ref: '#/definitions/SatelliteBroadcast'
-      local:
-        type: array
-        items:
-          $ref: '#/definitions/LocalSource'
-      devices:
-        type: array
-        items:
-          $ref: '#/definitions/DeviceEvent'
-  Device:
-    title: Device data
-    type: object
-    properties:
-      make:
-        type: string
-        example: MyMake
-        maxLength: 64
-      model:
-        type: string
-        example: MyModel
-        maxLength: 64
-      year:
-        type: integer
-        example: 2017
-  SignalReport:
-    title: Signal strength data
-    required:
-      - mfgId
-      - deviceId
-      - timestamp
-      - data
-    properties:
-      mfgId:
-        type: string
-        minLength: 6
-        maxLength: 32
-        example: DEV-0001
-      deviceId:
-        type: string
-        minLength: 6
-        maxLength: 32
-        example: abcdef123456
-      timestamp:
-        type: string
-        maxLength: 64
-        format: date-time
-        example: '2017-01-24T13:35:57.904Z'
-      broadcastId:
-        type: string
-        example: '12345'
-        description: CONRAD API ID for this broadcast
-      data:
-        $ref: '#/definitions/RadioBroadcastLocation'
-  RadioBroadcast:
-    allOf:
-      - $ref: '#/definitions/TimedEvent'
-      - title: Broadcast station data
-        type: object
-        properties:
-          analogHd:
-            type: object
-            description: '''Analog AM/FM, or HD Radio broadcast types'''
-            properties:
-              freq:
-                type: integer
-                example: 103700
-              ecc:
-                type: string
-                example: E0
-              piCode:
-                type: string
-                example: D110
-              calls:
-                type: string
-                maxLength: 24
-                example: WKRP
-              band:
-                type: string
-                example: FM
-                enum:
-                  - AM
-                  - FM
-              channel:
-                type: string
-                example: '1'
-                enum:
-                  - '1'
-                  - '2'
-                  - '3'
-                  - '4'
-                  - '5'
-                  - '6'
-                  - '7'
-                  - '8'
-          dab:
-            type: object
-            description: '''DAB broadcast type'''
-            properties:
-              freq:
-                type: integer
-                example: 227360
-              ecc:
-                type: string
-                example: D0
-              eid:
-                type: string
-                example: C185
-              sid:
-                type: string
-                example: C4B4
-              scids:
-                type: string
-                example: 0
-          broadcastId:
-            type: string
-            example: '12345'
-            description: CONRAD API ID for this broadcast
-          isPreset:
-            type: boolean
-            description: True if this station exists in user presets
-            example: true
-          verifyFailed:
-            type: boolean
-            description: >-
-              True if verification of this station with over-the-air broadcast
-              data (such as RDS) failed.
-            example: false
-          volEvents:
-            type: array
-            description: >-
-              Array of volume change events during this listening session. First
-              object must be initial volume when listening session began.
-            items:
-              type: object
-              required:
-                - timestamp
-                - level
-              properties:
-                timestamp:
-                  type: string
-                  maxLength: 64
-                  format: date-time
-                  example: '2017-01-24T13:35:57.904Z'
-                level:
-                  type: integer
-                  example: 10
-                  description: >-
-                    Volume level measured in percent of total volume, 0-100.
-                    Volume level must remain stable for five seconds to apply. 0
-                    represents off or mute. Required for broadcast and satellite
-                    events.
-          liveIdsDisplayed:
-            type: array
-            description: >-
-              Array of `liveIds` that were retrieved and displayed during this
-              listening session.
-            items:
-              type: string
-              example: abcdef12345
-          startLoc:
-            $ref: '#/definitions/RadioBroadcastLocation'
-          stopLoc:
-            $ref: '#/definitions/RadioBroadcastLocation'
-  RadioBroadcastLocation:
-    type: object
-    allOf:
-      - $ref: '#/definitions/HiResCoordinate'
-      - title: Location
-        type: object
-        properties:
-          cdno:
-            type: integer
-            example: 70
-            description: >-
-              If this is an HD Radio broadcast, provide the digital signal
-              strength value.
-          rssi:
-            type: integer
-            example: -72
-            description: 'For any broadcast type, provide the signal strength in dBm.'
-  InternetBroadcast:
-    allOf:
-      - $ref: '#/definitions/NonRadioBroadcast'
-      - $ref: '#/definitions/TimedEvent'
-      - type: object
-        properties:
-          startLoc:
-            $ref: '#/definitions/HiResCoordinate'
-          stopLoc:
-            $ref: '#/definitions/HiResCoordinate'
-  SatelliteBroadcast:
-    allOf:
-      - $ref: '#/definitions/TimedEvent'
-      - type: object
-        properties:
-          volEvents:
-            type: array
-            description: >-
-              Array of volume change events during this listening session. First
-              object must be initial volume when listening session began.
-            items:
-              type: object
-              required:
-                - timestamp
-                - level
-              properties:
-                timestamp:
-                  type: string
-                  maxLength: 64
-                  format: date-time
-                  example: '2017-01-24T13:35:57.904Z'
-                level:
-                  type: integer
-                  example: 10
-                  description: >-
-                    Volume level measured in percent of total volume, 0-100.
-                    Volume level must remain stable for five seconds to apply. 0
-                    represents off or mute. Required for broadcast and satellite
-                    events.
-          serviceName:
-            type: string
-            maxLength: 64
-            description: 'Name of the stream or service, if applicable.'
-            example: SiriusXM
-          station:
-            type: string
-            maxLength: 64
-            description: 'Name of the station, if applicable'
-            example: Miles Davis Radio
-          startLoc:
-            $ref: '#/definitions/SatelliteLocation'
-          stopLoc:
-            $ref: '#/definitions/SatelliteLocation'
-  SatelliteLocation:
-    allOf:
-      - $ref: '#/definitions/HiResCoordinate'
-  NonRadioBroadcast:
-    type: object
-    properties:
-      serviceName:
-        type: string
-        maxLength: 64
-        description: 'Name of the stream or service, if applicable.'
-        example: Pandora
-      station:
-        type: string
-        maxLength: 64
-        description: 'Name of the station, if applicable'
-        example: Miles Davis Radio
-      url:
-        type: string
-        description: >-
-          If this is an independent stream or stream provided by a broadcast
-          record, provide the URL accessed.
-        example: 'http://streamurl.example.com'
-      broadcastId:
-        type: string
-        description: >-
-          If this is a stream accessed from a broadcast record, provide the
-          `broadcastId` of that record.
-        example: '12345'
-      servFollow:
-        type: boolean
-        description: >-
-          If this content was accessed through service following, indicate that
-          here.
-        example: true
-      errorStatusCode:
-        type: string
-        description: >-
-          If the playback of this stream encountered HTTP errors that prevented
-          playback, that error code is captured in this string. 0 represents an
-          unreachable service. Other codes are standard HTTP status codes such
-          as 401, 403, 404, 500, 502, 503, etc
-      format:
-        type: string
-        maxLength: 12
-        description: 'Format of stream, such as mp3, aac, hls'
-        example: mp3
-      bitrate:
-        type: integer
-        description: Bitrate in bits
-        example: 64000
-  Coordinate:
-    type: object
-    properties:
-      lat:
-        type: number
-        format: double
-        description: >-
-          Latitude in [decimal
-          degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to
-          three decimal places (e.g. 43.094)
-        example: 43.094
-      lng:
-        type: number
-        format: double
-        description: >-
-          Longitude in [decimal
-          degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to
-          three decimal places (e.g. -71.730)
-        example: -71.73
-  HiResCoordinate:
-    type: object
-    properties:
-      lat:
-        type: number
-        format: double
-        description: >-
-          Latitude in [decimal
-          degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to six
-          decimal places (e.g. 43.094123)
-        example: 43.094123
-      lng:
-        type: number
-        format: double
-        description: >-
-          Longitude in [decimal
-          degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to six
-          decimal places (e.g. -71.730123)
-        example: -71.730123
-  ImagesObject:
-    type: object
-    description: >-
-      Array of image URLs with specific type definitions for enhanced display
-      options. This replaces the deprecated `imageURL` and `imageURLHiRes`
-      attributes. This array can contain standard and HiRes image URLS that have
-      specific types, currently defined as `album`, `artist`, `logo`, and
-      `other`. If `default` is present and true, then that object is to be
-      displayed in the absence of other preferences, or as a default image for
-      data display.
-    properties:
-      type:
-        type: string
-        enum:
-          - album
-          - artist
-          - logo
-          - other
-        description: 'Specific image type, if known.'
-        example: artist
-      default:
-        type: boolean
-        description: >-
-          If present, denotes this image is the default to be used if no user
-          preference has been made.
-        example: true
-      url:
-        type: string
-        description: URL to retrieve the image
-        example: 'https://s.cnrd.io/img/c/2/c2b12ed7860b3a1a123483dec90abf1ea3.jpg'
-      urlHiRes:
-        type: string
-        description: 'URL to retrieve the high-resolution image, if available'
-        example: 'https://s.cnrd.io/img/f/2/f2b12ed1234b3a1a123483dec90abf1ea6.jpg'
-  LocalSource:
-    allOf:
-      - $ref: '#/definitions/TimedEvent'
-      - type: object
-        properties:
-          sourceName:
-            type: string
-            example: aux
-            enum:
-              - cd
-              - bt audio
-              - harddrive
-              - media
-              - aux
-  TimedEvent:
-    type: object
-    properties:
-      duration:
-        type: integer
-        example: 600
-        description: Duration of event in seconds
-      startTime:
-        type: string
-        maxLength: 64
-        format: date-time
-        example: '2017-01-24T13:35:57.904Z'
-      stopTime:
-        type: string
-        maxLength: 64
-        format: date-time
-        example: '2017-01-24T13:35:57.904Z'
-  DeviceEvent:
-    type: object
-    properties:
-      event:
-        type: string
-        example: insert
-        enum:
-          - insert
-          - remove
-      type:
-        type: string
-        maxLength: 64
-      subtype:
-        type: string
-        maxLength: 64
-      mobileId:
-        type: string
-        maxLength: 64
-      count:
-        type: integer
-  ReportError:
-    title: Error
-    type: object
-    properties:
-      result:
-        type: string
-        enum:
-          - error
-      data:
-        type: string
-      action:
-        type: string
-        example: discard
-        enum:
-          - discard
+  title: PRERELEASE - DTS Connected Radio API
+  version: '1.0'
 parameters:
-  album:
-    name: album
-    in: query
-    type: string
-    description: 'Album name. Not required, but helps with era alignment.'
-  artist:
-    name: artist
-    in: query
-    type: string
-    required: true
-    description: Name of the artist. Always required.
   Authorization:
-    name: Authorization
+    description: 'Authorization header The format is `{deviceId},{hash}`, where the
+      `hash` is `HMAC_SHA256(mfgSecret, deviceId)`. The `hash` is hex digest, truncated
+      to 24 characters. Example: `Authorization: asdbh23456sdf,fd9f655862c9bd4da0edb845`'
     in: header
-    description: >-
-      Authorization header The format is `{deviceId},{hash}`, where the `hash`
-      is `HMAC_SHA256(mfgSecret, deviceId)`. The `hash` is hex digest, truncated
-      to 24 characters. Example: `Authorization:
-      asdbh23456sdf,fd9f655862c9bd4da0edb845`
+    name: Authorization
+    required: true
+    type: string
+  album:
+    description: Album name. Not required, but helps with era alignment.
+    in: query
+    name: album
+    type: string
+  artist:
+    description: Name of the artist. Always required.
+    in: query
+    name: artist
     required: true
     type: string
   broadcastId:
-    name: broadcastId
-    in: path
     description: Requested broadcast ID
-    type: string
-    required: true
-  conradTrackId:
-    name: conradTrackId
     in: path
-    type: string
-    description: 'A unique ID that refers to a single audio track or recording. '
+    name: broadcastId
     required: true
-  conradTransform:
-    name: transform
-    in: query
     type: string
-    description: >-
-      Comma-separated list of transformations to apply. Currently only supports
-      `clean`, which replaces expletives with asterisks.
   conradAlbumId:
-    name: conradAlbumId
-    in: path
-    type: string
-    required: true
     description: A unique ID that refers to a specific released album
-  conradArtistId:
-    name: conradArtistId
     in: path
-    type: string
+    name: conradAlbumId
     required: true
+    type: string
+  conradArtistId:
     description: 'A unique ID that refers to a specfic artist. '
+    in: path
+    name: conradArtistId
+    required: true
+    type: string
+  conradLyricFormats:
+    description: A comma-separated list of formats. `static` and `lrc` are the only
+      valid lyric formats. Default is `static`.
+    in: query
+    name: formats
+    type: string
+  conradTrackId:
+    description: 'A unique ID that refers to a single audio track or recording. '
+    in: path
+    name: conradTrackId
+    required: true
+    type: string
+  conradTransform:
+    description: Comma-separated list of transformations to apply. Currently only
+      supports `clean`, which replaces expletives with asterisks.
+    in: query
+    name: transform
+    type: string
   country:
+    description: A comma-separated list of upper case ISO alpha-2 countries. Filters
+      the results. Multiple parameters allowed.
+    in: query
     name: country
-    in: query
     type: string
-    description: >-
-      A comma-separated list of upper case ISO alpha-2 countries. Filters the
-      results. Multiple parameters allowed.
   cursor:
-    name: cursor
-    in: query
-    type: string
     description: Cursor position at which to start response
-  dab:
-    name: dab
     in: query
+    name: cursor
+    type: string
+  dab:
     description: Array of strings in the format `gcc.eid` (e.g. `de0.d285`)
-    type: array
+    in: query
     items:
       type: string
+    name: dab
     required: false
-  deviceType:
-    name: deviceType
-    in: query
-    description: >-
-      Supported receiver technologies bitmask.
-
-
-      Default value is `0`, which causes results for all supported receivers to
-      be returned.  Other accepted values are `1` for analog, `2` for hdradio,
-      `4` for dab.  The values may be OR-ed together (e.g., `3` for analog and
-      hdradio).
-    type: integer
-    default: 0
-    required: false
-  disp:
-    name: disp
-    in: query
-    type: string
-    enum:
-      - tuned
-      - guide
-      - preset
-    description: >-
-      The display purpose of the live data request. This includes `tuned` for
-      requests pertaining to the broadcast currently tuned in on the primary
-      tuner and playing, `guide` for requests to be used to populate a live
-      station guide, and `preset` for requests intended to be used for live
-      presets in the display.
-    required: true
-  embed:
-    name: embed
-    in: query
-    type: string
-    description: >-
-      A comma-separated list of additional data to embed in the response.
-      Currently only accepts `image`, to include an artist or album image in the
-      response, if possible
-  freq:
-    name: freq
-    in: query
-    description: 'Array of analog/HD frequencies in kHz (e.g. `1040,89900,101100`)'
     type: array
+  deviceType:
+    default: 0
+    description: 'Supported receiver technologies bitmask.
+
+
+      Default value is `0`, which causes results for all supported receivers to be
+      returned.  Other accepted values are `1` for analog, `2` for hdradio, `4` for
+      dab.  The values may be OR-ed together (e.g., `3` for analog and hdradio).'
+    in: query
+    name: deviceType
+    required: false
+    type: integer
+  disp:
+    description: The display purpose of the live data request. This includes `tuned`
+      for requests pertaining to the broadcast currently tuned in on the primary tuner
+      and playing, `guide` for requests to be used to populate a live station guide,
+      and `preset` for requests intended to be used for live presets in the display.
+    enum:
+    - tuned
+    - guide
+    - preset
+    in: query
+    name: disp
+    required: true
+    type: string
+  embed:
+    description: A comma-separated list of additional data to embed in the response.
+      Currently only accepts `image`, to include an artist or album image in the response,
+      if possible
+    in: query
+    name: embed
+    type: string
+  freq:
+    description: Array of analog/HD frequencies in kHz (e.g. `1040,89900,101100`)
+    in: query
     items:
       type: integer
+    name: freq
     required: false
-  geoCode:
-    name: geoCode
-    in: query
-    description: Geocode ID delivered initially by /devices and subsequently by /config
-    type: string
-    required: true
-    maxLength: 32
-  lang:
-    name: lang
-    in: query
-    description: >-
-      [RFC 5646](https://tools.ietf.org/html/rfc5646) compliant tag specifying
-      the language and region to use when returning the results (default:
-      `en-US`).
-
-      The results will be in `en-US` if the requested language is not available.
-    required: false
-    type: string
-    default: en-US
-  language:
-    name: language
-    in: query
-    type: string
-    default: en-us
-    description: 'Language, using IETF Language code'
-  lat:
-    name: lat
-    in: query
-    type: number
-    description: >-
-      Latitude in [decimal
-      degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to three
-      decimal places (e.g. 43.094)
-    required: true
-  lat-nr:
-    name: lat
-    in: query
-    type: number
-    description: >-
-      Latitude in [decimal
-      degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to three
-      decimal places (e.g. 43.094)
-    required: false
-  lng:
-    name: lng
-    in: query
-    type: number
-    description: >-
-      Longitude in [decimal
-      degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to three
-      decimal places (e.g. -71.730)
-    required: true
-  lng-nr:
-    name: lng
-    in: query
-    type: number
-    description: >-
-      Longitude in [decimal
-      degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to three
-      decimal places (e.g. -71.730)
-    required: false
-  location:
-    name: location
-    in: query
-    type: string
-    description: >-
-      An upper case ISO alpha-2 country. Gives priority to the products from the
-      given country. Compatible with "priority".
-  mfgId:
-    name: mfgId
-    in: header
-    description: Manufacturer-specific ID supplied by DTS
-    required: true
-    type: string
-    minLength: 2
-    maxLength: 32
-  priority:
-    name: priority
-    in: query
-    type: string
-    default: pop
-    description: >-
-      Gives the priority to the given criteria. `none` or `pop`, defaults to
-      `pop` for "popularity". Compatible with "location". 
-    enum:
-      - none
-      - pop
-  rds:
-    name: rds
-    in: query
-    description: >-
-      Array of strings in the format `gcc.picode.frequency` (e.g.
-      `de0.de37.89900`)
     type: array
+  geoCode:
+    description: Geocode ID delivered initially by /devices and subsequently by /config
+    in: query
+    maxLength: 32
+    name: geoCode
+    required: true
+    type: string
+  ipcCatPath:
+    description: 'The category path as defined in each element in the hierarchy. For
+      the root of the category structure, use a trailing slash. '
+    in: path
+    minLength: 1
+    name: ipcCatPath
+    required: true
+    type: string
+  ipcContentId:
+    description: This unique ID describes a single IP content stream or podcast, providing
+      metadata such as `name`, `slogan`, etc.
+    in: path
+    name: ipcContentId
+    required: true
+    type: string
+  ipcPlaybackId:
+    description: This unique ID is used to indicate this is playable content, and
+      can be used to retrieve the attributes necessary for playback/streaming of the
+      stream or podcast episode.
+    in: query
+    name: ipcPlaybackId
+    type: string
+  ipcPlaybackId-path:
+    description: This unique ID is used to indicate this is playable content, and
+      can be used to retrieve the attributes necessary for playback/streaming of the
+      stream or podcast episode.
+    in: path
+    name: ipcPlaybackId
+    required: true
+    type: string
+  ipcPodcastId:
+    description: ID of a specific podcast
+    in: path
+    name: ipcPodcastId
+    required: true
+    type: string
+  ipcPublisherId:
+    description: IP Content Publisher ID, used to link IP Content with a terrestrial
+      broadcast
+    in: path
+    maxLength: 32
+    name: ipcPublisherId
+    required: true
+    type: string
+  ipcType:
+    default: all
+    description: Type of content to search for
+    enum:
+    - stream
+    - podcast
+    - all
+    in: query
+    name: type
+    type: string
+  lang:
+    default: en-US
+    description: '[RFC 5646](https://tools.ietf.org/html/rfc5646) compliant tag specifying
+      the language and region to use when returning the results (default: `en-US`).
+
+      The results will be in `en-US` if the requested language is not available.'
+    in: query
+    name: lang
+    required: false
+    type: string
+  language:
+    default: en-us
+    description: Language, using IETF Language code
+    in: query
+    name: language
+    type: string
+  lat:
+    description: Latitude in [decimal degrees](https://en.wikipedia.org/wiki/Decimal_degrees)
+      rounded to three decimal places (e.g. 43.094)
+    in: query
+    name: lat
+    required: true
+    type: number
+  lat-nr:
+    description: Latitude in [decimal degrees](https://en.wikipedia.org/wiki/Decimal_degrees)
+      rounded to three decimal places (e.g. 43.094)
+    in: query
+    name: lat
+    required: false
+    type: number
+  leArtistName:
+    description: String to search for in an artist search. Should always be the artist
+      field of the current dynamic data for that broadcast.
+    in: query
+    name: artistName
+    required: true
+    type: string
+  leCompact:
+    default: 'False'
+    description: Reduce size of response by eliminating extra venue detail.
+    in: query
+    name: compact
+    type: boolean
+  leDayLimit:
+    default: 31
+    description: Limit search to events occurring before this number of days in the
+      future. Default is 31 days.
+    in: query
+    name: dayLimit
+    type: integer
+  leEventId:
+    description: Local event ID
+    in: path
+    name: leEventId
+    required: true
+    type: string
+  leGenreId:
+    description: Genre ID to search for
+    in: query
+    name: genreId
+    required: true
+    type: number
+  leNonMusicResults:
+    default: 'False'
+    description: Return event types that are not directly related to the musical genre,
+      but may be of interest
+    in: query
+    name: nonMusicResults
+    type: boolean
+  leRange:
+    default: 50mi
+    description: Range to search, expressed in miles if followed by `mi`, kilometers
+      if followed by `km`.
+    in: query
+    name: range
+    type: string
+  leType:
+    description: "Search type, `artist` or `genre`. \n`artist` will return events\
+      \ related to the artist. `genre` will return events related to that genre."
+    enum:
+    - artist
+    - genre
+    in: query
+    name: type
+    required: true
+    type: string
+  limit:
+    default: 10
+    description: Response limits for pagination. Pagination is limited to a maximum
+      of 10 objects per response.
+    in: query
+    name: limit
+    type: integer
+  lng:
+    description: Longitude in [decimal degrees](https://en.wikipedia.org/wiki/Decimal_degrees)
+      rounded to three decimal places (e.g. -71.730)
+    in: query
+    name: lng
+    required: true
+    type: number
+  lng-nr:
+    description: Longitude in [decimal degrees](https://en.wikipedia.org/wiki/Decimal_degrees)
+      rounded to three decimal places (e.g. -71.730)
+    in: query
+    name: lng
+    required: false
+    type: number
+  location:
+    description: An upper case ISO alpha-2 country. Gives priority to the products
+      from the given country. Compatible with "priority".
+    in: query
+    name: location
+    type: string
+  mfgId:
+    description: Manufacturer-specific ID supplied by DTS
+    in: header
+    maxLength: 32
+    minLength: 2
+    name: mfgId
+    required: true
+    type: string
+  priority:
+    default: pop
+    description: 'Gives the priority to the given criteria. `none` or `pop`, defaults
+      to `pop` for "popularity". Compatible with "location". '
+    enum:
+    - none
+    - pop
+    in: query
+    name: priority
+    type: string
+  rds:
+    description: Array of strings in the format `gcc.picode.frequency` (e.g. `de0.de37.89900`)
+    in: query
     items:
       type: string
+    name: rds
     required: false
+    type: array
   search:
-    name: search
-    in: query
-    type: string
-    maxLength: 64
     description: String to search for
+    in: query
+    maxLength: 64
+    name: search
     required: true
-  sort:
-    name: sort
-    in: query
     type: string
-    enum:
-      - name
-      - date
-      - pop
-    description: 'Desired sorting, `name`, `date`, or `pop` for popularity. '
+  sort:
     default: name
-  stripHTML:
-    name: stripHTML
+    description: 'Desired sorting, `name`, `date`, or `pop` for popularity. '
+    enum:
+    - name
+    - date
+    - pop
     in: query
-    type: boolean
+    name: sort
+    type: string
+  stripHTML:
     default: 'False'
     description: Strip all HTML tags in response
+    in: query
+    name: stripHTML
+    type: boolean
   title:
-    name: title
-    in: query
-    type: string
-    required: true
     description: Title of the track or recording. Required for era-aligned image response.
-  year:
-    name: year
     in: query
+    name: title
+    required: true
+    type: string
+  year:
+    description: If `embed` is `images`, optionally use this year to attempt to prioritize
+      the results with the artist image closest to the requested year as the first
+      entry in the array.
+    in: query
+    name: year
     type: number
-    description: >-
-      If `embed` is `images`, optionally use this year to attempt to prioritize
-      the results with the artist image closest to the requested year as the
-      first entry in the array.
+paths: {}
 responses:
   '200':
     description: Successful response
   '400':
-    description: 'No results found, or missing parameter'
-    schema:
-      $ref: '#/definitions/ReportError'
+    description: No results found, or missing parameter
     examples:
       application/json:
-        result: error
-        data: missing query parameter
         action: discard
+        data: missing query parameter
+        result: error
+    schema:
+      $ref: '#/definitions/ReportError'
   '401':
     description: Authorization/authentication error
-    schema:
-      $ref: '#/definitions/ReportError'
     examples:
       application/json:
-        result: error
-        data: authentication error
         action: discard
+        data: authentication error
+        result: error
+    schema:
+      $ref: '#/definitions/ReportError'
   '404':
     description: Requested path or object not found
     schema:
-      type: object
       properties: {}
+      type: object
   '500':
     description: ''
-    schema:
-      $ref: '#/definitions/ReportError'
     examples:
       application/json:
-        result: error
+        action: discard
         data: internal error
-        action: discard
-  Reports-400:
-    description: 'No results found, or missing parameter'
+        result: error
     schema:
       $ref: '#/definitions/ReportError'
-    examples:
-      application/json:
-        result: foo
-        data: foo
-        action: discard
-  Reports-401:
-    description: Authorization/authentication error
-    schema:
-      $ref: '#/definitions/ReportError'
-    examples:
-      application/json:
-        result: foo
-        data: foo
-        action: discard
-  Reports-500:
-    description: Internal error
-    schema:
-      $ref: '#/definitions/ReportError'
-    examples:
-      application/json:
-        result: foo
-        data: foo
-        action: discard
   Broadcasts-301:
-    description: >-
-      If a `301` response is returned, then the requested `broadcastId` has been
-      moved/combined with another `broadcastId`, and the client should update
-      any presets, favorites, or bookmarks that reference this `broadcastId`
-      with the target of the redirection specified as `newBroadcastId` in the
-      200 reponse.
+    description: 'If a `301` response is returned, then the requested `broadcastId`
+      has been moved/combined with another `broadcastId`, and the client should update
+      any presets, favorites, or bookmarks that reference this `broadcastId` with
+      the target of the redirection specified as `newBroadcastId` in the 200 reponse.
 
-      Note that no redirection will be performed. The client must make another
-      query using the new `broadcastId`.
-    schema:
-      type: object
-      properties:
-        newBroadcastId:
-          type: string
-          example: '23456'
-          description: >-
-            The new `broadcastId` to replace the `broadcastId` that was moved or
-            merged.
+      Note that no redirection will be performed. The client must make another query
+      using the new `broadcastId`.'
     examples:
       application/json:
         newBroadcastId: '23456'
-  Broadcasts-410:
-    description: >-
-      If a `410 Gone` response is received, then the `broadcastId` requested is
-      no longer present or no longer exists, and all references to it in
-      presets, bookmarks, or favorites should be removed.
     schema:
+      properties:
+        newBroadcastId:
+          description: The new `broadcastId` to replace the `broadcastId` that was
+            moved or merged.
+          example: '23456'
+          type: string
       type: object
+  Broadcasts-410:
+    description: If a `410 Gone` response is received, then the `broadcastId` requested
+      is no longer present or no longer exists, and all references to it in presets,
+      bookmarks, or favorites should be removed.
+    schema:
       properties: {}
+      type: object
+  Reports-400:
+    description: No results found, or missing parameter
+    examples:
+      application/json:
+        action: discard
+        data: foo
+        result: foo
+    schema:
+      $ref: '#/definitions/ReportError'
+  Reports-401:
+    description: Authorization/authentication error
+    examples:
+      application/json:
+        action: discard
+        data: foo
+        result: foo
+    schema:
+      $ref: '#/definitions/ReportError'
+  Reports-500:
+    description: Internal error
+    examples:
+      application/json:
+        action: discard
+        data: foo
+        result: foo
+    schema:
+      $ref: '#/definitions/ReportError'
+schemes:
+- https
+securityDefinitions: {}
+swagger: '2.0'
