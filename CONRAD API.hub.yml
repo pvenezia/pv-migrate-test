@@ -26,7 +26,7 @@ pages:
   /api-reference:
     title: CONRAD API Reference
     data:
-      $ref: ./Delivery PRERELEASE-1.3.0-beta.1.oas2.yml
+      $ref: ./CONRAD Delivery API - PRERELEASE.oas2.yml
   /guides:
     title: Guides
     data:
