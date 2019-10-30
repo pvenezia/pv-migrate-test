@@ -23,3 +23,9 @@ pages:
 
             Use references to power parts of your Hub with other files in this
             project (like Modeling/OAS/Swagger files).
+  /api-reference:
+    title: API Reference
+    data:
+      $ref: ./DELIVERY TEMP MERGED v1.2 RELEASE.oas2.yml
+    config:
+      includeDownloadLink: true
