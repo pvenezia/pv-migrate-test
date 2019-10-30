@@ -24,7 +24,7 @@ info:
     If a key specified in the API spec is missing from a response, the value
     should be assumed `null`. All booleans will have default values specified in
     the documentation if they are not present in a response.
-  title: PRERELEASE - DTS Connected Radio API
+  title: DTS Connected Radio API
   version: 1.3.0-beta.2
 parameters: {}
 paths:
