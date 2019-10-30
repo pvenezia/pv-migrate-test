@@ -26,7 +26,7 @@ pages:
   /api-reference:
     title: CONRAD API Reference
     data:
-      $ref: ./CONRAD Delivery API - PRERELEASE.oas2.yml
+      $ref: ./CONRAD Delivery PRERELEASE.oas2.yml
     config:
       includeDownloadLink: true
   /guides:
@@ -53,6 +53,11 @@ pages:
             path: /amqp-push-notifications-guide
           data:
             $ref: ./Guide - AMQP Push Notifications.md
+        - title: Info Endpoint Client Flow
+          route:
+            path: /info-client-flow
+          data:
+            $ref: ./Guide - Info Endpoint Client Flow.md
   /changelog:
     title: Changelog
     data:
