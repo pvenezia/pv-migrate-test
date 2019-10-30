@@ -27,6 +27,8 @@ pages:
     title: CONRAD API Reference
     data:
       $ref: ./CONRAD Delivery API - PRERELEASE.oas2.yml
+    config:
+      includeDownloadLink: true
   /guides:
     title: Guides
     data:
