@@ -47,7 +47,7 @@ paths:
       parameters:
         - description: The size of the sample
           in: formData
-          name: fingerprintBytes
+          name: sampleBytes
           required: true
           type: integer
         - description: The sample fingerprint itself
