@@ -125,15 +125,6 @@ paths:
           schema:
             title: Devices POST object
             type: object
-            required:
-              - lat
-              - lng
-              - mfg
-              - brand
-              - device
-              - model
-              - serial
-              - version
             properties:
               lat:
                 type: number
@@ -179,6 +170,12 @@ paths:
                 description: Client version of the application
                 maxLength: 32
                 example: '1'
+            required:
+              - mfg
+              - brand
+              - device
+              - model
+              - version
       responses:
         '200':
           description: Successful response
