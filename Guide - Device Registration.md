@@ -15,11 +15,8 @@ Following are the steps to register a device in the API Explorer:
    - Brand Name
    - Device Name
    - Model Name
-   - Serial Number
    - Version
    - Manufacturer
-   - Latitude
-   - Longitude
 7. Click `Send`
 
 Here's a an animated walkthrough of the process. This walkthrough uses [Code Beautify's HMAC Generator](http://codebeautify.org/hmac-generator).
