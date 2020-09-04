@@ -400,111 +400,106 @@
             "description": "Successful response",
             "examples": {
               "application/json": {
-                "adData": [
-                  {
-                    "data": [
-                      {
-                        "content": "YES",
-                        "target": "http://example.url.com",
-                        "text": [
-                          "Tap here for more information"
-                        ],
-                        "type": "url"
-                      },
-                      {
-                        "content": "YES",
-                        "target": "http://example.url.com",
-                        "text": [
-                          "Tap here for more information"
-                        ],
-                        "type": "url"
-                      },
-                      {
-                        "content": "YES",
-                        "target": "http://example.url.com",
-                        "text": [
-                          "Tap here for more information"
-                        ],
-                        "type": "url"
-                      }
-                    ],
-                    "type": "web"
-                  },
-                  {
-                    "data": [
-                      {
-                        "content": "YES",
-                        "target": "http://example.url.com",
-                        "text": [
-                          "Tap here for more information",
-                          "Tap here for more information"
-                        ],
-                        "type": "url"
-                      },
-                      {
-                        "content": "YES",
-                        "target": "http://example.url.com",
-                        "text": [
-                          "Tap here for more information"
-                        ],
-                        "type": "url"
-                      },
-                      {
-                        "content": "YES",
-                        "target": "http://example.url.com",
-                        "text": [
-                          "Tap here for more information",
-                          "Tap here for more information",
-                          "Tap here for more information"
-                        ],
-                        "type": "url"
-                      }
-                    ],
-                    "type": "web"
-                  }
-                ],
-                "duration": 305,
                 "id": "abcdef12345",
+                "type": "music",
+                "duration": 305,
                 "musicData": {
+                  "title": "All Blues",
                   "album": "Kind of Blue",
                   "artist": "Miles Davis",
-                  "conradAlbumId": "CAL12345",
-                  "conradArtistId": "CAR23456",
-                  "conradTrackId": "CTR34566",
-                  "enableShare": true,
                   "enableThumbs": true,
+                  "enableShare": true,
+                  "images": [
+                    {
+                      "type": "artist",
+                      "default": true,
+                      "url": "https://s.cnrd.io/img/c/2/c2b12ed7860b3a1a123483dec90abf1ea3.jpg",
+                      "urlHiRes": "https://s.cnrd.io/img/f/2/f2b12ed1234b3a1a123483dec90abf1ea6.jpg"
+                    }
+                  ],
                   "genreIds": [
                     3,
                     5
-                  ],
-                  "images": [
-                    {
-                      "default": true,
-                      "type": "artist",
-                      "url": "https://s.cnrd.io/img/c/2/c2b12ed7860b3a1a123483dec90abf1ea3.jpg",
-                      "urlHiRes": "https://s.cnrd.io/img/f/2/f2b12ed1234b3a1a123483dec90abf1ea6.jpg"
-                    }
-                  ],
-                  "title": "All Blues"
+                  ]
                 },
                 "nmpData": {
-                  "conradArtistId": "CAR23456",
-                  "conradTrackId": "CTR34566",
-                  "enableShare": true,
+                  "title": "Wait, Wait Don't Tell Me",
+                  "program": "The NPR News Quiz",
+                  "subject": "Today's guest: Tom Hanks",
                   "enableThumbs": true,
+                  "enableShare": true,
                   "images": [
                     {
-                      "default": true,
                       "type": "artist",
+                      "default": true,
                       "url": "https://s.cnrd.io/img/c/2/c2b12ed7860b3a1a123483dec90abf1ea3.jpg",
                       "urlHiRes": "https://s.cnrd.io/img/f/2/f2b12ed1234b3a1a123483dec90abf1ea6.jpg"
                     }
-                  ],
-                  "program": "The NPR News Quiz",
-                  "subject": "Today's guest: Tom Hanks",
-                  "title": "Wait, Wait Don't Tell Me"
+                  ]
                 },
-                "type": "music"
+                "adData": [
+                  {
+                    "type": "web",
+                    "data": [
+                      {
+                        "type": "url",
+                        "target": "http://example.url.com",
+                        "content": "YES",
+                        "text": [
+                          "Tap here for more information"
+                        ]
+                      },
+                      {
+                        "type": "url",
+                        "target": "http://example.url.com",
+                        "content": "YES",
+                        "text": [
+                          "Tap here for more information"
+                        ]
+                      },
+                      {
+                        "type": "url",
+                        "target": "http://example.url.com",
+                        "content": "YES",
+                        "text": [
+                          "Tap here for more information"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "web",
+                    "data": [
+                      {
+                        "type": "url",
+                        "target": "http://example.url.com",
+                        "content": "YES",
+                        "text": [
+                          "Tap here for more information",
+                          "Tap here for more information"
+                        ]
+                      },
+                      {
+                        "type": "url",
+                        "target": "http://example.url.com",
+                        "content": "YES",
+                        "text": [
+                          "Tap here for more information"
+                        ]
+                      },
+                      {
+                        "type": "url",
+                        "target": "http://example.url.com",
+                        "content": "YES",
+                        "text": [
+                          "Tap here for more information",
+                          "Tap here for more information",
+                          "Tap here for more information"
+                        ]
+                      }
+                    ]
+                  }
+                ]
               }
             },
             "schema": {
