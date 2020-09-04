@@ -57,57 +57,65 @@
               "application/json": {
                 "analog": [
                   {
-                    "broadcastId": "12345",
-                    "ecc": "E0",
-                    "piCode": "D310",
-                    "freq": 103700,
                     "band": "FM",
-                    "country": "US",
                     "broadcastData": {
-                      "name": "103.7FM The Rock",
-                      "slogan": "Yesterday and Today's Rock Hits!",
-                      "sortKey": "abc",
-                      "stationId": "12345",
-                      "contentId": "12345",
-                      "languages": [
-                        "en-US",
-                        "en-US",
-                        "en-US"
-                      ],
                       "callSign": "WKRP",
-                      "translator": "W212AB",
-                      "enableThumbs": true,
-                      "enableShare": true,
-                      "format": "music",
+                      "contentId": "12345",
                       "description": "Modern and classic rock music",
-                      "longDescription": "Central Pennsylvania's rock source, with Kim and Tom in the morning!",
-                      "logoURL": "https://example.cnrd.io/img/abcdefg.png",
-                      "logoURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
-                      "sfOnIconURL": "https://example.cnrd.io/img/2/2/2210d149ef776682bc583a919046aacb.png",
-                      "sfOffIconURL": "https://example.cnrd.io/img/a/3/a30183ea6cf6e345691dda5c94a97e5e.png",
-                      "sfOnIconURLWide": "https://example.cnrd.io/img/e/8/e83993f9ecde475ced101978b0e4602d.png",
-                      "sfOffIconURLWide": "https://example.cnrd.io/img/9/5/950d73b2d78c51ac794c2346d816b2e3.png",
-                      "mqURI": "amqp://username:password@amqp.hostname.com/vhost",
-                      "mqExchange": "live",
-                      "mqKey": "#.broadcast.12345",
+                      "email": [
+                        "user@example.cnrd.io",
+                        "user@example.cnrd.io",
+                        "user@example.cnrd.io"
+                      ],
+                      "enableShare": true,
+                      "enableThumbs": true,
+                      "format": "music",
                       "genreIds": [
                         123,
                         123,
                         123
                       ],
                       "hasLiveData": true,
-                      "useLiveUnverified": true,
-                      "email": [
-                        "user@example.cnrd.io",
-                        "user@example.cnrd.io",
-                        "user@example.cnrd.io"
+                      "languages": [
+                        "en-US",
+                        "en-US",
+                        "en-US"
                       ],
+                      "logoURL": "https://example.cnrd.io/img/abcdefg.png",
+                      "logoURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
+                      "longDescription": "Central Pennsylvania's rock source, with Kim and Tom in the morning!",
+                      "mqExchange": "live",
+                      "mqKey": "#.broadcast.12345",
+                      "mqURI": "amqp://username:password@amqp.hostname.com/vhost",
+                      "name": "103.7FM The Rock",
+                      "phone": [
+                        "12345678901",
+                        "12345678901",
+                        "12345678901"
+                      ],
+                      "sfOffIconURL": "https://example.cnrd.io/img/a/3/a30183ea6cf6e345691dda5c94a97e5e.png",
+                      "sfOffIconURLWide": "https://example.cnrd.io/img/9/5/950d73b2d78c51ac794c2346d816b2e3.png",
+                      "sfOnIconURL": "https://example.cnrd.io/img/2/2/2210d149ef776682bc583a919046aacb.png",
+                      "sfOnIconURLWide": "https://example.cnrd.io/img/e/8/e83993f9ecde475ced101978b0e4602d.png",
+                      "slogan": "Yesterday and Today's Rock Hits!",
+                      "sms": [
+                        "123456",
+                        "123456",
+                        "123456"
+                      ],
+                      "sortKey": "abc",
+                      "stationId": "12345",
+                      "streams": [
+                        {
+                          "bitrate": 64000,
+                          "format": "mp3",
+                          "preroll": 42,
+                          "sampleRate": 44100,
+                          "url": "http://radiostream.url.com/stream"
+                        }
+                      ],
+                      "translator": "W212AB",
                       "urls": {
-                        "website": [
-                          "http://www.example.cnrd.io",
-                          "http://www.example.cnrd.io",
-                          "http://www.example.cnrd.io"
-                        ],
                         "facebook": [
                           "https://www.facebook.com/wkrprock",
                           "https://www.facebook.com/wkrprock",
@@ -117,54 +125,46 @@
                           "https://twitter.com/wkrprock",
                           "https://twitter.com/wkrprock",
                           "https://twitter.com/wkrprock"
+                        ],
+                        "website": [
+                          "http://www.example.cnrd.io",
+                          "http://www.example.cnrd.io",
+                          "http://www.example.cnrd.io"
                         ]
                       },
-                      "phone": [
-                        "12345678901",
-                        "12345678901",
-                        "12345678901"
-                      ],
-                      "sms": [
-                        "123456",
-                        "123456",
-                        "123456"
-                      ],
-                      "streams": [
-                        {
-                          "url": "http://radiostream.url.com/stream",
-                          "format": "mp3",
-                          "sampleRate": 44100,
-                          "bitrate": 64000,
-                          "preroll": 42
-                        }
-                      ]
-                    }
-                  }
-                ],
-                "hdradio": [
-                  {
+                      "useLiveUnverified": true
+                    },
                     "broadcastId": "12345",
-                    "piCode": "A123",
-                    "stationId": "foo",
-                    "countryCode": "foo",
-                    "location": "43.094, -71.730",
-                    "channel": "1",
-                    "freq": 103700,
-                    "band": "FM",
                     "country": "US",
-                    "broadcastData": null
+                    "ecc": "E0",
+                    "freq": 103700,
+                    "piCode": "D310"
                   }
                 ],
                 "dab": [
                   {
+                    "broadcastData": null,
                     "broadcastId": "12345",
-                    "eid": "C186",
-                    "freq": 223,
-                    "sid": "C1C2",
-                    "scids": "0",
                     "channel": "12A",
                     "country": "US",
-                    "broadcastData": null
+                    "eid": "C186",
+                    "freq": 223,
+                    "scids": "0",
+                    "sid": "C1C2"
+                  }
+                ],
+                "hdradio": [
+                  {
+                    "band": "FM",
+                    "broadcastData": null,
+                    "broadcastId": "12345",
+                    "channel": "1",
+                    "country": "US",
+                    "countryCode": "foo",
+                    "freq": 103700,
+                    "location": "43.094, -71.730",
+                    "piCode": "A123",
+                    "stationId": "foo"
                   }
                 ]
               }
@@ -212,10 +212,10 @@
             "$ref": "./delivery_common.oas2.yml#/parameters/broadcastId"
           },
           {
-            "$ref": "./delivery_common.oas2.yml#/parameters/lat"
+            "$ref": "./delivery_common.oas2.yml#/parameters/lat-nr"
           },
           {
-            "$ref": "./delivery_common.oas2.yml#/parameters/lng"
+            "$ref": "./delivery_common.oas2.yml#/parameters/lng-nr"
           }
         ],
         "produces": [
@@ -227,57 +227,65 @@
             "examples": {
               "application/json": {
                 "analog": {
-                  "broadcastId": "12345",
-                  "ecc": "E0",
-                  "piCode": "D310",
-                  "freq": 103700,
                   "band": "FM",
-                  "country": "US",
                   "broadcastData": {
-                    "name": "103.7FM The Rock",
-                    "slogan": "Yesterday and Today's Rock Hits!",
-                    "sortKey": "abc",
-                    "stationId": "12345",
-                    "contentId": "12345",
-                    "languages": [
-                      "en-US",
-                      "en-US",
-                      "en-US"
-                    ],
                     "callSign": "WKRP",
-                    "translator": "W212AB",
-                    "enableThumbs": true,
-                    "enableShare": true,
-                    "format": "music",
+                    "contentId": "12345",
                     "description": "Modern and classic rock music",
-                    "longDescription": "Central Pennsylvania's rock source, with Kim and Tom in the morning!",
-                    "logoURL": "https://example.cnrd.io/img/abcdefg.png",
-                    "logoURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
-                    "sfOnIconURL": "https://example.cnrd.io/img/2/2/2210d149ef776682bc583a919046aacb.png",
-                    "sfOffIconURL": "https://example.cnrd.io/img/a/3/a30183ea6cf6e345691dda5c94a97e5e.png",
-                    "sfOnIconURLWide": "https://example.cnrd.io/img/e/8/e83993f9ecde475ced101978b0e4602d.png",
-                    "sfOffIconURLWide": "https://example.cnrd.io/img/9/5/950d73b2d78c51ac794c2346d816b2e3.png",
-                    "mqURI": "amqp://username:password@amqp.hostname.com/vhost",
-                    "mqExchange": "live",
-                    "mqKey": "#.broadcast.12345",
+                    "email": [
+                      "user@example.cnrd.io",
+                      "user@example.cnrd.io",
+                      "user@example.cnrd.io"
+                    ],
+                    "enableShare": true,
+                    "enableThumbs": true,
+                    "format": "music",
                     "genreIds": [
                       123,
                       123,
                       123
                     ],
                     "hasLiveData": true,
-                    "useLiveUnverified": true,
-                    "email": [
-                      "user@example.cnrd.io",
-                      "user@example.cnrd.io",
-                      "user@example.cnrd.io"
+                    "languages": [
+                      "en-US",
+                      "en-US",
+                      "en-US"
                     ],
+                    "logoURL": "https://example.cnrd.io/img/abcdefg.png",
+                    "logoURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
+                    "longDescription": "Central Pennsylvania's rock source, with Kim and Tom in the morning!",
+                    "mqExchange": "live",
+                    "mqKey": "#.broadcast.12345",
+                    "mqURI": "amqp://username:password@amqp.hostname.com/vhost",
+                    "name": "103.7FM The Rock",
+                    "phone": [
+                      "12345678901",
+                      "12345678901",
+                      "12345678901"
+                    ],
+                    "sfOffIconURL": "https://example.cnrd.io/img/a/3/a30183ea6cf6e345691dda5c94a97e5e.png",
+                    "sfOffIconURLWide": "https://example.cnrd.io/img/9/5/950d73b2d78c51ac794c2346d816b2e3.png",
+                    "sfOnIconURL": "https://example.cnrd.io/img/2/2/2210d149ef776682bc583a919046aacb.png",
+                    "sfOnIconURLWide": "https://example.cnrd.io/img/e/8/e83993f9ecde475ced101978b0e4602d.png",
+                    "slogan": "Yesterday and Today's Rock Hits!",
+                    "sms": [
+                      "123456",
+                      "123456",
+                      "123456"
+                    ],
+                    "sortKey": "abc",
+                    "stationId": "12345",
+                    "streams": [
+                      {
+                        "bitrate": 64000,
+                        "format": "mp3",
+                        "preroll": 42,
+                        "sampleRate": 44100,
+                        "url": "http://radiostream.url.com/stream"
+                      }
+                    ],
+                    "translator": "W212AB",
                     "urls": {
-                      "website": [
-                        "http://www.example.cnrd.io",
-                        "http://www.example.cnrd.io",
-                        "http://www.example.cnrd.io"
-                      ],
                       "facebook": [
                         "https://www.facebook.com/wkrprock",
                         "https://www.facebook.com/wkrprock",
@@ -287,50 +295,42 @@
                         "https://twitter.com/wkrprock",
                         "https://twitter.com/wkrprock",
                         "https://twitter.com/wkrprock"
+                      ],
+                      "website": [
+                        "http://www.example.cnrd.io",
+                        "http://www.example.cnrd.io",
+                        "http://www.example.cnrd.io"
                       ]
                     },
-                    "phone": [
-                      "12345678901",
-                      "12345678901",
-                      "12345678901"
-                    ],
-                    "sms": [
-                      "123456",
-                      "123456",
-                      "123456"
-                    ],
-                    "streams": [
-                      {
-                        "url": "http://radiostream.url.com/stream",
-                        "format": "mp3",
-                        "sampleRate": 44100,
-                        "bitrate": 64000,
-                        "preroll": 42
-                      }
-                    ]
-                  }
-                },
-                "hdradio": {
+                    "useLiveUnverified": true
+                  },
                   "broadcastId": "12345",
-                  "piCode": "A123",
-                  "stationId": "foo",
-                  "countryCode": "foo",
-                  "location": "43.094, -71.730",
-                  "channel": "1",
-                  "freq": 103700,
-                  "band": "FM",
                   "country": "US",
-                  "broadcastData": null
+                  "ecc": "E0",
+                  "freq": 103700,
+                  "piCode": "D310"
                 },
                 "dab": {
+                  "broadcastData": null,
                   "broadcastId": "12345",
-                  "eid": "C186",
-                  "freq": 223,
-                  "sid": "C1C2",
-                  "scids": "0",
                   "channel": "12A",
                   "country": "US",
-                  "broadcastData": null
+                  "eid": "C186",
+                  "freq": 223,
+                  "scids": "0",
+                  "sid": "C1C2"
+                },
+                "hdradio": {
+                  "band": "FM",
+                  "broadcastData": null,
+                  "broadcastId": "12345",
+                  "channel": "1",
+                  "country": "US",
+                  "countryCode": "foo",
+                  "freq": 103700,
+                  "location": "43.094, -71.730",
+                  "piCode": "A123",
+                  "stationId": "foo"
                 }
               }
             },
@@ -400,106 +400,111 @@
             "description": "Successful response",
             "examples": {
               "application/json": {
-                "id": "abcdef12345",
-                "type": "music",
+                "adData": [
+                  {
+                    "data": [
+                      {
+                        "content": "YES",
+                        "target": "http://example.url.com",
+                        "text": [
+                          "Tap here for more information"
+                        ],
+                        "type": "url"
+                      },
+                      {
+                        "content": "YES",
+                        "target": "http://example.url.com",
+                        "text": [
+                          "Tap here for more information"
+                        ],
+                        "type": "url"
+                      },
+                      {
+                        "content": "YES",
+                        "target": "http://example.url.com",
+                        "text": [
+                          "Tap here for more information"
+                        ],
+                        "type": "url"
+                      }
+                    ],
+                    "type": "web"
+                  },
+                  {
+                    "data": [
+                      {
+                        "content": "YES",
+                        "target": "http://example.url.com",
+                        "text": [
+                          "Tap here for more information",
+                          "Tap here for more information"
+                        ],
+                        "type": "url"
+                      },
+                      {
+                        "content": "YES",
+                        "target": "http://example.url.com",
+                        "text": [
+                          "Tap here for more information"
+                        ],
+                        "type": "url"
+                      },
+                      {
+                        "content": "YES",
+                        "target": "http://example.url.com",
+                        "text": [
+                          "Tap here for more information",
+                          "Tap here for more information",
+                          "Tap here for more information"
+                        ],
+                        "type": "url"
+                      }
+                    ],
+                    "type": "web"
+                  }
+                ],
                 "duration": 305,
+                "id": "abcdef12345",
                 "musicData": {
-                  "title": "All Blues",
                   "album": "Kind of Blue",
                   "artist": "Miles Davis",
-                  "enableThumbs": true,
+                  "conradAlbumId": "CAL12345",
+                  "conradArtistId": "CAR23456",
+                  "conradTrackId": "CTR34566",
                   "enableShare": true,
+                  "enableThumbs": true,
+                  "genreIds": [
+                    3,
+                    5
+                  ],
                   "images": [
                     {
-                      "type": "artist",
                       "default": true,
+                      "type": "artist",
                       "url": "https://s.cnrd.io/img/c/2/c2b12ed7860b3a1a123483dec90abf1ea3.jpg",
                       "urlHiRes": "https://s.cnrd.io/img/f/2/f2b12ed1234b3a1a123483dec90abf1ea6.jpg"
                     }
                   ],
-                  "genreIds": [
-                    3,
-                    5
-                  ]
+                  "title": "All Blues"
                 },
                 "nmpData": {
-                  "title": "Wait, Wait Don't Tell Me",
-                  "program": "The NPR News Quiz",
-                  "subject": "Today's guest: Tom Hanks",
-                  "enableThumbs": true,
+                  "conradArtistId": "CAR23456",
+                  "conradTrackId": "CTR34566",
                   "enableShare": true,
+                  "enableThumbs": true,
                   "images": [
                     {
-                      "type": "artist",
                       "default": true,
+                      "type": "artist",
                       "url": "https://s.cnrd.io/img/c/2/c2b12ed7860b3a1a123483dec90abf1ea3.jpg",
                       "urlHiRes": "https://s.cnrd.io/img/f/2/f2b12ed1234b3a1a123483dec90abf1ea6.jpg"
                     }
-                  ]
+                  ],
+                  "program": "The NPR News Quiz",
+                  "subject": "Today's guest: Tom Hanks",
+                  "title": "Wait, Wait Don't Tell Me"
                 },
-                "adData": [
-                  {
-                    "type": "web",
-                    "data": [
-                      {
-                        "type": "url",
-                        "target": "http://example.url.com",
-                        "content": "YES",
-                        "text": [
-                          "Tap here for more information"
-                        ]
-                      },
-                      {
-                        "type": "url",
-                        "target": "http://example.url.com",
-                        "content": "YES",
-                        "text": [
-                          "Tap here for more information"
-                        ]
-                      },
-                      {
-                        "type": "url",
-                        "target": "http://example.url.com",
-                        "content": "YES",
-                        "text": [
-                          "Tap here for more information"
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "type": "web",
-                    "data": [
-                      {
-                        "type": "url",
-                        "target": "http://example.url.com",
-                        "content": "YES",
-                        "text": [
-                          "Tap here for more information",
-                          "Tap here for more information"
-                        ]
-                      },
-                      {
-                        "type": "url",
-                        "target": "http://example.url.com",
-                        "content": "YES",
-                        "text": [
-                          "Tap here for more information"
-                        ]
-                      },
-                      {
-                        "type": "url",
-                        "target": "http://example.url.com",
-                        "content": "YES",
-                        "text": [
-                          "Tap here for more information",
-                          "Tap here for more information",
-                          "Tap here for more information"
-                        ]
-                      }
-                    ]
-                  }
-                ]
+                "type": "music"
               }
             },
             "schema": {
@@ -580,38 +585,39 @@
             "description": "Successful response",
             "examples": {
               "application/json": {
-                "deviceId": "aBc8deFG9",
-                "mfgId": "D0K101",
-                "geoCode": "global",
                 "config": {
+                  "altAPIURL": "https://new.api.url.com",
+                  "altAPIURLEnabled": false,
+                  "altAPIURLPermanent": false,
+                  "broadcastDataCacheFlush": false,
+                  "broadcastDataCacheTTL": 3600,
+                  "broadcastQueryRefreshRate": 600,
+                  "broadcastQueryMinDistKm": 1,
+                  "configRefresh": 3600,
+                  "defAlbumURL": "https://example.cnrd.io/img/abcdefg.png",
+                  "defAlbumURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
+                  "defLogoURL": "https://example.cnrd.io/img/abcdefg.png",
+                  "defLogoURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
                   "enableAPI": true,
                   "enableLive": true,
                   "errorRetry": 60,
-                  "configRefresh": 3600,
-                  "liveDataRetry": 5,
-                  "useMinQueries": false,
-                  "defLogoURL": "https://example.cnrd.io/img/abcdefg.png",
-                  "defLogoURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
-                  "defAlbumURL": "https://example.cnrd.io/img/abcdefg.png",
-                  "defAlbumURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
                   "expireBroadcastIds": [
                     "12345",
                     "12345",
                     "12345"
                   ],
-                  "genreListCacheTTL": 86400,
                   "genreListCacheFlush": false,
-                  "broadcastDataCacheTTL": 3600,
-                  "broadcastDataCacheFlush": false,
-                  "broadcastQueryRefreshRate": 600,
-                  "altAPIURL": "https://new.api.url.com",
-                  "altAPIURLEnabled": false,
-                  "altAPIURLPermanent": false,
-                  "signalReportInterval": 600,
-                  "reportsMinInterval": 86400,
+                  "genreListCacheTTL": 86400,
+                  "liveDataRetry": 5,
                   "reportsMaxInterval": 2592000,
-                  "reportsMaxSize": 1024
-                }
+                  "reportsMaxSize": 1024,
+                  "reportsMinInterval": 86400,
+                  "signalReportInterval": 600,
+                  "useMinQueries": false
+                },
+                "deviceId": "aBc8deFG9",
+                "geoCode": "global",
+                "mfgId": "D0K101"
               }
             },
             "schema": {
@@ -675,38 +681,39 @@
             "description": "Successful response",
             "examples": {
               "application/json": {
-                "deviceId": "aBc8deFG9",
-                "mfgId": "D0K101",
-                "geoCode": "global",
                 "config": {
+                  "altAPIURL": "https://new.api.url.com",
+                  "altAPIURLEnabled": false,
+                  "altAPIURLPermanent": false,
+                  "broadcastDataCacheFlush": false,
+                  "broadcastDataCacheTTL": 3600,
+                  "broadcastQueryRefreshRate": 600,
+                  "broadcastQueryMinDistKm": 1,
+                  "configRefresh": 3600,
+                  "defAlbumURL": "https://example.cnrd.io/img/abcdefg.png",
+                  "defAlbumURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
+                  "defLogoURL": "https://example.cnrd.io/img/abcdefg.png",
+                  "defLogoURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
                   "enableAPI": true,
                   "enableLive": true,
                   "errorRetry": 60,
-                  "configRefresh": 3600,
-                  "liveDataRetry": 5,
-                  "useMinQueries": false,
-                  "defLogoURL": "https://example.cnrd.io/img/abcdefg.png",
-                  "defLogoURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
-                  "defAlbumURL": "https://example.cnrd.io/img/abcdefg.png",
-                  "defAlbumURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
                   "expireBroadcastIds": [
                     "12345",
                     "12345",
                     "12345"
                   ],
-                  "genreListCacheTTL": 86400,
                   "genreListCacheFlush": false,
-                  "broadcastDataCacheTTL": 3600,
-                  "broadcastDataCacheFlush": false,
-                  "broadcastQueryRefreshRate": 600,
-                  "altAPIURL": "https://new.api.url.com",
-                  "altAPIURLEnabled": false,
-                  "altAPIURLPermanent": false,
-                  "signalReportInterval": 600,
-                  "reportsMinInterval": 86400,
+                  "genreListCacheTTL": 86400,
+                  "liveDataRetry": 5,
                   "reportsMaxInterval": 2592000,
-                  "reportsMaxSize": 1024
-                }
+                  "reportsMaxSize": 1024,
+                  "reportsMinInterval": 86400,
+                  "signalReportInterval": 600,
+                  "useMinQueries": false
+                },
+                "deviceId": "aBc8deFG9",
+                "geoCode": "global",
+                "mfgId": "D0K101"
               }
             },
             "schema": {
