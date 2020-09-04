@@ -2958,7 +2958,7 @@
       "in": "query",
       "name": "lat",
       "required": true,
-      "type": "number"
+      "type": "string"
     },
     "lat-nr": {
       "description": "Latitude in [decimal degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to three decimal places (e.g. 43.094)",
@@ -3039,7 +3039,7 @@
       "in": "query",
       "name": "lng",
       "required": true,
-      "type": "number"
+      "type": "string"
     },
     "lng-nr": {
       "description": "Longitude in [decimal degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to three decimal places (e.g. -71.730)",
