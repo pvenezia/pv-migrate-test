@@ -1397,6 +1397,9 @@
         "parameters": [
           {
             "$ref": "./delivery_common.oas2.yml#/parameters/ipcContentId"
+          },
+          {
+            "$ref": "./delivery_common.oas2.yml#/parameters/ipcType"
           }
         ],
         "produces": [
