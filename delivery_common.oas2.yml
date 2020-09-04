@@ -599,7 +599,7 @@
         },
         "enableLive": {
           "default": true,
-          "description": "Must be true to enable use of /broadcasts/{broadcastId}/live path",
+          "description": "Must be true to enable use of `/broadcasts/{broadcastId}/live` path",
           "example": true,
           "type": "boolean"
         },
