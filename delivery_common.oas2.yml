@@ -2876,7 +2876,7 @@
       "type": "array"
     },
     "geoCode": {
-      "description": "Geocode ID delivered initially by /devices and subsequently by /config",
+      "description": "Geocode ID delivered initially by `/devices` and subsequently by `/config`",
       "in": "query",
       "maxLength": 32,
       "name": "geoCode",
