@@ -212,10 +212,10 @@
             "$ref": "./delivery_common.oas2.yml#/parameters/broadcastId"
           },
           {
-            "$ref": "./delivery_common.oas2.yml#/parameters/lat-nr"
+            "$ref": "./delivery_common.oas2.yml#/parameters/lat"
           },
           {
-            "$ref": "./delivery_common.oas2.yml#/parameters/lng-nr"
+            "$ref": "./delivery_common.oas2.yml#/parameters/lng"
           }
         ],
         "produces": [
