@@ -562,7 +562,7 @@
         },
         "broadcastQueryMinDistKm": {
           "type": "integer",
-          "description": "This is an integer, specifying the minimum distance in kilometers the vehicle must have traveled before refreshing the `/broadcasts` data, regardless of the time elapsed based on `broadcastQueryRefreshRate`. This would be measured from the coordinates of the last ``/broadcasts` query.",
+          "description": "This is an integer, specifying the minimum distance in kilometers the vehicle must have traveled before refreshing the `/broadcasts` data, regardless of the time elapsed based on `broadcastQueryRefreshRate`. This would be measured from the coordinates of the last `/broadcasts` query.",
           "example": 1
         },
         "configRefresh": {
