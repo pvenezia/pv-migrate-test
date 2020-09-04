@@ -585,39 +585,38 @@
             "description": "Successful response",
             "examples": {
               "application/json": {
+                "deviceId": "aBc8deFG9",
+                "mfgId": "D0K101",
+                "geoCode": "global",
                 "config": {
-                  "altAPIURL": "https://new.api.url.com",
-                  "altAPIURLEnabled": false,
-                  "altAPIURLPermanent": false,
-                  "broadcastDataCacheFlush": false,
-                  "broadcastDataCacheTTL": 3600,
-                  "broadcastQueryRefreshRate": 600,
-                  "broadcastQueryMinDistKm": 1,
-                  "configRefresh": 3600,
-                  "defAlbumURL": "https://example.cnrd.io/img/abcdefg.png",
-                  "defAlbumURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
-                  "defLogoURL": "https://example.cnrd.io/img/abcdefg.png",
-                  "defLogoURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
                   "enableAPI": true,
                   "enableLive": true,
                   "errorRetry": 60,
+                  "configRefresh": 3600,
+                  "liveDataRetry": 5,
+                  "useMinQueries": false,
+                  "defLogoURL": "https://example.cnrd.io/img/abcdefg.png",
+                  "defLogoURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
+                  "defAlbumURL": "https://example.cnrd.io/img/abcdefg.png",
+                  "defAlbumURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
                   "expireBroadcastIds": [
                     "12345",
                     "12345",
                     "12345"
                   ],
-                  "genreListCacheFlush": false,
                   "genreListCacheTTL": 86400,
-                  "liveDataRetry": 5,
-                  "reportsMaxInterval": 2592000,
-                  "reportsMaxSize": 1024,
-                  "reportsMinInterval": 86400,
+                  "genreListCacheFlush": false,
+                  "broadcastDataCacheTTL": 3600,
+                  "broadcastDataCacheFlush": false,
+                  "broadcastQueryRefreshRate": 600,
+                  "altAPIURL": "https://new.api.url.com",
+                  "altAPIURLEnabled": false,
+                  "altAPIURLPermanent": false,
                   "signalReportInterval": 600,
-                  "useMinQueries": false
-                },
-                "deviceId": "aBc8deFG9",
-                "geoCode": "global",
-                "mfgId": "D0K101"
+                  "reportsMinInterval": 86400,
+                  "reportsMaxInterval": 2592000,
+                  "reportsMaxSize": 1024
+                }
               }
             },
             "schema": {
