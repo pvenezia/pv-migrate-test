@@ -573,22 +573,22 @@
         },
         "defAlbumURL": {
           "description": "Default Album image URL",
-          "example": "`https://example.cnrd.io/img/abcdefg.png`",
+          "example": "https://example.cnrd.io/img/abcdefg.png",
           "type": "string"
         },
         "defAlbumURLHiRes": {
           "description": "Default Album image URL - High resolution",
-          "example": "`https://example.cnrd.io/img/abcdefg-hires.png`",
+          "example": "https://example.cnrd.io/img/abcdefg-hires.png",
           "type": "string"
         },
         "defLogoURL": {
           "description": "Default Logo image URL",
-          "example": "`https://example.cnrd.io/img/abcdefg.png`",
+          "example": "https://example.cnrd.io/img/abcdefg.png",
           "type": "string"
         },
         "defLogoURLHiRes": {
           "description": "Default Logo image URL - High resolution",
-          "example": "`https://example.cnrd.io/img/abcdefg-hires.png`",
+          "example": "https://example.cnrd.io/img/abcdefg-hires.png",
           "type": "string"
         },
         "enableAPI": {
