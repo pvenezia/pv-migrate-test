@@ -1786,103 +1786,259 @@ paths:
                             link broadcasts with IP content produced by the same
                             station or entity. May not exist in the result.
           examples:
-            application/json:
-              analog:
-                - broadcastId: '12345'
-                  ecc: E0
-                  piCode: D310
-                  freq: 103700
-                  band: FM
-                  country: US
-                  broadcastData:
-                    name: 103.7FM The Rock
-                    slogan: Yesterday and Today's Rock Hits!
-                    sortKey: abc
-                    stationId: '12345'
-                    contentId: '12345'
-                    languages:
-                      - en-US
-                      - en-US
-                      - en-US
-                    callSign: WKRP
-                    translator: W212AB
-                    enableThumbs: true
-                    enableShare: true
-                    format: music
-                    description: Modern and classic rock music
-                    longDescription: >-
-                      Central Pennsylvania's rock source, with Kim and Tom in
-                      the morning!
-                    logoURL: 'https://example.cnrd.io/img/abcdefg.png'
-                    logoURLHiRes: 'https://example.cnrd.io/img/abcdefg-hires.png'
-                    sfOnIconURL: >-
-                      https://example.cnrd.io/img/2/2/2210d149ef776682bc583a919046aacb.png
-                    sfOffIconURL: >-
-                      https://example.cnrd.io/img/a/3/a30183ea6cf6e345691dda5c94a97e5e.png
-                    sfOnIconURLWide: >-
-                      https://example.cnrd.io/img/e/8/e83993f9ecde475ced101978b0e4602d.png
-                    sfOffIconURLWide: >-
-                      https://example.cnrd.io/img/9/5/950d73b2d78c51ac794c2346d816b2e3.png
-                    mqURI: 'amqp://username:password@amqp.hostname.com/vhost'
-                    mqExchange: live
-                    mqKey: '#.broadcast.12345'
-                    genreIds:
-                      - 123
-                      - 123
-                      - 123
-                    hasLiveData: true
-                    useLiveUnverified: true
-                    email:
-                      - user@example.cnrd.io
-                      - user@example.cnrd.io
-                      - user@example.cnrd.io
-                    urls:
-                      website:
-                        - 'http://www.example.cnrd.io'
-                        - 'http://www.example.cnrd.io'
-                        - 'http://www.example.cnrd.io'
-                      facebook:
-                        - 'https://www.facebook.com/wkrprock'
-                        - 'https://www.facebook.com/wkrprock'
-                        - 'https://www.facebook.com/wkrprock'
-                      twitter:
-                        - 'https://twitter.com/wkrprock'
-                        - 'https://twitter.com/wkrprock'
-                        - 'https://twitter.com/wkrprock'
-                    phone:
-                      - '12345678901'
-                      - '12345678901'
-                      - '12345678901'
-                    sms:
-                      - '123456'
-                      - '123456'
-                      - '123456'
-                    streams:
-                      - url: 'http://radiostream.url.com/stream'
-                        format: mp3
-                        sampleRate: 44100
-                        bitrate: 64000
-                        preroll: 42
-              hdradio:
-                - broadcastId: '12345'
-                  piCode: A123
-                  stationId: foo
-                  countryCode: foo
-                  location: '43.094, -71.730'
-                  channel: '1'
-                  freq: 103700
-                  band: FM
-                  country: US
-                  broadcastData: null
-              dab:
-                - broadcastId: '12345'
-                  eid: C186
-                  freq: 223
-                  sid: C1C2
-                  scids: '0'
-                  channel: 12A
-                  country: US
-                  broadcastData: null
+            application/json: |-
+              {
+                "analog": [
+                  {
+                    "band": "FM",
+                    "broadcastData": {
+                      "callSign": "WKRP",
+                      "contentId": "12345",
+                      "description": "Modern and Classic hits to keep you going all day long!",
+                      "email": [
+                        "user@example.cnrd.io"
+                      ],
+                      "enableShare": true,
+                      "enableThumbs": true,
+                      "format": "music",
+                      "genreIds": [
+                        123,
+                        123
+                      ],
+                      "hasLiveData": true,
+                      "languages": [
+                        "en-US",
+                        "en-US"
+                      ],
+                      "logoURL": "https://example.cnrd.io/img/abcdefg.png",
+                      "logoURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
+                      "longDescription": "Central Pennsylvania's Rocker!",
+                      "mqExchange": "live",
+                      "mqKey": "#.broadcast.12345",
+                      "mqURI": "amqp://username:password@amqp.hostname.com/vhost",
+                      "name": "103.7FM The Rock",
+                      "phone": [
+                        "12345678901"
+                      ],
+                      "sfOffIconURL": "https://example.cnrd.io/img/a/3/a30183ea6cf6e345691dda5c94a97e5e.png",
+                      "sfOffIconURLWide": "https://example.cnrd.io/img/9/5/950d73b2d78c51ac794c2346d816b2e3.png",
+                      "sfOnIconURL": "https://example.cnrd.io/img/2/2/2210d149ef776682bc583a919046aacb.png",
+                      "sfOnIconURLWide": "https://example.cnrd.io/img/e/8/e83993f9ecde475ced101978b0e4602d.png",
+                      "slogan": "Yesterday and Today's Rock Hits!",
+                      "sms": [
+                        "123456",
+                        "123456",
+                        "123456",
+                        "123456"
+                      ],
+                      "sortKey": "abc",
+                      "streams": [
+                        {
+                          "bitrate": 128000,
+                          "format": "mp3",
+                          "preroll": 0,
+                          "sampleRate": 44100,
+                          "url": "http://radiostream.url.com/stream"
+                        },
+                        {
+                          "bitrate": 64000,
+                          "format": "mp3",
+                          "preroll": 0,
+                          "sampleRate": 44100,
+                          "url": "http://radiostream.url.com/stream2"
+                        },
+                        {
+                          "bitrate": 32000,
+                          "format": "mp3",
+                          "preroll": 0,
+                          "sampleRate": 44100,
+                          "url": "http://radiostream.url.com/stream3"
+                        }
+                      ],
+                      "translator": "W212AB",
+                      "urls": {
+                        "facebook": [
+                          "https://www.facebook.com/wkrprock"
+                        ],
+                        "twitter": [
+                          "https://twitter.com/wkrprock"
+                        ],
+                        "website": [
+                          "http://www.example.cnrd.io"
+                        ]
+                      },
+                      "useLiveUnverified": true
+                    },
+                    "broadcastId": "12345",
+                    "country": "US",
+                    "ecc": "E0",
+                    "freq": 103700,
+                    "piCode": "D310"
+                  }
+                ],
+                "dab": [
+                  {
+                    "broadcastData": {
+                      "contentId": "1345",
+                      "description": "Britain's #1 Rock Station",
+                      "email": [
+                        "user@example.cnrd.io"
+                      ],
+                      "enableShare": true,
+                      "enableThumbs": true,
+                      "format": "music",
+                      "genreIds": [
+                        123,
+                      ],
+                      "hasLiveData": true,
+                      "languages": [
+                        "en-US"
+                      ],
+                      "logoURL": "https://example.cnrd.io/img/abcdefg.png",
+                      "logoURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
+                      "longDescription": "Central Pe",
+                      "mqExchange": "live",
+                      "mqKey": "#.broadcast.12345",
+                      "mqURI": "amqp://username:password@amqp.hostname.com/vhost",
+                      "name": "Central UK Radio 1",
+                      "phone": [
+                        "12345678901"
+                      ],
+                      "sfOffIconURL": "https://example.cnrd.io/img/a/3/a30183ea6cf6e345691dda5c94a97e5e.png",
+                      "sfOffIconURLWide": "https://example.cnrd.io/img/9/5/950d73b2d78c51ac794c2346d816b2e3.png",
+                      "sfOnIconURL": "https://example.cnrd.io/img/2/2/2210d149ef776682bc583a919046aacb.png",
+                      "sfOnIconURLWide": "https://example.cnrd.io/img/e/8/e83993f9ecde475ced101978b0e4602d.png",
+                      "slogan": "Yesterday and Today's Rock Hits!",
+                      "sms": [
+                        "123456"
+                      ],
+                      "sortKey": "abc",
+                      "streams": [
+                        {
+                          "bitrate": 128000,
+                          "format": "mp3",
+                          "preroll": 0,
+                          "sampleRate": 44100,
+                          "url": "http://radiostream.url.com/stream1"
+                        },
+                        {
+                          "bitrate": 64000,
+                          "format": "mp3",
+                          "preroll": 0,
+                          "sampleRate": 44100,
+                          "url": "http://radiostream.url.com/stream2"
+                        }
+                      ],
+                      "urls": {
+                        "facebook": [
+                          "https://www.facebook.com/ukrock"
+                        ],
+                        "twitter": [
+                          "https://twitter.com/ukrock"
+                        ],
+                        "website": [
+                          "http://www.example.cnrd.io"
+                        ]
+                      },
+                      "useLiveUnverified": true
+                    },
+                    "broadcastId": "22345",
+                    "channel": "12A",
+                    "country": "UK",
+                    "eid": "C186",
+                    "freq": 223936,
+                    "scids": "0",
+                    "sid": "C1C2"
+                  }
+                ],
+                "hdradio": [
+                  {
+                    "band": "FM",
+                    "broadcastData": {
+                      "callSign": "WKRP",
+                      "contentId": "12345",
+                      "description": "Modern and Classic hits to keep you going all day long!",
+                      "email": [
+                        "user@example.cnrd.io"
+                      ],
+                      "enableShare": true,
+                      "enableThumbs": true,
+                      "format": "music",
+                      "genreIds": [
+                        123,
+                        123
+                      ],
+                      "hasLiveData": true,
+                      "languages": [
+                        "en-US"
+                      ],
+                      "logoURL": "https://example.cnrd.io/img/abcdefg.png",
+                      "logoURLHiRes": "https://example.cnrd.io/img/abcdefg-hires.png",
+                      "longDescription": "Central Pe",
+                      "mqExchange": "live",
+                      "mqKey": "#.broadcast.12345",
+                      "mqURI": "amqp://username:password@amqp.hostname.com/vhost",
+                      "name": "103.7FM The Rock",
+                      "phone": [
+                        "12345678901"
+                      ],
+                      "sfOffIconURL": "https://example.cnrd.io/img/a/3/a30183ea6cf6e345691dda5c94a97e5e.png",
+                      "sfOffIconURLWide": "https://example.cnrd.io/img/9/5/950d73b2d78c51ac794c2346d816b2e3.png",
+                      "sfOnIconURL": "https://example.cnrd.io/img/2/2/2210d149ef776682bc583a919046aacb.png",
+                      "sfOnIconURLWide": "https://example.cnrd.io/img/e/8/e83993f9ecde475ced101978b0e4602d.png",
+                      "slogan": "Yesterday and Today's Rock Hits!",
+                      "sms": [
+                        "123456"
+                      ],
+                      "sortKey": "abc",
+                      "streams": [
+                        {
+                          "bitrate": 64000,
+                          "format": "mp3",
+                          "preroll": 0,
+                          "sampleRate": 44100,
+                          "url": "http://radiostream.url.com/stream"
+                        },
+                        {
+                          "bitrate": 64000,
+                          "format": "mp3",
+                          "preroll": 0,
+                          "sampleRate": 44100,
+                          "url": "http://radiostream.url.com/stream2"
+                        },
+                        {
+                          "bitrate": 64000,
+                          "format": "mp3",
+                          "preroll": 0,
+                          "sampleRate": 44100,
+                          "url": "http://radiostream.url.com/stream3"
+                        }
+                      ],
+                      "translator": "W212AB",
+                      "urls": {
+                        "facebook": [
+                          "https://www.facebook.com/wkrprock"
+                        ],
+                        "twitter": [
+                          "https://twitter.com/wkrprock"
+                        ],
+                        "website": [
+                          "http://www.example.cnrd.io"
+                        ]
+                      },
+                      "useLiveUnverified": true
+                    },
+                    "broadcastId": "65432",
+                    "channel": "1",
+                    "country": "US",
+                    "countryCode": "US",
+                    "freq": 103700,
+                    "location": "43.094, -71.730",
+                    "piCode": "A123",
+                    "stationId": "23456"
+                  }
+                ]
+              }
         '400':
           description: 'No results found, or missing parameter'
           schema:
