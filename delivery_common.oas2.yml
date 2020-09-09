@@ -24,14 +24,14 @@
               "example": "The Black Crowes",
               "type": "string"
             },
-            "conradAlbumId": {
-              "$ref": "#/definitions/conradAlbumId"
+            "tivoAlbumId": {
+              "$ref": "#/definitions/tivoAlbumId"
             },
-            "conradArtistId": {
-              "$ref": "#/definitions/conradArtistId"
+            "tivoArtistId": {
+              "$ref": "#/definitions/tivoArtistId"
             },
-            "conradTrackId": {
-              "$ref": "#/definitions/conradTrackId"
+            "tivoTrackId": {
+              "$ref": "#/definitions/tivoTrackId"
             },
             "genreIds": {
               "description": "Array of genres and subgenres",
@@ -1149,7 +1149,7 @@
           "description": "URL to retrieve the high-resolution image, if available",
           "example": "https://s.cnrd.io/img/f/2/f2b12ed1234b3a1a123483dec90abf1ea6.jpg",
           "type": "string"
-        },        
+        },
         "moderation": {
           "type": "array",
           "description": "If present, this key denotes that the image has scored above a 0 in explicit or other moderation.\n\nThis is an array of moderations types, though only `explicit` is currently supported. In the type object, the score is presented as an integer from 1-10, with 10 being the most explicit. In addition, any associated tags are presented to denote the type of explicit content detected, which is currently `adult`, `racy`, or `violent`.\n\nClients may use the scoring and tags to make a determination on whether or not to display the image, or to choose another image in the response, or show no image at all.\n\nIf this key is not present, the image can be assumed to have scored a 0, meaning no moderation is necessary.",
@@ -1610,8 +1610,8 @@
           "example": "Otis Redding, Alvertis Isbell, Allen Alvoid Jr. Jones",
           "type": "string"
         },
-        "conradTrackId": {
-          "$ref": "#/definitions/conradTrackId"
+        "tivoTrackId": {
+          "$ref": "#/definitions/tivoTrackId"
         },
         "copyright": {
           "description": "Copyright information",
@@ -1650,14 +1650,14 @@
           "example": "The Black Crowes",
           "type": "string"
         },
-        "conradAlbumId": {
-          "$ref": "#/definitions/conradAlbumId"
+        "tivoAlbumId": {
+          "$ref": "#/definitions/tivoAlbumId"
         },
-        "conradArtistId": {
-          "$ref": "#/definitions/conradArtistId"
+        "tivoArtistId": {
+          "$ref": "#/definitions/tivoArtistId"
         },
-        "conradTrackId": {
-          "$ref": "#/definitions/conradTrackId"
+        "tivoTrackId": {
+          "$ref": "#/definitions/tivoTrackId"
         },
         "images": {
           "items": {
@@ -1732,14 +1732,14 @@
               "example": "Miles Davis",
               "type": "string"
             },
-            "conradAlbumId": {
-              "$ref": "#/definitions/conradAlbumId"
+            "tivoAlbumId": {
+              "$ref": "#/definitions/tivoAlbumId"
             },
-            "conradArtistId": {
-              "$ref": "#/definitions/conradArtistId"
+            "tivoArtistId": {
+              "$ref": "#/definitions/tivoArtistId"
             },
-            "conradTrackId": {
-              "$ref": "#/definitions/conradTrackId"
+            "tivoTrackId": {
+              "$ref": "#/definitions/tivoTrackId"
             },
             "enableShare": {
               "default": true,
@@ -1778,11 +1778,11 @@
         "nmpData": {
           "description": "Non-Music Programming data",
           "properties": {
-            "conradArtistId": {
-              "$ref": "#/definitions/conradArtistId"
+            "tivoArtistId": {
+              "$ref": "#/definitions/tivoArtistId"
             },
-            "conradTrackId": {
-              "$ref": "#/definitions/conradTrackId"
+            "tivoTrackId": {
+              "$ref": "#/definitions/tivoTrackId"
             },
             "enableShare": {
               "default": true,
@@ -2659,22 +2659,22 @@
       },
       "type": "object"
     },
-    "conradAlbumId": {
-      "description": "CONRAD Album ID, A unique ID that refers to a specfic album. May not be present in all live data or ACR responses, for example if the track is on multiple albums, or was not released on an album. Album lookups for that track would then be handled by a `/info/tracks/{conradTrackId}` lookup which will supply a list of album and `conradAlbumIds`.",
+    "tivoAlbumId": {
+      "description": "CONRAD Album ID, A unique ID that refers to a specfic album. May not be present in all live data or ACR responses, for example if the track is on multiple albums, or was not released on an album. Album lookups for that track would then be handled by a `/info/tracks/{tivoTrackId}` lookup which will supply a list of album and `tivoAlbumIds`.",
       "example": "CAL12345",
-      "title": "conradAlbumId",
+      "title": "tivoAlbumId",
       "type": "string"
     },
-    "conradArtistId": {
-      "description": "CONRAD Artist ID, A unique ID that refers to a specfic artist. May not be present in all live data or ACR responses, for example if multiple artists are on the track. Artist lookups for that track would then be handled by a `/info/tracks/{conradTrackId}` lookup which will supply a full list of artists and `conradArtistIds`.",
+    "tivoArtistId": {
+      "description": "CONRAD Artist ID, A unique ID that refers to a specfic artist. May not be present in all live data or ACR responses, for example if multiple artists are on the track. Artist lookups for that track would then be handled by a `/info/tracks/{tivoTrackId}` lookup which will supply a full list of artists and `tivoArtistIds`.",
       "example": "CAR23456",
-      "title": "conradArtistId",
+      "title": "tivoArtistId",
       "type": "string"
     },
-    "conradTrackId": {
+    "tivoTrackId": {
       "description": "CONRAD Track ID, A unique ID that refers to a specfic audio track or recording. Can be used to reference related data in other endpoints.  May not be present in all live data or ACR responses.",
       "example": "CTR34566",
-      "title": "conradTrackId",
+      "title": "tivoTrackId",
       "type": "string"
     },
     "infoArtistObject": {
@@ -2685,8 +2685,8 @@
           },
           "type": "array"
         },
-        "conradArtistId": {
-          "$ref": "#/definitions/conradArtistId"
+        "tivoArtistId": {
+          "$ref": "#/definitions/tivoArtistId"
         },
         "name": {
           "type": "string"
@@ -2706,8 +2706,8 @@
           "description": "Array of other albums the track may appear on, not exhaustive",
           "items": {
             "properties": {
-              "conradAlbumId": {
-                "$ref": "#/definitions/conradAlbumId"
+              "tivoAlbumId": {
+                "$ref": "#/definitions/tivoAlbumId"
               },
               "name": {
                 "description": "Albums track can be found on. Not exhaustive",
@@ -2728,8 +2728,8 @@
           "description": "Array of artists and IDs for additional data retrieval and for tracks with multiple artists",
           "items": {
             "properties": {
-              "conradArtistId": {
-                "$ref": "#/definitions/conradArtistId"
+              "tivoArtistId": {
+                "$ref": "#/definitions/tivoArtistId"
               },
               "name": {
                 "description": "Artist name",
@@ -2746,8 +2746,8 @@
           "example": "Otis Redding, Alvertis Isbell, Allen Alvoid Jr. Jones",
           "type": "string"
         },
-        "conradTrackId": {
-          "$ref": "#/definitions/conradTrackId"
+        "tivoTrackId": {
+          "$ref": "#/definitions/tivoTrackId"
         },
         "copyright": {
           "description": "Copyright of the track",
@@ -2815,17 +2815,17 @@
       "required": true,
       "type": "string"
     },
-    "conradAlbumId": {
+    "tivoAlbumId": {
       "description": "A unique ID that refers to a specific released album",
       "in": "path",
-      "name": "conradAlbumId",
+      "name": "tivoAlbumId",
       "required": true,
       "type": "string"
     },
-    "conradArtistId": {
+    "tivoArtistId": {
       "description": "A unique ID that refers to a specfic artist. ",
       "in": "path",
-      "name": "conradArtistId",
+      "name": "tivoArtistId",
       "required": true,
       "type": "string"
     },
@@ -2835,10 +2835,10 @@
       "name": "formats",
       "type": "string"
     },
-    "conradTrackId": {
+    "tivoTrackId": {
       "description": "A unique ID that refers to a single audio track or recording. ",
       "in": "path",
-      "name": "conradTrackId",
+      "name": "tivoTrackId",
       "required": true,
       "type": "string"
     },
