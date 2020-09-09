@@ -552,6 +552,15 @@ paths:
                       https://s.cnrd.io/img/c/2/c2b12ed7860b3a1a123483dec90abf1ea3.jpg
                     urlHiRes: >-
                       https://s.cnrd.io/img/f/2/f2b12ed1234b3a1a123483dec90abf1ea6.jpg
+                  - type: album
+                    url: >-
+                      https://s.cnrd.io/img/c/2/c2b12ed7860b3a1a123483d1234abf1ea3.jpg
+                    urlHiRes: >-
+                      https://s.cnrd.io/img/f/2/f2b12ed1234b3a1a121234dec90abf1ea6.jpg
+                    moderation:
+                      - explicit:
+                          score: 5
+                          tags: adult
                 title: All Blues
               nmpData:
                 conradArtistId: CAR23456
