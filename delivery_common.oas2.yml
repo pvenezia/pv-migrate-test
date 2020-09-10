@@ -964,6 +964,7 @@ definitions:
       `other`. If `default` is present and true, then that object is to be
       displayed in the absence of other preferences, or as a default image for
       data display.
+    type: object
     properties:
       default:
         description: >-
@@ -1019,7 +1020,6 @@ definitions:
                 type: array
                 items:
                   type: string
-    type: object
   InfoLyricsObject:
     description: The response object to an `/info/lyrics` query
     properties:
