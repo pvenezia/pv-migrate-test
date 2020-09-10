@@ -1416,10 +1416,6 @@ definitions:
         title: Non-Music Program Data
         type: object
         properties:
-          conradArtistId:
-            $ref: '#/definitions/conradArtistId'
-          conradTrackId:
-            $ref: '#/definitions/conradTrackId'
           enableShare:
             default: true
             description: Enable display of option to share on social media
