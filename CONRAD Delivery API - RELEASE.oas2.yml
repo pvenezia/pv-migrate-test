@@ -597,9 +597,6 @@ paths:
               musicData:
                 album: Kind of Blue
                 artist: Miles Davis
-                conradAlbumId: CAL12345
-                conradArtistId: CAR23456
-                conradTrackId: CTR34566
                 enableShare: true
                 enableThumbs: true
                 genreIds:
@@ -614,8 +611,6 @@ paths:
                       https://s.cnrd.io/img/f/2/f2b12ed1234b3a1a123483dec90abf1ea6.jpg
                 title: All Blues
               nmpData:
-                conradArtistId: CAR23456
-                conradTrackId: CTR34566
                 enableShare: true
                 enableThumbs: true
                 images:
