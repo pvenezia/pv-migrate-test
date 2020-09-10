@@ -26,7 +26,9 @@ pages:
   /api-reference:
     title: CONRAD API Reference
     data:
-      $ref: ./DELIVERY TEMP MERGED v1.2 RELEASE.oas2.yml
+      $ref: ./CONRAD Delivery API - RELEASE.oas2.yml
+    config:
+      includeDownloadLink: true
   /guides:
     title: Guides
     data:
