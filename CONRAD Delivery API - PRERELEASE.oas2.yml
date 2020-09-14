@@ -1333,6 +1333,400 @@ paths:
                 lovin'\r\nI need good lovin'\r\nI got to have it, oh
                 yeah\r\nYeah\r\nSo hard to handle, now, yeah"
               title: Hard to Handle
+            ex2: |-
+              {
+                "LrcLyrics": [
+                  {
+                    "duration": 2560,
+                    "line": "Baby here I am",
+                    "lrcTimestamp": "[00:11.18]",
+                    "ms": 11180
+                  },
+                  {
+                    "duration": 1890,
+                    "line": "I'm the man on the scene",
+                    "lrcTimestamp": "[00:13.74]",
+                    "ms": 13740
+                  },
+                  {
+                    "duration": 2580,
+                    "line": "I can give you what you want",
+                    "lrcTimestamp": "[00:15.63]",
+                    "ms": 15630
+                  },
+                  {
+                    "duration": 2090,
+                    "line": "But you gotta' come home with me",
+                    "lrcTimestamp": "[00:18.21]",
+                    "ms": 18210
+                  },
+                  {
+                    "line": ""
+                  },
+                  {
+                    "duration": 2740,
+                    "line": "I have got some good old lovin'",
+                    "lrcTimestamp": "[00:20.30]",
+                    "ms": 20300
+                  },
+                  {
+                    "duration": 2020,
+                    "line": "And I got some more in store",
+                    "lrcTimestamp": "[00:23.04]",
+                    "ms": 23040
+                  },
+                  {
+                    "duration": 2170,
+                    "line": "When I get through throwin' it on",
+                    "lrcTimestamp": "[00:25.06]",
+                    "ms": 25060
+                  },
+                  {
+                    "duration": 2250,
+                    "line": "You gotta' come back for more",
+                    "lrcTimestamp": "[00:27.23]",
+                    "ms": 27230
+                  },
+                  {
+                    "line": ""
+                  },
+                  {
+                    "duration": 2640,
+                    "line": "Boys will come along a dime by the dozen",
+                    "lrcTimestamp": "[00:29.48]",
+                    "ms": 29480
+                  },
+                  {
+                    "duration": 2480,
+                    "line": "That ain't nothing but ten cent lovin'",
+                    "lrcTimestamp": "[00:32.12]",
+                    "ms": 32120
+                  },
+                  {
+                    "duration": 1980,
+                    "line": "Pretty little thing, let me light your candle",
+                    "lrcTimestamp": "[00:34.60]",
+                    "ms": 34600
+                  },
+                  {
+                    "duration": 6640,
+                    "line": "'Cause mama I'm sure hard to handle now, yessir'am",
+                    "lrcTimestamp": "[00:36.58]",
+                    "ms": 36580
+                  },
+                  {
+                    "line": ""
+                  },
+                  {
+                    "duration": 2700,
+                    "line": "Action speaks louder than words",
+                    "lrcTimestamp": "[00:43.22]",
+                    "ms": 43220
+                  },
+                  {
+                    "duration": 2130,
+                    "line": "And I'm a man of great experience",
+                    "lrcTimestamp": "[00:45.92]",
+                    "ms": 45920
+                  },
+                  {
+                    "duration": 2200,
+                    "line": "I know you've got another man",
+                    "lrcTimestamp": "[00:48.05]",
+                    "ms": 48050
+                  },
+                  {
+                    "duration": 2470,
+                    "line": "But I can love you better than him",
+                    "lrcTimestamp": "[00:50.25]",
+                    "ms": 50250
+                  },
+                  {
+                    "line": ""
+                  },
+                  {
+                    "duration": 2140,
+                    "line": "Take my hand don't be afraid",
+                    "lrcTimestamp": "[00:52.72]",
+                    "ms": 52720
+                  },
+                  {
+                    "duration": 2310,
+                    "line": "I'm gonna prove every word I say",
+                    "lrcTimestamp": "[00:54.86]",
+                    "ms": 54860
+                  },
+                  {
+                    "duration": 2280,
+                    "line": "I'm advertising love for free",
+                    "lrcTimestamp": "[00:57.17]",
+                    "ms": 57170
+                  },
+                  {
+                    "duration": 2650,
+                    "line": "So you can place your ad with me",
+                    "lrcTimestamp": "[00:59.45]",
+                    "ms": 59450
+                  },
+                  {
+                    "line": ""
+                  },
+                  {
+                    "duration": 2160,
+                    "line": "Boys will come along a dime by the dozen",
+                    "lrcTimestamp": "[01:02.10]",
+                    "ms": 62100
+                  },
+                  {
+                    "duration": 2560,
+                    "line": "That ain't nothing but ten cent lovin'",
+                    "lrcTimestamp": "[01:04.26]",
+                    "ms": 64260
+                  },
+                  {
+                    "duration": 2020,
+                    "line": "Pretty little thing, let me light your candle",
+                    "lrcTimestamp": "[01:06.82]",
+                    "ms": 66820
+                  },
+                  {
+                    "duration": 4180,
+                    "line": "'Cause mama I'm sure hard to handle now, yessir'am",
+                    "lrcTimestamp": "[01:08.84]",
+                    "ms": 68840
+                  },
+                  {
+                    "line": ""
+                  },
+                  {
+                    "duration": 1990,
+                    "line": "Yeah",
+                    "lrcTimestamp": "[01:13.02]",
+                    "ms": 73020
+                  },
+                  {
+                    "duration": 2220,
+                    "line": "Hard to handle now",
+                    "lrcTimestamp": "[01:15.01]",
+                    "ms": 75010
+                  },
+                  {
+                    "duration": 3610,
+                    "line": "Oh baby",
+                    "lrcTimestamp": "[01:17.23]",
+                    "ms": 77230
+                  },
+                  {
+                    "line": ""
+                  },
+                  {
+                    "duration": 1810,
+                    "line": "Baby here I am",
+                    "lrcTimestamp": "[01:20.84]",
+                    "ms": 80840
+                  },
+                  {
+                    "duration": 2610,
+                    "line": "I'm the man on the scene",
+                    "lrcTimestamp": "[01:22.65]",
+                    "ms": 82650
+                  },
+                  {
+                    "duration": 2170,
+                    "line": "I can give you what you want",
+                    "lrcTimestamp": "[01:25.26]",
+                    "ms": 85260
+                  },
+                  {
+                    "duration": 2630,
+                    "line": "But you gotta' come home with me",
+                    "lrcTimestamp": "[01:27.43]",
+                    "ms": 87430
+                  },
+                  {
+                    "line": ""
+                  },
+                  {
+                    "duration": 1760,
+                    "line": "I've got some good old lovin'",
+                    "lrcTimestamp": "[01:30.06]",
+                    "ms": 90060
+                  },
+                  {
+                    "duration": 2170,
+                    "line": "And I got some more in store",
+                    "lrcTimestamp": "[01:31.82]",
+                    "ms": 91820
+                  },
+                  {
+                    "duration": 2530,
+                    "line": "When I get through throwin' it on you",
+                    "lrcTimestamp": "[01:33.99]",
+                    "ms": 93990
+                  },
+                  {
+                    "duration": 2410,
+                    "line": "You got to come a-runnin' back for more",
+                    "lrcTimestamp": "[01:36.52]",
+                    "ms": 96520
+                  },
+                  {
+                    "line": ""
+                  },
+                  {
+                    "duration": 2270,
+                    "line": "Boys will come along a dime by the dozen",
+                    "lrcTimestamp": "[01:38.93]",
+                    "ms": 98930
+                  },
+                  {
+                    "duration": 2260,
+                    "line": "That ain't nothing but ten cent lovin'",
+                    "lrcTimestamp": "[01:41.20]",
+                    "ms": 101200
+                  },
+                  {
+                    "duration": 2220,
+                    "line": "Pretty little thing, let me light your candle",
+                    "lrcTimestamp": "[01:43.46]",
+                    "ms": 103460
+                  },
+                  {
+                    "duration": 4440,
+                    "line": "'Cause mama I'm sure hard to handle now, yessir'am",
+                    "lrcTimestamp": "[01:45.68]",
+                    "ms": 105680
+                  },
+                  {
+                    "line": ""
+                  },
+                  {
+                    "duration": 1750,
+                    "line": "Hard",
+                    "lrcTimestamp": "[01:50.12]",
+                    "ms": 110120
+                  },
+                  {
+                    "duration": 1860,
+                    "line": "Hard to handle now",
+                    "lrcTimestamp": "[01:51.87]",
+                    "ms": 111870
+                  },
+                  {
+                    "duration": 4100,
+                    "line": "Oh yeah, yeah yeah yeah",
+                    "lrcTimestamp": "[01:53.73]",
+                    "ms": 113730
+                  },
+                  {
+                    "line": ""
+                  },
+                  {
+                    "duration": 1960,
+                    "line": "Boys will come along a dime by the dozen",
+                    "lrcTimestamp": "[02:15.45]",
+                    "ms": 135450
+                  },
+                  {
+                    "duration": 2060,
+                    "line": "That ain't nothing but ten cent lovin'",
+                    "lrcTimestamp": "[02:17.41]",
+                    "ms": 137410
+                  },
+                  {
+                    "duration": 2540,
+                    "line": "Pretty little thing, let me light your candle",
+                    "lrcTimestamp": "[02:19.47]",
+                    "ms": 139470
+                  },
+                  {
+                    "duration": 4300,
+                    "line": "'Cause mama I'm sure hard to handle now, yessir'am",
+                    "lrcTimestamp": "[02:22.01]",
+                    "ms": 142010
+                  },
+                  {
+                    "line": ""
+                  },
+                  {
+                    "duration": 1700,
+                    "line": "Yeah",
+                    "lrcTimestamp": "[02:26.31]",
+                    "ms": 146310
+                  },
+                  {
+                    "duration": 2480,
+                    "line": "So hard to handle now",
+                    "lrcTimestamp": "[02:28.01]",
+                    "ms": 148010
+                  },
+                  {
+                    "duration": 2700,
+                    "line": "Oh yeah",
+                    "lrcTimestamp": "[02:30.49]",
+                    "ms": 150490
+                  },
+                  {
+                    "line": ""
+                  },
+                  {
+                    "duration": 2360,
+                    "line": "Baby",
+                    "lrcTimestamp": "[02:33.19]",
+                    "ms": 153190
+                  },
+                  {
+                    "duration": 2410,
+                    "line": "Good lovin'",
+                    "lrcTimestamp": "[02:35.55]",
+                    "ms": 155550
+                  },
+                  {
+                    "duration": 4150,
+                    "line": "Baby, baby",
+                    "lrcTimestamp": "[02:37.96]",
+                    "ms": 157960
+                  },
+                  {
+                    "duration": 2710,
+                    "line": "Ohh, good lovin'",
+                    "lrcTimestamp": "[02:42.11]",
+                    "ms": 162110
+                  },
+                  {
+                    "duration": 4430,
+                    "line": "I need good lovin'",
+                    "lrcTimestamp": "[02:44.82]",
+                    "ms": 164820
+                  },
+                  {
+                    "duration": 4440,
+                    "line": "I got to have it, oh yeah",
+                    "lrcTimestamp": "[02:49.25]",
+                    "ms": 169250
+                  },
+                  {
+                    "duration": 2390,
+                    "line": "Yeah",
+                    "lrcTimestamp": "[02:53.69]",
+                    "ms": 173690
+                  },
+                  {
+                    "duration": 4410,
+                    "line": "So hard to handle, now, yeah",
+                    "lrcTimestamp": "[02:56.08]",
+                    "ms": 176080
+                  }
+                ],
+                "album": "Shake Your Moneymaker",
+                "artist": "The Black Crowes",
+                "authors": "Otis Redding, Alvertis Isbell, Allen Alvoid Jr. Jones",
+                "tivoTrackId": "CTR34566",
+                "copyright": "Lyrics © Universal Music Publishing Group",
+                "lrcVersion": "1.1",
+                "staticLyrics": "BBaby here I am\\r\\nI'm the man on the scene\\r\\nI can give you what you want\\r\\nBut you gotta' come home with me\\r\\n\\r\\nI have got some good old lovin'\\r\\nAnd I got some more in store\\r\\nWhen I get through throwin' it on\\r\\nYou gotta' come back for more\\r\\n\\r\\nBoys will come along a dime by the dozen\\r\\nThat ain't nothing but ten cent lovin'\\r\\nPretty little thing, let me light your candle\\r\\n'Cause mama I'm sure hard to handle now, yessir'am\\r\\n\\r\\nAction speaks louder than words\\r\\nAnd I'm a man of great experience\\r\\nI know you've got another man\\r\\nBut I can love you better than him\\r\\n\\r\\nTake my hand don't be afraid\\r\\nI'm gonna prove every word I say\\r\\nI'm advertising love for free\\r\\nSo you can place your ad with me\\r\\n\\r\\nBoys will come along a dime by the dozen\\r\\nThat ain't nothing but ten cent lovin'\\r\\nPretty little thing, let me light your candle\\r\\n'Cause mama I'm sure hard to handle now, yessir'am\\r\\n\\r\\nYeah\\r\\nHard to handle now\\r\\nOh baby\\r\\n\\r\\nBaby here I am\\r\\nI'm the man on the scene\\r\\nI can give you what you want\\r\\nBut you gotta' come home with me\\r\\n\\r\\nI've got some good old lovin' \\r\\nAnd I got some more in store\\r\\nWhen I get through throwin' it on you\\r\\nYou got to come a-runnin' back for more\\r\\n\\r\\nBoys will come along a dime by the dozen\\r\\nThat ain't nothing but ten cent lovin'\\r\\nPretty little thing, let me light your candle\\r\\n'Cause mama I'm sure hard to handle now, yessir'am\\r\\n\\r\\nHard\\r\\nHard to handle now\\r\\nOh yeah, yeah yeah yeah\\r\\n\\r\\nBoys will come along a dime by the dozen\\r\\nThat ain't nothing but ten cent lovin'\\r\\nPretty little thing, let me light your candle\\r\\n'Cause mama I'm sure hard to handle now, yessir'am\\r\\n\\r\\nYeah\\r\\nSo hard to handle now\\r\\nOh yeah\\r\\n\\r\\nBaby\\r\\nGood lovin'\\r\\nBaby, baby\\r\\nOhh, good lovin'\\r\\nI need good lovin'\\r\\nI got to have it, oh yeah\\r\\nYeah\\r\\nSo hard to handle, now, yeah\"",
+                "title": "Hard to Handle"
+              }
           schema:
             $ref: './delivery_common.oas2.yml#/definitions/InfoLyricsObject'
         '400':
