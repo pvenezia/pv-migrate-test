@@ -586,8 +586,9 @@ definitions:
       sfSwitchingParams:
         type: object
         description: >-
-          Parameters that define reception circumstances under which to switch
-          to IP streaming from broadcast and back again
+          Service following switching parameters. These are parameters that
+          define reception circumstances under which to switch to IP streaming
+          from broadcast and back again
         properties:
           rfCoverage:
             type: integer
