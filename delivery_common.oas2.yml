@@ -456,6 +456,8 @@ definitions:
     title: Device data
     type: object
   DeviceConfig:
+    title: Device config Data Object
+    type: object
     properties:
       altAPIURL:
         description: >-
@@ -532,10 +534,10 @@ definitions:
         type: integer
       expireBroadcastIds:
         description: Immediately expire cached broadcast data matching these IDs
+        type: array
         items:
           example: '12345'
           type: string
-        type: array
       genreListCacheFlush:
         default: false
         description: Flush cache of all genre data and query for current genre data
@@ -581,8 +583,46 @@ definitions:
         description: Force use of minimal data queries with only lat/lng query type
         example: false
         type: boolean
-    title: Device config Data Object
-    type: object
+      sfSwitchingParams:
+        type: object
+        description: >-
+          Parameters that define reception circumstances under which to switch
+          to IP streaming from broadcast and back again
+        properties:
+          rfCoverage:
+            type: integer
+            description: >-
+              This is a general parameter that can assume one of several values
+              to determine the aggressiveness of favoring RF. 
+            example: 2
+          minThresh:
+            type: integer
+            example: -5
+            description: Min threshold of multipath metric
+          maxThresh:
+            type: integer
+            description: Max threshold of multipath metric
+            example: -8
+          timeConst:
+            type: integer
+            description: Size of moving average of min and max threshold crossings
+            example: 450
+          avgMinThresh:
+            type: integer
+            description: Min threshold of moving average
+            example: 40
+          avgMaxThresh:
+            type: integer
+            description: Max threshold of moving average
+            example: 60
+          rfSelectHoldTime:
+            type: integer
+            description: Minimum hold time to stay in RF select state
+            example: 15
+          ipSelectHoldTime:
+            type: integer
+            description: Minimum hold time to stay in IP select state
+            example: 45
   DeviceEvent:
     properties:
       count:
