@@ -674,6 +674,8 @@ definitions:
     title: Device GET Object
     type: object
   DevicesPost:
+    title: Devices POST Object
+    type: object
     properties:
       brand:
         description: Brand name of the device
@@ -690,7 +692,7 @@ definitions:
           Latitude in [decimal
           degrees](https://en.wikipedia.org/wiki/Decimal_degrees) rounded to
           three decimal places (e.g. 43.094)
-        example: -43.094
+        example: 43.094
         type: number
       lng:
         description: >-
@@ -720,16 +722,14 @@ definitions:
         maxLength: 32
         type: string
     required:
+      - brand
+      - device
       - lat
       - lng
       - mfg
-      - brand
-      - device
       - model
       - serial
       - version
-    title: Devices POST Object
-    type: object
   Error:
     properties:
       data:
