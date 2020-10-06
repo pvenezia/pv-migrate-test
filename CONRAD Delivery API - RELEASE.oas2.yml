@@ -777,12 +777,12 @@ paths:
             $ref: './delivery_common.oas2.yml#/definitions/DevicesPost'
           x-examples:
             application/json:
-              mfg: Mfg Name
               brand: Brand Name
               device: Device Nam
+              mfg: Mfg Name
               model: Model Name
               version: '1'
-              lat: -43.094
+              lat: 43.094
               lng: -71.73
               serial: '12345'
       produces:
