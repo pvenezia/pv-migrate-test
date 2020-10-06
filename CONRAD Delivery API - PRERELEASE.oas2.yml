@@ -737,6 +737,16 @@ paths:
           required: true
           schema:
             $ref: './delivery_common.oas2.yml#/definitions/DevicesPost'
+          x-examples:
+            application/json:
+              lat: -43.094
+              lng: -71.73
+              mfg: Mfg Name
+              brand: Brand Name
+              device: Device Nam
+              model: Model Name
+              serial: '12345'
+              version: '1'
       produces:
         - application/json
       responses:
