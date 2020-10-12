@@ -611,12 +611,12 @@ definitions:
             example: 2
           minMultipathThreshold:
             type: integer
-            example: -5
+            example: 5
             description: Min threshold of multipath metric
           maxMultipathThreshold:
             type: integer
             description: Max threshold of multipath metric
-            example: -8
+            example: 18
           timeThresholdConstant:
             type: integer
             description: Size of moving average of min and max threshold crossings
