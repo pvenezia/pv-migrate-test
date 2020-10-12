@@ -608,6 +608,7 @@ definitions:
               4 = low RF coverage
             minimum: 0
             maximum: 4
+            example: 2
           minMultipathThreshold:
             type: integer
             example: -5
