@@ -671,13 +671,13 @@ paths:
                 useMinQueries: false
                 sfSwitchingParams:
                   rfCoverageSensitivity: 2
-                  minMultipathThreshold: -5
-                  maxMultipathThreshold: -8
-                  timeThresholdConstant: 450
-                  avgMinMovingThreshold: 40
-                  avgMaxMovingThreshold: 60
-                  rfSelectHoldTime: 15
-                  ipSelectHoldTime: 45
+                  minMultipathThreshold: 5
+                  maxMultipathThreshold: 18
+                  timeThresholdConstant: 358
+                  avgMinMovingThreshold: 48
+                  avgMaxMovingThreshold: 54
+                  rfSelectHoldTime: 85
+                  ipSelectHoldTime: 92
               deviceId: aBc8deFG9
               geoCode: global
               mfgId: D0K101
@@ -783,17 +783,16 @@ paths:
                 useMinQueries: false
                 sfSwitchingParams:
                   rfCoverageSensitivity: 2
-                  minMultipathThreshold: -5
-                  maxMultipathThreshold: -8
-                  timeThresholdConstant: 450
-                  avgMinMovingThreshold: 40
-                  avgMaxMovingThreshold: 60
-                  rfSelectHoldTime: 15
-                  ipSelectHoldTime: 45
+                  minMultipathThreshold: 5
+                  maxMultipathThreshold: 18
+                  timeThresholdConstant: 358
+                  avgMinMovingThreshold: 48
+                  avgMaxMovingThreshold: 54
+                  rfSelectHoldTime: 85
+                  ipSelectHoldTime: 92
               deviceId: aBc8deFG9
               geoCode: global
               mfgId: D0K101
-            new: {}
           schema:
             $ref: './delivery_common.oas2.yml#/definitions/DeviceResponse'
         '400':
