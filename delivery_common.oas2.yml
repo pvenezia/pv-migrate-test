@@ -611,32 +611,43 @@ definitions:
             example: 2
           minMultipathThreshold:
             type: integer
-            example: 5
-            description: Min threshold of multipath metric
+            default: 5
+            description: 'Min threshold of multipath metric, range is 3-8'
+            minimum: 3
+            maximum: 8
           maxMultipathThreshold:
             type: integer
-            description: Max threshold of multipath metric
-            example: 18
+            default: 18
+            description: 'Max threshold of multipath metric, range is 15-24'
+            minimum: 15
+            maximum: 24
           timeThresholdConstant:
             type: integer
-            description: Size of moving average of min and max threshold crossings
-            example: 450
+            description: >-
+              Size of moving average of min and max threshold crossings,
+              measured in 10ths of a second.
+            minimum: 300
+            maximum: 600
           avgMinMovingThreshold:
             type: integer
             description: 'Min threshold of moving average, as a percentage of crossings'
-            example: 40
+            minimum: 40
+            maximum: 50
           avgMaxMovingThreshold:
             type: integer
             description: Max threshold of moving average as a percentage of crossings
-            example: 60
+            minimum: 50
+            maximum: 60
           rfSelectHoldTime:
             type: integer
             description: 'Minimum hold time to stay in RF select state, in seconds'
-            example: 15
+            minimum: 0
+            maximum: 120
           ipSelectHoldTime:
             type: integer
             description: 'Minimum hold time to stay in IP select state, in seconds'
-            example: 45
+            minimum: 0
+            maximum: 120
   DeviceEvent:
     properties:
       count:
