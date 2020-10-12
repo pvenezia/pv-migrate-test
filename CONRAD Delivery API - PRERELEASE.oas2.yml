@@ -670,7 +670,7 @@ paths:
                 signalReportInterval: 600
                 useMinQueries: false
                 sfSwitchingParams:
-                  rfCoverageSensitivity: 0
+                  rfCoverageSensitivity: 2
                   minMultipathThreshold: -5
                   maxMultipathThreshold: -8
                   timeThresholdConstant: 450
@@ -782,7 +782,7 @@ paths:
                 signalReportInterval: 600
                 useMinQueries: false
                 sfSwitchingParams:
-                  rfCoverageSensitivity: 0
+                  rfCoverageSensitivity: 2
                   minMultipathThreshold: -5
                   maxMultipathThreshold: -8
                   timeThresholdConstant: 450
