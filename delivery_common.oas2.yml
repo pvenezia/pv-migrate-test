@@ -623,19 +623,19 @@ definitions:
             example: 450
           avgMinMovingThreshold:
             type: integer
-            description: Min threshold of moving average
+            description: 'Min threshold of moving average, as a percentage of crossings'
             example: 40
           avgMaxMovingThreshold:
             type: integer
-            description: Max threshold of moving average
+            description: Max threshold of moving average as a percentage of crossings
             example: 60
           rfSelectHoldTime:
             type: integer
-            description: Minimum hold time to stay in RF select state
+            description: 'Minimum hold time to stay in RF select state, in seconds'
             example: 15
           ipSelectHoldTime:
             type: integer
-            description: Minimum hold time to stay in IP select state
+            description: 'Minimum hold time to stay in IP select state, in seconds'
             example: 45
   DeviceEvent:
     properties:
