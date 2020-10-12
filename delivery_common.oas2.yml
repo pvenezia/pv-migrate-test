@@ -590,20 +590,20 @@ definitions:
           define reception circumstances under which to switch to IP streaming
           from broadcast and back again
         properties:
-          rfCoverageAggressiveness:
+          rfCoverageLevel:
             type: integer
             description: >
               This is a general parameter that can assume one of several values
               to determine the aggressiveness of favoring RF.
 
 
-              0 = always RF
+              0 = always RF  
 
-              1 = max RF coverage
+              1 = max RF coverage  
 
-              2 = moderate RF coverage
+              2 = moderate RF coverage  
 
-              3 = medium-low RF coverage
+              3 = medium-low RF coverage  
 
               4 = low RF coverage
             minimum: 0
