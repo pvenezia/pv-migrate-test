@@ -590,7 +590,7 @@ definitions:
           define reception circumstances under which to switch to IP streaming
           from broadcast and back again
         properties:
-          rfCoverageLevel:
+          rfCoverageSensitivity:
             type: integer
             description: >
               This is a general parameter that can assume one of several values
