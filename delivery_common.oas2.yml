@@ -590,7 +590,7 @@ definitions:
           define reception circumstances under which to switch to IP streaming
           from broadcast and back again
         properties:
-          rfCoverageAggFactor:
+          rfCoverageAggressiveness:
             type: integer
             description: >
               This is a general parameter that can assume one of several values
@@ -606,7 +606,8 @@ definitions:
               3 = medium-low RF coverage
 
               4 = low RF coverage
-            example: 2
+            minimum: 0
+            maximum: 4
           minMultipathThreshold:
             type: integer
             example: -5
@@ -615,7 +616,7 @@ definitions:
             type: integer
             description: Max threshold of multipath metric
             example: -8
-          timeConstant:
+          timeThresholdConstant:
             type: integer
             description: Size of moving average of min and max threshold crossings
             example: 450
