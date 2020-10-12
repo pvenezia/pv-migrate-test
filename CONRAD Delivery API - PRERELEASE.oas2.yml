@@ -670,12 +670,12 @@ paths:
                 signalReportInterval: 600
                 useMinQueries: false
                 sfSwitchingParams:
-                  rfCoverage: 2
-                  minThresh: -5
-                  maxThresh: -8
-                  timeConst: 450
-                  avgMinThresh: 40
-                  avgMaxThresh: 60
+                  rfCoverageSensitivity: 0
+                  minMultipathThreshold: -5
+                  maxMultipathThreshold: -8
+                  timeThresholdConstant: 450
+                  avgMinMovingThreshold: 40
+                  avgMaxMovingThreshold: 60
                   rfSelectHoldTime: 15
                   ipSelectHoldTime: 45
               deviceId: aBc8deFG9
