@@ -1608,13 +1608,18 @@ definitions:
     title: Local Events Artist Object
     type: object
   LocalEventsEvent:
+    title: Local Events Event
+    type: object
     properties:
       events:
+        type: object
         properties:
           copyright:
             type: string
           event:
+            type: array
             items:
+              type: object
               properties:
                 desc:
                   description: Text description of the event
@@ -1626,75 +1631,83 @@ definitions:
                   example:
                     - 1
                     - 2
+                  type: array
                   items:
                     type: number
-                  type: array
                 leEventId:
                   type: string
                 name:
                   type: string
                 schedule:
+                  type: object
                   properties:
                     bookingInfo:
+                      type: object
                       properties:
                         bookingLink:
+                          type: array
                           items:
+                            type: object
                             properties:
                               bookingURL:
                                 type: string
                               price:
+                                type: object
                                 properties:
                                   currency:
                                     type: string
                                   value:
                                     type: string
-                                type: object
                               provider:
                                 type: string
-                            type: object
-                          type: array
-                      type: object
                     dates:
+                      type: object
                       properties:
                         end:
                           type: string
                         start:
                           type: string
-                      type: object
                     eventTime:
                       type: string
                     leVenueId:
                       type: string
-                  type: object
                 types:
                   description: Printable list of event types this event falls under.
                   example:
                     - Concert
                     - Outdoor Concert
+                  type: array
                   items:
                     type: string
-                  type: array
-              type: object
-            type: array
-        type: object
+                isCancelled:
+                  type: boolean
+                  example: 'False'
+                  description: >-
+                    Will be true if the event has ben cancelled, allowing the
+                    client to determine whether to display it or not
+                  default: 'False'
       venues:
+        type: object
         properties:
           copyright:
             type: string
           venue:
+            type: array
             items:
+              type: object
               properties:
                 address:
+                  type: object
                   properties:
                     address1:
                       type: string
                     city:
                       type: string
                     country:
+                      type: object
                       properties:
                         name:
                           type: string
-                      type: object
                     latitude:
                       type: string
                     longitude:
@@ -1703,7 +1716,6 @@ definitions:
                       type: string
                     zip:
                       type: string
-                  type: object
                 email:
                   type: string
                 fax:
@@ -1729,16 +1741,11 @@ definitions:
                   example:
                     - Concert Hall
                     - Dance Hall
+                  type: array
                   items:
                     type: string
-                  type: array
                 url:
                   type: string
-              type: object
-            type: array
-        type: object
-    title: Local Events Event
-    type: object
   LocalSource:
     allOf:
       - $ref: '#/definitions/TimedEvent'
