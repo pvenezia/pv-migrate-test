@@ -1679,7 +1679,7 @@ definitions:
                   type: array
                   items:
                     type: string
-                isCancelled:
+                isCanceled:
                   type: boolean
                   example: 'False'
                   description: >-
