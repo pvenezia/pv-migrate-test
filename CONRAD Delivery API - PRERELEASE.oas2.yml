@@ -718,6 +718,10 @@ paths:
       security:
         - Authorization: []
         - mfgId: []
+      parameters:
+        - $ref: './delivery_common.oas2.yml#/parameters/broadcastId'
+        - $ref: './delivery_common.oas2.yml#/parameters/Authorization'
+        - $ref: './delivery_common.oas2.yml#/parameters/mfgId'
   /config:
     get:
       description: >-
