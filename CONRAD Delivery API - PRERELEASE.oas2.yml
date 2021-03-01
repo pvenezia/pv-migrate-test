@@ -611,6 +611,7 @@ paths:
       summary: Retrieve live/now playing data for a specific broadcast
       tags:
         - Live
+        - Broadcasts
   '/broadcasts/{broadcastId}/now':
     get:
       responses:
@@ -711,7 +712,8 @@ paths:
       summary: Retrieve NOW object for display
       operationId: getNow
       tags:
-        - NOW API
+        - NOW
+        - Broadcasts
       produces:
         - application/json
       description: Retrieve NOW data object for specified `broadcastId`
@@ -2960,6 +2962,8 @@ tags:
     name: Broadcasts
   - description: Currently playing program data
     name: Live
+  - name: NOW
+    description: The NOW on-demand audio streaming service
   - description: Service utilization reporting
     name: Reports
   - description: IP content such as streams and podcasts
