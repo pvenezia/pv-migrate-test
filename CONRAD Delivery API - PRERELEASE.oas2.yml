@@ -423,10 +423,8 @@ paths:
       description: >-
 
         ***Note: Data from the `/broadcasts/{broadcastId}/live` path is
-        currently available for thousands of North American broadcasts, and
-        selected cities in Europe and Asia, such as Berlin, Germany; London, UK;
-        Paris, France; Tokyo, Japan; and Seoul, South Korea. Live data for other
-        geographic regions is coming.***
+        currently available for thousands of North American broadcasts, many
+        countries in Europe, as well as Australia, Japan and China.***
 
 
         The `/broadcasts/{broadcastId}/live` path retrieves live/now-playing
