@@ -3025,8 +3025,6 @@ securityDefinitions:
     type: apiKey
 swagger: '2.0'
 tags:
-  - name: Recommendations
-    description: Content recommendations
   - description: 'Device interaction, id assignments, configuration retrieval'
     name: Devices
   - description: Genre names and ids
@@ -3037,6 +3035,8 @@ tags:
     name: Live
   - name: NOW
     description: The NOW on-demand audio streaming service
+  - name: Recommendations
+    description: Content recommendations
   - description: Service utilization reporting
     name: Reports
   - description: IP content such as streams and podcasts
