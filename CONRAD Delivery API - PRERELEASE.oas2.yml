@@ -2846,8 +2846,14 @@ paths:
                             type: string
                           urlHiRes:
                             type: string
+        '400':
+          $ref: './delivery_common.oas2.yml#/responses/400'
+        '401':
+          $ref: './delivery_common.oas2.yml#/responses/401'
+        '500':
+          $ref: './delivery_common.oas2.yml#/responses/500'
       summary: Retrieve music recommendations based on various input criteria
-      operationId: getPcd
+      operationId: getPcdAudio
       tags:
         - Recommendations
       security:
@@ -2857,7 +2863,6 @@ paths:
         - in: query
           name: type
           type: string
-          default: mlt
           description: The type of recommendation requested.
           enum:
             - mlt
