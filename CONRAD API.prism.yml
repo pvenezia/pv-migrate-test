@@ -1,0 +1,26 @@
+name: CONRAD Delivery API
+description: 'This is the mock instance for the CONRAD Delivery API. '
+apis:
+  - id: conrad
+    methods:
+      - post
+      - get
+      - options
+    specs:
+      - ./CONRAD Delivery API - PRERELEASE.oas2.yml
+rules:
+  - id: global
+    apis:
+      - conrad
+    methods:
+      - get
+      - post
+    before:
+      rJxB6GL977:
+        $ref: >-
+          https://next.stoplight.io/misc/scenarios/helper-scenarios.json#/scenarios/b-mock
+    after:
+      SyejTGLcXm:
+        $ref: >-
+          https://next.stoplight.io/misc/scenarios/helper-scenarios.json#/scenarios/a-mock
+    done: {}
