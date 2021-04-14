@@ -2347,6 +2347,8 @@ definitions:
                     type: string
                   urlHiRes:
                     type: string
+    title: PCD Audio GET Response Object
+    description: Response object for a PCD GET query
 host: api.sandbox.cnrd.io
 info:
   contact:
