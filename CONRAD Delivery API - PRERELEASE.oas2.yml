@@ -2804,7 +2804,7 @@ paths:
       summary: Search for local events related to genres or live artist metadata
       tags:
         - Local Events
-  /pcd:
+  /pcd/audio:
     get:
       responses:
         '200':
@@ -2877,6 +2877,7 @@ paths:
           description: >-
             The broadcastId of the current tuned broadcast for radio-to-radio
             recommenadtions.
+      description: Retrieve music recommendations based on various input criteria
   /reports:
     post:
       description: >-
