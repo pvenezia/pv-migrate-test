@@ -2812,11 +2812,16 @@ paths:
           schema:
             type: object
             properties:
-              id:
+              queryId:
                 type: string
               type:
                 type: string
-              hitcount:
+                enum:
+                  - mlt
+                  - radio
+                  - mixed
+                  - rfy
+              hitCount:
                 type: integer
               hits:
                 type: array
