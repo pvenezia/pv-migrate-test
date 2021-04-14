@@ -2305,6 +2305,48 @@ definitions:
         type: string
     title: Info Track Object
     type: object
+  PCDAudioObject:
+    type: object
+    properties:
+      queryId:
+        type: string
+      type:
+        type: string
+        enum:
+          - mlt
+          - radio
+          - mixed
+          - rfy
+      hitCount:
+        type: integer
+      hits:
+        type: array
+        items:
+          type: object
+          properties:
+            title:
+              type: string
+            artist:
+              type: string
+            tivoTrackId:
+              type: string
+            tivoAlbumId:
+              type: string
+            tivoArtistId:
+              type: string
+            images:
+              type: array
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                  default:
+                    type: boolean
+                  url:
+                    type: string
+                  urlHiRes:
+                    type: string
 host: api.sandbox.cnrd.io
 info:
   contact:
