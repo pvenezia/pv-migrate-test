@@ -2846,7 +2846,7 @@ paths:
           type: string
           description: >-
             The broadcastId of the current tuned broadcast for radio-to-radio
-            recommenadtions.
+            recommendations.
       description: Retrieve music recommendations based on various input criteria
   /reports:
     post:
