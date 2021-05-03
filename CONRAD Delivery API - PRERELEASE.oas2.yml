@@ -1190,7 +1190,7 @@ paths:
           description: 'Response object containing lyrics, if available'
           examples:
             application/json:
-              LrcLyrics:
+              lrcLyrics:
                 - duration: 2560
                   line: Baby here I am
                   lrcTimestamp: '[00:11.18]'
