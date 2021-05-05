@@ -2962,7 +2962,10 @@ paths:
             - radio
             - mixed
           required: true
-      description: Retrieve music recommendations based on various input criteria
+      description: >-
+        Retrieve music recommendations based on various input criteria,
+        including `tivoTrackIds`, `broadcastIds`, and later in the roadmap,
+        based off anonymous client listening events.
   /reports:
     post:
       description: >-
