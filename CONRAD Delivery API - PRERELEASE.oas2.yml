@@ -2925,7 +2925,10 @@ paths:
         - in: query
           name: pcdType
           type: string
-          description: The type of recommendation requested.
+          description: |
+            The type of recommendation requested. `mlt` for More Like This
+            `rfy` for Recommended For You
+            `screen` for a predefined set of carousels.
           enum:
             - mlt
             - rfy
