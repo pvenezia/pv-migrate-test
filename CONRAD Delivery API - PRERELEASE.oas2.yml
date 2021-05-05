@@ -2811,6 +2811,103 @@ paths:
           description: 'PCD Audio GET Response '
           schema:
             $ref: './delivery_common.oas2.yml#/definitions/PCDAudioObject'
+          examples:
+            application/json:
+              queryId: 'occaecat tempor '
+              type: radio
+              hitCount: 25638198
+              hits:
+                - title: ea veniam
+                  type: radio
+                  artist: in elit exercitation
+                  tivoTrackId: ut dolore do a
+                  tivoAlbumId: ea sit in sint ullamco
+                  tivoArtistId: tempor est aute nostrud ea
+                  images:
+                    - type: commodo
+                      default: false
+                      url: Excepteur ipsum
+                      urlHiRes: in ex pariatur exercitation
+                    - type: in cillum Duis esse ullamco
+                      default: true
+                      url: elit
+                      urlHiRes: ex Ut irure
+                    - type: enim eiusmod nisi
+                      default: false
+                      url: adipisicing in do dolore
+                      urlHiRes: officia
+                    - type: elit eu reprehenderit labore et
+                      default: false
+                      url: ut ipsum minim tempor
+                      urlHiRes: ''
+                - title: sit
+                  type: music
+                  artist: in
+                  tivoTrackId: veniam ut
+                  tivoAlbumId: enim
+                  tivoArtistId: m
+                  images:
+                    - type: sed pariatur consectetur dolor
+                      default: false
+                      url: sint veniam
+                      urlHiRes: in dolore
+                    - type: anim enim magna est in
+                      default: true
+                      url: ullamco ut tempor deser
+                      urlHiRes: occaecat
+                    - type: dolore aute non reprehenderit
+                      default: false
+                      url: occaecat esse
+                      urlHiRes: nostrud ea dolore sint culpa
+                - title: laborum esse labore eu
+                  type: radio
+                  artist: Excepteur ex
+                  tivoTrackId: laborum dolor exercitation
+                  tivoAlbumId: nisi
+                  tivoArtistId: irure in
+                  images:
+                    - type: occa
+                      default: false
+                      url: occaecat Duis voluptate
+                      urlHiRes: aliqua
+                    - type: sunt non nulla commodo
+                      default: false
+                      url: nulla proident sint ullamco
+                      urlHiRes: nostrud in esse in consequat
+                - title: laborum cupidatat consectetur ad
+                  type: radio
+                  artist: ullamco
+                  tivoTrackId: proident sint
+                  tivoAlbumId: dolore elit cillum in
+                  tivoArtistId: quis Ut
+                  images:
+                    - type: Ut v
+                      default: false
+                      url: quis reprehenderit non tempor dolor
+                      urlHiRes: commo
+                    - type: esse aliqua
+                      default: true
+                      url: ex
+                      urlHiRes: minim occaecat laborum aliquip
+                    - type: commodo cupidatat exercitation sit
+                      default: false
+                      url: sint amet
+                      urlHiRes: Duis
+                    - type: consequat et veniam do labore
+                      default: true
+                      url: nisi et voluptate
+                      urlHiRes: cupidatat reprehenderit Duis ipsum
+                - title: aute
+                  type: music
+                  artist: fugiat in incididunt ipsum
+                  tivoTrackId: consequat et
+                  tivoAlbumId: mollit labore
+                  tivoArtistId: ea reprehenderit
+                  images:
+                    - type: in
+                      default: true
+                      url: nostrud
+                      urlHiRes: exercitation enim Duis dolor
         '400':
           $ref: './delivery_common.oas2.yml#/responses/400'
         '401':
@@ -2826,27 +2923,42 @@ paths:
         - mfgId: []
       parameters:
         - in: query
-          name: type
+          name: pcdType
           type: string
           description: The type of recommendation requested.
           enum:
             - mlt
-            - radio
-            - mixed
             - rfy
+            - screen
           required: true
         - in: query
           name: tivoTrackId
           type: string
-          description: >
+          description: >+
             The tivoTrackId of the song to base recommendations on for More Like
-            This queries.
+            This queries. Required if `broadcastId` isn't applicable or present.
+
+          required: true
         - in: query
           name: broadcastId
           type: string
           description: >-
             The broadcastId of the current tuned broadcast for radio-to-radio
-            recommendations.
+            recommendations. Required if `tivoTrackId` isn't applicable or
+            present.
+          required: true
+        - in: query
+          name: respContentType
+          type: string
+          description: >-
+            What content types should be in the response. Songs, artists, radio
+            stations, or mixed.
+          enum:
+            - songs
+            - artists
+            - radio
+            - mixed
+          required: true
       description: Retrieve music recommendations based on various input criteria
   /reports:
     post:
