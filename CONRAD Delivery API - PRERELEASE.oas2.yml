@@ -2964,8 +2964,8 @@ paths:
           required: true
       description: >-
         Retrieve music recommendations based on various input criteria,
-        including `tivoTrackIds`, `broadcastIds`, and later in the roadmap,
-        based off anonymous client listening events.
+        including `tivoTrackIds`, `broadcastIds`, and based off anonymous client
+        listening events.
   /reports:
     post:
       description: >-
