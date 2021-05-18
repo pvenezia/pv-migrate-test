@@ -3132,13 +3132,42 @@ paths:
           name: body
           schema:
             type: object
-            properties: {}
+            properties:
+              broadcastIds:
+                type: array
+                uniqueItems: true
+                items:
+                  type: string
+                  pattern: '^[0-9]'
+              contentIds:
+                type: array
+                uniqueItems: true
+                items:
+                  type: string
+                  pattern: '^[0-9]'
+          x-examples:
+            application/json:
+              broadcastIds:
+                - '5'
+                - '2'
+                - '6'
+                - '4'
+              contentIds:
+                - '9'
+                - '8'
+            new: {}
+          description: >-
+            If `radio` recommendations are requested, and GPS coordinates are
+            not available, then a list of `broadcastIds` or `contentIds` tunable
+            by the client must be included in the `POST` request body.
       description: >-
         Retrieve music recommendations based on various input criteria,
         including `tivoTrackIds`, `broadcastIds`, and based off anonymous client
         listening events. This `POST` type exists to accommodate lists of
         AutoStage `broadcastIds` that are in range of the client for the
-        purposes of radio station recommendations.
+        purposes of radio station recommendations. It is identical to the `GET`
+        with the exception of the body which contains a list of `broadcastIds`
+        or `contentIds`.
   /reports:
     post:
       description: >-
