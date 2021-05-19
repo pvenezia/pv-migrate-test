@@ -545,6 +545,7 @@ paths:
               musicData:
                 album: Kind of Blue
                 artist: Miles Davis
+                title: All Blues
                 tivoAlbumId: CAL12345
                 tivoArtistId: CAR23456
                 tivoTrackId: CTR34566
@@ -569,7 +570,7 @@ paths:
                       explicit:
                         score: 5
                         tags: adult
-                title: All Blues
+                hasLyrics: true
               nmpData:
                 tivoArtistId: CAR23456
                 tivoTrackId: CTR34566
@@ -585,7 +586,7 @@ paths:
                 program: The NPR News Quiz
                 subject: 'Today''s guest: Tom Hanks'
                 title: 'Wait, Wait Don''t Tell Me'
-              type: music
+              type: talk
           schema:
             $ref: './delivery_common.oas2.yml#/definitions/Live'
         '202':
@@ -1020,6 +1021,7 @@ paths:
         - $ref: './delivery_common.oas2.yml#/parameters/album'
         - $ref: './delivery_common.oas2.yml#/parameters/embed'
         - $ref: './delivery_common.oas2.yml#/parameters/year'
+        - $ref: './delivery_common.oas2.yml#/parameters/ISRC'
       responses:
         '200':
           description: >-
