@@ -1494,6 +1494,10 @@ definitions:
             description: Music/song artist
             example: Miles Davis
             type: string
+          title:
+            description: Title of music/song programming
+            example: All Blues
+            type: string
           tivoAlbumId:
             $ref: '#/definitions/tivoAlbumId'
           tivoArtistId:
@@ -1519,10 +1523,6 @@ definitions:
             type: array
             items:
               $ref: '#/definitions/ImagesObject'
-          title:
-            description: Title of music/song programming
-            example: All Blues
-            type: string
           hasLyrics:
             type: boolean
             description: >-
