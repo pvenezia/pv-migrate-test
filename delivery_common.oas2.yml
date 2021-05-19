@@ -2246,6 +2246,8 @@ definitions:
     title: Info Artist Object
     type: object
   infoTrackObject:
+    title: Info Track Object
+    type: object
     properties:
       album:
         description: Printable album name as a string
@@ -2253,7 +2255,9 @@ definitions:
         type: string
       albums:
         description: 'Array of other albums the track may appear on, not exhaustive'
+        type: array
         items:
+          type: object
           properties:
             tivoAlbumId:
               $ref: '#/definitions/tivoAlbumId'
@@ -2261,17 +2265,21 @@ definitions:
               description: Albums track can be found on. Not exhaustive
               example: Shake Your Moneymaker
               type: string
-          type: object
-        type: array
       artist:
         description: Printable artist name as a string
         example: The Black Crowes
+        type: string
+      title:
+        description: The title of the track
+        example: Hard to Handle
         type: string
       artists:
         description: >-
           Array of artists and IDs for additional data retrieval and for tracks
           with multiple artists
+        type: array
         items:
+          type: object
           properties:
             tivoArtistId:
               $ref: '#/definitions/tivoArtistId'
@@ -2279,8 +2287,6 @@ definitions:
               description: Artist name
               example: The Black Crowes
               type: string
-          type: object
-        type: array
       authors:
         description: Authors of the track
         example: 'Otis Redding, Alvertis Isbell, Allen Alvoid Jr. Jones'
@@ -2307,12 +2313,13 @@ definitions:
           of the song exist, notably a 1990 blues rock take on the track by band
           The Black Crowes.
         type: string
-      title:
-        description: The title of the track
-        example: Hard to Handle
-        type: string
-    title: Info Track Object
-    type: object
+      hasLyrics:
+        type: boolean
+        example: 'True'
+        default: 'False'
+        description: >-
+          Will be present and `true` if the lyrics are available via the
+          `/info/tracks/{tivoTrackId}/lyrics` endpoint
   PCDAudioObject:
     type: object
     title: PCD Audio GET Response Object
