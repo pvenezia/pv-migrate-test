@@ -1195,9 +1195,7 @@ paths:
         - $ref: './delivery_common.oas2.yml#/parameters/conradLyricFormats'
         - $ref: './delivery_common.oas2.yml#/parameters/tivoTrackId'
         - $ref: './delivery_common.oas2.yml#/parameters/conradTransforms'
-        - in: query
-          name: territory
-          type: string
+        - $ref: './delivery_common.oas2.yml#/parameters/territory'
       responses:
         '200':
           description: 'Response object containing lyrics, if available'
