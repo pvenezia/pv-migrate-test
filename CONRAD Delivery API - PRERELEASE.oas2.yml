@@ -26,7 +26,17 @@ info:
     the documentation if they are not present in a response.
   title: PRERELEASE - DTS Connected Radio API
   version: 1.3.0-beta.6
-parameters: {}
+parameters:
+  territory:
+    name: territory
+    in: query
+    type: string
+    description: >-
+      ISO 3166 two-letter country/territory code representing the country that
+      the requesting client is currently located within.
+    maxLength: 2
+    minLength: 2
+    pattern: '^[a-z]$'
 paths:
   /acr/identify:
     post:
@@ -1185,6 +1195,9 @@ paths:
         - $ref: './delivery_common.oas2.yml#/parameters/conradLyricFormats'
         - $ref: './delivery_common.oas2.yml#/parameters/tivoTrackId'
         - $ref: './delivery_common.oas2.yml#/parameters/conradTransforms'
+        - in: query
+          name: territory
+          type: string
       responses:
         '200':
           description: 'Response object containing lyrics, if available'
