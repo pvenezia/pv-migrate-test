@@ -1901,7 +1901,7 @@ paths:
     head:
       consumes:
         - application/json
-      description: Retrieve lyrics to a track using `tivoTrackId`.
+      description: Check for presence of lyrics for a track using `tivoTrackId`.
       operationId: headTrackLyricsById
       parameters:
         - $ref: './delivery_common.oas2.yml#/parameters/conradLyricFormats'
@@ -1924,7 +1924,7 @@ paths:
       security:
         - mfgId: []
         - Authorization: []
-      summary: Retrieve lyrics for songs
+      summary: Retrieve status on lyrics for songs
       tags:
         - Info
   '/ipc/categories/{ipcCatPath}':
