@@ -2791,6 +2791,11 @@ parameters:
     maxLength: 2
     minLength: 2
     pattern: '^[a-z]$'
+  ISRC:
+    name: isrc
+    in: query
+    type: string
+    description: The ISRC of a song or track
 paths: {}
 responses:
   '200':
