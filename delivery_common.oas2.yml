@@ -1689,11 +1689,11 @@ definitions:
                     type: string
                 isCanceled:
                   type: boolean
-                  example: 'False'
+                  example: false
                   description: >-
                     Will be true if the event has ben cancelled, allowing the
                     client to determine whether to display it or not
-                  default: 'False'
+                  default: false
       venues:
         type: object
         properties:
@@ -2315,8 +2315,8 @@ definitions:
         type: string
       hasLyrics:
         type: boolean
-        example: 'True'
-        default: 'False'
+        example: true
+        default: false
         description: >-
           Will be present and `true` if the lyrics are available via the
           `/info/tracks/{tivoTrackId}/lyrics` endpoint
