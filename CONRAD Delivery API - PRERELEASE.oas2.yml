@@ -3128,7 +3128,7 @@ paths:
         '500':
           $ref: './delivery_common.oas2.yml#/responses/500'
       summary: Retrieve music recommendations based on various input criteria
-      operationId: getPcdAudio
+      operationId: postPcdAudio
       tags:
         - Recommendations
       security:
