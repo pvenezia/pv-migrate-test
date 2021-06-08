@@ -892,15 +892,17 @@ definitions:
     type: object
   IPCObject:
     description: This describes an IP Content stream or podcast
+    title: IPC Object
+    type: object
     properties:
       country:
         type: string
       description:
         type: string
       genreIds:
+        type: array
         items:
           type: integer
-        type: array
       ipcContentId:
         description: >-
           This unique ID is used to indicate this is playable content, and can
@@ -922,8 +924,6 @@ definitions:
         type: string
       slogan:
         type: string
-      timezone:
-        type: string
       type:
         description: 'Type of IP content, `stream` or `podcast`'
         enum:
@@ -933,28 +933,26 @@ definitions:
         type: string
       urls:
         description: Array of service URLs pertaining to this IPC ID
+        type: object
         properties:
           facebook:
             description: Array of Facebook URLs pertaining to this IPC ID
+            type: array
             items:
               example: 'https://www.facebook.com/wkrprock'
               type: string
-            type: array
           twitter:
             description: Array of Twitter URLs pertaining to this IPC ID
+            type: array
             items:
               example: 'https://twitter.com/wkrprock'
               type: string
-            type: array
           website:
             description: Array of Web URLs pertaining to this IPC ID
+            type: array
             items:
               example: 'http://www.example.cnrd.io'
               type: string
-            type: array
-        type: object
-    title: IPC Object
-    type: object
   IPCPodcastEpisodeObject:
     description: 'Describes a unique, individual podcast episode'
     properties:
