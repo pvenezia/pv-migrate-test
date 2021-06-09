@@ -2067,20 +2067,24 @@ definitions:
     title: Report data
     type: object
   ReportError:
+    title: Error
+    type: object
     properties:
       action:
+        type: string
         enum:
           - discard
         example: discard
-        type: string
+        description: |
+          Optional action
       data:
         type: string
+        description: Optional string data/information regarding the response
       result:
         enum:
           - error
         type: string
-    title: Error
-    type: object
+        description: Optional result
   SatelliteBroadcast:
     allOf:
       - $ref: '#/definitions/TimedEvent'
