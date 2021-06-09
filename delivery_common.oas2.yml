@@ -2054,8 +2054,8 @@
                   },
                   "isCanceled": {
                     "type": "boolean",
-                    "example": "False",
-                    "description": "Will be true if the event has ben cancelled, allowing the client to determine whether to display it or not",
+                    "example": false,
+                    "description": "Will be true if the event has been cancelled, allowing the client to determine whether to display it or not",
                     "default": "False"
                   }
                 }
@@ -3216,7 +3216,7 @@
       "in": "query",
       "name": "year",
       "type": "number"
-    } ,   
+    },
     "territory": {
       "name": "territory",
       "in": "query",
