@@ -2819,8 +2819,7 @@ responses:
   '403':
     description: The request is forbidden
     schema:
-      type: object
-      properties: {}
+      $ref: '#/definitions/ReportError'
   '404':
     description: Requested path or object not found
     schema:
