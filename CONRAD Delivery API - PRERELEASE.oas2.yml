@@ -1885,6 +1885,8 @@ paths:
           $ref: './delivery_common.oas2.yml#/responses/400'
         '401':
           $ref: './delivery_common.oas2.yml#/responses/401'
+        '403':
+          $ref: './delivery_common.oas2.yml#/responses/403'
         '404':
           $ref: './delivery_common.oas2.yml#/responses/404'
         '500':
