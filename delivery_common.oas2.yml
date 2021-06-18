@@ -2348,6 +2348,9 @@ definitions:
         properties:
           music:
             type: array
+            description: >-
+              If a `music` response is requested, this array will contain an
+              ordered list of objects, ordered from most relevant to least.
             items:
               type: object
               properties:
@@ -2376,6 +2379,9 @@ definitions:
                         type: string
           radio:
             type: array
+            description: >
+              If `radio` results are requested, this array will contain an
+              ordered list of `broadcastIds`, ordered by most relevant to least.
             items:
               type: object
               properties:
