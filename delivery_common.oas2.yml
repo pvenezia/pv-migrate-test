@@ -2333,7 +2333,6 @@ definitions:
         type: string
         enum:
           - mlt
-          - radio
           - rfy
           - screen
           - blended
@@ -2344,34 +2343,43 @@ definitions:
         items:
           type: object
           properties:
-            title:
-              type: string
-            type:
-              type: string
-              enum:
-                - music
-                - radio
-            artist:
-              type: string
-            tivoTrackId:
-              type: string
-            tivoAlbumId:
-              type: string
-            tivoArtistId:
-              type: string
-            images:
+            music:
               type: array
               items:
                 type: object
                 properties:
-                  type:
+                  title:
                     type: string
-                  default:
-                    type: boolean
-                  url:
+                  artist:
                     type: string
-                  urlHiRes:
+                  tivoTrackId:
                     type: string
+                  tivoAlbumId:
+                    type: string
+                  tivoArtistId:
+                    type: string
+                  images:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        default:
+                          type: boolean
+                        url:
+                          type: string
+                        urlHiRes:
+                          type: string
+            radio:
+              type: array
+              items:
+                type: object
+                properties:
+                  orderedBroadcastIds:
+                    type: array
+                    items:
+                      type: string
 host: api.sandbox.cnrd.io
 info:
   contact:
