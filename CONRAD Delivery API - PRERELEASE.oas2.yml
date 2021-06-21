@@ -3162,6 +3162,14 @@ paths:
             If `radio` recommendations are requested, and GPS coordinates are
             not available, then a list of `broadcastIds` or `contentIds` tunable
             by the client must be included in the `POST` request body.
+        - in: query
+          name: artist
+          type: string
+          description: Artist name if needed for lookup when TiVoTrackId is not available
+        - in: query
+          name: title
+          type: string
+          description: Song title if needed for lookup when TiVoTrackId is not available
       description: >-
         Retrieve music recommendations based on various input criteria,
         including `tivoTrackIds`, `broadcastIds`, and based off anonymous client
