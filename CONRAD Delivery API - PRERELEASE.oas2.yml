@@ -3145,7 +3145,7 @@ paths:
           schema:
             type: object
             properties:
-              broadcastIds:
+              tunableBroadcastIds:
                 type: array
                 uniqueItems: true
                 items:
@@ -3153,11 +3153,11 @@ paths:
                   pattern: '^[0-9]'
           x-examples:
             application/json:
-              broadcastIds:
-                - '6'
-                - '1'
-                - '3'
-            new: {}
+              tunableBroadcastIds:
+                - '72341'
+                - '31232'
+                - '43234'
+                - '129322'
           description: >-
             If `radio` recommendations are requested, and GPS coordinates are
             not available, then a list of `broadcastIds` or `contentIds` tunable
