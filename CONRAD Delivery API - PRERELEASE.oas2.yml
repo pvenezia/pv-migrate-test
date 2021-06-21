@@ -2866,7 +2866,7 @@ paths:
             application/json:
               queryId: nisi dolor sed
               type: mlt
-              hitCount: -67473715
+              hitCount: 15
               hits:
                 music:
                   - title: id aute
@@ -2971,6 +2971,14 @@ paths:
           schema:
             type: object
             properties: {}
+        - in: query
+          name: artist
+          type: string
+          description: Artist name if needed for TiVo ID lookup
+        - in: query
+          name: title
+          type: string
+          description: Track title if needed for TiVo ID lookup
       description: >-
         Retrieve music recommendations based on various input criteria,
         including `tivoTrackIds`, `broadcastIds`, and based off anonymous client
@@ -3143,22 +3151,12 @@ paths:
                 items:
                   type: string
                   pattern: '^[0-9]'
-              contentIds:
-                type: array
-                uniqueItems: true
-                items:
-                  type: string
-                  pattern: '^[0-9]'
           x-examples:
             application/json:
               broadcastIds:
-                - '5'
-                - '2'
                 - '6'
-                - '4'
-              contentIds:
-                - '9'
-                - '8'
+                - '1'
+                - '3'
             new: {}
           description: >-
             If `radio` recommendations are requested, and GPS coordinates are
