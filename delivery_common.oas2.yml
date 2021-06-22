@@ -2371,6 +2371,9 @@ definitions:
                     properties:
                       type:
                         type: string
+                        enum:
+                          - artist
+                          - album
                       default:
                         type: boolean
                       url:
