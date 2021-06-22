@@ -2890,9 +2890,9 @@ paths:
                             - consectetur amet
                             - esse in commodo
                 radio:
-                  - broadcastId: pariatur laborum ut
-                  - broadcastId: veniam dolor sint pariatur mollit
-                  - broadcastId: proident incididunt dolore veli
+                  - broadcastId: '12345'
+                  - broadcastId: '23456'
+                  - broadcastId: '45678'
         '400':
           $ref: './delivery_common.oas2.yml#/responses/400'
         '401':
@@ -2998,9 +2998,9 @@ paths:
                             - consectetur amet
                             - esse in commodo
                 radio:
-                  - broadcastId: pariatur laborum ut
-                  - broadcastId: veniam dolor sint pariatur mollit
-                  - broadcastId: proident incididunt dolore veli
+                  - broadcastId: '12345'
+                  - broadcastId: '23456'
+                  - broadcastId: '45678'
         '400':
           $ref: './delivery_common.oas2.yml#/responses/400'
         '401':
