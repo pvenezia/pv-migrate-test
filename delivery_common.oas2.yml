@@ -1036,9 +1036,11 @@ definitions:
       options. This replaces the deprecated `imageURL` and `imageURLHiRes`
       attributes. This array can contain standard and HiRes image URLS that have
       specific types, currently defined as `album`, `artist`, `logo`, and
-      `other`. If `default` is present and true, then that object is to be
-      displayed in the absence of other preferences, or as a default image for
-      data display.
+      `other`.
+
+
+      If `default` is present and true, then that object is to be displayed in
+      the absence of other preferences, or as a default image for data display.
     type: object
     properties:
       default:
@@ -2365,21 +2367,7 @@ definitions:
                 tivoArtistId:
                   type: string
                 images:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      type:
-                        type: string
-                        enum:
-                          - artist
-                          - album
-                      default:
-                        type: boolean
-                      url:
-                        type: string
-                      urlHiRes:
-                        type: string
+                  $ref: '#/definitions/ImagesObject'
           radio:
             type: array
             description: >
