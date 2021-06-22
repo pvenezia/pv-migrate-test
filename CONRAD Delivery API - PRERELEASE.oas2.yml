@@ -2972,16 +2972,16 @@ paths:
             $ref: './delivery_common.oas2.yml#/definitions/PCDAudioObject'
           examples:
             application/json:
-              queryId: magna
-              type: blended
-              hitCount: 41
+              queryId: eiusmod in pariatur nulla proident
+              type: screen
+              hitCount: 18
               hits:
                 music:
-                  - title: non
-                    artist: Lorem anim
-                    tivoTrackId: magna
-                    tivoAlbumId: ut Excepteur ipsum
-                    tivoArtistId: dolor ad
+                  - title: ut consectetur deserunt anim quis
+                    artist: veniam
+                    tivoTrackId: tempor elit adipisicing Excepteur
+                    tivoAlbumId: sint
+                    tivoArtistId: ea
                     images:
                       default: true
                       type: artist
@@ -2991,72 +2991,16 @@ paths:
                         https://s.cnrd.io/img/f/2/f2b12ed1234b3a1a123483dec90abf1ea6.jpg
                       moderation:
                         explicit:
-                          score: 7
+                          score: 3
                           tags:
-                            - veniam et
-                            - ut dolor nost
-                            - Duis exercitation occaecat
-                            - ut voluptate laboris aliquip
-                            - aliqua
-                  - title: ut
-                    artist: consectetur enim eiusmod amet
-                    tivoTrackId: officia tempor sint
-                    tivoAlbumId: Duis velit
-                    tivoArtistId: dolore ut
-                    images:
-                      default: true
-                      type: artist
-                      url: >-
-                        https://s.cnrd.io/img/c/2/c2b12ed7860b3a1a123483dec90abf1ea3.jpg
-                      urlHiRes: >-
-                        https://s.cnrd.io/img/f/2/f2b12ed1234b3a1a123483dec90abf1ea6.jpg
-                      moderation:
-                        explicit:
-                          score: -58039007
-                          tags:
-                            - sit ea
-                            - Duis
-                            - nisi exercitation cillum voluptate laboris
-                  - title: qui adipis
-                    artist: eu et do magna
-                    tivoTrackId: fugi
-                    tivoAlbumId: sunt qui
-                    tivoArtistId: esse ut
-                    images:
-                      default: true
-                      type: artist
-                      url: >-
-                        https://s.cnrd.io/img/c/2/c2b12ed7860b3a1a123483dec90abf1ea3.jpg
-                      urlHiRes: >-
-                        https://s.cnrd.io/img/f/2/f2b12ed1234b3a1a123483dec90abf1ea6.jpg
-                      moderation:
-                        explicit:
-                          score: 76911239
-                          tags:
-                            - velit ad mollit anim ut
-                            - sunt sint dolore ad non
-                  - title: quis dolore
-                    artist: proident
-                    tivoTrackId: do reprehenderit
-                    tivoAlbumId: consectetur sit Excepteur
-                    tivoArtistId: in id
-                    images:
-                      default: true
-                      type: artist
-                      url: >-
-                        https://s.cnrd.io/img/c/2/c2b12ed7860b3a1a123483dec90abf1ea3.jpg
-                      urlHiRes: >-
-                        https://s.cnrd.io/img/f/2/f2b12ed1234b3a1a123483dec90abf1ea6.jpg
-                      moderation:
-                        explicit:
-                          score: -76448172
-                          tags:
-                            - amet
-                            - nostrud ut et
-                            - deserunt fugiat
+                            - non
+                            - nulla dolor nostrud mollit sunt
+                            - consectetur amet
+                            - esse in commodo
                 radio:
-                  - broadcastId: ullamco
-                  - broadcastId: Ut do dolore cupidatat proident
+                  - broadcastId: pariatur laborum ut
+                  - broadcastId: veniam dolor sint pariatur mollit
+                  - broadcastId: proident incididunt dolore veli
         '400':
           $ref: './delivery_common.oas2.yml#/responses/400'
         '401':
