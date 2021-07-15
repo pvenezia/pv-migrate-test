@@ -955,6 +955,8 @@ definitions:
               type: string
   IPCPodcastEpisodeObject:
     description: 'Describes a unique, individual podcast episode'
+    title: IPC Podcast Episode Object
+    type: object
     properties:
       description:
         type: string
@@ -963,15 +965,18 @@ definitions:
         example: 3600
         type: integer
       genreIds:
+        type: array
         items:
           type: number
-        type: array
       headline:
         type: string
       ipcContentId:
         type: string
       ipcPlaybackId:
         type: string
+      ipcEpisodeId:
+        type: string
+        description: Unique ID of this podcast episode. Only applies to podcasts.
       logoURL:
         type: string
       logoURLHiRes:
@@ -985,16 +990,14 @@ definitions:
         type: string
       urls:
         description: Array of service URLs pertaining to this IPC ID
+        type: object
         properties:
           website:
             description: Array of Web URLs pertaining to this IPC ID
+            type: array
             items:
               example: 'http://www.example.cnrd.io'
               type: string
-            type: array
-        type: object
-    title: IPC Podcast Episode Object
-    type: object
   IPContentPlayback:
     description: >-
       This describes playable content available via IP, such as streaming audio
