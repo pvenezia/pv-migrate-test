@@ -2807,6 +2807,16 @@ parameters:
     in: query
     type: string
     description: The ISRC of a song or track
+  infoArtistFieldList:
+    name: Info Artist Field List
+    in: query
+    type: string
+    required: true
+    description: A list of fields to return for a `/info/artists/tivoArtistId` query
+    enum:
+      - bio
+      - img
+      - discog
 paths: {}
 responses:
   '200':
