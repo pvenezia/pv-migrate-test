@@ -2808,7 +2808,7 @@ parameters:
     type: string
     description: The ISRC of a song or track
   infoArtistFieldList:
-    name: Info Artist Field List
+    name: fieldList
     in: query
     type: string
     required: true
