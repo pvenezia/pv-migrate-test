@@ -3204,6 +3204,28 @@ paths:
       summary: Submit a signal strength report
       tags:
         - Reports
+  '/info/{tivoArtistId}':
+    get:
+      responses:
+        '200':
+          description: ''
+          schema:
+            type: object
+            properties: {}
+      summary: Get information on artists
+      operationId: getArtistInfo
+      tags:
+        - Info
+      security:
+        - Authorization: []
+        - mfgId: []
+      parameters:
+        - $ref: './delivery_common.oas2.yml#/parameters/infoArtistFieldList'
+    parameters:
+      - name: tivoArtistId
+        in: path
+        type: string
+        required: true
 produces:
   - application/json
 responses: {}
