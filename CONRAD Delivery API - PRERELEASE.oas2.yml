@@ -3221,6 +3221,10 @@ paths:
         - mfgId: []
       parameters:
         - $ref: './delivery_common.oas2.yml#/parameters/infoArtistFieldList'
+        - in: path
+          name: ''
+          type: string
+          required: true
       description: Retrieve information about specific artists
     parameters:
       - name: tivoArtistId
