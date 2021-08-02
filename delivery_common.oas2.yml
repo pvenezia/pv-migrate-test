@@ -2224,7 +2224,7 @@ definitions:
     type: string
   tivoArtistId:
     description: >-
-      CONRAD Artist ID, A unique ID that refers to a specfic artist. May not be
+      TiVo Artist ID, A unique ID that refers to a specfic artist. May not be
       present in all live data or ACR responses, for example if multiple artists
       are on the track. Artist lookups for that track would then be handled by a
       `/info/tracks/{tivoTrackId}` lookup which will supply a full list of
