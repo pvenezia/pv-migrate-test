@@ -2214,7 +2214,7 @@ definitions:
     type: object
   tivoAlbumId:
     description: >-
-      CONRAD Album ID, A unique ID that refers to a specfic album. May not be
+      TiVo Album ID, A unique ID that refers to a specfic album. May not be
       present in all live data or ACR responses, for example if the track is on
       multiple albums, or was not released on an album. Album lookups for that
       track would then be handled by a `/info/tracks/{tivoTrackId}` lookup which
