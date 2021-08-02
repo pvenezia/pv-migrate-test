@@ -2234,7 +2234,7 @@ definitions:
     type: string
   tivoTrackId:
     description: >-
-      CONRAD Track ID, A unique ID that refers to a specfic audio track or
+      TiVo Track ID, A unique ID that refers to a specfic audio track or
       recording. Can be used to reference related data in other endpoints.  May
       not be present in all live data or ACR responses.
     example: CTR34566
