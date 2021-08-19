@@ -2381,7 +2381,7 @@ definitions:
               properties:
                 broadcastId:
                   type: string
-  InfoArtist:
+  InfoArtistObject:
     type: object
     title: Info Artist Object
     properties:
@@ -2578,6 +2578,57 @@ definitions:
               type: string
             zoomLevel:
               type: string
+  InfoTrackObject:
+    type: object
+    title: Info Track Object
+    properties:
+      tivoTrackId:
+        type: string
+      altIds:
+        type: object
+        properties:
+          mainReleaseId:
+            type: string
+      title:
+        type: string
+      performers:
+        type: array
+        items:
+          type: object
+          properties:
+            nameId:
+              type: string
+            name:
+              type: string
+            roleId:
+              type: string
+            role:
+              type: string
+      composers:
+        type: array
+        items:
+          type: object
+          properties:
+            nameId:
+              type: string
+            name:
+              type: string
+            roleId:
+              type: string
+            role:
+              type: string
+      duration:
+        type: integer
+      disc:
+        type: integer
+      phyTrackNum:
+        type: integer
+      isPick:
+        type: boolean
+      flags:
+        type: array
+        items:
+          type: string
 host: api.sandbox.cnrd.io
 info:
   contact:
