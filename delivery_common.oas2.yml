@@ -2383,7 +2383,7 @@ definitions:
                   type: string
   InfoArtist:
     type: object
-    title: Info Artist Response
+    title: Info Artist Object
     properties:
       tivoArtistId:
         type: string
