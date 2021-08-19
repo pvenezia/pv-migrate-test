@@ -2381,6 +2381,79 @@ definitions:
               properties:
                 broadcastId:
                   type: string
+  InfoArtist:
+    type: object
+    title: Info Artist Response
+    properties:
+      tivoArtistId:
+        type: string
+      name:
+        type: string
+      type:
+        type: string
+      aliases:
+        type: object
+        properties:
+          birthName:
+            type: string
+          alternateName:
+            type: string
+          alsoPerformedAs:
+            type: object
+            properties:
+              tivoArtistId:
+                type: string
+              name:
+                type: string
+          primaryName:
+            type:
+              - string
+              - object
+            properties:
+              tivoArtistId:
+                type: string
+              name:
+                type: string
+      birth:
+        type: object
+        properties:
+          place:
+            type: string
+          date:
+            type: string
+      memberOf:
+        type: object
+        properties:
+          tivoArtistId:
+            type: string
+          name:
+            type: string
+          type:
+            type: string
+          weight:
+            type: string
+      collaboratorWith:
+        type: object
+        properties:
+          tivoArtistId:
+            type: string
+          name:
+            type: string
+          type:
+            type: string
+          weight:
+            type: string
+      assicoatedWith:
+        type: object
+        properties:
+          tivoArtistId:
+            type: string
+          name:
+            type: string
+          type:
+            type: string
+          weight:
+            type: string
 host: api.sandbox.cnrd.io
 info:
   contact:
