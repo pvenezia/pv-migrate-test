@@ -2619,10 +2619,6 @@ definitions:
               type: string
       duration:
         type: integer
-      disc:
-        type: integer
-      phyTrackNum:
-        type: integer
       isPick:
         type: boolean
       flags:
