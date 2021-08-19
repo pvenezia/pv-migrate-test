@@ -2443,7 +2443,7 @@ definitions:
             type: string
           weight:
             type: string
-      assicoatedWith:
+      associatedWith:
         type: object
         properties:
           tivoArtistId:
@@ -2454,6 +2454,130 @@ definitions:
             type: string
           weight:
             type: string
+      followers:
+        type: object
+        properties:
+          tivoArtistId:
+            type: string
+          name:
+            type: string
+          type:
+            type: string
+          weight:
+            type: string
+      influencers:
+        type: object
+        properties:
+          tivoArtistId:
+            type: string
+          name:
+            type: string
+          type:
+            type: string
+          weight:
+            type: string
+      musicBio:
+        type: object
+        properties:
+          headlineBio:
+            type: string
+          biography:
+            type: array
+            items:
+              type: object
+              properties:
+                text:
+                  type: string
+                author:
+                  type: string
+          musicBioOverview:
+            type: array
+            items:
+              type: object
+              properties:
+                overview:
+                  type: string
+                author:
+                  type: string
+                textLanguage:
+                  type: string
+          musicBioOverviewEnglish:
+            type: array
+            items:
+              type: object
+              properties:
+                overview:
+                  type: string
+                textLanguage:
+                  type: string
+          classicalBio:
+            type: array
+            items:
+              type: object
+              properties:
+                text:
+                  type: string
+                author:
+                  type: string
+      musicGenres:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            weight:
+              type: integer
+      moods:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            weight:
+              type: integer
+      country:
+        type: string
+      gender:
+        type: string
+      composedTrackCount:
+        type: integer
+      albumCount:
+        type: integer
+      performedTrackCount:
+        type: integer
+      releaseCount:
+        type: integer
+      active:
+        type: array
+        items:
+          type: string
+      images:
+        type: array
+        items:
+          type: object
+          properties:
+            url:
+              type: string
+            width:
+              type: integer
+            height:
+              type: integer
+            sortOrder:
+              type: integer
+            imageTypeId:
+              type: string
+            color:
+              type: string
+            author:
+              type: string
+            zoomLevel:
+              type: string
 host: api.sandbox.cnrd.io
 info:
   contact:
