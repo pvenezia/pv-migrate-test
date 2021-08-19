@@ -2944,8 +2944,6 @@ paths:
           enum:
             - songs
             - artists
-            - radio
-            - mixed
           required: true
         - in: body
           name: body
