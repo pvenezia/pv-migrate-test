@@ -2625,6 +2625,187 @@ definitions:
         type: array
         items:
           type: string
+  InfoAlbumObject:
+    type: object
+    title: Info Album Object
+    properties:
+      tivoAlbumid:
+        type: string
+      altIds:
+        type: object
+        properties:
+          mainReleaseId:
+            type: string
+      title:
+        type: string
+      duration:
+        type: integer
+      originalReleaseDate:
+        type: string
+      moods:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            weight:
+              type: integer
+      themes:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            weight:
+              type: integer
+      flags:
+        type: array
+        items:
+          type: string
+      primaryArtists:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+      rating:
+        type: integer
+      credits:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            credit:
+              type: array
+              items:
+                type: string
+            type:
+              type: string
+      genres:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            weight:
+              type: integer
+      subGenres:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            weight:
+              type: integer
+      type:
+        type: string
+      images:
+        type: array
+        items:
+          type: object
+          properties:
+            url:
+              type: string
+            width:
+              type: integer
+            height:
+              type: integer
+            sortOrder:
+              type: integer
+            imageTypeId:
+              type: string
+      tracks:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+            title:
+              type: string
+            performers:
+              type: array
+              items:
+                type: object
+                properties:
+                  nameId:
+                    type: string
+                  name:
+                    type: string
+                  roleId:
+                    type: string
+                  role:
+                    type: string
+            composers:
+              type: array
+              items:
+                type: object
+                properties:
+                  nameId:
+                    type: string
+                  name:
+                    type: string
+                  roleId:
+                    type: string
+                  role:
+                    type: string
+            duration:
+              type: integer
+            disc:
+              type: integer
+            phyTrackNum:
+              type: integer
+            isPick:
+              type: boolean
+            flags:
+              type: array
+              items:
+                type: string
+      release:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+            ids:
+              type: object
+              properties:
+                amgClassicalId:
+                  type: string
+                albumId:
+                  type: string
+                amgPopId:
+                  type: string
+            releaseDate:
+              type: string
+            label:
+              type: array
+              items:
+                type: string
+            title:
+              type: string
+            format:
+              type: string
 host: api.sandbox.cnrd.io
 info:
   contact:
