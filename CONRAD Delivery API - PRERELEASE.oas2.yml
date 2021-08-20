@@ -25,7 +25,7 @@ info:
     should be assumed `null`. All booleans will have default values specified in
     the documentation if they are not present in a response.
   title: PRERELEASE - DTS Connected Radio API
-  version: 1.3.0-beta.6
+  version: 1.3.0-beta.7
 parameters:
   territory:
     name: territory
@@ -1154,33 +1154,51 @@ paths:
           description: ''
           examples:
             application/json:
-              album: Shake Your Moneymaker
-              albums:
-                - tivoAlbumId: CAL12345
-                  name: Shake Your Moneymaker
-              artist: The Black Crowes
-              artists:
-                - tivoArtistId: CAR23456
-                  name: The Black Crowes
-              authors: 'Otis Redding, Alvertis Isbell, Allen Alvoid Jr. Jones'
-              tivoTrackId: CTR34566
-              copyright: Universal Music Publishing Group
-              description: >-
-                Hit single from the Black Crowes 1990 album Shake Your
-                Moneymaker
-              longDescription: >-
-                "Hard to Handle" is a 1968 song written by American soul star
-                Otis Redding along with Al Bell and Allen Jones. Originally
-                recorded by Redding, it was released in 1968 as the B-side to
-                "Amen" (shortly after the singer's sudden death in 1967). The
-                song also appears on the 1968 album The Immortal Otis Redding.
-                Redding's version reached #38 on the Billboard R&B charts and
-                #51 on the pop charts.  Numerous covers of the song exist,
-                notably a 1990 blues rock take on the track by band The Black
-                Crowes.
-              title: Hard to Handle
+              tivoTrackId: ''
+              altIds:
+                mainReleaseId: dolor
+              title: id nulla
+              hasLyrics: true
+              performers:
+                - nameId: quis
+                  name: in aute irure
+                  roleId: aute velit cillum Lorem
+                  role: anim laborum fugiat
+                - nameId: eiusmod fugiat magna occaec
+                  name: ull
+                  roleId: labore
+                  role: aute irure tempor
+                - nameId: esse
+                  name: reprehenderit laboris
+                  roleId: in elit
+                  role: dolor ullamco ut
+              composers:
+                - nameId: cupidatat laborum
+                  name: culpa elit in
+                  roleId: non proident
+                  role: consectetur labore dolore Ut ipsum
+                - nameId: anim dolore consequat dolore qui
+                  name: minim cillum reprehenderit commodo eu
+                  roleId: in
+                  role: irure
+                - nameId: eu
+                  name: culpa deserunt esse cupidatat
+                  roleId: dolore proid
+                  role: laborum
+                - nameId: consec
+                  name: veniam laborum aute ut
+                  roleId: ea cillum
+                  role: nostrud in laboris mollit aliquip
+                - nameId: esse
+                  name: cillum dolor tempor aliqua aliquip
+                  roleId: sed consequat
+                  role: ipsum voluptate cupid
+              duration: 70845241
+              isPick: false
+              flags:
+                - in
           schema:
-            $ref: './delivery_common.oas2.yml#/definitions/infoTrackObject'
+            $ref: './delivery_common.oas2.yml#/definitions/InfoTrackObject'
       security:
         - Authorization: []
         - mfgId: []
@@ -3208,8 +3226,7 @@ paths:
         '200':
           description: ''
           schema:
-            type: object
-            properties: {}
+            $ref: './delivery_common.oas2.yml#/definitions/InfoArtistObject'
       summary: Get information on artists
       operationId: getArtistInfo
       tags:
@@ -3224,6 +3241,23 @@ paths:
           type: string
           required: true
       description: Retrieve information about specific artists
+    parameters:
+      - name: tivoArtistId
+        in: path
+        type: string
+        required: true
+  '/info/{tivoArtistId}/discography':
+    get:
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: >-
+              ./delivery_common.oas2.yml#/definitions/InfoArtistDiscographyObject
+      summary: Retrieve discography of an artist
+      operationId: getArtistDiscography
+      tags:
+        - Info
     parameters:
       - name: tivoArtistId
         in: path
