@@ -3220,14 +3220,14 @@ paths:
       summary: Submit a signal strength report
       tags:
         - Reports
-  '/info/{tivoArtistId}':
+  '/info/artists/{tivoArtistId}':
     get:
       responses:
         '200':
           description: ''
           schema:
             $ref: './delivery_common.oas2.yml#/definitions/InfoArtistObject'
-      summary: Get information on artists
+      summary: Retrieve information on artists
       operationId: getArtistInfo
       tags:
         - Info
@@ -3246,7 +3246,7 @@ paths:
         in: path
         type: string
         required: true
-  '/info/{tivoArtistId}/discography':
+  '/info/artists/{tivoArtistId}/discography':
     get:
       responses:
         '200':
