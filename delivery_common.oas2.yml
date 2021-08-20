@@ -2331,11 +2331,6 @@ definitions:
     type: object
     title: PCD Audio GET Response Object
     description: Response object for a PCD GET query
-    blah:
-      type: object
-      properties:
-        blah2:
-          type: object
     properties:
       queryId:
         type: string
