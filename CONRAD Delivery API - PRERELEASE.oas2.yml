@@ -3252,8 +3252,9 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: >-
-              ./delivery_common.oas2.yml#/definitions/InfoArtistDiscographyObject
+            type: array
+            items:
+              $ref: '#/definitions/InfoArtistDiscographyObject'
       summary: Retrieve discography of an artist
       operationId: getArtistDiscography
       tags:
