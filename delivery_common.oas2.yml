@@ -2806,6 +2806,33 @@ definitions:
               type: string
             format:
               type: string
+  InfoArtistDiscographyObject:
+    type: object
+    title: Info Artist Discography Object
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      duration:
+        type: integer
+      originalReleaseDate:
+        type: string
+      primaryArtists:
+        type: array
+        items:
+          type: object
+          properties:
+            tivoArtistid:
+              type: string
+            name:
+              type: string
+      rating:
+        type: integer
+      hasReview:
+        type: boolean
+      type:
+        type: string
 host: api.sandbox.cnrd.io
 info:
   contact:
