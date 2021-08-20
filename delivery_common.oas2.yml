@@ -2386,7 +2386,7 @@ definitions:
     title: Info Artist Object
     properties:
       tivoArtistId:
-        type: string
+        $ref: '#/definitions/tivoArtistId'
       name:
         type: string
       type:
