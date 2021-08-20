@@ -2673,7 +2673,7 @@ definitions:
         items:
           type: object
           properties:
-            id:
+            tivoArtistId:
               type: string
             name:
               type: string
@@ -2684,7 +2684,7 @@ definitions:
         items:
           type: object
           properties:
-            id:
+            tivoArtistId:
               type: string
             name:
               type: string
@@ -2738,7 +2738,7 @@ definitions:
         items:
           type: object
           properties:
-            id:
+            tivoTrackId:
               type: string
             title:
               type: string
