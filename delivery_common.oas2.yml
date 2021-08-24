@@ -2611,15 +2611,19 @@ definitions:
         type: integer
       isPick:
         type: boolean
+        description: Editorially-selected album highlight track.
       flags:
         type: array
+        description: >-
+          Descriptor flags for the track such as `live, bonus track, interview
+          track`
         items:
           type: string
   InfoAlbumObject:
     type: object
     title: Info Album Object
     properties:
-      tivoAlbumid:
+      tivoAlbumId:
         type: string
       altIds:
         type: object
