@@ -3297,14 +3297,14 @@ paths:
         '200':
           description: ''
           schema:
-            type: object
-            properties: {}
+            $ref: './delivery_common.oas2.yml#/definitions/InfoAlbumObject'
       summary: Retrieve album information
       operationId: getAlbumInfo
       tags:
         - Info
       parameters:
         - $ref: './delivery_common.oas2.yml#/parameters/infoFieldList'
+        - $ref: './delivery_common.oas2.yml#/parameters/tivoAlbumId'
       description: Retrieve information on an album
     parameters:
       - name: tivoAlbumId
