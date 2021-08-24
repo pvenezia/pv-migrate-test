@@ -2586,7 +2586,7 @@ definitions:
         items:
           type: object
           properties:
-            tivoArtistId:
+            nameId:
               type: string
             name:
               type: string
@@ -2599,7 +2599,7 @@ definitions:
         items:
           type: object
           properties:
-            tivoArtistId:
+            nameId:
               type: string
             name:
               type: string
@@ -2611,19 +2611,15 @@ definitions:
         type: integer
       isPick:
         type: boolean
-        description: Editorially-selected album highlight track.
       flags:
         type: array
-        description: >-
-          Descriptor flags for the track such as `live, bonus track, interview
-          track`
         items:
           type: string
   InfoAlbumObject:
     type: object
     title: Info Album Object
     properties:
-      tivoAlbumId:
+      tivoAlbumid:
         type: string
       altIds:
         type: object
@@ -2779,8 +2775,17 @@ definitions:
         items:
           type: object
           properties:
-            tivoAlbumReleaseId:
+            id:
               type: string
+            ids:
+              type: object
+              properties:
+                amgClassicalId:
+                  type: string
+                albumId:
+                  type: string
+                amgPopId:
+                  type: string
             releaseDate:
               type: string
             label:
@@ -3249,7 +3254,11 @@ parameters:
     in: query
     type: string
     required: true
-    description: A list of fields to return for a `/info/artists/tivoArtistId` query
+    description: >-
+      A comma-separated list of fields to return for a `/info/` query. Unless
+      otherwise noted, this list can include any of the available fields in the
+      response object. Without this field, a default selection of fields will be
+      returned.
 paths: {}
 responses:
   '200':
