@@ -1019,7 +1019,7 @@ paths:
         - $ref: './delivery_common.oas2.yml#/parameters/artist'
         - $ref: './delivery_common.oas2.yml#/parameters/title'
         - $ref: './delivery_common.oas2.yml#/parameters/album'
-        - $ref: './delivery_common.oas2.yml#/parameters/embed'
+        - $ref: './delivery_common.oas2.yml#/parameters/infoFieldList'
         - $ref: './delivery_common.oas2.yml#/parameters/year'
         - $ref: './delivery_common.oas2.yml#/parameters/ISRC'
       responses:
