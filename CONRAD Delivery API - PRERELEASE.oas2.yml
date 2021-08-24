@@ -3699,7 +3699,7 @@
         ],
         "parameters": [
           {
-            "$ref": "./delivery_common.oas2.yml#/parameters/infoArtistFieldList"
+            "$ref": "./delivery_common.oas2.yml#/parameters/infoFieldList"
           },
           {
             "in": "path",
