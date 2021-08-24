@@ -3286,6 +3286,13 @@ paths:
       tags:
         - Info
       description: Retrieve artist discography
+      parameters:
+        - in: query
+          name: releaseType
+          type: string
+          description: >-
+            Filter responses by release type, such as original release,
+            compilation, various artist, etc.
     parameters:
       - name: tivoArtistId
         in: path
