@@ -3257,8 +3257,8 @@ parameters:
     description: >-
       A comma-separated list of fields to return for a `/info/` query. Unless
       otherwise noted, this list can include any of the available fields in the
-      response object. Without this field, a default selection of fields will be
-      returned.
+      response object. Without this field, a default selection of commonly-used
+      fields will be returned.
 paths: {}
 responses:
   '200':
