@@ -2779,17 +2779,8 @@ definitions:
         items:
           type: object
           properties:
-            id:
+            tivoAlbumReleaseId:
               type: string
-            ids:
-              type: object
-              properties:
-                amgClassicalId:
-                  type: string
-                albumId:
-                  type: string
-                amgPopId:
-                  type: string
             releaseDate:
               type: string
             label:
