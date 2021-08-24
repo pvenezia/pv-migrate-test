@@ -2586,7 +2586,7 @@ definitions:
         items:
           type: object
           properties:
-            nameId:
+            tivoArtistId:
               type: string
             name:
               type: string
@@ -2599,7 +2599,7 @@ definitions:
         items:
           type: object
           properties:
-            nameId:
+            tivoArtistId:
               type: string
             name:
               type: string
