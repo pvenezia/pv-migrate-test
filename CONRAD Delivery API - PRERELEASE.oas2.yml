@@ -3250,7 +3250,7 @@ paths:
     get:
       responses:
         '200':
-          description: ''
+          description: Retrieve artist discography
           schema:
             type: array
             items:
